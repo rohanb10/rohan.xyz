@@ -5,6 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="css/flatly-bootstrap.css" rel="stylesheet">
+	<link  href="css/animate.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 	<title>Rohan Bhansali</title>
 </head>
 <body data-spy="scroll" data-target="#navbar">
@@ -48,16 +50,15 @@
 			<h1>&nbsp;</h1>
 			<div class="row">
 				<div class="col-md-4 .col-md-offset-1">
-					<img src="img/ef.png" class="img-circle img-responsive center-block" alt="EazyFriday logo">
+					<img src="img/ef.png" class="img-circle img-responsive animate-left center-block" alt="EazyFriday logo">
 				</div>
-				<div class="col-md-6 col-md-offset-1">
+				<div class="col-md-6 col-md-offset-1 animate-right">
 					<h2 class="text-center">EazyFriday</h2>
 					<h4 class="text-center text-info">Software Developer Intern</h4>
 					<p>
 						<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>
 						Mumbai, India | Summer 2015
 					</p>
-					<p></p>
 					<p>Developed a dynamic user access system for retailers and administrators</p>
 					<p>Built a retail management dashboard to control outlet operations</p>
 					<p>Designed the interface for back-end administrative controls for the website</p>
@@ -72,9 +73,9 @@
 			<h1>&nbsp;</h1>
 			<div class="row">
 				<div class="col-md-4 .col-md-offset-1">
-					<img src="img/sl.jpg" class="img-circle img-responsive" alt="studlife logo">
+					<img src="img/sl.jpg" class="img-circle img-responsive animate-left" alt="studlife logo">
 				</div>
-				<div class="col-md-6 col-md-offset-1">
+				<div class="col-md-6 col-md-offset-1 animate-right">
 					<h2 class="text-center">Student Life</h2>
 					<h4 class="text-center text-info">Senior Online Editor</h4>
 					<p>
@@ -94,9 +95,9 @@
 			<h1>&nbsp;</h1>
 			<div class="row">
 				<div class="col-md-4 .col-md-offset-1">
-					<img src="img/wustl.png" class="img-circle img-responsive" alt="WUSTL logo">
+					<img src="img/wustl.png" class="img-circle img-responsive animate-left" alt="WUSTL logo">
 				</div>
-				<div class="col-md-6 col-md-offset-1">
+				<div class="col-md-6 col-md-offset-1 animate-right">
 					<h2 class="text-center">WUSTL Engineering</h2>
 					<h4 class="text-center text-info">Teaching Assistant</h4>
 					<p>
@@ -112,9 +113,9 @@
 			<h1>&nbsp;</h1>
 			<div class="row">
 				<div class="col-md-4 .col-md-offset-1">
-					<img src="img/lbi.png" class="img-circle img-responsive" alt="Digitas LBi logo">
+					<img src="img/lbi.png" class="img-circle img-responsive animate-left" alt="Digitas LBi logo">
 				</div>
-				<div class="col-md-6 col-md-offset-1">
+				<div class="col-md-6 col-md-offset-1 animate-right">
 					<h2 class="text-center">Digitas LBi</h2>
 					<h4 class="text-center text-info">Software Intern</h4>
 					<p>
@@ -141,7 +142,7 @@
 			<h1>&nbsp;</h1>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="text-center">
+					<div class="text-center animate-left">
 						<h3>Washington University in St. Louis</h3>
 						<p>
 							<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>
@@ -154,7 +155,7 @@
 					<h1>&nbsp;</h1>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-					<div class="text-center">
+					<div class="text-center animate-right">
 						<h3>Cathedral & John Connon School</h3>
 						<p>
 							<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>
@@ -168,7 +169,7 @@
 				<div class="text-center"><h4>Coursework</h4></div>
 				<h1>&nbsp;</h1>
 				<div class="col-md-4">
-					<div class="text-left">
+					<div class="text-left animate-left">
 						<p>Computer Science I, II (Java)</p>
 						<p>Logic and Discrete Mathematics</p>
 						<p>Algorithms and Data Structures (Java)</p>
@@ -176,14 +177,14 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="text-left">
+					<div class="text-left animate-up">
 						<p>Rapid Prototype Development (Web)</p>
 						<p>Fair Division in Practice and Theory (Java)</p>
 						<p>Calculus I, II, III</p>
 						<p>Object Oriented Software Development (C++)</p>
 					</div>
 				</div>
-				<div class="col-md-3 col-md-offset-1">
+				<div class="col-md-3 col-md-offset-1 animate-right">
 					<div class="text-left">
 						<p>Principles of Marketing</p>
 						<p>Advanced Animation (Maya)</p>
@@ -232,11 +233,6 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$('body').scrollspy({ target: '#navbar' });
-		$('[data-spy="scroll"]').each(function () {
- 			var $spy = $(this).scrollspy('refresh');
-		})
-	</script>
+	<script src="js/animate.js"></script>
 </body>
 </html>

@@ -1,3 +1,9 @@
-.animate-left, .animate-right, .animate-up {
+.animate-left, .animate-right, .animate-up, .animate-zoom {
 	visibility: hidden;
+}
+
+.skill-image img{
+	max-height: 100px;
+	/*height: 100%;*/
+	width: auto;
 }

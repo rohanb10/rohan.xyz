@@ -66,4 +66,11 @@ $(window).scroll(function(event) {
 			$(e).css('visibility','visible');
 		} 
 	});
+
+  $('.animate-zoom').each(function(i, e) {
+    if ($(e).visible(true)) {
+      $(e).addClass('animated zoomIn');
+      $(e).css('visibility','visible');
+    } 
+  });
 });

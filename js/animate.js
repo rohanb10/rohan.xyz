@@ -11,66 +11,71 @@
    *     only accounts for vertical position, not horizontal.
    */
 
-  $.fn.visible = function(partial) {
-    
-      var $t            = $(this),
-          $w            = $(window),
-          viewTop       = $w.scrollTop(),
-          viewBottom    = viewTop + $w.height(),
-          _top          = $t.offset().top,
-          _bottom       = _top + $t.height(),
-          compareTop    = partial === true ? _bottom : _top,
-          compareBottom = partial === true ? _top : _bottom;
-    
-    return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+   $.fn.visible = function(partial) {
 
-  };
-    
+   	var $t            = $(this),
+   	$w            = $(window),
+   	viewTop       = $w.scrollTop(),
+   	viewBottom    = viewTop + $w.height(),
+   	_top          = $t.offset().top,
+   	_bottom       = _top + $t.height(),
+   	compareTop    = partial === true ? _bottom : _top,
+   	compareBottom = partial === true ? _top : _bottom;
+
+   	return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+   };
+
 })(jQuery);
 
 // Beginning of rohanb10 code
 
-document.body.scrollTop = 1;
-
+//close navbar after link selected
 $('.nav a').on('click', function(){
-    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+	$('.navbar-toggle').click()
 });
 
+//scrollspy activate
 $('body').scrollspy({
 	target: '#navbar' 
 });
 
+//scrollspy refresh
 $('[data-spy="scroll"]').each(function(){
 	var $spy = $(this).scrollspy('refresh');
 });
 
-$(window).scroll(function(event) {
+//autoscroll to trigger animations
+$(document).ready(function(){
+	window.scroll(0,1);
+});
 
+$(window).scroll(function(event) {
 	$('.animate-left').each(function(i, e) {
 		if ($(e).visible(true)) {
+			$(e).css('visibility','visible');
 			$(e).addClass('animated fadeInLeft');
-			$(e).css('visibility','visible'); 
 		} 
 	});
 
 	$('.animate-right').each(function(i, e) {
 		if ($(e).visible(true)) {
-			$(e).addClass('animated fadeInRight');
 			$(e).css('visibility','visible');
+			$(e).addClass('animated fadeInRight');
 		} 
 	});
 
 	$('.animate-up').each(function(i, e) {
 		if ($(e).visible(true)) {
-			$(e).addClass('animated fadeInUp');
 			$(e).css('visibility','visible');
+			$(e).addClass('animated fadeInUp');
 		} 
 	});
 
-  $('.animate-zoom').each(function(i, e) {
-    if ($(e).visible(true)) {
-      $(e).addClass('animated zoomIn');
-      $(e).css('visibility','visible');
-    } 
-  });
+	$('.animate-zoom').each(function(i, e) {
+		if ($(e).visible(true)) {
+			$(e).css('visibility','visible');
+			$(e).addClass('animated zoomIn');
+		} 
+	});
 });

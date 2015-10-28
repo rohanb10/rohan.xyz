@@ -7,3 +7,7 @@
 	/*height: 100%;*/
 	width: auto;
 }
+
+::selection {
+	background: #19bf72; 
+}

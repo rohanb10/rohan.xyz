@@ -8,6 +8,27 @@
 	width: auto;
 }
 
+.skill-text {
+	padding-top: 15px ;
+	opacity: 0;
+}
+
 ::selection {
 	background: #19bf72; 
+}
+
+.img-contact, .skill-text, .skill-image .col-md-2 {
+	transition: all .2s ease-in-out;
+}
+
+.img-contact:hover {
+	transform: scale(1.3);
+	-webkit-transform: scale(1.3);
+}
+
+.skill-image .col-md-2:hover .skill-text{
+	/*visibility: visible;*/
+	opacity: 1;
+	transform: none;
+	-webkit-transform: none;
 }

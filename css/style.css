@@ -21,14 +21,42 @@
 	transition: all .2s ease-in-out;
 }
 
+.img-title {
+	margin: 0 auto;
+	max-height: 300px;
+}
+
 .img-contact:hover {
 	transform: scale(1.3);
 	-webkit-transform: scale(1.3);
 }
 
-.skill-image .col-md-2:hover .skill-text{
+.skill-image .col-md-2:hover .skill-text {
 	/*visibility: visible;*/
 	opacity: 1;
 	transform: none;
 	-webkit-transform: none;
+}
+
+.title {
+	background: #2c3e50; 
+	height: 500px;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+	color: #FFFFFF;
+}
+
+.title ::selection {
+	background: #BF3332; 
+}
+
+.title-container {
+	position: relative;
+	top: 50%; 
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+.navbar {
+	visibility: hidden;
 }

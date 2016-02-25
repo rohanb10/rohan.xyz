@@ -71,4 +71,10 @@ $(window).scroll(function(event) {
 			$(e).addClass('animated zoomIn');
 		} 
 	});
+	if ($('.container').offset().top < $(this).scrollTop()) {
+		$('.navbar').css('visibility', 'visible');
+	}
+	else{
+		$('.navbar').css('visibility', 'hidden');
+	}
 });

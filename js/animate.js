@@ -65,13 +65,6 @@ $(window).scroll(function(event) {
 		} 
 	});
 
-	$('.animate-up').each(function(i, e) {
-		if ($(e).visible(true)) {
-			$(e).css('visibility','visible');
-			$(e).addClass('animated fadeInUp');
-		} 
-	});
-
 	$('.animate-zoom').each(function(i, e) {
 		if ($(e).visible(true)) {
 			$(e).css('visibility','visible');

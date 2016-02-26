@@ -47,7 +47,12 @@ $('[data-spy="scroll"]').each(function(){
 
 //autoscroll to trigger animations
 $(document).ready(function(){
-	window.scroll(0,1);
+	// window.scroll(0,1);
+    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+        $('.animate-left, .animate-right, .animate-zoom').each(function(i, e) {
+			$(e).css('visibility', 'visible');
+ 		});
+    }
 });
 
 $(window).scroll(function(event) {

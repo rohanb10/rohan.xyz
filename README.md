@@ -6,7 +6,6 @@ Built using HTML, CSS, jQuery, Bootstrap and JavaScript
 
 Packages used: 
 
-* Flatly by Bootswatch
 * Animate.css by Daniel Eden
 * jQuery plugin visible() by Sam Sehnert
 

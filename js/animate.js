@@ -45,22 +45,36 @@ $('[data-spy="scroll"]').each(function(){
 	var $spy = $(this).scrollspy('refresh');
 });
 
-//autoscroll to trigger animations
+//remove animations on mobile to prevent scrolling breaking
 $(document).ready(function(){
-	// window.scroll(0,1);
-    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
-        $('.animate-left, .animate-right, .animate-zoom').each(function(i, e) {
+	if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$('.animate-left, .animate-right, .animate-zoom').each(function(i, e) {
 			$(e).css('visibility', 'visible');
- 		});
-    }
+			$(e).addClass('animated zoomIn');
+		});
+	}
 });
 
+//smooth scroll
+$(".scroll").click(function(event) {
+	if($(this).data('scroll')){
+		$('.animate-zoom').each(function(i, e) {
+			$(e).css('visibility','visible');
+			$(e).addClass('animated zoomIn');
+	});
+	}
+	$('html, body').animate({
+		scrollTop: $($(this).data('href')).offset().top
+	}, $(this).data('scroll'));
+});
+
+//trigger animations
 $(window).scroll(function(event) {
 	$('.animate-left').each(function(i, e) {
 		if ($(e).visible(true)) {
 			$(e).css('visibility','visible');
 			$(e).addClass('animated fadeInLeft');
-		} 
+		}
 	});
 
 	$('.animate-right').each(function(i, e) {

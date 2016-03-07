@@ -45,6 +45,13 @@ $('[data-spy="scroll"]').each(function(){
 	var $spy = $(this).scrollspy('refresh');
 });
 
+$(".navbar-brand").click(function(event) {
+	$("html, body").animate({
+		scrollTop: 0
+	}, 1000);
+	return false;
+});
+
 //remove animations on mobile to prevent scrolling breaking
 $(document).ready(function(){
 	if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -61,7 +68,7 @@ $(".scroll").click(function(event) {
 		$('.animate-zoom').each(function(i, e) {
 			$(e).css('visibility','visible');
 			$(e).addClass('animated zoomIn');
-	});
+		});
 	}
 	$('html, body').animate({
 		scrollTop: $($(this).data('href')).offset().top

@@ -10,11 +10,11 @@
 	<link href="css/style.css" rel="stylesheet">
 	<title>Rohan Bhansali</title>
 </head>
-<body data-spy="scroll" data-target="#navbar">
+<body data-spy="scroll" data-target="#navbar" data-offset="60">
 	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -22,21 +22,21 @@
 				</button>
 				<a class="navbar-brand">Rohan Bhansali</a>
 			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="collapse-1">
 				<ul class="nav navbar-nav navbar-right" role="tablist">
-					<li><a class="scroll" data-scroll="1000" data-href="#exp">
+					<li><a class="scroll" data-scroll="1000" data-href="#exp" href="#exp" onClick="return false">
 						<span class="glyphicon glyphicon-briefcase" aria-hidden="true">&nbsp;</span>
 						Experience
 					</a></li>
-					<li><a class="scroll" data-scroll="3000" data-href="#skills">
+					<li><a class="scroll" data-scroll="1000" data-href="#skills" href="#skills" onClick="return false">
 						<span class="glyphicon glyphicon-tasks" aria-hidden="true">&nbsp;</span>
 						Skills
 					</a></li>
-					<li><a class="scroll" data-scroll="3500" data-href="#edu">
+					<li><a class="scroll" data-scroll="1000" data-href="#edu" href="#edu" onClick="return false">
 						<span class="glyphicon glyphicon-education" aria-hidden="true">&nbsp;</span>
 						Education
 					</a></li>
-					<li><a class="scroll" data-scroll="4000" data-href="#contact">
+					<li><a class="scroll" data-scroll="1000" data-href="#contact" href="#contact" onClick="return false">
 						<span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span>
 						Contact
 					</a></li>
@@ -50,7 +50,9 @@
 				<img src="img/me.png" class="img-responsive img-circle img-title">
 			</div>
 			<h3 class="hidden-xs">&nbsp;</h3>
-			<h2>Rohan Bhansali</h2>
+			<div class="name-fix">
+				<h2>Rohan Bhansali</h2>
+			</div>
 			<h3>&nbsp;</h3>
 			<div class="container">
 				<div class="row text-center">
@@ -62,7 +64,7 @@
 					</div>
 					<div class="col-md-1 col-xs-3">
 						<a class="scroll" data-scroll="3000" data-href="#skills">
-						<img src="img/skills.png" class="img-responsive img-contact">
+							<img src="img/skills.png" class="img-responsive img-contact">
 						</a>
 					</div>
 					<div class="col-md-1 col-xs-3">

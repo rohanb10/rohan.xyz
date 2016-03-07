@@ -57,7 +57,7 @@ $(document).ready(function(){
 
 //smooth scroll
 $(".scroll").click(function(event) {
-	if($(this).data('scroll')){
+	if($(this).data('scroll') >= 3000){
 		$('.animate-zoom').each(function(i, e) {
 			$(e).css('visibility','visible');
 			$(e).addClass('animated zoomIn');

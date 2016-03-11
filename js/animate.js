@@ -73,6 +73,7 @@ $(".scroll").click(function(event) {
 	$('html, body').animate({
 		scrollTop: $($(this).data('href')).offset().top
 	}, $(this).data('scroll'));
+	return false;
 });
 
 //trigger animations

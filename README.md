@@ -12,3 +12,9 @@ Packages used:
 The page is fully responsive
 
 http://rohanb10.github.io/resume/
+
+Update - 12/05/2016
+
+Added new projects page in /rohan.xyz
+
+Still under active development. Check back for a full overhall of rohan.xyz in a few weeks

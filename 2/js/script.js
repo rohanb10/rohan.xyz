@@ -11,6 +11,7 @@ $(window).load(function() {
 	if(isMobile()){
 		$(".iphone-container").css("display","none");
 		$(".project-btn a").css('min-width', '150px');
+		$(".panel-me").css('min-height', '100vh');
 	}
 	else{
 		var newHeight= parseInt($(".laptop").css('height'),10);
@@ -64,14 +65,14 @@ $(".project-list a").click(function(){
 		$(this).css('color', '#FFFFFF');
 
 		//change descriptions
-		$(".project-github").show();
+		$(".project-github").css('opacity', '1');
 		if(project=="sl"){
 			$(".project-description").text("I run the website for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ views every month.");
 			$(".project-url").attr("href","http://studlife.com");
 			$(".project-github").attr("href","http://github.com/rohanb10/studlife");
 		}
 		if(project=="sl-housing"){
-			$(".project-description").text("A comprehensive housing guide for all official campus living options for Washington Univeristy. Check out the website and source code below");
+			$(".project-description").text("A comprehensive housing guide for all official campus living options for Washington Univeristy. Check out the website and source code below.");
 			$(".project-url").attr("href","http://studlife.com/housing");
 			$(".project-github").attr("href","http://github.com/rohanb10/studlife");
 		}
@@ -83,10 +84,10 @@ $(".project-list a").click(function(){
 		if(project=="ef"){
 			$(".project-description").html("As an intern for this Mumbai based startup, I worked on building the vendor facing administrative dashboard. I am not permitted to share the code I worked on, but you can view the website below. The website was built using <a href='http://meteor.com' target='_blank'>Meteor</a>.");
 			$(".project-url").attr("href","http://eazyfriday.com");
-			$(".project-github").hide();
+			$(".project-github").css('opacity', '0');
 		}
 		if(project=="llinder"){
-			$(".project-description").text("hey5");
+			$(".project-description").text("A simple one page responsive website I built for a job application in Fall 2015. The site features pure css parallax scrolling. Check out the website and source code below.");
 			$(".project-url").attr("href","http://rohanb10.github.io/Llinder");
 			$(".project-github").attr("href","http://github.com/rohanb10/Llinder");
 		}

@@ -3,15 +3,14 @@ font-family: 'Source Sans Pro';
 src: url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
 } */
 
-body {
+
+html, body {
 	margin: 0;
 	padding: 0;
-	/*font-family: 'Roboto', sans-serif;*/
-	height:auto;
+	width: 100%;
+	overflow-x: hidden;
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color:#F3F3F3;
-	overflow-y: scroll;
-	overflow-x: hidden;
 }
 
 a {
@@ -45,12 +44,30 @@ a:hover {
 }
 
 .panel-intro {
+	display:flex;
+	justify-content:center;
+	align-items: center;
 	transition: all .5s linear;
 }
 
 .name-intro{
-	font-size: 3em;
+	font-size: 4em;
+	line-height: 0.9;
 	font-weight: 300;
+}
+.arrow-intro{
+	position: absolute;
+	top:90vh;
+	left: 0;
+	right: 0;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.arrow{
+	display:block;
+	margin: 0 auto;
+	max-width: 60px;
 }
 
 .panel-invert{
@@ -65,8 +82,13 @@ a:hover {
 	/* color: #a4a4a4; */
 }
 
+.strike{
+	text-decoration: line-through;
+}
+
 .me-btn{
 	margin-top: 10px;
+	margin-bottom: 15px;
 	text-align: center;
 }
 
@@ -182,7 +204,7 @@ a:hover {
 .my-container{
 	vertical-align: middle;
 	margin: 0 auto;
-	max-width: 80%;
+	max-width: 100%;
 	max-height: auto;
 	border:7px solid #68665b;
 	border-radius: 500px;

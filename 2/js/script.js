@@ -36,6 +36,10 @@ function firstPanel() {
 	},time);
 }
 
+$(document).ready(function() {
+	setTimeout(firstPanel,1000);	
+});
+
 $(window).load(function() {
 	if(isMobile()) {
 		$(".iphone-container").css("display","none");
@@ -60,7 +64,6 @@ $(window).load(function() {
 	$(".active").first().css('box-shadow', 'inset 250px 0 0 0 #31302B');
 	$(".active").first().css('color', '#FFFFFF');
 	
-	setTimeout(firstPanel,1000);
 });
 
 //project control

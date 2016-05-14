@@ -41,7 +41,16 @@ a:hover {
 .panel-header {
 	font-size: 3em;
 	font-weight: 300;
-	margin: 30px 0px 15px 0px;
+	margin: 15px 0px 15px 0px;
+}
+
+.panel-intro {
+	transition: all .5s linear;
+}
+
+.name-intro{
+	font-size: 3em;
+	font-weight: 300;
 }
 
 .panel-invert{
@@ -171,10 +180,11 @@ a:hover {
 }
 
 .my-container{
+	vertical-align: middle;
 	margin: 0 auto;
 	max-width: 80%;
 	max-height: auto;
-	border:10px solid #68665b;
+	border:7px solid #68665b;
 	border-radius: 500px;
 	-webkit-border-radius: 500px;
 	-moz-border-radius: 500px;
@@ -186,7 +196,9 @@ a:hover {
 	height:auto;
 	transition: all .3s linear;
 	filter:contrast(0%);
+	-webkit-filter:contrast(0%);
 }
 .img-contact:hover{
 	filter:contrast(100%);
+	-webkit-filter:contrast(100%);
 }

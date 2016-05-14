@@ -1,5 +1,5 @@
 var msg, character = 0, interval = 80, intro = "", current=0, next;
-var roles = ["full-stack developer","software engineer", "designer", "problem solver"];
+var roles = ["web developer","software engineer", "designer", "problem solver"];
 
 function isMobile() {
 	if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -22,14 +22,15 @@ function type(message) {
 	}
 }
 
-function backspace(number){
+function backspace(){
+	var check="";
 	$('.name-intro').html(function (_,txt) {
-		return txt.slice(0, -1);
+		check = txt.slice(0, -1);
+		return check;
 	});
-	number--;
-	if(number>=0){
+	if(check.length>="Hello.<br><br>I am Rohan Bhansali<br><br>I am a ".length){
 		setTimeout(function(){
-			backspace(number);
+			backspace();
 		}, interval-10);
 	}
 }
@@ -37,8 +38,9 @@ function backspace(number){
 function cycle(){
 	next=(current+1)%roles.length;
 	setTimeout(function(){
-		backspace(roles[current].length-1);
+		backspace();
 		setTimeout(function(){
+			$(".name-intro").html("Hello.<br><br>I am Rohan Bhansali<br><br>I am a ");
 			type(roles[next]);
 		},2000);
 	},2000);
@@ -48,16 +50,14 @@ function cycle(){
 }
 
 function firstPanel() {
-	msg = "Hello";
+	msg = "Hello.";
 	type(msg);
 	setTimeout(function(){
 		$('.name-intro').append('<br><br>');
-		msg="I'm Rohan Bhansali";
-		type(msg);
+		type("I am Rohan Bhansali");
 		setTimeout(function(){
-			msg="I'm a full-stack developer";
 			$('.name-intro').append('<br><br>')
-			type(msg);
+			type("I am a full-stack developer");
 			setTimeout(function(){
 				cycle();
 				setInterval(cycle,5000);
@@ -85,7 +85,6 @@ $(window).load(function() {
 		var newHeight= parseInt($(".laptop").css('height'),10);
 		newHeight = Math.round(newHeight);
 		$(".iphone").css("max-height",newHeight-4);
-		console.log("resized iphone shell");
 	}
 	$(".iphone-screen-2").hide();
 	$(".laptop-screen-2").hide();
@@ -166,5 +165,23 @@ $(".project-list a").click(function(){
 $("#arrow-scroll").click(function(event) {
 	$('html,body').animate({
 		scrollTop: $(".panel-me").offset().top
+	}, 1000);
+});
+
+$(".me-btn-projects").click(function(event) {
+	$('html,body').animate({
+		scrollTop: $(".panel-projects").offset().top
+	}, 1000);
+});
+
+$(".me-btn-exp").click(function(event) {
+	$('html,body').animate({
+		scrollTop: $(".panel-exp").offset().top
+	}, 1000);
+});
+
+$(".me-btn-skills").click(function(event) {
+	$('html,body').animate({
+		scrollTop: $(".panel-skills").offset().top
 	}, 1000);
 });

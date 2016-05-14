@@ -1,4 +1,6 @@
-var position;
+var msg, character = 0, interval = 80, intro = "", current=0, next;
+var roles = ["full-stack developer","software engineer", "designer", "problem solver"];
+
 function isMobile() {
 	if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 		return true;
@@ -7,33 +9,61 @@ function isMobile() {
 }
 
 function type(message) {
-	$('.name-intro').append(message[position]);
-	position++;
-	if (position < message.length) {
+	$('.name-intro').append(message[character]);
+	character++;
+	if (character < message.length) {
 		setTimeout(function () {
 			type(message);
-		}, 70);
+		}, interval);
+	}
+	else{
+		intro+=msg;
+		character=0;
 	}
 }
 
+function backspace(number){
+	$('.name-intro').html(function (_,txt) {
+		return txt.slice(0, -1);
+	});
+	number--;
+	if(number>=0){
+		setTimeout(function(){
+			backspace(number);
+		}, interval-10);
+	}
+}
+
+function cycle(){
+	next=(current+1)%roles.length;
+	setTimeout(function(){
+		backspace(roles[current].length-1);
+		setTimeout(function(){
+			type(roles[next]);
+		},2000);
+	},2000);
+	setTimeout(function(){
+		current=next;
+	},4001);
+}
+
 function firstPanel() {
-	position = 0;
-	var msg = "Hi, my name is Rohan Bhansali";
-	var time = (msg.length*70)+1000;
+	msg = "Hello";
 	type(msg);
 	setTimeout(function(){
-		position = 0;
-		msg="I'm a web developer";
-		$('.name-intro').append('<br><br>')
+		$('.name-intro').append('<br><br>');
+		msg="I'm Rohan Bhansali";
 		type(msg);
-		time = (msg.length*70)+1000;
 		setTimeout(function(){
-			$(".panel-intro").css({
-				'background-color': '#31302B',
-				'color':'#F3F3F3'
-			});
-		},time);
-	},time);
+			msg="I'm a full-stack developer";
+			$('.name-intro').append('<br><br>')
+			type(msg);
+			setTimeout(function(){
+				cycle();
+				setInterval(cycle,5000);
+			},3000);
+		},2500);
+	},2000);
 }
 
 $(document).ready(function() {
@@ -131,4 +161,10 @@ $(".project-list a").click(function(){
 		}
 	}
 	return false;
+});
+
+$("#arrow-scroll").click(function(event) {
+	$('html,body').animate({
+		scrollTop: $(".panel-me").offset().top
+	}, 1000);
 });

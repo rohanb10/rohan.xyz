@@ -50,7 +50,7 @@ function cycle(){
 }
 
 function firstPanel() {
-	type("Hello.",".name-hello");
+	type("Hello",".name-hello");
 	setTimeout(function(){
 		type("I am Rohan Bhansali",".name-rohan");
 		setTimeout(function(){
@@ -58,6 +58,10 @@ function firstPanel() {
 			setTimeout(function(){
 				type("full-stack developer",".name-role");
 				setTimeout(function(){
+					//backups
+					$(".name-hello").text('Hello');
+					$(".name-rohan").text('I am Rohan Bhansali');
+					$(".name-i-am").text('I am a ');
 					cycle();
 					setInterval(cycle,5000);
 				},3000);

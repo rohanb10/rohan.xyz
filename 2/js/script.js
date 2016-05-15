@@ -8,12 +8,12 @@ function isMobile() {
 	return false;
 }
 
-function type(message) {
-	$('.name-intro').append(message[character]);
+function type(message, div) {
+	$(div).append(message[character]);
 	character++;
 	if (character < message.length) {
 		setTimeout(function () {
-			type(message);
+			type(message, div);
 		}, interval);
 	}
 	else{
@@ -24,15 +24,16 @@ function type(message) {
 
 function backspace(){
 	var check="";
-	$('.name-intro').html(function (_,txt) {
+	$('.name-role').html(function (_,txt) {
 		check = txt.slice(0, -1);
 		return check;
 	});
-	if(check.length>="Hello.<br><br>I am Rohan Bhansali<br><br>I am a ".length){
+	if(check.length>0){
 		setTimeout(function(){
 			backspace();
-		}, interval-10);
+		}, interval-20);
 	}
+	else return;
 }
 
 function cycle(){
@@ -40,8 +41,7 @@ function cycle(){
 	setTimeout(function(){
 		backspace();
 		setTimeout(function(){
-			$(".name-intro").html("Hello.<br><br>I am Rohan Bhansali<br><br>I am a ");
-			type(roles[next]);
+			type(roles[next], ".name-role");
 		},2000);
 	},2000);
 	setTimeout(function(){
@@ -50,18 +50,18 @@ function cycle(){
 }
 
 function firstPanel() {
-	msg = "Hello.";
-	type(msg);
+	type("Hello.",".name-hello");
 	setTimeout(function(){
-		$('.name-intro').append('<br><br>');
-		type("I am Rohan Bhansali");
+		type("I am Rohan Bhansali",".name-rohan");
 		setTimeout(function(){
-			$('.name-intro').append('<br><br>')
-			type("I am a full-stack developer");
+			type("I am a ",".name-i-am");
 			setTimeout(function(){
-				cycle();
-				setInterval(cycle,5000);
-			},3000);
+				type("full-stack developer",".name-role");
+				setTimeout(function(){
+					cycle();
+					setInterval(cycle,5000);
+				},3000);
+			},600);
 		},2500);
 	},2000);
 }
@@ -71,23 +71,7 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
-	if(isMobile()) {
-		$(".iphone-container").css("display","none");
-		$(".project-btn a").css('min-width', '150px');
-		$(".panel-me").css('min-height', '100vh');
-		$(".name-intro").css('font-size', '2.7em');
-		$(".my-container").css({
-			'max-width': '60%',
-			'border-width': '5px'
-		});
-	}
-	else{
-		var newHeight= parseInt($(".laptop").css('height'),10);
-		newHeight = Math.round(newHeight);
-		$(".iphone").css("max-height",newHeight-4);
-	}
-	$(".iphone-screen-2").hide();
-	$(".laptop-screen-2").hide();
+	$(".iphone").css("max-height",parseInt($(".laptop").css('height'),10)-4);
 
 	//set active project
 	$(".active").first().css('box-shadow', 'inset 250px 0 0 0 #31302B');
@@ -184,4 +168,10 @@ $(".me-btn-skills").click(function(event) {
 	$('html,body').animate({
 		scrollTop: $(".panel-skills").offset().top
 	}, 1000);
+});
+
+$(".img-skill").hover(function() {
+	$(".skill-hover").html($(this).attr('alt'));
+}, function() {
+	$(".skill-hover").html("&nbsp;");
 });

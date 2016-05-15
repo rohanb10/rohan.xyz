@@ -174,9 +174,11 @@ $(document).ready(function() {
 });
 
 $(window).resize(function(event) {
-	$(".panel").css('min-height', window.innerHeight+"px");
-	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
-	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+	if(window.innerWidth > window.innerHeight){
+		$(".panel").css('min-height', window.innerHeight+"px");
+		$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
+		$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+	}
 });
 
 $(window).load(function() {

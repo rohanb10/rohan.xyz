@@ -173,13 +173,13 @@ $(document).ready(function() {
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
 });
 
-// $(window).resize(function(event) {
-// 	if(window.innerWidth > window.innerHeight){
-// 		$(".panel").css('min-height', window.innerHeight+"px");
-// 		$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
-// 		$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
-// 	}
-// });
+$(window).resize(function(event) {
+	if(window.innerWidth > window.innerHeight){
+		$(".panel").css('min-height', window.innerHeight+"px");
+		$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
+		$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+	}
+});
 
 $(window).load(function() {
 	setTimeout(firstPanel,1000);

@@ -1,9 +1,9 @@
 var character = 0, current=0, next;
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
-/*function isMobile() {
+function isMobile() {
 	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-}*/
+}
 
 function type(message, div) {
 	$(div).append(message[character]);
@@ -72,6 +72,11 @@ $(".project-list a").click(function() {
 	//get new project
 	var project = $(this).data("project");
 	if(project != $(".laptop-screen").data("screen")) {
+		//preload images
+		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
+		if(isMobile()){
+			(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
+		}
 
 		//hide current screen
 		$(".iphone-screen").hide('slide', { direction: "left"},800);
@@ -166,6 +171,7 @@ $(document).ready(function() {
 	$(".panel").css('min-height', window.innerHeight+"px");
 	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+	
 });
 
 $(window).resize(function() {

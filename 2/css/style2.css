@@ -4,7 +4,7 @@ src: url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
 } */
 
 
-::selection{
+::selection {
 	background: #a8f4c5;
 	text-shadow: none;
 }
@@ -66,7 +66,7 @@ a:hover {
 }
 .arrow-intro {
 	position: absolute;
-	top:90%;
+	top:85%;
 	left: 0;
 	right: 0;
 	margin-left:auto;
@@ -88,14 +88,13 @@ a:hover {
 
 .panel-invert {
 	background-color:#31302B;
-	color: #FFFFFF;
+	color: #F3F3F3;
 }
 
 .panel-footer {
 	background-color:#31302B;
 	font-size: 1em;
 	font-weight:300;
-	/* color: #a4a4a4; */
 }
 
 .strike {
@@ -144,11 +143,12 @@ a:hover {
 	display: inline-block;
 	margin: 5px 0;
 	box-shadow: inset 0 0 0 0 #31302B;
-	-webkit-transition: all ease 0.8s;
-	transition: all ease 0.8s;
+	-webkit-transition: all linear 0.8s;
+	transition: all linear 0.8s;
 }
-.active{
-	box-shadow: inset 250px 0 0 0 #31302B;
+
+.active {
+	box-shadow: inset 300px 0 0 0 #31302B;
 	color: #F3F3F3;
 }
 
@@ -186,15 +186,10 @@ a:hover {
 
 .iphone-screen {
 	position:absolute;
-	top:60px;
+	top:61px;
 	z-index:2;
-	left:6%;
-	width:45.9%;
-	min-height:103%; 
-}
-
-.iphone-screen-2, .laptop-screen-2{
-	display:none;
+	left:5.8%;
+	width:45.5%;
 }
 
 .text-center {
@@ -221,7 +216,6 @@ a:hover {
 	width: 40px;
 	height: auto;
 	opacity: 1;
-
 	transition: all .3s ease-in-out;
 }
 
@@ -242,10 +236,10 @@ a:hover {
 .img-skill{
 	margin: 10px auto;
 	width: 50px;
-	/* height:50px; */
-	transition: all .3s linear;
-	filter:contrast(1%);
-	-webkit-filter:contrast(1%);
+	transition: all .4s linear;
+	-webkit-transition: all .4s linear;
+	filter:contrast(2%);
+	-webkit-filter:contrast(2%);
 }
 
 .bottom-row{
@@ -253,9 +247,12 @@ a:hover {
 }
 
 .skill-hover{
+	opacity:0;
 	font-size:1.5em;
-	transition: all .2s linear;
-	-webkit-transition: all .2s linear;
+	transform: none;
+	-webkit-transform: none;
+	transition: all .4s linear;
+	-webkit-transition: all .4s linear;
 }
 
 .img-contact {
@@ -270,6 +267,31 @@ a:hover {
 .img-contact:hover, .img-skill:hover {
 	filter:contrast(100%);
 	-webkit-filter:contrast(100%);
+}
+
+@-webkit-keyframes rotate{
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+.img-contact:hover {
+	animation: rotate 3s linear infinite;
+	-webkit-animation: rotate 3s linear infinite;
 }
 
 @media only screen and (max-width : 768px) {
@@ -288,5 +310,11 @@ a:hover {
 	}
 	.img-skill{
 		width: 40px;
+	}
+	.laptop-screen {
+		top: 9%; 
+		left: 15.8%;
+		width: 68.4%;
+		height:78.1%;
 	}
 }

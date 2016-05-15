@@ -19,7 +19,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	
-	<!-- Dependencies, fonts -->
+	<!-- fonts -->
 	<!-- <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'> -->
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
 
@@ -38,7 +38,7 @@
 	<link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96">
 	<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
 	<link rel="manifest" href="img/favicon/manifest.json">
-	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#ff0000">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#31302B">
 	<link rel="shortcut icon" href="img/favicon/favicon.ico">
 	<meta name="apple-mobile-web-app-title" content="Rohan.xyz">
 	<meta name="application-name" content="Rohan.xyz">
@@ -51,7 +51,13 @@
 <body>
 	<div class="panel panel-intro">
 		<div class="container text-center">
-			<div class="name-intro"></div>
+			<div class="name-intro">
+				<div class="name-hello"></div>
+				<br><br>
+				<div class="name-rohan"></div>
+				<br><br>
+				<span class="name-i-am"></span><span class="name-role"></span>
+			</div>
 			<div class="arrow-intro">
 				<a id="arrow-scroll"><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
 			</div>
@@ -72,16 +78,15 @@
 						<p>I watch an unhealthy amount of <span class="strike">football</span> soccer and am a firm proponent of the metric system.</p>
 						<p>Want more information? <a href="../resume.pdf">Check out my resume</a>.</p>
 					</div>
-					<p>&nbsp;</p>
 					<div class="text-center">
 						<div class="col-md-offset-2 col-md-2 col-xs-4 col-sm-4 me-btn">
 							<a class="me-btn-projects">Projects</a>
 						</div>
 						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
-							<a class="me-btn-exp">Experience</a>
+							<a class="me-btn-skills">Skills</a>
 						</div>
 						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
-							<a class="me-btn-skills">Skills</a>
+							<a class="me-btn-exp">Experience</a>
 						</div>
 					</div>
 				</div>
@@ -122,7 +127,6 @@
 					<div class="row">
 						<div class="container col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10 project-text">
 							<p class="text-center project-description">I run the website for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ views every month.</p>
-							<p>&nbsp;</p>
 							<div class="project-links">
 								<a class="project-url" href="http://studlife.com" target="_blank">
 									<img src="img/url-black.png" alt="url">
@@ -140,10 +144,50 @@
 		</div>
 	</div>
 	<!-- skills -->
-	<!-- html   meteor    firebase  wordpress-->
-	<!-- css    java      aws       nodejs-->
-	<!-- js     bootstrap indesign  python-->
-	<!-- jquery git       photoshop mongo-->
+	<div class="half-panel panel-skills panel-invert">
+		<p class="panel-header text-center">Skills</p>
+		<div class="container">
+			<div class="col-md-6 col-xs-12">
+				<p class="text-medium">I use several programming languages and frameworks to get the job done. The ones listed here are the ones I'm the most familiar with. As a web developer, I'm constantly learning to use new tools and the number of technologies that I'm comfortable with keeps on increasing.
+				</p>
+				<h3 class="hidden-sm hidden-xs">&nbsp;</h3>
+				<p class="text-center">&nbsp;<span class="skill-hover"></span></p>
+			</div>
+			<div class="col-md-6 col-xs-12">
+				<div class="row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/html.png" alt="HTML"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/css.png" alt="CSS"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/js.png" alt="JavaScript"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/jquery.png" alt="jQuery"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/git.png" alt="Git"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/meteor.png" alt="Meteor"></div>
+				</div>
+				<div class="row bottom-row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/mongodb.png" alt="Mongo DB"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/mysql.png" alt="MySQL"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/nodejs.png" alt="NodeJS"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/firebase.png" alt="Firebase"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/aws.png" alt="Amazon Web Services"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/bootstrap.png" alt="Bootstrap"></div>
+				</div>
+				<div class="row bottom-row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/photoshop.png" alt="Adobe Photoshop"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/indesign.png" alt="Adobe InDesign"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/wordpress.png" alt="WordPress"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/java.png" alt="Java"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/bash.png" alt="BASH Scripting"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/g-analytics.png" alt="Google Analytics"></div>
+				</div>
+				<!-- html   meteor    firebase  wordpress-->
+				<!-- css    java      aws       nodejs-->
+				<!-- js     bootstrap indesign  python-->
+				<!-- jquery git       photoshop mongo-->
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-exp">
+		<p class="panel-header text-center">Experience</p>
+	</div>
 	<div class="quarter-panel panel-invert panel-footer text-center">
 		<p class="panel-header">Contact</p>
 		<div class="container ">
@@ -172,7 +216,8 @@
 					<h3>&nbsp;</h3>
 				</div>
 			</div>
-			<p>&copy; 2016 Rohan Bhansali. All rights reserved</p>
+			<br>
+			<p>&copy; Rohan Bhansali 2016</p>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>

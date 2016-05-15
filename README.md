@@ -11,10 +11,12 @@ Packages used:
 
 The page is fully responsive
 
-http://rohanb10.github.io/resume/
+http://rohan.xyz
+
+---------
 
 Update - 12/05/2016
 
-Added new projects page in /rohan.xyz
+I'm currently rewriting the site from scratch. You can view my progress at rohan.xyz/2/ and view the source code in the /2 folder
 
-Still under active development. Check back for a full overhall of rohan.xyz in a few weeks
+For the new site, I am using a custom build of bootstrap with only the responsive grid, and no other components/js. Other than jQuery and jQuery UI (js only), I am using no other packages.

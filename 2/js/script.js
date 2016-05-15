@@ -70,19 +70,6 @@ function firstPanel() {
 	},2000);
 }
 
-$(document).ready(function() {
-	setTimeout(firstPanel,1000);	
-});
-
-$(window).load(function() {
-	$(".iphone").css("max-height",parseInt($(".laptop").css('height'),10)-4);
-
-	//set active project
-	$(".active").first().css('box-shadow', 'inset 250px 0 0 0 #31302B');
-	$(".active").first().css('color', '#FFFFFF');
-	
-});
-
 //project control
 $(".project-list a").click(function(){
 	//get new project
@@ -90,8 +77,8 @@ $(".project-list a").click(function(){
 	if(project != $(".laptop-screen").data("screen")){
 
 		//change screens
-		var iphone = "img/img-container/"+project+"-iphone.png";
-		var laptop = "img/img-container/"+project+"-laptop.png";
+		var iphone = "img/img-container/"+project+"-iphone.jpg";
+		var laptop = "img/img-container/"+project+"-laptop.jpg";
 		//set second screen to project
 		$(".iphone-screen-2").attr("src", iphone);
 		$(".laptop-screen-2").attr("src", laptop);
@@ -178,4 +165,21 @@ $(".img-skill").hover(function() {
 	$(".skill-hover").html($(this).attr('alt'));
 }, function() {
 	$(".skill-hover").html("&nbsp;");
+});
+
+$(document).ready(function() {
+	$(".panel").css('min-height', window.innerHeight+"px");
+	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
+	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+});
+
+$(window).resize(function(event) {
+	$(".panel").css('min-height', window.innerHeight+"px");
+	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
+	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
+});
+
+$(window).load(function() {
+	setTimeout(firstPanel,1000);
+	$(".iphone").css("max-height",parseInt($(".laptop").css('height'),10)-4);
 });

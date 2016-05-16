@@ -72,11 +72,10 @@ $(".project-list a").click(function() {
 	//get new project
 	var project = $(this).data("project");
 	if(project != $(".laptop-screen").data("screen")) {
+		
 		//preload images
 		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
-		if($(".iphone-container").css('display')=="block"){
-			(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
-		}
+		(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
 
 		//hide current screen
 		$(".iphone-screen").hide('slide', { direction: "left"},1000);
@@ -152,6 +151,7 @@ $(".img-skill").hover(function() {
 });
 
 function css_resize(){
+	current_width = window.innerWidth;
 	$(".panel").css('min-height', window.innerHeight+"px");
 	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
@@ -160,16 +160,16 @@ function css_resize(){
 
 $(document).ready(function() {
 	css_resize();
-	current_width = window.innerWidth;
 });
 
-//recalculate 100vh size if orientation is changed
+
 $(window).resize(function() {
+	//recalculate 100vh size if orientation is changed
 	(innerWidth != current_width) ? css_resize() : console.log();
 });
 
 $(window).load(function() {
-		setTimeout(firstPanel,1000);
+	setTimeout(firstPanel,1000);
 	$(".active").css("box-shadow","inset 300px 0 0 0 #31302B");
 	$(".active").css("color","#F3F3F3");
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");

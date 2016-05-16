@@ -33,6 +33,10 @@ function backspace() {
 }
 
 function cycle() {
+	//backups
+	$(".name-hello").text('Hello');
+	$(".name-rohan").text('I am Rohan Bhansali');
+	$(".name-i-am").text('I am a ');
 	next = (current+1)%roles.length;
 	setTimeout(function() {
 		backspace();
@@ -60,10 +64,6 @@ function firstPanel() {
 				setTimeout(function() {
 					type("full-stack developer",".name-role");
 					setTimeout(function() {
-					//backups
-					$(".name-hello").text('Hello');
-					$(".name-rohan").text('I am Rohan Bhansali');
-					$(".name-i-am").text('I am a ');
 					cycle();
 					setInterval(cycle,5000);
 				}, 1500);

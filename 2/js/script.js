@@ -46,14 +46,19 @@ function cycle() {
 }
 
 function firstPanel() {
-	type("Hello",".name-hello");
+	$(".sk-cube-grid").hide('fade',500);
 	setTimeout(function() {
-		type("I am Rohan Bhansali",".name-rohan");
+		$(".name-intro").show();
+	},501);
+	setTimeout(function() {
+		type("Hello",".name-hello");
 		setTimeout(function() {
-			type("I am a ",".name-i-am");
+			type("I am Rohan Bhansali",".name-rohan");
 			setTimeout(function() {
-				type("full-stack developer",".name-role");
+				type("I am a ",".name-i-am");
 				setTimeout(function() {
+					type("full-stack developer",".name-role");
+					setTimeout(function() {
 					//backups
 					$(".name-hello").text('Hello');
 					$(".name-rohan").text('I am Rohan Bhansali');
@@ -61,12 +66,13 @@ function firstPanel() {
 					cycle();
 					setInterval(cycle,5000);
 				}, 1500);
-				setTimeout(function() {
-					$(".arrow-intro").show('fade',500);
-				},2500);
-			},600);
-		},2500);
-	},2000);
+					setTimeout(function() {
+						$(".arrow-intro").show('fade',500);
+					},2500);
+				},600);
+			},2500);
+		},2000);
+	},1000);
 }
 
 //project control
@@ -173,9 +179,9 @@ $(window).resize(function() {
 	(innerWidth != current_width) ? css_resize() : console.log();
 });
 
-$(window).load(function() {
+window.onload = function() {
 	setTimeout(firstPanel,1000);
 	$(".active").css("box-shadow","inset 300px 0 0 0 #31302B");
 	$(".active").css("color","#F3F3F3");
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");
-});
+};

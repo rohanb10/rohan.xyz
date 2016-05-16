@@ -60,7 +60,10 @@ function firstPanel() {
 					$(".name-i-am").text('I am a ');
 					cycle();
 					setInterval(cycle,5000);
-				},3000);
+				}, 1500);
+				setTimeout(function() {
+					$(".arrow-intro").show('fade',500);
+				},2500);
 			},600);
 		},2500);
 	},2000);
@@ -86,6 +89,7 @@ $(".project-list a").click(function() {
 		//remove old button
 		$(".project-btn a").css('box-shadow', 'inset 0 0 0 0 #31302B');
 		$(".project-btn a").css('color', '#31302B');
+		$(".project-btn a").removeClass('active');
 
 		//update data
 		$(".laptop-screen").data("screen",project);
@@ -100,6 +104,7 @@ $(".project-list a").click(function() {
 			//change to new button
 			btn.css('box-shadow', 'inset 250px 0 0 0 #31302B');
 			btn.css('color', '#F3F3F3');
+			btn.addClass('active')
 			
 			//change descriptions
 			$(".project-description").show('fade',1000);

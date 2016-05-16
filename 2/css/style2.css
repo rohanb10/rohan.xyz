@@ -75,6 +75,7 @@ a:hover {
 	right: 0;
 	margin-left:auto;
 	margin-right:auto;
+	display:none;
 }
 
 .arrow {
@@ -121,13 +122,13 @@ a:hover {
 	border-radius: 4px;
 	display: inline-block;
 	box-shadow: inset 0 0 0 0 #F3F3F3;
-	-webkit-transition: all ease 0.8s;
-	transition: all ease 0.8s;
+	-webkit-transition: all linear 0.5s;
+	transition: all linear 0.5s;
 }
 
 .me-btn a:hover {
 	text-decoration:none;
-	box-shadow: inset 0 200px 0 200px #F3F3F3;
+	box-shadow: inset 0 0 200px 0 #F3F3F3;
 	color:#31302B;
 }
 
@@ -154,6 +155,7 @@ a:hover {
 .active {
 	box-shadow: inset 300px 0 0 0 #31302B;
 	color: #F3F3F3;
+	cursor: initial;
 }
 
 .project-btn a:hover {
@@ -202,6 +204,9 @@ a:hover {
 
 .text-medium {
 	font-size: 1.2em;
+}
+.text-small {
+	font-size: 0.5em;
 }
 
 .project-text {

@@ -74,7 +74,7 @@ $(".project-list a").click(function() {
 	if(project != $(".laptop-screen").data("screen")) {
 		//preload images
 		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
-		if(!isMobile()){
+		if($(".iphone-container").css('display')=="block"){
 			(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
 		}
 

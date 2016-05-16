@@ -47,6 +47,7 @@ function cycle() {
 
 function firstPanel() {
 	$(".sk-cube-grid").hide('fade',500);
+	$("html,body").css('position', 'initial');
 	setTimeout(function() {
 		$(".name-intro").show();
 	},501);
@@ -166,7 +167,7 @@ function css_resize(){
 	$(".panel").css('min-height', window.innerHeight+"px");
 	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
-	$(".arrow-intro").css('top', (window.innerHeight*.85)+"px");
+	$(".arrow-intro").css('top', (window.innerHeight*.90)+"px");
 }
 
 $(document).ready(function() {

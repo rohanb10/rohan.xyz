@@ -1,4 +1,4 @@
-var character = 0, current=0, next;
+var character = 0, current=0, next, current_width;
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
 function isMobile() {
@@ -152,7 +152,6 @@ $(".img-skill").hover(function() {
 });
 
 function css_resize(){
-
 	$(".panel").css('min-height', window.innerHeight+"px");
 	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
@@ -160,15 +159,17 @@ function css_resize(){
 }
 
 $(document).ready(function() {
-	setTimeout(firstPanel,1000);
-	(window.innerWidth > window.innerHeight_) ? css_resize() :console.log() ;
+	css_resize();
+	current_width = window.innerWidth;
 });
 
+//recalculate 100vh size if orientation is changed
 $(window).resize(function() {
-	
+	(innerWidth != current_width) ? css_resize() : console.log();
 });
 
 $(window).load(function() {
+		setTimeout(firstPanel,1000);
 	$(".active").css("box-shadow","inset 300px 0 0 0 #31302B");
 	$(".active").css("color","#F3F3F3");
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");

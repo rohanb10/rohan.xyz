@@ -1,8 +1,7 @@
 /* @font-face {
-font-family: 'Source Sans Pro';
-src: url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+	font-family: 'Source Sans Pro';
+	src: url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
 } */
-
 
 ::selection {
 	background: #a8f4c5;
@@ -15,7 +14,7 @@ html, body {
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
-	position: fixed;
+	/* position: fixed; */
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color:#F3F3F3;
 }
@@ -301,9 +300,46 @@ a:hover {
 		transform: rotate(360deg);
 	}
 }
+
 .img-contact:hover {
 	animation: rotate 3s linear infinite;
 	-webkit-animation: rotate 3s linear infinite;
+}
+
+/* timeline */
+#googlemaps, #bg-filter{
+	height: 50px; 
+	width: 100%; 
+	position:absolute; 
+	top: 0; 
+	left: 0; 
+	z-index: 0;
+	display:none;
+}
+#bg-filter{
+	top:-1px;
+	background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+}
+.gmnoprint,.gm-style-cc{
+	display:none;
+}
+.exp-overlay{
+	z-index:999;
+}
+.exp-overlay span{
+	transition: all 1s linear;
+	-webkit-transition: all 1s linear;
+	/* padding: 0 15px 5px 15px;
+	background:linear-gradient(rgba(49,48,43,0.6),rgba(49,48,43,0.6));
+	color: #F3F3F3; */
+}
+.exp-overlay .text-center{
+	padding: 0 15px 5px 15px;
+}
+.exp-overlay a, .exp-overlay p{
+	padding: 15px;
+	-webkit-transition: all 1s linear;
+	transition: all 1s linear;
 }
 
 @media only screen and (max-width : 768px) {
@@ -405,4 +441,4 @@ a:hover {
 		transform: scale3D(0, 0, 1);
 	}
 }
-/* end loading animation */
+/* end loading animation

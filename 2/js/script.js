@@ -5,6 +5,7 @@ function isMobile() {
 	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 }
 
+//type into view
 function type(message, div) {
 	$(div).append(message[character]);
 	character++;
@@ -18,6 +19,7 @@ function type(message, div) {
 	}
 }
 
+//delete old role from view
 function backspace() {
 	var check = "";
 	$('.name-role').html(function (_,txt) {
@@ -32,6 +34,7 @@ function backspace() {
 	else return;
 }
 
+//cycle through roles array
 function cycle() {
 	//backups
 	$(".name-hello").text('Hello');
@@ -50,6 +53,7 @@ function cycle() {
 	},4000);
 }
 
+//intro animation control
 function firstPanel() {
 	$(".sk-cube-grid").hide('fade',500);
 	$("html,body").css('position', 'initial');
@@ -65,9 +69,9 @@ function firstPanel() {
 				setTimeout(function() {
 					type("full-stack developer",".name-role");
 					setTimeout(function() {
-					cycle();
-					setInterval(cycle,5000);
-				}, 1500);
+						cycle();
+						setInterval(cycle,5000);
+					}, 1500);
 					setTimeout(function() {
 						$(".arrow-intro").show('fade',500);
 					},2500);
@@ -77,7 +81,44 @@ function firstPanel() {
 	},1000);
 }
 
-//project control
+//maps
+// var position = [19.065273, 72.833659];
+
+function showGoogleMaps(lat,long) {	
+	var latLng = new google.maps.LatLng(lat, long);
+
+	var mapOptions = {
+        zoom: 13, // initialize zoom level - the max value is 21
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        draggable: false,
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        center: latLng
+    };
+
+    map = new google.maps.Map(document.getElementById('googlemaps'),
+    	mapOptions);
+    $("#googlemaps, #bg-filter").show('fade',1000);
+}
+
+$(".exp-btn").click(function(event) {
+	// alert($(this).data('lat')+" "+$(this).data('long'));
+	showGoogleMaps($(this).data('lat'),$(this).data('long'));
+	$(".exp-overlay span").css({
+		background:'linear-gradient(rgba(49,48,43,0.7),rgba(49,48,43,0.7))',
+		color: '#F3F3F3' 
+	});
+	$(".exp-overlay a").css({
+		color: '#F3F3F3' 
+	});
+});
+
+// google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+
+//project screen control
 $(".project-list a").click(function() {
 
 	//get new project
@@ -149,6 +190,7 @@ $(".project-list a").click(function() {
 	return false;
 });
 
+
 //scroll to div
 function scroll(classname){
 	$('html,body').animate({
@@ -156,6 +198,7 @@ function scroll(classname){
 	}, 1000);
 }
 
+//skill panel, img hover
 $(".img-skill").hover(function() {
 	$(".skill-hover").html($(this).attr('alt'));
 	$(".skill-hover").css('opacity', '1');
@@ -163,22 +206,24 @@ $(".img-skill").hover(function() {
 	$(".skill-hover").css('opacity', '0');
 });
 
+//resize function called when orientation changed
 function css_resize(){
 	current_width = window.innerWidth;
 	$(".panel").css('min-height', window.innerHeight+"px");
 	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
 	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
 	$(".arrow-intro").css('top', (window.innerHeight*.90)+"px");
+	$("#googlemaps").css('height', parseInt($(".panel").css('height'),10)+15+"px");
+	$("#bg-filter").css('height', parseInt($(".panel").css('height'),10)+16+"px");
 }
 
 $(document).ready(function() {
 	css_resize();
 });
 
-
 $(window).resize(function() {
 	//recalculate 100vh size if orientation is changed
-	(innerWidth != current_width) ? css_resize() : console.log();
+	(window.innerWidth != current_width) ? css_resize() : console.log();
 });
 
 window.onload = function() {

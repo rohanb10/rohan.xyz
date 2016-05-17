@@ -13,11 +13,12 @@
 
 	<title>Rohan Bhansali</title>
 
-	<!-- local dependencies -->
+	<!-- dependencies -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-ui-custom.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	
 	<!-- fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
@@ -192,16 +193,30 @@
 		</div>
 	</div>
 	<div class="panel panel-exp">
-		<p class="panel-header text-center">Experience</p>
-		<div class="container">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
+		<div class="col-md-12">
+			<div id="googlemaps"></div>
+			<div id="bg-filter"></div>
 		</div>
+		<div class="container exp-overlay">
+			<div class="col-md-12 text-center">
+				<span class="panel-header text-center">Experience</span>
+			</div>
+			<div class="row text-center">
+			<div class="col-md-3">
+				<span class="exp-btn" data-lat="19.065273" data-long="72.833659" data-name="ef"><a>EasyFriday</a></span>
+			</div>
+			<div class="col-md-3">
+				<span class="exp-btn" data-lat="38.647831" data-long="-90.310260" data-name="sl"><a>Studlife</a></span>
+			</div>
+			<div class="col-md-3">
+				<span class="exp-btn" data-lat="38.649342" data-long="-90.306108" data-name="wustl"><a>WUSTL</a></span>
+			</div>
+			<div class="col-md-3">
+				<span class="exp-btn" data-lat="18.997637" data-long="72.828821" data-name="lbi"><a>Digitas LBi</a></span>
+			</div>
+			</div>
+		</div>
+		<br>
 	</div>
 	<div class="quarter-panel panel-invert panel-footer text-center">
 		<p class="panel-header">Contact</p>

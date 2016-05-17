@@ -41,6 +41,7 @@ function cycle() {
 	setTimeout(function() {
 		backspace();
 		setTimeout(function() {
+			$(".name-role").html("");
 			type(roles[next], ".name-role");
 		},2000);
 	},2000);

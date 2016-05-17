@@ -1,4 +1,4 @@
-var character = 0, current=0, next, current_width;
+var character = 0, current=0, next, current_width, current_work;
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
 function isMobile() {
@@ -85,62 +85,65 @@ function showGoogleMaps(lat,long) {
 	var latLng = new google.maps.LatLng(lat, long);
 
 	var mapOptions = {
-        zoom: 12, 
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: false,
-        disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        center: latLng
-    };
+		zoom: 12, 
+		scrollwheel: false,
+		navigationControl: false,
+		mapTypeControl: false,
+		scaleControl: false,
+		draggable: false,
+		disableDefaultUI: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		center: latLng
+	};
 
-    map = new google.maps.Map(document.getElementById('googlemaps'),
-    	mapOptions);
-    $("#googlemaps, #bg-filter").show('fade',1000);
+	map = new google.maps.Map(document.getElementById('googlemaps'),
+		mapOptions);
+	$("#googlemaps, #bg-filter").show('fade',1000);
 }
 
 $(".exp-btn").click(function(event) {
 	//load experience description
 	var work = $(this).data('work');
-	if(work=="zappos"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("Zappos.com");
-		$(".exp-position").html("Front-End Developer Intern");
-		$(".exp-date").html("June - August 2016");
-		$(".exp-text").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in.<br><ul><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li></ul>");
+	if(work!=current_work){
+		if(work=="zappos"){
+			$(".img-exp").attr('src', 'img/'+work+".jpg");
+			$(".exp-title").html("Zappos.com");
+			$(".exp-position").html("Front-End Developer Intern");
+			$(".exp-date").html("June - August 2016");
+			$(".exp-text").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in.<br><ul><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li></ul>");
+		}
+		if(work=="wustl"){
+			$(".img-exp").attr('src', 'img/'+work+".jpg");
+			$(".exp-title").html("Washington Univeristy in St. Louis");
+			$(".exp-position").html("Teaching Assistant");
+			$(".exp-date").html("6 semesters");
+			$(".exp-text").html("");
+		}
+		if(work=="sl"){
+			$(".img-exp").attr('src', 'img/'+work+".jpg");
+			$(".exp-title").html("Student Life");
+			$(".exp-position").html("Senior Online Editor");
+			$(".exp-date").html("August 2014 - Present");
+			$(".exp-text").html("<ul><li>Assisted in redevelopment of website to be responsive</li><li>Performed regular maintenance of servers, backups and archives</li><li>Designed specific webpages as exclusive online content</li><li>Technology used: HTML, CSS, PHP, JavaScript, WordPress</li></ul>");
+		}
+		if(work=="ef"){
+			$(".img-exp").attr('src', 'img/'+work+".jpg");
+			$(".exp-title").html("EazyFriday");
+			$(".exp-position").html("Software Developer Intern");
+			$(".exp-date").html("May - July 2015");
+			$(".exp-text").html("<ul><li>Developed a dynamic user access system for retailers and administrators</li><li>Built a retail management dashboard to control outlet operations</li><li>Designed the interface for back-end administrative controls for the website</li><li>Created hooks for an API to be used in mobile apps</li><li>Technology used: MeteorJS, HTML, CSS, JavaScript, jQuery, MongoDB, Git</li><li>TBD</li></ul>");
+		}
+		$(".exp-overlay span").css({
+			'background-color':'rgba(49,48,43,0.7)',
+			'color': '#F3F3F3' 
+		});
+		$(".exp-overlay a").css('color','#F3F3F3');
+		$(".exp-body").show('fade',1000);
+		showGoogleMaps($(this).data('lat'),$(this).data('long'));
+		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
+		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
+		current_work = work;
 	}
-	if(work=="wustl"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("Washington Univeristy in St. Louis");
-		$(".exp-position").html("Teaching Assistant");
-		$(".exp-date").html("6 semesters");
-		$(".exp-text").html("");
-	}
-	if(work=="sl"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("Student Life");
-		$(".exp-position").html("Senior Online Editor");
-		$(".exp-date").html("August 2014 - Present");
-		$(".exp-text").html("<ul><li>Assisted in redevelopment of website to be responsive</li><li>Performed regular maintenance of servers, backups and archives</li><li>Designed specific webpages as exclusive online content</li><li>Technology used: HTML, CSS, PHP, JavaScript, WordPress</li></ul>");
-	}
-	if(work=="ef"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("EazyFriday");
-		$(".exp-position").html("Software Developer Intern");
-		$(".exp-date").html("May - July 2015");
-		$(".exp-text").html("<ul><li>Developed a dynamic user access system for retailers and administrators</li><li>Built a retail management dashboard to control outlet operations</li><li>Designed the interface for back-end administrative controls for the website</li><li>Created hooks for an API to be used in mobile apps</li><li>Technology used: MeteorJS, HTML, CSS, JavaScript, jQuery, MongoDB, Git</li><li>TBD</li></ul>");
-	}
-	$(".exp-overlay span").css({
-		'background-color':'rgba(49,48,43,0.7)',
-		'color': '#F3F3F3' 
-	});
-	$(".exp-overlay a").css('color','#F3F3F3');
-	$(".exp-body").show('fade',1000);
-	showGoogleMaps($(this).data('lat'),$(this).data('long'));
-	$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
-	$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
 });
 
 //project screen control

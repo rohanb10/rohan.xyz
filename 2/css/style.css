@@ -335,7 +335,7 @@ a:hover {
 	-webkit-transition: all 1s linear;
 }
 .exp-overlay .panel-header{
-	/* padding: 0 15px; */
+	padding: 0 10px 2px 10px;
 }
 .exp-overlay a,.exp-overlay span{
 	/* padding: 5px; */
@@ -356,19 +356,34 @@ a:hover {
 .exp-title{
 	font-size: 2em;
 }
-.exp-body p, .exp-body span, .exp-description{
+.exp-body span, .exp-description{
 	background-color:rgba(49,48,43,0.7);
 	color: #F3F3F3;
+	border-radius: 4px;
 }
+
 .exp-title .hidden-lg .hidden-md{
 	background: initial;
 }
+
 .exp-date{
 	padding-right: 5px;
 }
 
+.exp-description{
+	padding: 5px;
+}
+.exp-description li{
+	transform: translateX(-18px);
+	-webkit-transform: translateX(-18px);
+}
+
 .exp-text{
 	padding: 5px;
+}
+
+.exp-title, .exp-position{
+	padding: 2px 5px 0 5px;
 }
 
 @media only screen and (max-width : 768px) {

@@ -1,4 +1,4 @@
-var character = 0, current=0, next, current_width, current_work;
+var character = 0, current=0, next, current_width, current_work, cyclecount = 0, ticker;
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
 function isMobile() {
@@ -51,6 +51,11 @@ function cycle() {
 	setTimeout(function() {
 		current = next;
 	},4000);
+	cyclecount++;
+	//clear ticker after roles array is complete
+	if(cyclecount >= roles.length){
+		clearInterval(ticker);
+	}
 }
 
 //intro animation control
@@ -70,7 +75,7 @@ function firstPanel() {
 					type("full-stack developer",".name-role");
 					setTimeout(function() {
 						cycle();
-						setInterval(cycle,5000);
+						ticker = setInterval(cycle,5000);
 					}, 1500);
 					setTimeout(function() {
 						$(".arrow-intro").show('fade',500);
@@ -85,7 +90,7 @@ function showGoogleMaps(lat,long) {
 	var latLng = new google.maps.LatLng(lat, long);
 
 	var mapOptions = {
-		zoom: 12, 
+		zoom: 13, 
 		scrollwheel: false,
 		navigationControl: false,
 		mapTypeControl: false,

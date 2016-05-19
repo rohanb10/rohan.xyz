@@ -1,22 +1,19 @@
-# Resume - Rohan Bhansali
+# Personal website
 
-A simple one page website to showcase my resume in a non PDF form
+-------------------
+I redesigned the site from scratch over a week in the summer of 2016. It has a much cleaner UI, is compatible with a greater number of browsers and is much quicker than before.
 
-Built using HTML, CSS, jQuery, Bootstrap and JavaScript
+In addition to this, I worked hard on getting the page load very low.  I managed to get the entire first load of the page comfortably under 1mb. I resized all my assets to have a much smaller footprint, while still retaining their original quality.
 
-Packages used: 
+Dependencies
+-----
+Bootstrap - **Grid and responsive utilities only**, no js
+jQuery
+jQuery UI - **Slide and fade effects only**, no css
+Google Fonts - Source Sans Pro
+Google Maps Web API
 
-* Animate.css by Daniel Eden
-* jQuery plugin visible() by Sam Sehnert
+-------------------
 
-The page is fully responsive
-
-http://rohan.xyz
-
----------
-
-Update - 12/05/2016
-
-I'm currently rewriting the site from scratch. You can view my progress at rohan.xyz/2/ and view the source code in the /2 folder
-
-For the new site, I am using a custom build of bootstrap with only the responsive grid, and no other components/js. Other than jQuery and jQuery UI (js only), I am using no other packages.
+[Click here to visit the site](http://rohan.xyz)
+----------

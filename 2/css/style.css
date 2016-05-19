@@ -325,9 +325,10 @@ a:hover {
 .exp-overlay{
 	z-index:999;
 }
-.exp-overlay span{
+.exp-header span{
 	transition: all 1s linear;
 	-webkit-transition: all 1s linear;
+	border-radius: 4px;
 }
 .exp-overlay .panel-header{
 	padding: 0 10px 2px 10px;
@@ -373,10 +374,25 @@ a:hover {
 	-webkit-transform: translateX(-18px);
 }
 
+.exp-btn a{
+	box-sizing: border-box;
+	color: #31302B;
+	background: #FFF;
+	padding: 10px;
+	min-width: 250px;
+	border: 3px solid #31302B;
+	border-radius: 4px;
+	display: inline-block;
+	margin: 5px 0;
+	-webkit-transition: all linear 1s;
+	transition: all linear 1s;
+}
+
 .exp-text{
 	padding: 5px;
 }
 .exp-text a{
+	color: #F3F3F3;
 	text-decoration:underline;
 }
 
@@ -388,7 +404,7 @@ a:hover {
 	.iphone-container {
 		display: none;
 	}
-	.project-btn a{
+	.project-btn a, .exp-btn a{
 		min-width: 145px;
 	}
 	.name-intro{

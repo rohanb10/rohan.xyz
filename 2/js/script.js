@@ -1,5 +1,5 @@
 //global variables
-var character = 0, current=0, next, current_width, current_work;
+var character = 0, current=0, next, current_width, current_work, exp_loaded = false;
 //roles to cycle through for intro panel
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
@@ -86,10 +86,9 @@ function firstPanel() {
 }
 
 //generate and display google maps as background for experience panel
-function showGoogleMaps(lat,long) {	
-	var latLng = new google.maps.LatLng(lat, long);
-
-	var mapOptions = {
+function showGoogleMaps(location) {	
+	var latLng = new google.maps.LatLng(location[0],location[1]);
+	map = new google.maps.Map(document.getElementById('googlemaps'),{
 		zoom: 13, 
 		scrollwheel: false,
 		navigationControl: false,
@@ -99,17 +98,11 @@ function showGoogleMaps(lat,long) {
 		disableDefaultUI: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		center: latLng
-	};
-
-	map = new google.maps.Map(document.getElementById('googlemaps'),
-		mapOptions);
+	});
 	$("#googlemaps, #bg-filter").show('fade',1000);
 }
 
-//click experience button to show selected workplace
-$(".exp-btn").click(function(event) {
-	//load experience description
-	var work = $(this).data('work');
+function loadWorkPlace(work,location){
 	if(work!=current_work){
 		$(".img-exp").attr('src', 'img/'+work+".jpg");
 		if(work=="zappos"){
@@ -143,12 +136,28 @@ $(".exp-btn").click(function(event) {
 		});
 		$(".exp-overlay a").css('color','#F3F3F3');
 		$(".exp-body").show('fade',1000);
-
+		exp_loaded = true;
 		//call to display correct google maps background
-		showGoogleMaps($(this).data('lat'),$(this).data('long'));
+		showGoogleMaps(location);
 		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
 		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
 		current_work = work;
+	}
+}
+
+//click experience button to show selected workplace
+$(".exp-btn").click(function(event) {
+	//load experience description
+	var work = $(this).data('work');
+	var location = [$(this).data('lat'),$(this).data('long')];
+	if(exp_loaded){
+		$("#googlemaps,#bg-filter,.exp-body").hide('fade',1000);
+		setTimeout(function(){
+			loadWorkPlace(work,location);
+		},1000)
+	}
+	else{
+		loadWorkPlace(work,location);
 	}
 });
 

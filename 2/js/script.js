@@ -103,61 +103,65 @@ function showGoogleMaps(location) {
 }
 
 function loadWorkPlace(work,location){
-	if(work!=current_work){
+	
+	if(work=="zappos"){
 		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		if(work=="zappos"){
-			$(".exp-title").html("Zappos.com");
-			$(".exp-position").html("Front-End Developer Intern");
-			$(".exp-date").html("June - August 2016");
-			$(".exp-text").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in.<br><ul><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li></ul>");
-		}
-		if(work=="wustl"){
-			$(".img-exp").attr('src', 'img/'+work+".png");
-			$(".exp-title").html("Washington Univeristy in St. Louis");
-			$(".exp-position").html("Teaching Assistant");
-			$(".exp-date").html("6 semesters");
-			$(".exp-text").html("");
-		}
-		if(work=="sl"){
-			$(".exp-title").html("Student Life");
-			$(".exp-position").html("Senior Online Editor");
-			$(".exp-date").html("August 2014 - Present");
-			$(".exp-text").html("<ul><li>Assisted in redevelopment of website to be responsive</li><li>Performed regular maintenance of servers, backups and archives</li><li>Designed specific webpages as exclusive online content</li><li>Technology used: HTML, CSS, PHP, JavaScript, WordPress</li></ul>");
-		}
-		if(work=="ef"){
-			$(".exp-title").html("EazyFriday");
-			$(".exp-position").html("Software Developer Intern");
-			$(".exp-date").html("May - July 2015");
-			$(".exp-text").html("<ul><li>Developed a dynamic user access system for retailers and administrators</li><li>Built a retail management dashboard to control outlet operations</li><li>Designed the interface for back-end administrative controls for the website</li><li>Created hooks for an API to be used in mobile apps</li><li>Technology used: MeteorJS, HTML, CSS, JavaScript, jQuery, MongoDB, Git</li><li>TBD</li></ul>");
-		}
-		$(".exp-overlay span").css({
-			'background-color':'rgba(49,48,43,0.7)',
-			'color': '#F3F3F3' 
-		});
-		$(".exp-overlay a").css('color','#F3F3F3');
-		$(".exp-body").show('fade',1000);
-		exp_loaded = true;
+		$(".exp-title").html("Zappos.com");
+		$(".exp-position").html("Front-End Developer Intern");
+		$(".exp-date").html("Summer 2016");
+		$(".exp-text").html("I will be working as an intern at Zappos.com in Las Vegas, NV this summer.<br><br>I will be working on the FEZ (Front End Zappos) team.<br><br>Details TBD.");
+	}
+	if(work=="wustl"){
+		$(".img-exp").attr('src', 'img/'+work+".png");
+		$(".exp-title").html("Washington Univeristy in St. Louis");
+		$(".exp-position").html("Teaching Assistant");
+		$(".exp-date").html("6 semesters");
+		$(".exp-text").html("<strong>CSE 131 - Computer Science 1</strong><br>This course is introductary Computer Science course taught to over 500 students every semester. It covers many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and some simple data structures. It is taught in Java. As a TA for this course, my duties include:<br><ul><li>Holding weekly lab and studio sessions for around 40 students</li><li>Conducting weekly office hours for more individualized help</li><li>Grading of labs, studios and extensions</li><li>Proctoring and grading three exams every semester</li></ul>");
+	}
+	if(work=="sl"){
+		$(".img-exp").attr('src', 'img/'+work+".jpg");
+		$(".exp-title").html("Student Life");
+		$(".exp-position").html("Senior Online Editor");
+		$(".exp-date").html("August 2014 - Present");
+		$(".exp-text").html("Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:<br><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.");
+	}
+	if(work=="ef"){
+		$(".exp-title").html("EazyFriday");
+		$(".img-exp").attr('src', 'img/'+work+".jpg");
+		$(".exp-position").html("Software Developer Intern");
+		$(".exp-date").html("Summer 2015");
+		$(".exp-text").html("EazyFriday is a Mumbai based technology startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and an app.<br>As an intern, I performed these tasks:<ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Created an API to be used by the mobile apps</li></ul>You can view their website <a href='http://eazyfriday.com' target='_blank'>here</a>.");
+	}
+	$(".exp-overlay span").css({
+		'background-color':'rgba(49,48,43,0.7)',
+		'color': '#F3F3F3' 
+	});
+	$(".exp-overlay a").css('color','#F3F3F3');
+	$(".exp-body").show('fade',1000);
+	exp_loaded = true;
 		//call to display correct google maps background
 		showGoogleMaps(location);
 		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
 		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
 		current_work = work;
+
 	}
-}
 
 //click experience button to show selected workplace
 $(".exp-btn").click(function(event) {
 	//load experience description
 	var work = $(this).data('work');
-	var location = [$(this).data('lat'),$(this).data('long')];
-	if(exp_loaded){
-		$("#googlemaps,#bg-filter,.exp-body").hide('fade',1000);
-		setTimeout(function(){
+	if(work!=current_work){
+		var location = [$(this).data('lat'),$(this).data('long')];
+		if(exp_loaded){
+			$(".exp-body").hide('fade',1000);
+			setTimeout(function(){
+				loadWorkPlace(work,location);
+			},1000)
+		}
+		else{
 			loadWorkPlace(work,location);
-		},1000)
-	}
-	else{
-		loadWorkPlace(work,location);
+		}
 	}
 });
 
@@ -218,9 +222,14 @@ $(".project-list a").click(function() {
 					$(".project-github").attr("href","http://github.com/rohanb10/studlife");
 				}
 				if(project == "llinder") {
-					$(".project-description").text("A simple one page responsive website I built for a job application in Fall 2015. The site features pure css parallax scrolling. Check out the website and source code below.");
+					$(".project-description").text("A simple one page responsive website I built for a job application in Fall 2015. The site features pure css parallax scrolling. Check out the website or view the Github for more information.");
 					$(".project-url").attr("href","http://rohanb10.github.io/Llinder");
 					$(".project-github").attr("href","http://github.com/rohanb10/Llinder");
+				}
+				if(project == "personal") {
+					$(".project-description").text("I redesigned my personal website from scratch over the summer of 2016. I tried to cut down on the number of dependencies I was using. Check out the source code at my GitHub or just inspect element anywhere on the web page.");
+					$(".project-url").attr("href","http://rohan.xyz");
+					$(".project-github").attr("href","http://github.com/rohanb10/resume");
 				}
 			}
 		},1000);

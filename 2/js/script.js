@@ -1,6 +1,9 @@
-var character = 0, current=0, next, current_width, current_work, cyclecount = 0, ticker;
+//global variables
+var character = 0, current=0, next, current_width, current_work;
+//roles to cycle through for intro panel
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
+//check for a mobile device
 function isMobile() {
 	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 }
@@ -36,10 +39,11 @@ function backspace() {
 
 //cycle through roles array
 function cycle() {
-	//backups
+	//backups in case js fails
 	$(".name-hello").text('Hello');
 	$(".name-rohan").text('I am Rohan Bhansali');
 	$(".name-i-am").text('I am a ');
+
 	next = (current+1)%roles.length;
 	setTimeout(function() {
 		backspace();
@@ -51,16 +55,11 @@ function cycle() {
 	setTimeout(function() {
 		current = next;
 	},4000);
-	cyclecount++;
-	//clear ticker after roles array is complete
-	if(cyclecount >= roles.length){
-		clearInterval(ticker);
-	}
 }
 
-//intro animation control
+//panel-intro animation control
 function firstPanel() {
-	$(".sk-cube-grid").hide('fade',500);
+	$(".spinner").hide('fade',500);
 	$("html,body").css('position', 'initial');
 	setTimeout(function() {
 		$(".name-intro").show();
@@ -75,7 +74,7 @@ function firstPanel() {
 					type("full-stack developer",".name-role");
 					setTimeout(function() {
 						cycle();
-						ticker = setInterval(cycle,5000);
+						setInterval(cycle,5000);
 					}, 1500);
 					setTimeout(function() {
 						$(".arrow-intro").show('fade',500);
@@ -86,6 +85,7 @@ function firstPanel() {
 	},1000);
 }
 
+//generate and display google maps as background for experience panel
 function showGoogleMaps(lat,long) {	
 	var latLng = new google.maps.LatLng(lat, long);
 
@@ -106,33 +106,32 @@ function showGoogleMaps(lat,long) {
 	$("#googlemaps, #bg-filter").show('fade',1000);
 }
 
+//click experience button to show selected workplace
 $(".exp-btn").click(function(event) {
 	//load experience description
 	var work = $(this).data('work');
 	if(work!=current_work){
+		$(".img-exp").attr('src', 'img/'+work+".jpg");
 		if(work=="zappos"){
-			$(".img-exp").attr('src', 'img/'+work+".jpg");
 			$(".exp-title").html("Zappos.com");
 			$(".exp-position").html("Front-End Developer Intern");
 			$(".exp-date").html("June - August 2016");
 			$(".exp-text").html("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in.<br><ul><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li><li>TBD</li></ul>");
 		}
 		if(work=="wustl"){
-			$(".img-exp").attr('src', 'img/'+work+".jpg");
+			$(".img-exp").attr('src', 'img/'+work+".png");
 			$(".exp-title").html("Washington Univeristy in St. Louis");
 			$(".exp-position").html("Teaching Assistant");
 			$(".exp-date").html("6 semesters");
 			$(".exp-text").html("");
 		}
 		if(work=="sl"){
-			$(".img-exp").attr('src', 'img/'+work+".jpg");
 			$(".exp-title").html("Student Life");
 			$(".exp-position").html("Senior Online Editor");
 			$(".exp-date").html("August 2014 - Present");
 			$(".exp-text").html("<ul><li>Assisted in redevelopment of website to be responsive</li><li>Performed regular maintenance of servers, backups and archives</li><li>Designed specific webpages as exclusive online content</li><li>Technology used: HTML, CSS, PHP, JavaScript, WordPress</li></ul>");
 		}
 		if(work=="ef"){
-			$(".img-exp").attr('src', 'img/'+work+".jpg");
 			$(".exp-title").html("EazyFriday");
 			$(".exp-position").html("Software Developer Intern");
 			$(".exp-date").html("May - July 2015");
@@ -144,6 +143,8 @@ $(".exp-btn").click(function(event) {
 		});
 		$(".exp-overlay a").css('color','#F3F3F3');
 		$(".exp-body").show('fade',1000);
+
+		//call to display correct google maps background
 		showGoogleMaps($(this).data('lat'),$(this).data('long'));
 		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
 		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
@@ -153,45 +154,40 @@ $(".exp-btn").click(function(event) {
 
 //project screen control
 $(".project-list a").click(function() {
-
-	//get new project
 	var project = $(this).data("project");
+	//only if selected project is different
 	if(project != $(".laptop-screen").data("screen")) {
 		
 		//preload images
 		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
 		(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
 
-		//hide current screen
 		$(".iphone-screen").hide('slide', { direction: "left"},1000);
 		$(".laptop-screen").hide('slide', { direction: "left"},1000);
 		$(".project-description").hide('fade',1050);
+
 		var btn = $(this);
 
-		//remove old button
 		$(".project-btn a").css('box-shadow', 'inset 0 0 0 0 #31302B');
 		$(".project-btn a").css('color', '#31302B');
 		$(".project-btn a").removeClass('active');
 
-		//update data
 		$(".laptop-screen").data("screen",project);
 
 		setTimeout(function() {
-			//chnage screen source
+			//update front end data 
 			$(".iphone-screen").attr("src", "img/img-container/"+project+"-iphone.jpg");
 			$(".laptop-screen").attr("src", "img/img-container/"+project+"-laptop.jpg");
-			//show new screen
 			$(".iphone-screen").show('slide', { direction: "left"},1000);
 			$(".laptop-screen").show('slide', { direction: "left"},1000);
-			//change to new button
 			btn.css('box-shadow', 'inset 250px 0 0 0 #31302B');
 			btn.css('color', '#F3F3F3');
 			btn.addClass('active')
 			
-			//change descriptions
+			//change descriptions / buttons
 			$(".project-description").show('fade',1000);
 			if(project == "ef") {
-				$(".project-description").html("As an intern for this Mumbai based startup, I worked on building the vendor facing administrative dashboard. I am not permitted to share the code I worked on, but you can view the website below. The website was built using <a href='http://meteor.com' target='_blank'>Meteor</a>.");
+				$(".project-description").html("As an intern for this Mumbai based startup, I worked on building the vendor facing administrative dashboard. You can view the website below. The website was built using <a href='http://meteor.com' target='_blank'>Meteor</a>.");
 				$(".project-url").attr("href","http://eazyfriday.com");
 				$(".project-github").hide('fade',1000);
 			}
@@ -224,14 +220,14 @@ $(".project-list a").click(function() {
 });
 
 
-//scroll to div
+//scroll to specified div
 function scroll(classname){
 	$('html,body').animate({
 		scrollTop: $(classname).offset().top
 	}, 1000);
 }
 
-//skill panel, img hover
+//hover over skill image animations
 $(".img-skill").hover(function() {
 	$(".skill-hover").html($(this).attr('alt'));
 	$(".skill-hover").css('opacity', '1');
@@ -240,6 +236,8 @@ $(".img-skill").hover(function() {
 });
 
 //resize function called when orientation changed
+//caluclate device width and height in px instead of using 100vh to provide better user experience
+//this fixes the bug where css vh keep changing on Safari for iOS and Chrome for Android because of the address bar auto-hide
 function css_resize(){
 	current_width = window.innerWidth;
 	$(".panel").css('min-height', window.innerHeight+"px");
@@ -258,6 +256,7 @@ $(window).resize(function() {
 });
 
 window.onload = function() {
+	//start animating intro panel after 1s
 	setTimeout(firstPanel,1000);
 	$(".active").css("box-shadow","inset 300px 0 0 0 #31302B");
 	$(".active").css("color","#F3F3F3");

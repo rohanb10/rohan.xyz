@@ -1,10 +1,10 @@
 # Personal website
 
--------------------
 I redesigned the site from scratch over a week in the summer of 2016. It has a much cleaner UI, is compatible with a greater number of browsers and is much quicker than before.
 
-
 In addition to this, I worked hard on getting the page load very low.  I managed to get the entire first load of the page comfortably under 1mb. I resized all my assets to have a much smaller footprint, while still retaining their original quality.
+
+-------------------
 
 Dependencies
 -----
@@ -17,4 +17,3 @@ Dependencies
 -------------------
 
 [Click here to visit the site](http://rohan.xyz)
-----------

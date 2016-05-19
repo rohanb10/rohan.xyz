@@ -1,452 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-	<!-- meta data -->
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#2C3F51">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+	<meta name="author" content="Rohan Bhansali">
+	<meta name="keywords" content="rohan bhansali, rohan, bhansali, rohanb10, rohan.xyz, xyz, resume, portfolio, personal, website, web, dev, full, stack, frontend, front-end, front, end, back, back-end, full-stack, developer, stl, st, louis, st louis, mo, missouri, wustl, washu, washington university, mumbai, bombay, github, linkedin, rohanb10@gmail.com, rohanbhansali@wustl.edu, rohanbhansali">
 	<meta name="description" content="I'm a responsive web designer. Come check out my work.'">
-	<meta property="og:title" content="Rohan Bhansali" />
-	<meta property="og:description" content="I'm a responsive web designer. Come check out my work." />
-	<meta property="og:url" content="http://rohan.xyz" />
-	<meta property="og:image" content="/img/favicon/apple-touch-icon-180x180.png" />
+	<meta property="og:title" content="Rohan Bhansali">
+	<meta property="og:description" content="I'm a responsive web designer. Come check out my work.">
+	<meta property="og:url" content="http://rohan.xyz/">
+	<meta property="og:image" content="http://rohan.xyz/img/favicon/mstile-310x310.png">
 
-	<!-- stylesheets -->
-	<link href="css/flatly-bootstrap.css" rel="stylesheet">
-	<link href="css/animate.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	
 	<title>Rohan Bhansali</title>
 
+	<!-- dependencies -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-ui-custom.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	
+	<!-- fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+
 	<!-- favicon codes -->
-	<link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon-180x180.png">
-	<link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/img/favicon/android-chrome-192x192.png" sizes="192x192">
-	<link rel="icon" type="image/png" href="/img/favicon/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="/img/favicon/manifest.json">
-	<link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#ff0000">
-	<link rel="shortcut icon" href="/img/favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="img/favicon/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="img/favicon/manifest.json">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#31302B">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico">
 	<meta name="apple-mobile-web-app-title" content="Rohan.xyz">
 	<meta name="application-name" content="Rohan.xyz">
 	<meta name="msapplication-TileColor" content="#603cba">
-	<meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png">
-	<meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
-
+	<meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png">
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+	<meta name="theme-color" content="#31302B">
 </head>
-<body data-spy="scroll" data-target="#navbar" data-offset="60">
-	<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="">Rohan Bhansali</a>
+<body>
+	<div class="panel panel-intro">
+		<div class="container text-center">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
 			</div>
-			<div class="collapse navbar-collapse" id="collapse-1">
-				<ul class="nav navbar-nav navbar-right" role="tablist">
-					<li><a class="scroll" data-scroll="1000" data-href="#exp" href="#exp" onClick="return false">
-						<span class="glyphicon glyphicon-briefcase" aria-hidden="true">&nbsp;</span>
-						Experience
-					</a></li>
-					<li><a class="scroll" data-scroll="1000" data-href="#skills" href="#skills" onClick="return false">
-						<span class="glyphicon glyphicon-tasks" aria-hidden="true">&nbsp;</span>
-						Skills
-					</a></li>
-					<li><a class="scroll" data-scroll="1000" data-href="#edu" href="#edu" onClick="return false">
-						<span class="glyphicon glyphicon-education" aria-hidden="true">&nbsp;</span>
-						Education
-					</a></li>
-					<li><a class="scroll" data-scroll="1000" data-href="#contact" href="#contact" onClick="return false">
-						<span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;</span>
-						Contact
-					</a></li>
-				</ul>
+			<div class="name-intro">
+				<div class="name-hello"><span class="hidden-name">.</span></div>
+				<br><br>
+				<div class="name-rohan"><span class="hidden-name">.</span></div>
+				<br><br>
+				<span class="name-i-am"><span class="hidden-name">.</span></span>
+				<br class="hidden-sm hidden-md hidden-lg">
+				<span class="hidden-name">.</span><span class="name-role"></span>
+			</div>
+			<div class="arrow-intro">
+				<a onclick='scroll(".panel-me")'><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
 			</div>
 		</div>
-	</nav>
-	<div class="title">
-		<div class="title-container text-center">
-			<div class="row">
-				<img src="img/me.png" class="img-responsive img-circle img-title">
-			</div>
-			<h3 class="hidden-xs">&nbsp;</h3>
-			<div class="name-fix">
-				<h2>Rohan Bhansali</h2>
-			</div>
-			<h3>&nbsp;</h3>
+	</div>
+	<div class="half-panel panel-invert panel-me">
+		<!-- Please give me a visa. I need one. Real bad -->
+		<div class="container">
+			<p class="panel-header text-center"><span class="hidden-sm hidden-xs">&nbsp;&nbsp;&nbsp;</span>About Me</p>
 			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-4"></div>
-					<div class="col-md-1 col-xs-3">
-						<a class="scroll" data-scroll="1000" data-href="#exp">
-							<img src="img/work.png" class="img-responsive img-contact">
-						</a>
+				<div class="row">
+					<div class="col-md-3 col-lg-3 col-xs-12 col-sm-12">
+						<img class="my-container img-responsive img-circle" src="img/me.jpg" alt="me"/>
+						<h2 class="hidden-xs hidden-sm">&nbsp;</h2>
 					</div>
-					<div class="col-md-1 col-xs-3">
-						<a class="scroll" data-scroll="3000" data-href="#skills">
-							<img src="img/skills.png" class="img-responsive img-contact">
-						</a>
+					<div class="col-md-offset-2 col-md-6 col-xs-12 col-sm-12 text-medium">
+						<p>I'm studying Computer Science and Design at Washington University in St Louis. I'm looking for a job as a Full Stack Developer somewhere in the US after I graduate next summer.</p>
+						<p>I watch an unhealthy amount of <span class="strike">football</span> soccer and am a firm proponent of the metric system.</p>
+						<p>Want more information? <a href="resume.pdf">Check out my resume</a>.</p>
 					</div>
-					<div class="col-md-1 col-xs-3">
-						<a class="scroll" data-scroll="3500" data-href="#edu">
-							<img src="img/edu.png" class="img-responsive img-contact">
-						</a>
-					</div>
-					<div class="col-md-1 col-xs-3">
-						<a class="scroll" data-scroll="4000" data-href="#contact">
-							<img src="img/contact.png" class="img-responsive img-contact">
-						</a>
+					<div class="text-center">
+						<div class="col-md-offset-2 col-md-2 col-xs-4 col-sm-4 me-btn">
+							<a onclick='scroll(".panel-projects")'>Projects</a>
+						</div>
+						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
+							<a onclick='scroll(".panel-skills")'>Skills</a>
+						</div>
+						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
+							<a onclick='scroll(".panel-exp")'>Experience</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div id="exp">
-			<h1>&nbsp;</h1>
+	<div class="panel panel-projects">
+		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h1 class="text-center">Experience</h1>
+				<p class="panel-header text-center">Projects</p>
+				<div class="row">
+					<div class="project-list">
+						<div class="container">
+							<div class="project-btn col-md-4 col-xs-6"><a class="active" data-project="sl">Student Life</a></div>
+							<div class="project-btn col-md-4 col-xs-6"><a data-project="personal">This website</a></div>
+							<!-- <div class="project-btn col-md-4 col-xs-6"><a data-project="ef">EazyFriday</a></div> -->
+							<div class="project-btn col-md-4 col-xs-6"><a data-project="ks">Kraudesorce</a></div>
+							<div class="project-btn col-md-4 col-xs-6"><a data-project="llinder">Llinder</a></div>
+							<div class="project-btn col-md-4 col-xs-6"><a data-project="sl-housing">SL Housing</a></div>
+							<div class="project-btn col-md-4 col-xs-6"><a data-project="sl-whowon">SL Who Won 15-16</a></div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<h1 class="hidden-xs">&nbsp;</h1>
-			<p class="visible-xs-*">&nbsp;</p>
-			<div class="row">
-				<div class="col-md-4 .col-md-offset-1 col-xs-10 col-xs-offset-1">
-					<img src="img/ef.png" class="img-circle img-responsive animate-left jobs" alt="EazyFriday logo">
-					<p class="visible-xs-*">&nbsp;</p>
-				</div>
-				<div class="col-md-6 col-md-offset-1 animate-right jobs">
-					<h2 class="text-center">EazyFriday</h2>
-					<h4 class="text-center text-info">Software Developer Intern</h4>
-					<p class="text-center">
-						<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>Mumbai, India &nbsp; | &nbsp;
-						<span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbsp;</span>Summer 2015
-					</p>
-					<p>Developed a dynamic user access system for retailers and administrators</p>
-					<p>Built a retail management dashboard to control outlet operations</p>
-					<p>Designed the interface for back-end administrative controls for the website</p>
-					<p>Created hooks for an API to be used in mobile apps</p>
-					<p>Technology used:<span class="text-danger"> MeteorJS, HTML, CSS, JavaScript, jQuery, MongoDB, Git</span></p>
-					<a href="http://www.eazyfriday.com" target="_blank">
-						<span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span>
-						www.eazyfriday.com
-					</a>
-				</div>
-			</div>
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-4 .col-md-offset-1 col-xs-10 col-xs-offset-1">
-					<img src="img/sl.jpg" class="img-circle img-responsive animate-left jobs" alt="studlife logo">
-					<p class="visible-xs-*">&nbsp;</p>
-				</div>
-				<div class="col-md-6 col-md-offset-1 animate-right jobs">
-					<h2 class="text-center">Student Life</h2>
-					<h4 class="text-center text-info">Senior Online Editor</h4>
-					<p class="text-center">
-						<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span> St. Louis, MO &nbsp; | &nbsp;
-						<span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbsp;</span> April 2015 - Present 
-					</p>
-					<p>Assisted in redevelopment of website to be responsive</p>
-					<p>Performed regular maintenance of servers, backups and archives</p>
-					<p>Designed specific webpages as exclusive online content</p>
-					<p>Technology used:<span class="text-danger"> HTML, CSS, PHP, JavaScript, WordPress</span></p>
-					<a href="http://www.studlife.com" target="_blank">
-						<span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span>
-						www.studlife.com
-					</a> 
-					&nbsp;| &nbsp;
-					<a href="https://github.com/rohanb10/studlife" target="_blank">
-						<span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span>
-						GitHub
-					</a>
-				</div>
-			</div>
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-4 .col-md-offset-1 col-xs-10 col-xs-offset-1">
-					<img src="img/wustl.png" class="img-circle img-responsive animate-left jobs" alt="WUSTL logo">
-					<p class="visible-xs-*">&nbsp;</p>
-				</div>
-				<div class="col-md-6 col-md-offset-1 animate-right jobs">
-					<h2 class="text-center">WUSTL Engineering</h2>
-					<h4 class="text-center text-info">Teaching Assistant</h4>
-					<p class="text-center">
-						<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span> St. Louis, MO &nbsp; | &nbsp;
-						<span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbsp;</span>August 2014 - Present 
-					</p>
-					<p>Teaching Assistant for CSE131 - Computer Science 1</p>
-					<p>5 semesters of experience teaching Java to students</p>
-					<p>Students usually had no prior coding experience or background</p>
-					<p>Technology used: <span class="text-danger"> Java, SVN</span></p>
-				</div>
-			</div>
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-4 .col-md-offset-1 col-xs-10 col-xs-offset-1">
-					<img src="img/lbi.png" class="img-circle img-responsive animate-left jobs" alt="Digitas LBi logo">
-					<p class="visible-xs-*">&nbsp;</p>
-				</div>
-				<div class="col-md-6 col-md-offset-1 animate-right jobs">
-					<h2 class="text-center">DigitasLBi</h2>
-					<h4 class="text-center text-info">Software Intern</h4>
-					<p class="text-center">
-						<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span> Mumbai, India &nbsp; | &nbsp;
-						<span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbsp;</span>Summer 2014
-					</p>
-					<p>Built a Facebook applet for Tata Motors to help promote their new car, Zest</p>
-					<p>Over 5000 people signed up to use this applet</p>
-					<p>Technology used: <span class="text-danger"> HTML, PHP, MySQL</span></p>
-					<a href="http://www.digitaslbi.com/in/" target="_blank">
-						<span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;</span>
-						www.digitaslbi.com/in
-					</a>
+				<p>&nbsp;</p>
+				<div class="row">
+					<div class="row img-container">
+						<div class="col-md-8 col-sm-12">
+							<img class="img-responsive laptop" src="img/img-container/laptop.png" alt="laptop">
+							<img class="img-responsive laptop-screen" data-screen="sl" src="img/img-container/sl-laptop.jpg" alt="laptop screen">
+						</div>
+						<div class="col-md-4 iphone-container hidden-sm">
+							<img class="img-responsive iphone" src="img/img-container/iphone.png" alt="iphone">
+							<img class="img-responsive iphone-screen" data-screen="sl" src="img/img-container/sl-iphone.jpg" alt="iphone screen">
+						</div>
+					</div>
+					<p>&nbsp;</p>
+					<div class="row">
+						<div class="container col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10 project-text">
+							<p class="text-center project-description">I run the website for Student Life. Built using the LAMP stack with Wordpress, it receives 100,000+ page views from 45,000+ views every month.</p>
+							<div class="project-links">
+								<a class="project-url" href="http://studlife.com" target="_blank">
+									<img src="img/url-black.png" alt="url">
+								</a>
+								<span class="project-github">&nbsp;&nbsp;&nbsp;</span>
+								<a class="project-github" href="http://github.com/rohanb10/studlife" target="_blank">
+									<img src="img/github-black.png" alt="github">
+								</a>
+							</div>
+						</div>
+					</div>
+					<p>&nbsp;</p>
 				</div>
 			</div>
 		</div>
-		<div id="skills" class="text-center">
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-12">
-					<h1>Skills</h1>
+	</div>
+	<div class="half-panel panel-skills panel-invert">
+		<div class="container">
+			<p class="panel-header text-center">Skills</p>
+		</div>
+		<p class="hidden-xs hidden-sm text-small">&nbsp;</p>
+		<div class="container">
+			<div class="col-md-6 col-xs-12">
+				<p class="text-medium">I use several programming languages and frameworks to get the job done. The ones shown here are the ones I'm the most familiar with. As a web developer, I'm constantly learning to use new tools and the number of technologies that I'm comfortable with keeps on increasing.
+				</p>
+				<h3 class="hidden-sm hidden-xs">&nbsp;</h3>
+				<p class="text-center">&nbsp;<span class="skill-hover"></span></p>
+			</div>
+			<div class="col-md-6 col-xs-12">
+				<div class="row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/html.png" alt="HTML"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/css.png" alt="CSS"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/js.png" alt="JavaScript"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/jquery.png" alt="jQuery"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/git.png" alt="Git"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/meteor.png" alt="Meteor"></div>
+				</div>
+				<div class="row bottom-row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/mongodb.png" alt="MongoDB"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/mysql.png" alt="MySQL"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/nodejs.png" alt="NodeJS"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/firebase.png" alt="Firebase"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/aws.png" alt="Amazon Web Services"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/bootstrap.png" alt="Bootstrap"></div>
+				</div>
+				<div class="row bottom-row">
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/photoshop.png" alt="Adobe Photoshop"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/indesign.png" alt="Adobe InDesign"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/wordpress.png" alt="WordPress"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/java.png" alt="Java"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/bash.png" alt="BASH Scripting"></div>
+					<div class="col-md-2 col-xs-2 "><img class="img-skill" src="img/skills/g-analytics.png" alt="Google Analytics"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-exp">
+		<div class="col-md-12">
+			<div id="googlemaps"></div>
+			<div id="bg-filter"></div>
+		</div>
+		<div class="container exp-overlay">
+			<div class="col-md-12 text-center exp-header">
+				<span class="panel-header text-center">Experience</span>
+			</div>
+			<p class="hidden-xs hidden-sm">&nbsp;</p>
+			<div class="row text-center text-medium exp-btn-container">
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<span class="exp-btn" data-lat="19.065273" data-long="72.833659" data-work="ef"><a>EazyFriday</a></span>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<span class="exp-btn" data-lat="38.647831" data-long="-90.310260" data-work="sl"><a>Student Life</a></span>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<span class="exp-btn" data-lat="38.649342" data-long="-90.306108" data-work="wustl"><a>WUSTL</a></span>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-6">
+					<span class="exp-btn" data-lat="36.172417" data-long="-115.139466" data-work="zappos"><a>Zappos</a></span>
 				</div>
 			</div>
 			<br>
-			<div class="row skill-image">
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/html.png" class="img-responsive center-block animate-zoom" alt="html">
-					<p class="skill-text">HTML</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/css.png" class="img-responsive center-block animate-zoom" alt="css">
-					<p class="skill-text">CSS</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/js.png" class="img-responsive center-block animate-zoom" alt="js">
-					<p class="skill-text">JavaScript</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/java.png" class="img-responsive center-block animate-zoom" alt="java">
-					<p class="skill-text">Java</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/cplusplus.png" class="img-responsive center-block animate-zoom" alt="c++">
-					<p class="skill-text">C++</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/php.png" class="img-responsive center-block animate-zoom" alt="php">
-					<p class="skill-text">PHP</p><br>
-				</div>
-			</div>
-			<div class="row skill-image">
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/meteor.png" class="img-responsive center-block animate-zoom" alt="meteor">
-					<p class="skill-text">MeteorJS</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/mongodb.png" class="img-responsive center-block animate-zoom" alt="mongo">
-					<p class="skill-text">MongoDB</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/jquery.png" class="img-responsive center-block animate-zoom" alt="jquery">
-					<p class="skill-text">jQuery</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/mysql.png" class="img-responsive center-block animate-zoom" alt="mysql">
-					<p class="skill-text">MySQL</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/git.png" class="img-responsive center-block animate-zoom" alt="git">
-					<p class="skill-text">Git</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/angular.png" class="img-responsive center-block animate-zoom" alt="angular">
-					<p class="skill-text">AngularJS</p><br>
-				</div>
-			</div>
-			<div class="row skill-image">
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/nodejs.png" class="img-responsive center-block animate-zoom" alt="node">
-					<p class="skill-text">NodeJS</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/bootstrap.png" class="img-responsive center-block animate-zoom" alt="bootstrap">
-					<p class="skill-text">Bootstrap</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/socketio.png" class="img-responsive center-block animate-zoom" alt="socketio">
-					<p class="skill-text">Socket IO</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/ajax.png" class="img-responsive center-block animate-zoom" alt="ajax">
-					<p class="skill-text">AJAX</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/aws.png" class="img-responsive center-block animate-zoom" alt="aws">
-					<p class="skill-text">AWS</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/wordpress.png" class="img-responsive center-block animate-zoom" alt="wordpress">
-					<p class="skill-text">WordPress</p><br>
-				</div>
-			</div>
-			<div class="row skill-image">
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/photoshop.png" class="img-responsive center-block animate-zoom" alt="photoshop">
-					<p class="skill-text">Photoshop</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/indesign.png" class="img-responsive center-block animate-zoom" alt="indesign">
-					<p class="skill-text">InDesign</p><br>
-				</div>
-				<div class="col-md-2 col-xs-4">
-					<img src="img/skills/illustrator.png" class="img-responsive center-block animate-zoom" alt="illustrator">
-					<p class="skill-text">Illustrator</p><br>
-				</div>
-				<div class="col-md-2 hidden-xs">
-					<img src="img/skills/maya.png" class="img-responsive center-block animate-zoom" alt="maya">
-					<p class="skill-text">Autodesk Maya</p><br>
-				</div>
-				<div class="col-md-2 hidden-xs">
-					<img src="img/skills/finalcut.png" class="img-responsive center-block animate-zoom" alt="fcp">
-					<p class="skill-text">Final Cut Pro</p><br>
-				</div>
-			</div>
-		</div>
-		<div id="edu">
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-12">
-					<h1 class="text-center">Education</h1>
-				</div>
-			</div>
-			<p class="visible-xs-*">&nbsp;</p>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="text-center animate-left">
-						<h3>Washington University in St. Louis</h3>
-						<p>
-							<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>
-							St. Louis, MO
-						</p>
-						<p>Candidate for Bachelor of Science - May 2017</p>
-						<p>Major in Computer Science</p>
-						<p>Minor in Design</p>
-					</div>
-					<h3>&nbsp;</h3>
-				</div>
-				<div class="col-md-5 col-md-offset-1">
-					<div class="text-center animate-right">
-						<h3>Cathedral &amp; John Connon School</h3>
-						<p>
-							<span class="glyphicon glyphicon-globe" aria-hidden="true">&nbsp;</span>
-							Mumbai, India
-						</p>
-						<p>1999 - 2013</p>
-					</div>
-				</div>
-				<h3>&nbsp;</h3>
-			</div>
-			<div class="row">
-				<div class="text-center"><h3>Coursework</h3></div>
-				<h1 class="hidden-xs">&nbsp;</h1>
-				<p class="visible-xs-*">&nbsp;</p>
+			<h1 class="hidden-xs hidden-sm">&nbsp;</h1>
+			<div class="row exp-body">
 				<div class="col-md-4">
-					<div class="text-left animate-left">
-						<p>Computer Science I, II (Java)</p>
-						<p>Logic and Discrete Mathematics</p>
-						<p>Algorithms and Data Structures (Java)</p>
-						<p>Object Oriented Software Development (C++)</p>
-					</div>
+					<img class="img-exp img-responsive img-circle" alt="work">
 				</div>
-				<div class="col-md-4">
-					<div class="text-left animate-zoom">
-						<p>Rapid Prototype Development (Web)</p>
-						<p>Fair Division in Practice and Theory (Java)</p>
-						<p>Calculus I, II, III</p>
-						<p>Object Oriented Software Development (C++)</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-md-offset-1 animate-right">
-					<div class="text-left">
-						<p>Digital Logic &amp; Computer Design (VHDL)</p>
-						<p>Technology Entrepreneurship</p>
-						<p>Advanced Animation (Maya)</p>
-						<p>Communication Design</p>
+				<p class="hidden-md hidden-lg"></p>
+
+				<div class="col-md-8">
+					<div class="text-center text-medium exp-header">
+						<span class="exp-title"></span><br>
+						<span class="exp-position"></span>
+					</div><br>
+					<div class="text-medium exp-description">
+						<div class="text-right exp-date"></div>
+						<div class="exp-text"></div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="contact">
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-12">
-					<h1 class="text-center">Contact</h1>
+		<br>
+	</div>
+	<div class="quarter-panel panel-invert panel-footer text-center">
+		<p class="panel-header">Contact</p>
+		<div class="container ">
+			<div class="links">
+				<div class="row text-center">
+					<div class="col-md-offset-4 col-md-1 col-xs-3">
+						<a href="mailto:rohanb10@gmail.com" target="_top">
+							<img src="img/mail.png" class="img-responsive img-contact" alt="gmail">
+						</a>
+					</div>
+					<div class="col-md-1 col-xs-3">
+						<a href="http://www.linkedin.com/in/rohanb10" target="_blank">
+							<img src="img/linkedin.png" class="img-responsive img-contact" alt="linkedin">
+						</a>
+					</div>
+					<div class="col-md-1 col-xs-3">
+						<a href="http://github.com/rohanb10" target="_blank">
+							<img src="img/github2.png" class="img-responsive img-contact" alt="github">
+						</a>
+					</div>
+					<div class="col-md-1 col-xs-3">
+						<a href="http://papajohns.com" target="_blank">
+							<img src="img/papaj.png" class="img-responsive img-contact" alt="papa j">
+						</a>
+					</div>
 				</div>
 			</div>
-			<h3>&nbsp;</h3>
-			<div class="row text-center">
-				<div class="col-md-4"></div>
-				<div class="col-md-1 col-xs-3">
-					<a href="mailto:rohanb10@gmail.com" target="_top">
-						<img src="img/mail.png" class="img-responsive img-contact">
-					</a>
-				</div>
-				<div class="col-md-1 col-xs-3">
-					<p><a href="http://www.linkedin.com/in/rohanb10" target="_blank">
-						<img src="img/linkedin.png" class="img-responsive img-contact">
-					</a>
-				</div>
-				<div class="col-md-1 col-xs-3">
-					<a href="http://github.com/rohanb10" target="_blank">
-						<img src="img/github.png" class="img-responsive img-contact">
-					</a>
-				</div>
-				<div class="col-md-1 col-xs-3">
-					<a href="http://papajohns.com" target="_blank">
-						<img src="img/papaj.png" class="img-responsive img-contact">
-					</a>
-				</div>
-				<h3>&nbsp;</h3>
-			</div>
-			<h1>&nbsp;</h1>
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<a href="resume.pdf">
-						<span class="glyphicon glyphicon-list-alt" aria-hidden="true">&nbsp;</span>
-						Download this webpage as a PDF
-					</a>
-				</div>
-			</div>
-			<h1>&nbsp;</h1>
+			<br>
+			<p>&copy; Rohan Bhansali 2016</p>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-3210731-1', 'auto');
-		ga('send', 'pageview');
-
-	</script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/animate.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ html, body {
 	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
-	/* position: fixed; */
+	position: fixed;
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color:#F3F3F3;
 }

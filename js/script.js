@@ -143,9 +143,9 @@ function loadWorkPlace(work,location){
 	$(".exp-body").show('fade',1000);
 	exp_loaded = true;
 	//call to display correct google maps background
-	showGoogleMaps(location);
 	$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
 	$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
+	showGoogleMaps(location);
 	current_work = work;
 
 }
@@ -161,13 +161,13 @@ $(".exp-btn").click(function(event) {
 			$(".exp-body").hide('fade',1000);
 			setTimeout(function(){
 				loadWorkPlace(work,location);
-			},1000)
+			},1020)
 		}
 		else{
 			$(".exp-before").hide('fade',1000);
 			setTimeout(function(){
 				loadWorkPlace(work,location);
-			},1000);
+			},1020);
 		}
 	}
 });

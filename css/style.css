@@ -97,6 +97,7 @@ a:hover {
 	background-color:#31302B;
 	font-size: 1em;
 	font-weight:300;
+	z-index:999;
 }
 
 .strike {
@@ -381,7 +382,7 @@ a:hover {
 	color: #31302B;
 	background: #FFF;
 	padding: 10px;
-	min-width: 250px;
+	min-width: 200px;
 	border: 3px solid #31302B;
 	display: inline-block;
 	margin: 5px 0;
@@ -423,6 +424,11 @@ a:hover {
 		left: 15.8%;
 		width: 68.4%;
 		height:78.1%;
+	}
+}
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) { 
+	.iphone-screen {
+		top: 50px;
 	}
 }
 

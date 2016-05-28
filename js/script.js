@@ -164,6 +164,7 @@ $(".exp-btn").click(function(event) {
 			},1020)
 		}
 		else{
+			$.getScript("http://maps.googleapis.com/maps/api/js?sensor=false");
 			$(".exp-before").hide('fade',1000);
 			setTimeout(function(){
 				loadWorkPlace(work,location);

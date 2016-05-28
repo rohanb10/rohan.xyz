@@ -277,10 +277,10 @@
 	<script type="text/javascript" src="js/script.js"></script>
 	<script async src="js/jquery-ui-custom.min.js"></script>
 	<script>
-		function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){
-			(r[h].q=r[h].q||[]).push(arguments)});r[h].l=+new Date;a=o.createElement('script');
-		n=o.scripts[0];a.src='//www.google-analytics.com/analytics.js';
-		n.parentNode.insertBefore(a,n)}(window,document,'ga');
+		function(r,o,h,a,n,x,y){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){
+			(r[h].q=r[h].q||[]).push(arguments)});r[h].l=+new Date;x=o.createElement(a);
+		y=o.getElementsByTagName(a)[0];x.src=n;y.parentNode.insertBefore(x,y)}
+		(window,document,'ga','script','//www.google-analytics.com/analytics.js');
 		ga('create', 'UA-78046746-1', 'auto');
 		ga('send', 'pageview');
 	</script>

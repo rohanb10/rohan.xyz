@@ -237,7 +237,7 @@ a:hover {
 	vertical-align: middle;
 	margin: 0 auto;
 	max-width: 100%;
-	max-height: auto;
+	height: auto;
 	border:7px solid #68665b;
 	border-radius: 50%;
 }
@@ -459,17 +459,6 @@ a:hover {
 .double-bounce2 {
 	-webkit-animation-delay: -1.0s;
 	animation-delay: -1.0s;
-}
-
-@-webkit-keyframes sk-bounce {
-	0%, 100% { 
-		transform: scale(0.0);
-		-webkit-transform: scale(0.0);
-	}
-	50% { 
-		transform: scale(1.0);	
-		-webkit-transform: scale(1.0);
-	}
 }
 
 @keyframes sk-bounce {

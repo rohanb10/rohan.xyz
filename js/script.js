@@ -136,7 +136,7 @@ function loadWorkPlace(work,location){
 		'color': '#F3F3F3',
 	});
 	$(".exp-btn a").css({
-		'border': '3px solid rgba(49,48,43,0.7)',
+		'border': '3px solid rgba(49,48,43,0.1)',
 		'color': '#F3F3F3',
 		'background-color': 'rgba(49,48,43,0.7)'
 	});

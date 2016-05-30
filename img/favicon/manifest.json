@@ -1,5 +1,5 @@
 {
-	"name": "Rohan.xyz",
+	"name": "rohan.xyz",
 	"icons": [
 		{
 			"src": "\/img\/favicon\/android-chrome-36x36.png",
@@ -37,8 +37,5 @@
 			"type": "image\/png",
 			"density": 4
 		}
-	],
-	"start_url": "rohan.xyz",
-	"display": "standalone",
-	"orientation": "portrait"
+	]
 }

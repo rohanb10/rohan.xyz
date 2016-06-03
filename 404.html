@@ -44,22 +44,22 @@
 		//dvd style bumping
 		var move = {
 			right: function () {
-				four.animate({left: (w - four.outerWidth()+5)}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){
+				four.animate({left: (w-four.outerWidth()+5)}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
 					move.left()
 				}});
 			},
 			left: function () {
-				four.animate({left: -5}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){
+				four.animate({left: -5}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
 					move.right()
 				}});
 			},
 			down: function () {
-				four.animate({top: (h - four.outerHeight()+41)}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){
+				four.animate({top: (h-four.outerHeight()+41)}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
 					move.up()
 				}});
 			},
 			up: function () {
-				four.animate({top:-33}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){
+				four.animate({top: -33}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
 					move.down()
 				}});
 			}

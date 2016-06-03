@@ -231,7 +231,7 @@ function projectSwitch(project,btn){
 				$(".project-github").attr("href","https://github.com/rohanb10/Llinder");
 			}
 			if(project == "personal") {
-				$(".project-description").text("I redesigned my personal website from scratch over the summer of 2016. I tried to cut down on the number of dependencies I was using. Check out the source code at my GitHub or just inspect element instead.");
+				$(".project-description").html("I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a href='brokenlink.html'>404 page.</a>");
 				$(".project-url").attr("href","http://rohan.xyz");
 				$(".project-github").attr("href","https://github.com/rohanb10/resume");
 			}

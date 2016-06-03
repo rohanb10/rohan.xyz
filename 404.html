@@ -7,24 +7,18 @@
 	<link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 	<style type="text/css">
 		body{
-			font-family: 'PT Mono', sans-serif;
+			font-family: 'Trebuchet MS', sans-serif;
 			transition: background-color 1s linear;
 			-webkit-transition: background-color 1s linear;
 			background-color: #134E93;
-		}
-		.container{
 			font-size: 11em;
 			font-weight: 200;
-			width: 100%;
 			text-align: center;
-			/* display: flex; */
-			/* justify-content: center; */
 		}
 		a{
 			position: absolute;
-			color: #F3F3F3;
+			color: #FFF;
 			text-decoration: none;
-			padding:0;
 		}
 		a:hover{
 			text-shadow: 5px 8px #1E97B2, -10px -5px #F74B42, 6px -9px #538835;
@@ -32,14 +26,12 @@
 	</style>
 </head>
 <body>
-	<div class="container">
-		<p><a href="http://rohan.xyz" title="Go back to the hompage">404</a></p>
-	</div>
+	<a href="http://rohan.xyz" title="Go back to the hompage">404</a>
 	<script src="js/jquery.min.js"></script>
 	<script>
 		// change background
 		var colours= ["#134E93", "#2694f4", "#A9352D", "#037c10", "#663EA9", "#a9467c", "#FB7F00", "#7F1714", "#c43494", "#40975A"];
-		var current=0;
+		var four = $("a"),w = window.innerWidth, h = window.innerHeight, elWidth=four.outerWidth(), elHeight=four.outerHeight(), current = 0;
 		function changeBG(){
 			var next=Math.floor(Math.random()*colours.length);
 			while(current==next){
@@ -49,9 +41,9 @@
 			current=next;
 		}
 		setInterval(changeBG, 3000);
+
 		//dvd style bumping
-		var four = $("a"),w = window.innerWidth, h = window.innerHeight, elWidth=four.outerWidth(), elHeight=four.outerHeight(),move;
-		move = {
+		var move = {
 			right: function () {
 				four.animate({left: (w - elWidth)}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){move.left()}});
 			},

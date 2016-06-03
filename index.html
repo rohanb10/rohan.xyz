@@ -16,12 +16,6 @@
 	<!-- dependencies -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- <script>
-		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-		ga('create', 'UA-78711252-1', 'auto');
-		ga('send', 'pageview');
-	</script>
-	<script async src='https://www.google-analytics.com/analytics.js'></script> -->
 	
 	<!-- fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
@@ -50,7 +44,7 @@
 	<meta name="theme-color" content="#31302b">
 </head>
 <body>
-	<!-- I swear I don't use inline style. I'm using jQuery to give each panel a defined height to prevent a vh bug on mobile devices-->
+	<!-- I swear I don't use inline style. I'm using js to give each panel a defined height to prevent a vh bug on mobile devices-->
 	<div class="panel panel-intro">
 		<div class="container text-center">
 			<div class="spinner">
@@ -180,21 +174,21 @@
 				<div class="row bottom-row">
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/mongodb.png" alt="MongoDB"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/mysql.png" alt="MySQL"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/psql.png" alt="PostgreSQL"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/nodejs.png" alt="NodeJS"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/firebase.png" alt="Firebase"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/aws.png" alt="Amazon Web Services"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/bootstrap.png" alt="Bootstrap"></div>
 				</div>
 				<div class="row bottom-row">
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/photoshop.png" alt="Adobe Photoshop"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/indesign.png" alt="Adobe InDesign"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/bootstrap.png" alt="Bootstrap"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/wordpress.png" alt="WordPress"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/java.png" alt="Java"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/bash.png" alt="BASH Scripting"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/fcp.png" alt="Final Cut Pro"></div>
 				</div>
 				<!-- <div class="row bottom-row">
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/psql.png" alt="PostgreSQL"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/fcp.png" alt="Final Cut Pro"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/php.png" alt="PHP"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/python.png" alt="Python"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/ruby.png" alt="Ruby"></div>
@@ -288,8 +282,8 @@
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-	<script async src="js/jquery-ui-custom.min.js"></script>
-	<script>
+	<script async src="js/jquery-ui.min.js"></script>
+	<script>//custom google analytics script
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){
 			(r[h].q=r[h].q||[]).push(arguments)});r[h].l=+new Date;a=o.createElement('script');
 		n=o.scripts[0];a.src='https://www.google-analytics.com/analytics.js';

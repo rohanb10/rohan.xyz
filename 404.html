@@ -13,6 +13,9 @@
 			font-size: 11em;
 			font-weight: 200;
 			text-align: center;
+			overflow-x:hidden;
+			overflow-y:hidden;
+			height:100vh;
 		}
 		a{
 			position: absolute;
@@ -30,7 +33,7 @@
 	<script>
 		// change background
 		var colours= ["#134E93", "#2694f4", "#A9352D", "#037c10", "#663EA9", "#a9467c", "#FB7F00", "#7F1714", "#c43494", "#40975A"];
-		var four = $("a"),w = window.innerWidth, h = window.innerHeight, elWidth=four.outerWidth(), elHeight=four.outerHeight(), current = 0;
+		var four = $("a"),w = window.innerWidth, h = window.innerHeight, current = 0;
 		function changeBG(){
 			var next=Math.floor(Math.random()*colours.length);
 			while(current==next){
@@ -44,16 +47,24 @@
 		//dvd style bumping
 		var move = {
 			right: function () {
-				four.animate({left: (w - elWidth)}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){move.left()}});
+				four.animate({left: (w - four.outerWidth())}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){
+					move.left()
+				}});
 			},
 			left: function () {
-				four.animate({left: 0}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){move.right()}});
+				four.animate({left: 0}, {duration: ((w/200) * 1000), queue: false, easing: "linear", complete: function(){
+					move.right()
+				}});
 			},
 			down: function () {
-				four.animate({top: (h - elHeight+41)}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){move.up()}});
+				four.animate({top: (h - four.outerHeight()+41)}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){
+					move.up()
+				}});
 			},
 			up: function () {
-				four.animate({top:-33}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){move.down()}});
+				four.animate({top:-33}, {duration: ((h/200) * 1000), queue: false, easing: "linear", complete: function(){
+					move.down()
+				}});
 			}
 		};
 		move.down();

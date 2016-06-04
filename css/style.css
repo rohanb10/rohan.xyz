@@ -146,7 +146,7 @@ a, a:hover, .name-role {
 	cursor: initial;
 }
 
-.project-btn a:hover, .me-btn a:hover {
+.me-btn a:hover {
 	text-decoration:none;
 }
 
@@ -314,7 +314,7 @@ a, a:hover, .name-role {
 .exp-overlay a,.exp-overlay span{
 	/* padding: 5px; */
 	box-sizing:border-box;
-	border: 0px solid black;
+	border: 0 solid black;
 	-webkit-transition: all 1s linear;
 	transition: all 1s linear;
 }

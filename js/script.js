@@ -199,8 +199,8 @@ function projectSwitch(project,btn){
 			$(".laptop-screen").show('slide', { direction: "left"},1000);
 			btn.css('box-shadow', 'inset 250px 0 0 0 #31302B');
 			btn.css('color', '#F3F3F3');
-			btn.addClass('active')
-			
+			btn.addClass('active');
+
 			//change descriptions / buttons
 			$(".project-description, .project-url").show('fade',1000);
 

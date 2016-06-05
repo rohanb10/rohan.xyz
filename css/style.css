@@ -374,7 +374,8 @@ a, a:hover, .name-role {
 		display:none;
 	}
 	.project-btn a, .exp-btn a{
-		min-width:145px;
+		min-width:130px;
+		border-width:2px;
 	}
 	.name-intro{
 		font-size:2.7em;

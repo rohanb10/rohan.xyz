@@ -144,11 +144,10 @@ function loadWorkPlace(work,location){
 	exp_loaded = true;
 	//call to display correct google maps background
 	setTimeout(function(){
-		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+15+"px");
-		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+16+"px");
+		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+18+"px");
+		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+20+"px");
+		showGoogleMaps(location);
 	},100);
-	
-	showGoogleMaps(location);
 	current_work = work;
 
 }
@@ -167,7 +166,8 @@ $(".exp-btn").click(function(event) {
 			},1020)
 		}
 		else{
-			$.getScript("http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc&sensor=false");
+			$.getScript("http://maps.googleapis.com/maps/api/js?sensor=false");
+			// $.getScript("http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc&sensor=false");
 			$(".exp-before").hide('fade',1000);
 			setTimeout(function(){
 				loadWorkPlace(work,location);

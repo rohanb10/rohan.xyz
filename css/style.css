@@ -256,6 +256,7 @@ a, a:hover, .name-role {
 	-webkit-filter:contrast(0%);
 	filter:contrast(0%);
 }
+
 .img-contact:hover, .img-skill:hover {
 	filter:contrast(100%);
 	-webkit-filter:contrast(100%);

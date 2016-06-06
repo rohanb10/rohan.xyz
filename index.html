@@ -43,24 +43,24 @@
 </head>
 <body>
 	<!-- I swear I don't use inline style. I'm using js to give each panel a defined height to prevent a vh bug on mobile devices-->
+	
 	<div class="panel panel-intro">
-		<div class="container text-center">
-			<div class="spinner">
-				<div class="double-bounce1"></div>
-				<div class="double-bounce2"></div>
-			</div>
-			<div class="name-intro">
-				<div class="name-hello"><span class="hidden-name">.</span></div>
-				<br><br>
-				<div class="name-rohan"><span class="hidden-name">.</span></div>
-				<br><br>
-				<span class="name-i-am"><span class="hidden-name">.</span></span>
-				<br class="hidden-sm hidden-md hidden-lg">
-				<span class="hidden-name">.</span><span class="name-role"></span>
-			</div>
-			<div class="arrow-intro">
-				<a onclick='scroll(".panel-me")'><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
-			</div>
+		<svg viewBox="0 0 1000 1000">
+			<symbol id="s-text">
+				<text text-anchor="middle" x="50%" y="40%" class="text-line">Rohan</text>
+				<text text-anchor="middle" x="50%" y="60%" class="text-line">Bhansali</text>
+			</symbol>
+
+			<g class="g-ants">
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+				<use xlink:href="#s-text" class="text-copy"></use>
+			</g>
+		</svg>
+		<div class="arrow-intro">
+		<a onclick='scroll(".panel-me")'><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
 		</div>
 	</div>
 	<div class="half-panel panel-invert panel-me">

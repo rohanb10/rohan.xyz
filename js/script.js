@@ -8,82 +8,82 @@ function isMobile() {
 	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 }
 
-//type into view
-function type(message, div) {
-	$(div).append(message[character]);
-	character++;
-	if (character < message.length) {
-		setTimeout(function () {
-			type(message, div);
-		}, 80);
-	}
-	else{
-		character = 0;
-	}
-}
+// //type into view
+// function type(message, div) {
+// 	$(div).append(message[character]);
+// 	character++;
+// 	if (character < message.length) {
+// 		setTimeout(function () {
+// 			type(message, div);
+// 		}, 80);
+// 	}
+// 	else{
+// 		character = 0;
+// 	}
+// }
 
-//delete old role from view
-function backspace() {
-	var check = "";
-	$('.name-role').html(function (_,txt) {
-		check = txt.slice(0, -1);
-		return check;
-	});
-	if(check.length>0) {
-		setTimeout(function() {
-			backspace();
-		}, 60);
-	}
-	else return;
-}
+// //delete old role from view
+// function backspace() {
+// 	var check = "";
+// 	$('.name-role').html(function (_,txt) {
+// 		check = txt.slice(0, -1);
+// 		return check;
+// 	});
+// 	if(check.length>0) {
+// 		setTimeout(function() {
+// 			backspace();
+// 		}, 60);
+// 	}
+// 	else return;
+// }
 
-//cycle through roles array
-function cycle() {
-	//backups in case js fails
-	$(".name-hello").text('Hello');
-	$(".name-rohan").text('I am Rohan Bhansali');
-	$(".name-i-am").text('I am a ');
+// //cycle through roles array
+// function cycle() {
+// 	//backups in case js fails
+// 	$(".name-hello").text('Hello');
+// 	$(".name-rohan").text('I am Rohan Bhansali');
+// 	$(".name-i-am").text('I am a ');
 
-	next = (current+1)%roles.length;
-	setTimeout(function() {
-		backspace();
-		setTimeout(function() {
-			$(".name-role").html("");
-			type(roles[next], ".name-role");
-		},2000);
-	},2000);
-	setTimeout(function() {
-		current = next;
-	},4000);
-}
+// 	next = (current+1)%roles.length;
+// 	setTimeout(function() {
+// 		backspace();
+// 		setTimeout(function() {
+// 			$(".name-role").html("");
+// 			type(roles[next], ".name-role");
+// 		},2000);
+// 	},2000);
+// 	setTimeout(function() {
+// 		current = next;
+// 	},4000);
+// }
 
-//panel-intro animation control
-function firstPanel() {
-	$(".spinner").hide('fade',500);
-	$("html,body").css('position', 'initial');
-	setTimeout(function() {
-		$(".name-intro").show();
-	},501);
-	setTimeout(function() {
-		type("Hello",".name-hello");
-		setTimeout(function() {
-			type("I am Rohan Bhansali",".name-rohan");
-			setTimeout(function() {
-				type("I am a ",".name-i-am");
-				setTimeout(function() {
-					type("full-stack developer",".name-role");
-					setTimeout(function() {
-						cycle();
-						setInterval(cycle,5000);
-					}, 1500);
-					setTimeout(function() {
-						$(".arrow-intro").show('fade',500);
-					},2500);
-				},600);
-			},2500);
-		},2000);
-	},1000);
-}
+// //panel-intro animation control
+// function firstPanel() {
+// 	$(".spinner").hide('fade',500);
+// 	$("html,body").css('position', 'initial');
+// 	setTimeout(function() {
+// 		$(".name-intro").show();
+// 	},501);
+// 	setTimeout(function() {
+// 		type("Hello",".name-hello");
+// 		setTimeout(function() {
+// 			type("I am Rohan Bhansali",".name-rohan");
+// 			setTimeout(function() {
+// 				type("I am a ",".name-i-am");
+// 				setTimeout(function() {
+// 					type("full-stack developer",".name-role");
+// 					setTimeout(function() {
+// 						cycle();
+// 						setInterval(cycle,5000);
+// 					}, 1500);
+// 					setTimeout(function() {
+// 						$(".arrow-intro").show('fade',500);
+// 					},2500);
+// 				},600);
+// 			},2500);
+// 		},2000);
+// 	},1000);
+// }
 
 //generate and display google maps as background for experience panel
 function showGoogleMaps(location) {	
@@ -295,8 +295,12 @@ $(window).resize(function() {
 });
 
 window.onload = function() {
-	//start animating intro panel after 1s
-	setTimeout(firstPanel,1000);
+	//start filling text after 5.5s
+	setTimeout(function(){
+		$(".text-copy").css('fill', 'rgb(49, 48, 43)');
+		$(".text-copy").css('stroke-width', '0');
+		$(".arrow").show('fade',500);
+	},5500);
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");
 	$(".project-container").hide();
 };

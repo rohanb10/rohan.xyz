@@ -9,7 +9,7 @@ html, body {
 	width:100%;
 	overflow-x:hidden;
 	overflow-y:auto;
-	position:fixed;
+	/* position:fixed; */
 	font-family:'Source Sans Pro', sans-serif;
 	background-color:#F3F3F3;
 }
@@ -22,6 +22,58 @@ a {
 .hidden-name{
 	font-size:0.1em;
 	opacity:0;
+}
+
+svg {
+	font: 14em/1 Source Sans Pro;
+	font-weight: 200;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.text-copy {
+	fill: rgba(0,0,0,0);
+	-webkit-transition:all 2s linear;
+	transition:all 2s linear;
+	stroke-dasharray: 7% 28%;
+	stroke-width: 5px;
+	-webkit-animation: stroke-offset 5s  linear;
+	animation: stroke-offset 5s  linear;
+}
+.text-copy:nth-child(1) {
+	stroke: #31302B;
+	stroke-dashoffset: 7%;
+}
+.text-copy:nth-child(2) {
+	stroke: #31302B;
+	stroke-dashoffset: 14%;
+}
+.text-copy:nth-child(3) {
+	stroke: #31302B;
+	stroke-dashoffset: 21%;
+}
+.text-copy:nth-child(4) {
+	stroke: #31302B;
+	stroke-dashoffset: 28%;
+}
+.text-copy:nth-child(5) {
+	stroke: #31302B;
+	stroke-dashoffset: 35%;
+}
+
+@-webkit-keyframes stroke-offset {
+	0% {
+		stroke-dashoffset: 35%;
+		stroke-dasharray: 0 87.5%;
+	}
+}
+
+@keyframes stroke-offset {
+	0% {
+		stroke-dashoffset: 35%;
+		stroke-dasharray: 0 87.5%;
+	}
 }
 
 a, a:hover, .name-role {
@@ -49,13 +101,6 @@ a, a:hover, .name-role {
 	margin:15px 0 15px 0;
 }
 
-.panel-intro {
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	transition:all .5s linear;
-}
-
 .name-intro {
 	font-size:4em;
 	line-height:0.9;
@@ -65,16 +110,10 @@ a, a:hover, .name-role {
 .arrow-intro {
 	position:absolute;
 	top:90%;
-	left:0;
-	right:0;
-	margin-left:auto;
-	margin-right:auto;
+	width: 100%;
 }
-
 .arrow {
-	display:block;
 	width:60px;
-	max-width:10%;
 	-webkit-transition:all .3s linear;
 	transition:all .3s linear;
 }
@@ -122,7 +161,7 @@ a, a:hover, .name-role {
 	color:#31302B;
 }
 
-.project-btn, .me-btn, .project-btn a, .img-container, .text-center {
+.project-btn, .me-btn, .project-btn a, .img-container, .text-center, .arrow-intro {
 	text-align:center;
 }
 
@@ -154,7 +193,7 @@ a, a:hover, .name-role {
 	margin-top:0;
 }
 
-.img-container, .my-container, .img-placeholder, .arrow {
+.img-container, .my-container, .img-placeholder {
 	margin:0 auto;
 }
 
@@ -296,7 +335,7 @@ a, a:hover, .name-role {
 	background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
 }
 
-.gmnoprint, .gm-style-cc, .name-intro, #googlemaps, #bg-filter, .arrow-intro, .exp-body {
+.gmnoprint, .gm-style-cc, .name-intro, #googlemaps,.arrow, #bg-filter, .exp-body {
 	display:none;
 }
 

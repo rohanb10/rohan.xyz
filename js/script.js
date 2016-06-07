@@ -1,5 +1,5 @@
 //global variables
-var character = 0, current=0, next, current_width, current_work, exp_loaded = false;
+var current_width, current_work, exp_loaded = false;
 //roles to cycle through for intro panel
 var roles = ["web developer","software engineer", "designer", "problem solver"];
 
@@ -7,83 +7,6 @@ var roles = ["web developer","software engineer", "designer", "problem solver"];
 function isMobile() {
 	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 }
-
-// //type into view
-// function type(message, div) {
-// 	$(div).append(message[character]);
-// 	character++;
-// 	if (character < message.length) {
-// 		setTimeout(function () {
-// 			type(message, div);
-// 		}, 80);
-// 	}
-// 	else{
-// 		character = 0;
-// 	}
-// }
-
-// //delete old role from view
-// function backspace() {
-// 	var check = "";
-// 	$('.name-role').html(function (_,txt) {
-// 		check = txt.slice(0, -1);
-// 		return check;
-// 	});
-// 	if(check.length>0) {
-// 		setTimeout(function() {
-// 			backspace();
-// 		}, 60);
-// 	}
-// 	else return;
-// }
-
-// //cycle through roles array
-// function cycle() {
-// 	//backups in case js fails
-// 	$(".name-hello").text('Hello');
-// 	$(".name-rohan").text('I am Rohan Bhansali');
-// 	$(".name-i-am").text('I am a ');
-
-// 	next = (current+1)%roles.length;
-// 	setTimeout(function() {
-// 		backspace();
-// 		setTimeout(function() {
-// 			$(".name-role").html("");
-// 			type(roles[next], ".name-role");
-// 		},2000);
-// 	},2000);
-// 	setTimeout(function() {
-// 		current = next;
-// 	},4000);
-// }
-
-// //panel-intro animation control
-// function firstPanel() {
-// 	$(".spinner").hide('fade',500);
-// 	$("html,body").css('position', 'initial');
-// 	setTimeout(function() {
-// 		$(".name-intro").show();
-// 	},501);
-// 	setTimeout(function() {
-// 		type("Hello",".name-hello");
-// 		setTimeout(function() {
-// 			type("I am Rohan Bhansali",".name-rohan");
-// 			setTimeout(function() {
-// 				type("I am a ",".name-i-am");
-// 				setTimeout(function() {
-// 					type("full-stack developer",".name-role");
-// 					setTimeout(function() {
-// 						cycle();
-// 						setInterval(cycle,5000);
-// 					}, 1500);
-// 					setTimeout(function() {
-// 						$(".arrow-intro").show('fade',500);
-// 					},2500);
-// 				},600);
-// 			},2500);
-// 		},2000);
-// 	},1000);
-// }
 
 //generate and display google maps as background for experience panel
 function showGoogleMaps(location) {	
@@ -102,6 +25,7 @@ function showGoogleMaps(location) {
 	$("#googlemaps, #bg-filter").show('fade',1000);
 }
 
+//experience panel helper
 function loadWorkPlace(work,location){
 	if(work=="zappos"){
 		$(".img-exp").attr('src', 'img/'+work+".jpg");
@@ -122,14 +46,14 @@ function loadWorkPlace(work,location){
 		$(".exp-title").html("Student Life");
 		$(".exp-position").html("Senior Online Editor");
 		$(".exp-date").html("August 2014 - Present");
-		$(".exp-text").html("<div>Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:</div><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul><div>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.</div>");
+		$(".exp-text").html("<div>Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:</div><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul><div>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a class='before after' href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a class='before after' href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.</div>");
 	}
 	if(work=="ef"){
 		$(".exp-title").html("EazyFriday");
 		$(".img-exp").attr('src', 'img/'+work+".jpg");
 		$(".exp-position").html("Software Developer Intern");
 		$(".exp-date").html("Summer 2015");
-		$(".exp-text").html("<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Created an API to be used by the mobile apps</li></ul>You can view their website <a href='http://eazyfriday.com' target='_blank'>here</a>.");
+		$(".exp-text").html("<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Created an API to be used by the mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>.");
 	}
 	$(".exp-header span").css({
 		'background-color':'rgba(49,48,43,0.7)',
@@ -142,14 +66,14 @@ function loadWorkPlace(work,location){
 	});
 	$(".exp-body").show('fade',1000);
 	exp_loaded = true;
-	//call to display correct google maps background
+
+	//call to display and resize google maps background
 	setTimeout(function(){
 		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+18+"px");
 		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+20+"px");
 		showGoogleMaps(location);
 	},100);
 	current_work = work;
-
 }
 
 //experience panel controller
@@ -176,6 +100,7 @@ $(".exp-btn").click(function(event) {
 	}
 });
 
+//project panel helper
 function projectSwitch(project,btn){
 	//only if selected project is different
 	if(project != $(".laptop-screen").data("screen")) {
@@ -234,7 +159,7 @@ function projectSwitch(project,btn){
 				$(".project-github").attr("href","https://github.com/rohanb10/Llinder");
 			}
 			if(project == "personal") {
-				$(".project-description").html("I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a href='404.html'>404 page.</a>");
+				$(".project-description").html("I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a class='before after' href='404.html'>404 page.</a>");
 				$(".project-url").attr("href","http://rohan.xyz");
 				$(".project-github").attr("href","https://github.com/rohanb10/resume");
 			}
@@ -257,7 +182,6 @@ $(".project-list a").click(function() {
 		projectSwitch(project,btn);
 	}
 });
-
 
 //scroll to specified div
 function scroll(classname){
@@ -295,12 +219,12 @@ $(window).resize(function() {
 });
 
 window.onload = function() {
-	//start filling text after 5.5s
+	//fill intro-panel text after 5.5s
 	setTimeout(function(){
 		$(".text-copy").css('fill', 'rgb(49, 48, 43)');
 		$(".text-copy").css('stroke-width', '0');
 		$(".arrow").show('fade',500);
 	},5500);
+	//resize iphone
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");
-	$(".project-container").hide();
 };

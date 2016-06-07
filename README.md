@@ -23,7 +23,7 @@ The website was tested on and optimized for the following browsers
 
 - Google Chrome (v51 | Windows 7, OS X)
 - Safari for OS X (v9.1)
-- Safari (iOS) - iPhone 5S, iPhone 6S, iPhone 6S+, iPad Air 2, iPad Mini 4, iPad Pro
+- Safari (iOS) - iPhone 5S, iPhone 6S, iPhone 6S+, iPad Pro
 - Chrome for Android (Android 4.4.4, 5.1.1, 6.0.1)
 
 -------------------

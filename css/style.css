@@ -13,58 +13,6 @@ html, body {
 	background-color:#F3F3F3;
 }
 
-svg {
-	font: 14em/1 Source Sans Pro;
-	font-weight: 200;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-
-.text-copy {
-	fill: rgba(0,0,0,0);
-	-webkit-transition:all 2s linear;
-	transition:all 2s linear;
-	stroke-dasharray: 7% 28%;
-	stroke-width: 5px;
-	-webkit-animation: stroke-offset 5s  linear;
-	animation: stroke-offset 5s  linear;
-}
-.text-copy:nth-child(1) {
-	stroke: #31302B;
-	stroke-dashoffset: 7%;
-}
-.text-copy:nth-child(2) {
-	stroke: #31302B;
-	stroke-dashoffset: 14%;
-}
-.text-copy:nth-child(3) {
-	stroke: #31302B;
-	stroke-dashoffset: 21%;
-}
-.text-copy:nth-child(4) {
-	stroke: #31302B;
-	stroke-dashoffset: 28%;
-}
-.text-copy:nth-child(5) {
-	stroke: #31302B;
-	stroke-dashoffset: 35%;
-}
-
-@-webkit-keyframes stroke-offset {
-	0% {
-		stroke-dashoffset: 35%;
-		stroke-dasharray: 0 87.5%;
-	}
-}
-
-@keyframes stroke-offset {
-	0% {
-		stroke-dashoffset: 35%;
-		stroke-dasharray: 0 87.5%;
-	}
-}
-
 /* anchor tag aimation */
 a, a:hover, .name-role, .exp-text a{
 	color:#d73444;
@@ -143,6 +91,58 @@ a.before:hover:before,a.after:hover:after{
 .panel-footer {
 	font-size:1em;
 	font-weight:300;
+}
+
+svg {
+	font: 14em/1 Source Sans Pro;
+	font-weight: 200;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.text-copy {
+	fill: rgba(0,0,0,0);
+	-webkit-transition:all 2s linear;
+	transition:all 2s linear;
+	stroke-dasharray: 7% 28%;
+	stroke-width: 5px;
+	-webkit-animation: stroke-offset 5s  linear;
+	animation: stroke-offset 5s  linear;
+}
+.text-copy:nth-child(1) {
+	stroke: #31302B;
+	stroke-dashoffset: 7%;
+}
+.text-copy:nth-child(2) {
+	stroke: #31302B;
+	stroke-dashoffset: 14%;
+}
+.text-copy:nth-child(3) {
+	stroke: #31302B;
+	stroke-dashoffset: 21%;
+}
+.text-copy:nth-child(4) {
+	stroke: #31302B;
+	stroke-dashoffset: 28%;
+}
+.text-copy:nth-child(5) {
+	stroke: #31302B;
+	stroke-dashoffset: 35%;
+}
+
+@-webkit-keyframes stroke-offset {
+	0% {
+		stroke-dashoffset: 35%;
+		stroke-dasharray: 0 87.5%;
+	}
+}
+
+@keyframes stroke-offset {
+	0% {
+		stroke-dashoffset: 35%;
+		stroke-dasharray: 0 87.5%;
+	}
 }
 
 .strike {

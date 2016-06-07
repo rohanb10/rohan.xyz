@@ -9,19 +9,8 @@ html, body {
 	width:100%;
 	overflow-x:hidden;
 	overflow-y:auto;
-	/* position:fixed; */
 	font-family:'Source Sans Pro', sans-serif;
 	background-color:#F3F3F3;
-}
-
-a {
-	text-decoration:none;
-	cursor:pointer;
-}
-
-.hidden-name{
-	font-size:0.1em;
-	opacity:0;
 }
 
 svg {
@@ -76,8 +65,32 @@ svg {
 	}
 }
 
-a, a:hover, .name-role {
-	color:#d34133;
+/* anchor tag aimation */
+a, a:hover, .name-role, .exp-text a{
+	color:#d73444;
+	position:relative;
+	transition:0.5s color ease;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+a.before:before{
+  top:-0.05em;
+  right:0;
+}
+a.after:after{
+  bottom:-0.05em;
+  left:0;
+}
+a.before:before,a.after:after{
+  height:2px;
+  background:#d73444;
+  content: "";
+  transition:0.5s all ease;
+  position:absolute;
+}
+a.before:hover:before,a.after:hover:after{
+  width:100%;
 }
 
 .panel {
@@ -128,10 +141,8 @@ a, a:hover, .name-role {
 }
 
 .panel-footer {
-	background-color:#31302B;
 	font-size:1em;
 	font-weight:300;
-	z-index:999;
 }
 
 .strike {
@@ -143,7 +154,7 @@ a, a:hover, .name-role {
 	margin-bottom:15px;
 }
 
-.me-btn a {
+.me-btn a{
 	box-sizing:border-box;
 	color:#F3F3F3;
 	padding:10px;
@@ -165,7 +176,7 @@ a, a:hover, .name-role {
 	text-align:center;
 }
 
-.project-btn a {
+.project-btn a{
 	box-sizing:border-box;
 	color:#31302B;
 	background:#FFF;
@@ -193,7 +204,7 @@ a, a:hover, .name-role {
 	margin-top:0;
 }
 
-.img-container, .my-container, .img-placeholder {
+.img-container, .my-container, .img-placeholder, .img-contact {
 	margin:0 auto;
 }
 
@@ -222,10 +233,6 @@ a, a:hover, .name-role {
 	z-index:2;
 	left:5.8%;
 	width:45.5%;
-}
-
-.text-right {
-	text-align:right;
 }
 
 .text-medium, .project-text {
@@ -264,6 +271,7 @@ a, a:hover, .name-role {
 	border-radius:50%;
 }
 
+/* skills panel */
 .img-skill{
 	margin:10px auto;
 	width:50px;
@@ -286,37 +294,6 @@ a, a:hover, .name-role {
 	transition:all .4s linear;
 }
 
-.img-contact {
-	margin:0 auto;
-	width:50px;
-	height:auto;
-	-webkit-transition:all .3s linear;
-	transition:all .3s linear;
-	-webkit-filter:contrast(0%);
-	filter:contrast(0%);
-}
-
-.img-contact:hover, .img-skill:hover {
-	filter:contrast(100%);
-	-webkit-filter:contrast(100%);
-}
-
-@keyframes rotate {
-	from {
-		-webkit-transform:rotate(0deg);
-		transform:rotate(0deg);
-	}
-	to {
-		-webkit-transform:rotate(360deg);
-		transform:rotate(360deg);
-	}
-}
-
-.img-contact:hover {
-	animation:rotate 3s linear infinite;
-	-webkit-animation:rotate 3s linear infinite;
-}
-
 .img-placeholder{
 	width:400px;
 }
@@ -335,7 +312,7 @@ a, a:hover, .name-role {
 	background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
 }
 
-.gmnoprint, .gm-style-cc, .name-intro, #googlemaps,.arrow, #bg-filter, .exp-body {
+.gmnoprint, .gm-style-cc, .name-intro, #googlemaps,.arrow, #bg-filter, .exp-body, .project-container {
 	display:none;
 }
 
@@ -352,11 +329,13 @@ a, a:hover, .name-role {
 	padding:0 10px 2px 10px;
 }
 .exp-overlay a,.exp-overlay span{
-	/* padding:5px; */
 	box-sizing:border-box;
 	border:0 solid black;
 	-webkit-transition:all 1s linear;
 	transition:all 1s linear;
+}
+.text-right {
+	text-align:right;
 }
 
 .img-exp{
@@ -367,7 +346,7 @@ a, a:hover, .name-role {
 	font-size:2em;
 }
 .exp-body span, .exp-description{
-	background-color:rgba(49,48,43,0.7);
+	background-color:rgba(49,48,43,0.8);
 	color:#FFF;
 }
 
@@ -400,13 +379,39 @@ a, a:hover, .name-role {
 	transition:all linear 1s;
 }
 
-.exp-text a{
-	color:#FFF;
-	text-decoration:underline;
-}
-
 .exp-title, .exp-position{
 	padding:2px 8px 0 8px;
+}
+
+/* footer panel */
+.img-contact {
+	width:50px;
+	height:auto;
+	-webkit-transition:all .3s linear;
+	transition:all .3s linear;
+	-webkit-filter:contrast(0%);
+	filter:contrast(0%);
+}
+
+.img-contact:hover, .img-skill:hover {
+	filter:contrast(100%);
+	-webkit-filter:contrast(100%);
+}
+
+@keyframes rotate {
+	from {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+}
+
+.img-contact:hover {
+	animation:rotate 3s linear infinite;
+	-webkit-animation:rotate 3s linear infinite;
 }
 
 @media only screen and (max-width :768px) {
@@ -434,46 +439,9 @@ a, a:hover, .name-role {
 		height:78.1%;
 	}
 }
+
 @media only screen and (min-width :768px) and (max-width :1024px) and (orientation :landscape) { 
 	.iphone-screen {
 		top:50px;
 	}
 }
-
-/* loading animation from http://tobiasahlin.com/spinkit/ */
-.spinner {
-	width:40px;
-	height:40px;
-	margin:100px auto;
-}
-
-.double-bounce1, .double-bounce2 {
-	width:100%;
-	height:100%;
-	border-radius:50%;
-	background-color:#31302B;
-	opacity:0.7;
-	position:absolute;
-	top:0;
-	left:0;
-
-	-webkit-animation:sk-bounce 2.0s infinite ease-in-out;
-	animation:sk-bounce 2.0s infinite ease-in-out;
-}
-
-.double-bounce2 {
-	-webkit-animation-delay:-1.0s;
-	animation-delay:-1.0s;
-}
-
-@keyframes sk-bounce {
-	0%, 100% { 
-		-webkit-transform:scale(0.0);
-		transform:scale(0.0);
-	} 
-	50% { 
-		-webkit-transform:scale(1.0);
-		transform:scale(1.0);
-	}
-}
-/* end loading animation */

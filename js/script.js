@@ -198,9 +198,11 @@ $(".img-skill").hover(function() {
 	$(".skill-hover").css('opacity', '0');
 });
 
-//resize function called when orientation changed
-//caluclate device width and height in px instead of using 100vh to provide better user experience
-//this fixes the bug where css vh keep changing on Safari for iOS and Chrome for Android because of the address bar auto-hide
+/*	resize function called when orientation changed
+	caluclate device width and height in px instead of using 100vh to provide better user experience
+	this is a workaround to fix a bug where the viewport constantly changes on mobile browsers
+	More details here: http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+*/
 function css_resize(){
 	current_width = window.innerWidth;
 	$(".panel").css('min-height', window.innerHeight+"px");

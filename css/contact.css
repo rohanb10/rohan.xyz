@@ -4,6 +4,11 @@ html,body {
 	text-align: center;
 	color: #FFF;
 	font:200 1.2em Source Sans Pro;
+	position: fixed;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height:100%;
 }
 *{
 	position: relative;
@@ -59,6 +64,7 @@ a.before:hover:before,a.after:hover:after{
 	border: 2px solid #4382BC;
 }
 #submit-btn{
+	margin-top:20px;
 	cursor: pointer;
 	background-color: #316290;
 	border: none;
@@ -82,7 +88,7 @@ a.before:hover:before,a.after:hover:after{
 	margin: 0 auto;
 	position: absolute;
 	width: 100%;
-	top: 45vh;
+	top: 55vh;
 	z-index: -1;
 }
 
@@ -145,10 +151,5 @@ a.before:hover:before,a.after:hover:after{
 	95% {
 		-webkit-transform: rotate(-5deg);
 		transform: rotate(-5deg);
-	}
-}
-@media only screen and (max-width :768px) {
-	.plane-frame {
-		top: 50vh;
 	}
 }

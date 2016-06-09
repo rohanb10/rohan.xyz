@@ -78,7 +78,7 @@
 			animation: plane-vertical 2s alternate infinite;
 		}
 
-		@-webkit-keyframes plane-vertical {
+		@keyframes plane-vertical {
 			0% {
 				-webkit-transform: translateY(0px);
 				transform: translateY(0px);
@@ -90,32 +90,43 @@
 		}
 
 		.plane {
-			-webkit-animation-timing-function: ease-in-out;
-			animation-timing-function: ease-in-out;
-
-			-webkit-animation: plane-rotate 4s forwards infinite;
-			animation: plane-rotate 4s forwards infinite;
+			-webkit-animation: plane-rotate 4s infinite;
+			animation: plane-rotate 4s infinite;
+			-webkit-animation-timing-function: linear;
+			animation-timing-function: linear;
 		}
-		@-webkit-keyframes plane-rotate {
+		@keyframes plane-rotate {
 			0% {
 				-webkit-transform: rotate(0deg);
 				transform: rotate(0deg);
 			}
-			40% {
+			5% {
+				-webkit-transform: rotate(5deg);
+				transform: rotate(5deg);
+			}
+			20% {
 				-webkit-transform: rotate(15deg);
 				transform: rotate(15deg);
 			}
-			60% {
-				-webkit-transform: rotate(-10deg);
-				transform: rotate(-10deg);
+			40% {
+				-webkit-transform: rotate(5deg);
+				transform: rotate(5deg);
 			}
-			70% {
-				-webkit-transform: rotate(-10deg);
-				transform: rotate(-10deg);
-			}
-			100% {
+			50% {
 				-webkit-transform: rotate(0deg);
 				transform: rotate(0deg);
+			}
+			60% {
+				-webkit-transform: rotate(-5deg);
+				transform: rotate(-5deg);
+			}
+			75% {
+				-webkit-transform: rotate(-15deg);
+				transform: rotate(-15deg);
+			}
+			95% {
+				-webkit-transform: rotate(-5deg);
+				transform: rotate(-5deg);
 			}
 		}
 		@media only screen and (max-width :768px) {

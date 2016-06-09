@@ -25,22 +25,22 @@ a, a:hover, .name-role, .exp-text a{
 }
 
 a.before:before{
-  top:-0.05em;
-  right:0;
+	top:-0.05em;
+	right:0;
 }
 a.after:after{
-  bottom:-0.05em;
-  left:0;
+	bottom:-0.05em;
+	left:0;
 }
 a.before:before,a.after:after{
-  height:2px;
-  background:#d73444;
-  content: "";
-  transition:0.5s all ease;
-  position:absolute;
+	height:2px;
+	background:#d73444;
+	content: "";
+	transition:0.5s all ease;
+	position:absolute;
 }
 a.before:hover:before,a.after:hover:after{
-  width:100%;
+	width:100%;
 }
 
 .panel {
@@ -160,7 +160,8 @@ svg {
 	box-sizing:border-box;
 	color:#F3F3F3;
 	padding:10px;
-	min-width:100px;
+	min-width:85px;
+	max-width:25%;
 	background-color:#31302B;
 	border:3px solid #F3F3F3;
 	display:inline-block;
@@ -183,7 +184,7 @@ svg {
 	color:#31302B;
 	background:#FFF;
 	padding:10px;
-	min-width:250px;
+	min-width:200px;
 	border:3px solid #31302B;
 	display:inline-block;
 	margin:5px 0;
@@ -276,7 +277,7 @@ svg {
 /* skills panel */
 .img-skill{
 	margin:10px auto;
-	width:50px;
+	max-width:50px;
 	-webkit-transition:all .4s linear;
 	transition:all .4s linear;
 	-webkit-filter:contrast(2%);
@@ -424,6 +425,9 @@ svg {
 		min-width:130px;
 		border-width:2px;
 	}
+	.project-btn{
+		width:50%;
+	}
 	.name-intro{
 		font-size:2.7em;
 	}
@@ -432,7 +436,7 @@ svg {
 		border-width:5px;
 	}
 	.img-skill{
-		width:40px;
+		width:110%;
 	}
 	.laptop-screen {
 		top:9%; 

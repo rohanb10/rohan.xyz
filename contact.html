@@ -23,13 +23,41 @@
 			position: relative;
 		}
 		.form-container{
+			z-index: 2;
 			width: 100%;
 			max-width: 500px;
 			margin: 0 auto;
+			border-radius: 1px;
 		}
-		input{
+		.inputbox, .textbox{
+			padding:10px;
 			display: block;
+			width: 500px;
+			max-width: 85%;
 			margin: 10px auto;
+			height: 30px;
+			font-size: 20px;
+			outline: none;
+			border: 2px solid #4382BC;
+		}
+		#submit-btn{
+			cursor: pointer;
+			background-color: #316290;
+			border: none;
+			color: #F2F2F2;
+			padding: 15px 32px;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			-webkit-transition:all linear 0.5s;
+			transition:all linear 0.5s;
+		}
+		#submit-btn:hover{
+			box-shadow:inset 150px 0 0 0 #F3F3F3;
+			color:#316290;
+		}
+		.textbox{
+			height: 150px;
 		}
 
 		.plane-frame {
@@ -37,12 +65,12 @@
 			position: absolute;
 			width: 100%;
 			top: 45vh;
+			z-index: -1;
 		}
 
 		.plane-container {
 			width: 200px;
 			margin: 0 auto;
-			z-index: -1;
 		}
 
 		.plane-container {
@@ -102,18 +130,21 @@
 		<p> Contact</p>
 		<div class="form container">
 			<form action="https://formspree.io/me@rohan.xyz" method="POST">
-				<input type="email" name="_replyto" placeholder="Your email"/>
-				<textarea name="body" placeholder="Message"></textarea>
-				<input type="submit" value="Send">
+				<input type="email" class="inputbox" name="replyto" placeholder="Your email"/>
+				<textarea name="body" class="inputbox textbox" placeholder="Message"></textarea>
+				<input type="hidden" name="_next" value="//rohan.xyz/thanks.html" />
+				<input type="submit" id="submit-btn" value="Send">
 			</form>
 		</div>
 	</div>
 	<div class="plane-frame">
 		<div class="plane-container">
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="379.304px" viewBox="0 0 1131.53 379.304" enable-background="new 0 0 1131.53 379.304" xml:space="preserve" class="plane">
-				<polygon fill="#D8D8D8" points="72.008,0 274.113,140.173 274.113,301.804 390.796,221.102 601.682,367.302 1131.53,0.223  "/>
-				<polygon fill="#C4C4C3" points="1131.53,0.223 274.113,140.173 274.113,301.804 390.796,221.102   "/>
-			</svg>
+			<a href="http://rohan.xyz">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="379.304px" viewBox="0 0 1131.53 379.304" enable-background="new 0 0 1131.53 379.304" xml:space="preserve" class="plane">
+					<polygon fill="#D8D8D8" points="72.008,0 274.113,140.173 274.113,301.804 390.796,221.102 601.682,367.302 1131.53,0.223"/>
+					<polygon fill="#C4C4C3" points="1131.53,0.223 274.113,140.173 274.113,301.804 390.796,221.102"/>
+				</svg>
+			</a>
 		</div>
 	</div>
 </body>

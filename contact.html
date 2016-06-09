@@ -12,141 +12,20 @@
 	<link rel="manifest" href="img/favicon/manifest.json">
 	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#31302b">
 	<meta name="theme-color" content="#31302b"><!-- Chrome for Android address bar -->
-	<style type="text/css">
-		html,body {
-			background-color: #4B8CC9;
-			text-align: center;
-			color: #F2F2F2;
-			font: 100 1.7em Trebuchet MS;
-		}
-		*{
-			position: relative;
-		}
-		.form-container{
-			z-index: 2;
-			width: 100%;
-			max-width: 500px;
-			margin: 0 auto;
-			border-radius: 1px;
-		}
-		.inputbox, .textbox{
-			padding:10px;
-			display: block;
-			width: 500px;
-			max-width: 85%;
-			margin: 10px auto;
-			height: 30px;
-			font-size: 20px;
-			outline: none;
-			border: 2px solid #4382BC;
-		}
-		#submit-btn{
-			cursor: pointer;
-			background-color: #316290;
-			border: none;
-			color: #F2F2F2;
-			padding: 15px 32px;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			-webkit-transition:all linear 0.5s;
-			transition:all linear 0.5s;
-		}
-		#submit-btn:hover{
-			box-shadow:inset 150px 0 0 0 #F3F3F3;
-			color:#316290;
-		}
-		.textbox{
-			height: 150px;
-		}
-
-		.plane-frame {
-			margin: 0 auto;
-			position: absolute;
-			width: 100%;
-			top: 45vh;
-			z-index: -1;
-		}
-
-		.plane-container {
-			width: 200px;
-			margin: 0 auto;
-		}
-
-		.plane-container {
-			-webkit-animation: plane-vertical 2s alternate infinite;
-			animation: plane-vertical 2s alternate infinite;
-		}
-
-		@keyframes plane-vertical {
-			0% {
-				-webkit-transform: translateY(0px);
-				transform: translateY(0px);
-			}
-			100% {
-				-webkit-transform: translateY(100px);
-				transform: translateY(100px);
-			}
-		}
-
-		.plane {
-			-webkit-animation: plane-rotate 4s infinite;
-			animation: plane-rotate 4s infinite;
-			-webkit-animation-timing-function: linear;
-			animation-timing-function: linear;
-		}
-		@keyframes plane-rotate {
-			0% {
-				-webkit-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
-			5% {
-				-webkit-transform: rotate(5deg);
-				transform: rotate(5deg);
-			}
-			20% {
-				-webkit-transform: rotate(15deg);
-				transform: rotate(15deg);
-			}
-			40% {
-				-webkit-transform: rotate(5deg);
-				transform: rotate(5deg);
-			}
-			50% {
-				-webkit-transform: rotate(0deg);
-				transform: rotate(0deg);
-			}
-			60% {
-				-webkit-transform: rotate(-5deg);
-				transform: rotate(-5deg);
-			}
-			75% {
-				-webkit-transform: rotate(-15deg);
-				transform: rotate(-15deg);
-			}
-			95% {
-				-webkit-transform: rotate(-5deg);
-				transform: rotate(-5deg);
-			}
-		}
-		@media only screen and (max-width :768px) {
-			.plane-frame {
-				top: 50vh;
-			}
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/contact.css">
 </head>
 <body>
 	<div class="container">
-		<p> Contact</p>
+		<h1> Contact</h1>
 		<div class="form container">
 			<form action="https://formspree.io/me@rohan.xyz" method="POST">
-				<input type="email" class="inputbox" name="replyto" placeholder="Your email"/>
-				<textarea name="body" class="inputbox textbox" placeholder="Message"></textarea>
+				<input type="email" class="inputbox" name="replyto" placeholder="Your email" required/>
+				<textarea name="body" class="inputbox textbox" placeholder="Message" required></textarea>
 				<input type="hidden" name="_next" value="http://rohan.xyz" />
 				<input type="submit" id="submit-btn" value="Send">
 			</form>
 		</div>
+		<p>Or email <a class="before after" href="mailto:me@rohan.xyz">me@rohan.xyz</a> directly</p>
 	</div>
 	<div class="plane-frame">
 		<div class="plane-container">

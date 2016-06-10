@@ -53,7 +53,7 @@ function loadWorkPlace(work,location){
 		$(".img-exp").attr('src', 'img/'+work+".jpg");
 		$(".exp-position").html("Software Developer Intern");
 		$(".exp-date").html("Summer 2015");
-		$(".exp-text").html("<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Created an API to be used by the mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>.");
+		$(".exp-text").html("<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>.");
 	}
 	$(".exp-header span").css({
 		'background-color':'rgba(49,48,43,0.7)',

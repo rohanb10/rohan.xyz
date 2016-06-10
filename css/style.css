@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 
 ::selection {
-	background:#f45254;
+	background:rgba(116, 244, 158, 0.8);
 	text-shadow:none;
 }
 

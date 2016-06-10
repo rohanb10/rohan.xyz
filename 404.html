@@ -15,8 +15,8 @@
 	<style type="text/css">
 		body {
 			font: 200 175px 'Trebuchet MS';
-			transition: background-color 1s linear;
-			-webkit-transition: background-color 1s linear;
+			/* transition: background-color 0.5s linear; */
+			/* -webkit-transition: background-color 0.5s linear; */
 			background-color: #134E93;
 			overflow-x:hidden;
 			overflow-y:hidden;
@@ -47,28 +47,32 @@
 			document.body.style.backgroundColor = colours[next];
 			current=next;
 		}
-		setInterval(changeBG, 3000);
+		// setInterval(changeBG, 3000);
 
-		//dvd style bumping
+		//bumping
 		var move = {
 			right: function () {
 				four.animate({left: (w-four.outerWidth()+5)}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
-					move.left()
+					move.left();
+					changeBG();
 				}});
 			},
 			left: function () {
 				four.animate({left: -5}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
-					move.right()
+					move.right();
+					changeBG();
 				}});
 			},
 			down: function () {
 				four.animate({top: (h-four.outerHeight()+41)}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
-					move.up()
+					move.up();
+					changeBG();
 				}});
 			},
 			up: function () {
 				four.animate({top: -33}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
-					move.down()
+					move.down();
+					changeBG();
 				}});
 			}
 		};

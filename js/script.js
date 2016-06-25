@@ -9,10 +9,10 @@ function isMobile() {
 }
 
 //generate and display google maps as background for experience panel
-function showGoogleMaps(location) {	
+function showGoogleMaps(location) {
 	var latLng = new google.maps.LatLng(location[0],location[1]);
 	map = new google.maps.Map(document.getElementById('googlemaps'),{
-		zoom: 13, 
+		zoom: 13,
 		scrollwheel: false,
 		navigationControl: false,
 		mapTypeControl: false,
@@ -104,7 +104,7 @@ $(".exp-btn").click(function(event) {
 function projectSwitch(project,btn){
 	//only if selected project is different
 	if(project != $(".laptop-screen").data("screen")) {
-		
+
 		//preload images
 		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
 		(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
@@ -120,7 +120,7 @@ function projectSwitch(project,btn){
 		$(".laptop-screen").data("screen",project);
 
 		setTimeout(function() {
-			//update front end data 
+			//update front end data
 			$(".iphone-screen").attr("src", "img/img-container/"+project+"-iphone.jpg");
 			$(".laptop-screen").attr("src", "img/img-container/"+project+"-laptop.jpg");
 			$(".iphone-screen").show('slide', { direction: "left"},1000);
@@ -139,7 +139,7 @@ function projectSwitch(project,btn){
 				$(".project-url").hide('fade',1000);
 			}
 			if(project == "sl") {
-				$(".project-description").text("I run the website for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ views every month.");
+				$(".project-description").text("I run the website for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ users every month.");
 				$(".project-url").attr("href","http://studlife.com");
 				$(".project-github").attr("href","https://github.com/rohanb10/studlife");
 			}

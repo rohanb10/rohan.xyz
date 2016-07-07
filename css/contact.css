@@ -114,17 +114,15 @@ a.before:hover:before,a.after:hover:after{
 }
 
 .plane {
-	-webkit-animation: plane-rotate 4s infinite;
-	animation: plane-rotate 4s infinite;
-	-webkit-animation-timing-function: linear;
-	animation-timing-function: linear;
+	-webkit-animation: plane-rotate 4s linear infinite;
+	animation: plane-rotate 4s linear infinite;
 }
 @keyframes plane-rotate {
-	0% {
+	0%, 50% {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
-	5% {
+	5%, 40% {
 		-webkit-transform: rotate(5deg);
 		transform: rotate(5deg);
 	}
@@ -132,24 +130,12 @@ a.before:hover:before,a.after:hover:after{
 		-webkit-transform: rotate(15deg);
 		transform: rotate(15deg);
 	}
-	40% {
-		-webkit-transform: rotate(5deg);
-		transform: rotate(5deg);
-	}
-	50% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	60% {
+	60%, 95% {
 		-webkit-transform: rotate(-5deg);
 		transform: rotate(-5deg);
 	}
 	75% {
 		-webkit-transform: rotate(-15deg);
 		transform: rotate(-15deg);
-	}
-	95% {
-		-webkit-transform: rotate(-5deg);
-		transform: rotate(-5deg);
 	}
 }

@@ -76,13 +76,10 @@ a.before:hover:before,a.after:hover:after{
 	width: 100%;
 }
 .arrow {
+	margin: 0 auto;
 	width:60px;
-	-webkit-transition:all .3s linear;
-	transition:all .3s linear;
-}
-.arrow:hover {
-	-webkit-transform:scale(1.3);
-	transform:scale(1.3);
+	-webkit-animation: pulse 1s alternate infinite;
+	animation: pulse 1s alternate infinite;
 }
 
 .panel-invert {
@@ -211,12 +208,12 @@ svg {
 }
 
 .img-container .col-md-4, .spinner {
-	position:relative; 
+	position:relative;
 }
 
 .laptop-screen {
 	position:absolute;
-	top:9%; 
+	top:9%;
 	left:14.6%;
 	width:70.8%;
 	height:78.1%;
@@ -227,7 +224,7 @@ svg {
 	z-index:1;
 	left:0;
 	width:auto;
-}  
+}
 
 .iphone-screen {
 	position:absolute;
@@ -302,11 +299,11 @@ svg {
 
 /* experience panel */
 #googlemaps, #bg-filter{
-	height:50px; 
-	width:100%; 
-	position:absolute; 
-	top:0; 
-	left:0; 
+	height:50px;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
 	z-index:0;
 }
 #bg-filter{
@@ -410,6 +407,16 @@ svg {
 		transform:rotate(360deg);
 	}
 }
+@keyframes pulse {
+	0% {
+		-webkit-transform:scale(1);
+		transform:scale(1);
+	}
+	100% {
+		-webkit-transform:scale(1.3);
+		transform:scale(1.3);
+	}
+}
 
 .img-contact:hover {
 	animation:rotate 3s linear infinite;
@@ -438,7 +445,7 @@ svg {
 		width:110%;
 	}
 	.laptop-screen {
-		top:9%; 
+		top:9%;
 		left:15.8%;
 		width:68.4%;
 		height:78.1%;
@@ -448,7 +455,7 @@ svg {
 	}
 }
 
-@media only screen and (min-width :768px) and (max-width :1024px) and (orientation :landscape) { 
+@media only screen and (min-width :768px) and (max-width :1024px) and (orientation :landscape) {
 	.iphone-screen {
 		top:50px;
 	}

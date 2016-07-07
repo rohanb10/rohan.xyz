@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <!--
-	             _                                              
-                | |                                             
+	             _
+                | |
   _ __    ___   | |__     __ _   _ __       __  __  _   _   ____
  | '__|  / _ \  | '_ \   / _` | | '_ \      \ \/ / | | | | |_  /
- | |    | (_) | | | | | | (_| | | | | |  _   >  <  | |_| |  / / 
+ | |    | (_) | | | | | | (_| | | | | |  _   >  <  | |_| |  / /
  |_|     \___/  |_| |_|  \__,_| |_| |_| (_) /_/\_\  \__, | /___|
-                                                     __/ |      
-                                                    |___/   
-	Welcome to my source code. Feel free to poke around
+                                                     __/ |
+                                                    |___/
 -->
 <html>
 <head>
@@ -16,10 +15,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Rohan Bhansali">
 	<meta name="keywords" content="rohan, bhansali, rohanb10, rohanb10@gmail.com, rohanbhansali@wustl.edu, rohan.xyz, xyz, portfolio, personal, website, designer, developer, stl, st, louis, wustl, washu, washington, university, github">
-	<meta name="description" content="I'm a responsive web designer. Come check out my work.">
+	<meta name="description" content="I make responsive websites and stuff">
 	<meta property="og:title" content="Rohan Bhansali">
 	<meta property="og:type" content="website">
-	<meta property="og:description" content="I'm a responsive web designer. Come check out my work.">
+	<meta property="og:description" content="I make responsive websites and stuff">
 	<meta property="og:url" content="http://rohan.xyz/">
 	<meta property="og:image" content="http://rohan.xyz/img/favicon/og.png">
 
@@ -27,8 +26,8 @@
 
 	<!-- dependencies -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"><!-- custom bootsrap build. Only grid + responsive utilities -->
-	<link rel="stylesheet" type="text/css" href="css/style.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="css/style.min.css"><!-- See the uncompressed code at http://github./com/rohanb10/resume -->
+
 	<!-- favicon codes -->
 	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png">
@@ -67,7 +66,7 @@
 			</g>
 		</svg>
 		<div class="arrow-intro">
-			<a onclick='scroll(".panel-me")'><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
+			<a onclick='scroll("panel-me")'><img class="arrow" src="img/arrowblack.png" alt="arrow"></a>
 		</div>
 	</div>
 	<!-- About Me (half) panel -->
@@ -87,13 +86,13 @@
 					</div>
 					<div class="text-center">
 						<div class="col-md-offset-2 col-md-2 col-xs-4 col-sm-4 me-btn">
-							<a onclick='scroll(".panel-projects")'>Projects</a>
+							<a onclick='scroll("panel-projects")'>Projects</a>
 						</div>
 						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
-							<a onclick='scroll(".panel-skills")'>Skills</a>
+							<a onclick='scroll("panel-skills")'>Skills</a>
 						</div>
 						<div class="col-md-2 col-xs-4 col-sm-4 me-btn">
-							<a onclick='scroll(".panel-exp")'>Experience</a>
+							<a onclick='scroll("panel-exp")'>Experience</a>
 						</div>
 					</div>
 				</div>
@@ -162,7 +161,11 @@
 		<p class="hidden-xs hidden-sm text-small">&nbsp;</p>
 		<div class="container">
 			<div class="col-md-6 col-xs-12">
-				<br class="hidden-xs hidden-sm"><p class="text-medium">I use several programming languages and frameworks to get the job done. The ones shown here are the ones I'm the most familiar with. As a web developer, I'm constantly learning to use new tools every day.
+				<br class="hidden-xs hidden-sm">
+				<p class="text-medium">
+					I use several languages and frameworks to get the job done.
+					Most of them are tools that I've used as a front-end developer, but I have experience working across the full stack.
+					I'm constantly learning to use new libraries every day and have learnt to pick up new tools very quickly.
 				</p>
 				<h3 class="hidden-sm hidden-xs">&nbsp;</h3>
 				<p class="text-center">&nbsp;<span class="skill-hover"></span></p>
@@ -179,26 +182,30 @@
 				<div class="row">
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/nodejs.png" alt="NodeJS"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/meteor.svg" alt="Meteor"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/gulp.png" alt="Gulp"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/react.png" alt="React"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/redux.png" alt="Redux"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/socketio.png" alt="Socket.IO"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/python.png" alt="Python"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/shell.png" alt="Shell Scripting"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/gulp.png" alt="Gulp"></div>
 				</div>
 				<div class="row">
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/python.png" alt="Python"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/mongodb.png" alt="MongoDB"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/mysql.png" alt="MySQL"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/psql.png" alt="PostgreSQL"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/firebase.png" alt="Firebase"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/aws.png" alt="Amazon Web Services"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/g-analytics.png" alt="Google Analytics"></div>
+					<div class="col-md-2 col-xs-2"><a href="https://en.wikipedia.org/wiki/AFC_Ajax" target="_blank"><img class="img-skill" src="img/skills/ajax.png" alt="AFC Ajax"></a></div>
+					<!-- <div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/g-analytics.png" alt="Google Analytics"></div> -->
+
+
 				</div>
 				<div class="row bottom-row">
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/photoshop.png" alt="Adobe Photoshop"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/indesign.png" alt="Adobe InDesign"></div>
+					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/aws.png" alt="Amazon Web Services"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/bootstrap.png" alt="Bootstrap"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/wordpress.png" alt="WordPress"></div>
 					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/java.png" alt="Java"></div>
-					<div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/maya.png" alt="Maya"></div>
+					<!-- <div class="col-md-2 col-xs-2"><img class="img-skill" src="img/skills/maya.png" alt="Maya"></div> -->
 				</div>
 			</div>
 		</div>
@@ -286,7 +293,7 @@
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/script.min.js"></script>
+	<script type="text/javascript" src="js/script.min.js"></script><!-- See the uncompressed code at http://github./com/rohanb10/resume -->
 	<script async src="js/jquery-ui.min.js"></script><!-- custom jquery-ui build. Only effects -->
 	<script>//custom google analytics script
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

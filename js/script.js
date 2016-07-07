@@ -1,12 +1,5 @@
 //global variables
-var current_width, current_work, exp_loaded = false;
-//roles to cycle through for intro panel
-var roles = ["web developer","software engineer", "designer", "problem solver"];
-
-//check for a mobile device
-function isMobile() {
-	return (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-}
+var current_width = window.innerWidth, current_work, exp_loaded = false;
 
 //generate and display google maps as background for experience panel
 function showGoogleMaps(location) {
@@ -185,47 +178,59 @@ $(".project-list a").click(function() {
 
 //scroll to specified div
 function scroll(classname){
-	$('html,body').animate({
-		scrollTop: $(classname).offset().top
-	}, 1000);
+	scrollTo(document.body,document.getElementsByClassName(classname)[0].offsetTop,1000);
+}
+//recursive helper
+function scrollTo(e, t, duration) {
+  if (duration <= 0) return;
+  setTimeout(function() {
+      e.scrollTop = e.scrollTop + (t - e.scrollTop)/ duration * 10;
+      if (e.scrollTop === t) return;
+      scrollTo(e, t, duration - 10);
+  }, 10);
 }
 
 //hover over skill image animations
-$(".img-skill").hover(function() {
-	$(".skill-hover").html($(this).attr('alt'));
-	$(".skill-hover").css('opacity', '1');
-}, function() {
-	$(".skill-hover").css('opacity', '0');
-});
+var skills = document.querySelectorAll(".img-skill");
+var skill_container = document.getElementsByClassName("skill-hover")[0];
+for (i=0;i<skills.length;i++){
+	skills[i].addEventListener("mouseover", function(){
+		skill_container.innerHTML = this.getAttribute('alt');
+		skill_container.style.opacity = 1;
+	},false);
+	skills[i].addEventListener("mouseout", function(){
+		skill_container.style.opacity = 0;
+	},false);
+}
 
 /*	resize function called when orientation changed
-	caluclate device width and height in px instead of using 100vh to provide better user experience
-	this is a workaround to fix a bug where the viewport constantly changes on mobile browsers
-	More details here: http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
+		caluclate device width and height in px instead of using 100vh to provide better user experience
+		this is a workaround to fix a bug where the viewport constantly changes on mobile browsers
+		More details here: http://stackoverflow.com/questions/24944925/background-image-jumps-when-address-bar-hides-ios-android-mobile-chrome
 */
 function css_resize(){
 	current_width = window.innerWidth;
-	$(".panel").css('min-height', window.innerHeight+"px");
-	$(".half-panel").css('min-height', (window.innerHeight/2)+"px");
-	$(".quarter-panel").css('min-height', (window.innerHeight/4)+"px");
-	$(".arrow-intro").css('top', (window.innerHeight*.90)+"px");
+	var height = window.innerHeight;
+	document.getElementsByClassName('panel')[0].style.minHeight = height+"px";
+	document.getElementsByClassName('half-panel')[0].style.minHeight = height/2+"px";
+	document.getElementsByClassName('quarter-panel')[0].style.minHeight = height/4+"px";
+	document.getElementsByClassName('arrow-intro')[0].style.minHeight = height*.9+"px";
 }
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded',function(){
 	css_resize();
-});
+},false);
 
 //recalculate 100vh size if orientation is changed
-$(window).resize(function() {
-	(window.innerWidth != current_width) ? css_resize() : console.log();
-});
+window.addEventListener("resize",function() {
+	(window.innerWidth != current_width) ? css_resize() : "";
+},false);
 
 window.onload = function() {
 	//fill intro-panel text after 5.5s
 	setTimeout(function(){
-		$(".text-copy").css('fill', 'rgb(49, 48, 43)');
-		$(".text-copy").css('stroke-width', '0');
-		$(".arrow").show('fade',500);
+		document.getElementsByClassName('text-copy')[0].style.fill = "rgb(49, 48, 43)";
+		document.getElementsByClassName('arrow')[0].style.display="block";
 	},5500);
 	//resize iphone
 	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");

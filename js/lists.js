@@ -17,7 +17,7 @@ var jobList = [
   },
   {
     id:"wustl",
-    name:"WUSTL",
+    name:"Washington University in St. Louis",
     image:"img/wustl.png",
     position:"Teaching Assistant",
     date:"6 semesters",
@@ -46,7 +46,7 @@ var projectList = [
     name:"Studlife",
     url:"http://studlife.com",
     github:"https://github.com/rohanb10/studlife",
-    desription:""
+    desription:"I assisted in the responsive redesign for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ users every month."
   },
   {
     id:"sl-housing",

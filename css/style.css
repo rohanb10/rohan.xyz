@@ -100,33 +100,36 @@ svg {
 	height: 100%;
 }
 
-.text-copy {
+.text-copy-first, .text-copy-last {
 	fill: rgba(0,0,0,0);
 	-webkit-transition:all 2s linear;
 	transition:all 2s linear;
 	stroke-dasharray: 7% 28%;
 	stroke-width: 5px;
+	stroke: #31302B;
+
+}
+.text-copy-first {
 	-webkit-animation: stroke-offset 5s  linear;
 	animation: stroke-offset 5s  linear;
 }
-.text-copy:nth-child(1) {
-	stroke: #31302B;
+.text-copy-last {
+	-webkit-animation: stroke-offset 6s  linear;
+	animation: stroke-offset 6s  linear;
+}
+.text-copy-first:nth-child(1), .text-copy-last:nth-child(1)  {
 	stroke-dashoffset: 7%;
 }
-.text-copy:nth-child(2) {
-	stroke: #31302B;
+.text-copy-first:nth-child(2), .text-copy-last:nth-child(2)  {
 	stroke-dashoffset: 14%;
 }
-.text-copy:nth-child(3) {
-	stroke: #31302B;
+.text-copy-first:nth-child(3), .text-copy-last:nth-child(3)  {
 	stroke-dashoffset: 21%;
 }
-.text-copy:nth-child(4) {
-	stroke: #31302B;
+.text-copy-first:nth-child(4), .text-copy-last:nth-child(4)  {
 	stroke-dashoffset: 28%;
 }
-.text-copy:nth-child(5) {
-	stroke: #31302B;
+.text-copy-first:nth-child(5), .text-copy-last:nth-child(5)  {
 	stroke-dashoffset: 35%;
 }
 
@@ -189,10 +192,10 @@ svg {
 	transition:all linear 1s;
 }
 
-.active {
-	box-shadow:inset 250px 0 0 0 #31302B;
+.project-btn .active {
+	box-shadow:inset 200px 0 0 0 #31302B;
 	color:#F3F3F3;
-	cursor:initial;
+	cursor:auto;
 }
 
 .me-btn a:hover {
@@ -323,6 +326,10 @@ svg {
 	transition:all 1s linear;
 	-webkit-transition:all 1s linear;
 }
+.exp-header .flipped{
+	background-color: rgba(49,48,43,0.7);
+	color: #F3F3F3;
+}
 
 .exp-overlay .panel-header{
 	padding:0 10px 2px 10px;
@@ -376,6 +383,11 @@ svg {
 	margin:5px 0;
 	-webkit-transition:all linear 1s;
 	transition:all linear 1s;
+}
+.exp-btn .flipped {
+	border: 3px solid rgba(49,48,43,0.1);
+	color: #F3F3F3;
+	background-color: rgba(49,48,43,0.7);
 }
 
 .exp-title, .exp-position{

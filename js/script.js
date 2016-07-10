@@ -1,206 +1,34 @@
 //global variables
-var current_width = window.innerWidth, current_work, exp_loaded = false;
+var current_width = window.innerWidth, current_work;
 
-//generate and display google maps as background for experience panel
-function showGoogleMaps(location) {
-	var latLng = new google.maps.LatLng(location[0],location[1]);
-	map = new google.maps.Map(document.getElementById('googlemaps'),{
-		zoom: 13,
-		scrollwheel: false,
-		navigationControl: false,
-		mapTypeControl: false,
-		scaleControl: false,
-		draggable: false,
-		disableDefaultUI: true,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		center: latLng
-	});
-	$("#googlemaps, #bg-filter").show('fade',1000);
+function fadeIn(el) {
+  el.style.opacity = 0;
+  var last = +new Date();
+	el.style.display = 'block';
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / 1000;
+    last = +new Date();
+    if (+el.style.opacity < 1) {
+      setTimeout(tick, 16);
+    }
+  };
+  tick();
 }
 
-//experience panel helper
-function loadWorkPlace(work,location){
-	if(work=="zappos"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("Zappos.com");
-		$(".exp-position").html("Front-End Developer Intern");
-		$(".exp-date").html("Summer 2016");
-		$(".exp-text").html("<div>I will be working as an intern at Zappos.com in Las Vegas, NV this summer.</div><div>I will be working on the FEZ (Front End Zappos) team.</div><div>Details TBD.</div>");
-	}
-	if(work=="wustl"){
-		$(".img-exp").attr('src', 'img/'+work+".png");
-		$(".exp-title").html("Washington University in St. Louis");
-		$(".exp-position").html("Teaching Assistant");
-		$(".exp-date").html("6 semesters");
-		$(".exp-text").html("<div><strong>CSE 131 - Computer Science 1</strong></div><div>This course is introductory Computer Science course taught to over 500 students every semester. It covers many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and some simple data structures. It is taught in Java. As a TA for this course, my duties include:</div><ul><li>Holding weekly lab and studio sessions for around 40 students</li><li>Conducting weekly office hours for more individualized help</li><li>Grading of labs, studios and extensions</li><li>Proctoring and grading three exams every semester</li></ul>");
-	}
-	if(work=="sl"){
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-title").html("Student Life");
-		$(".exp-position").html("Senior Online Editor");
-		$(".exp-date").html("August 2014 - Present");
-		$(".exp-text").html("<div>Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:</div><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul><div>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a class='before after' href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a class='before after' href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.</div>");
-	}
-	if(work=="ef"){
-		$(".exp-title").html("EazyFriday");
-		$(".img-exp").attr('src', 'img/'+work+".jpg");
-		$(".exp-position").html("Software Developer Intern");
-		$(".exp-date").html("Summer 2015");
-		$(".exp-text").html("<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>.");
-	}
-	$(".exp-header span").css({
-		'background-color':'rgba(49,48,43,0.7)',
-		'color': '#F3F3F3',
-	});
-	$(".exp-btn a").css({
-		'border': '3px solid rgba(49,48,43,0.1)',
-		'color': '#F3F3F3',
-		'background-color': 'rgba(49,48,43,0.7)'
-	});
-	$(".exp-body").show('fade',1000);
-	exp_loaded = true;
-
-	//call to display and resize google maps background
+function fadeOut(el) {
+  el.style.opacity = 1;
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity - (new Date() - last) / 1000;
+    last = +new Date();
+    if (+el.style.opacity >= 0) {
+      setTimeout(tick, 16);
+    }
+  };
+  tick();
 	setTimeout(function(){
-		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+18+"px");
-		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+20+"px");
-		showGoogleMaps(location);
-	},100);
-	current_work = work;
-}
-
-//experience panel controller
-$(".exp-btn").click(function(event) {
-	var work = $(this).data('work');
-	if(work!=current_work){
-		var location = [$(this).data('lat'),$(this).data('long')];
-		//preload image for smooth transition
-		(new Image()).src = "img/"+work+".jpg";
-		if(exp_loaded){
-			$(".exp-body").hide('fade',1000);
-			setTimeout(function(){
-				loadWorkPlace(work,location);
-			},1020)
-		}
-		else{
-			// $.getScript("http://maps.googleapis.com/maps/api/js?sensor=false");
-			$.getScript("http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc&sensor=false");
-			$(".exp-before").hide('fade',1000);
-			setTimeout(function(){
-				loadWorkPlace(work,location);
-			},1020);
-		}
-	}
-});
-
-//project panel helper
-function projectSwitch(project,btn){
-	//only if selected project is different
-	if(project != $(".laptop-screen").data("screen")) {
-
-		//preload images
-		(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
-		(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
-
-		$(".iphone-screen").hide('slide', { direction: "left"},1000);
-		$(".laptop-screen").hide('slide', { direction: "left"},1000);
-		$(".project-description").hide('fade',1050);
-
-		$(".project-btn a").css('box-shadow', 'inset 0 0 0 0 #31302B');
-		$(".project-btn a").css('color', '#31302B');
-		$(".project-btn a").removeClass('active');
-
-		$(".laptop-screen").data("screen",project);
-
-		setTimeout(function() {
-			//update front end data
-			$(".iphone-screen").attr("src", "img/img-container/"+project+"-iphone.jpg");
-			$(".laptop-screen").attr("src", "img/img-container/"+project+"-laptop.jpg");
-			$(".iphone-screen").show('slide', { direction: "left"},1000);
-			$(".laptop-screen").show('slide', { direction: "left"},1000);
-			btn.css('box-shadow', 'inset 250px 0 0 0 #31302B');
-			btn.css('color', '#F3F3F3');
-			btn.addClass('active');
-
-			//change descriptions / buttons
-			$(".project-description, .project-url").show('fade',1000);
-
-			if(project == "ks") {
-				$(".project-description").html("An app that estimates the number of people at dining halls on WUSTL's campus at any given time. Data is gathered from wifi routers across campus and an iPhone app. This project is still under active development");
-				$(".project-url").attr("href","http://eazyfriday.com");
-				$(".project-github").attr("href","https://github.com/yashdalal/kraudesorce");
-				$(".project-url").hide('fade',1000);
-			}
-			if(project == "sl") {
-				$(".project-description").text("I run the website for Student Life. Built using the LAMP stack with Wordpress, it recieves 100,000+ page views from 45,000+ users every month.");
-				$(".project-url").attr("href","http://studlife.com");
-				$(".project-github").attr("href","https://github.com/rohanb10/studlife");
-			}
-			if(project == "sl-housing") {
-				$(".project-description").text("A comprehensive housing guide for all official campus living options for Washington University. Check out the website and source code below.");
-				$(".project-url").attr("href","http://studlife.com/housing");
-				$(".project-github").attr("href","https://github.com/rohanb10/studlife");
-			}
-			if(project == "sl-whowon") {
-				$(".project-description").text("An end of year bracket recapping the 32 most notable events on WUSTL's campus in 2015-16. This piece was split into 5 parts, and had a staggered release on the website over the course of a week.");
-				$(".project-url").attr("href","http://studlife.com/whowon1516");
-				$(".project-github").attr("href","https://github.com/rohanb10/studlife");
-			}
-			if(project == "llinder") {
-				$(".project-description").text("A simple one page responsive website I built for a job application in Fall 2015. The site features pure css parallax scrolling. Check out the website or view the Github for more information.");
-				$(".project-url").attr("href","http://rohanb10.github.io/Llinder");
-				$(".project-github").attr("href","https://github.com/rohanb10/Llinder");
-			}
-			if(project == "personal") {
-				$(".project-description").html("I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a class='before after' target='_blank' href='404.html'>404 page.</a>");
-				$(".project-url").attr("href","http://rohan.xyz");
-				$(".project-github").attr("href","https://github.com/rohanb10/resume");
-			}
-		},1000);
-	}
-}
-
-//project panel controller
-$(".project-list a").click(function() {
-	var project = $(this).data("project");
-	var btn = $(this);
-	if($(".project-before").css('display')!="none"){
-		$(".project-before").hide('fade',1000);
-		setTimeout(function(){
-			$(".project-container").show('fade',1000);
-			projectSwitch(project,btn);
-		},1000);
-	}
-	else{
-		projectSwitch(project,btn);
-	}
-});
-
-//scroll to specified div
-function scroll(classname){
-	scrollTo(document.body,document.getElementsByClassName(classname)[0].offsetTop,1000);
-}
-//recursive helper
-function scrollTo(e, t, duration) {
-  if (duration <= 0) return;
-  setTimeout(function() {
-      e.scrollTop = e.scrollTop + (t - e.scrollTop)/ duration * 10;
-      if (e.scrollTop === t) return;
-      scrollTo(e, t, duration - 10);
-  }, 10);
-}
-
-//hover over skill image animations
-var skills = document.querySelectorAll(".img-skill");
-var skill_container = document.getElementsByClassName("skill-hover")[0];
-for (i=0;i<skills.length;i++){
-	skills[i].addEventListener("mouseover", function(){
-		skill_container.innerHTML = this.getAttribute('alt');
-		skill_container.style.opacity = 1;
-	},false);
-	skills[i].addEventListener("mouseout", function(){
-		skill_container.style.opacity = 0;
-	},false);
+		el.style.display = 'none';
+	},1000);
 }
 
 /*	resize function called when orientation changed
@@ -217,21 +45,179 @@ function css_resize(){
 	document.getElementsByClassName('arrow-intro')[0].style.minHeight = height*.9+"px";
 }
 
+//generate and display google maps as background for experience panel
+function showGoogleMaps(location) {
+	var latLng = new google.maps.LatLng(location[0],location[1]);
+	map = new google.maps.Map(document.getElementById('googlemaps'),{
+		zoom: 13,
+		scrollwheel: false,
+		navigationControl: false,
+		mapTypeControl: false,
+		scaleControl: false,
+		draggable: false,
+		disableDefaultUI: true,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		center: latLng
+	});
+  fadeIn(document.getElementById('googlemaps'));
+  fadeIn(document.getElementById('bg-filter'));
+}
+
+// FIXME
+//experience panel helper
+function loadWorkplace(work,location){
+	var activeWorkplace = [];
+	for(i=0;i<jobList.length;i++){
+		if(jobList[i].id==work){
+			activeWorkplace = jobList[i];
+		}
+	}
+	document.getElementsByClassName('img-exp')[0].src = activeWorkplace.image;
+	document.getElementsByClassName('exp-title')[0].innerHTML = activeWorkplace.name;
+	document.getElementsByClassName('exp-position')[0].innerHTML = activeWorkplace.position;
+	document.getElementsByClassName('exp-date')[0].innerHTML = activeWorkplace.date;
+	document.getElementsByClassName('exp-text')[0].innerHTML = activeWorkplace.text;
+  document.querySelector(".exp-header span").classList.add('flipped');
+  var buttons = document.querySelectorAll(".exp-btn a");
+  for(i = 0;i<buttons.length;i++){
+    buttons[i].classList.add("flipped");
+  }
+  fadeIn(document.getElementsByClassName('exp-body')[0]);
+
+	//call to display and resize google maps background
+	setTimeout(function(){
+		// var panelHeight = document.getElementsByClassName('panel-exp')[0].style.height;
+    // console.log(panelHeight);
+    // $("#googlemaps").show();
+		$("#googlemaps").css('height', parseInt($(".panel-exp").css('height'),10)+18+"px");
+		$("#bg-filter").css('height', parseInt($(".panel-exp").css('height'),10)+20+"px");
+		showGoogleMaps(location);
+	},100);
+	current_work = work;
+}
+
+// FIXME
+//experience panel controller
+$(".exp-btn").click(function(event) {
+	var work = $(this).data('work');
+	if(work!=current_work){
+		var location = [$(this).data('lat'),$(this).data('long')];
+		//preload image for smooth transition
+		(new Image()).src = "img/"+work+".jpg";
+		if(document.getElementsByClassName('exp-before')[0].style.display!='none'){
+			var script = document.createElement('script');
+			script.src = "http://maps.googleapis.com/maps/api/js?sensor=false";
+			// script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc&sensor=false";
+			document.getElementsByTagName('head')[0].appendChild(script);
+			fadeOut(document.getElementsByClassName('exp-before')[0])
+		}
+		else{
+			fadeOut(document.getElementsByClassName('exp-body')[0])
+		}
+		setTimeout(function(){
+			loadWorkplace(work,location);
+		},1020);
+	}
+});
+
+// FIXME
+//project panel helper
+function projectSwitch(project,btn){
+	var laptopScreen = document.getElementsByClassName('laptop-screen')[0];
+
+	//preload images
+	(new Image()).src = "img/img-container/"+project+"-laptop.jpg";
+	(new Image()).src = "img/img-container/"+project+"-iphone.jpg";
+
+	$(".iphone-screen").hide('slide', { direction: "left"},1000);
+	$(".laptop-screen").hide('slide', { direction: "left"},1000);
+	fadeOut(document.getElementsByClassName('project-description')[0]);
+	var buttons = document.querySelectorAll(".project-btn a");
+	for(i=0;i<buttons.length;i++){
+		buttons[i].classList.remove('active');
+	}
+
+	laptopScreen.dataset.screen=project;
+
+	setTimeout(function() {
+		//update front end data
+		laptopScreen.src = "img/img-container/"+project+"-laptop.jpg";
+		document.getElementsByClassName('iphone-screen')[0].src = "img/img-container/"+project+"-iphone.jpg";
+		$(".iphone-screen").show('slide', { direction: "left"},1000);
+		$(".laptop-screen").show('slide', { direction: "left"},1000);
+		btn.classList.add('active');
+
+		//change descriptions / buttons
+		fadeIn(document.getElementsByClassName('project-description')[0]);
+		var activeProject = [];
+		for(i=0;i<projectList.length;i++){
+			if(projectList[i].id==project){
+				activeProject = projectList[i];
+			}
+		}
+		document.getElementsByClassName('project-description')[0].innerHTML = activeProject.desription;
+		document.getElementsByClassName('project-url')[0].href = activeProject.url;
+		document.getElementsByClassName('project-github')[0].href = activeProject.github;
+	},1000);
+}
+
+//project panel controller
+$(".project-list a").click(function() {
+	var project = this.dataset.project;
+	//only if selected project is different
+	if(project != document.getElementsByClassName('laptop-screen')[0]) {
+		var btn = this;
+		if(document.getElementsByClassName('project-before')[0].style.display != "none"){
+			fadeOut(document.getElementsByClassName('project-before')[0]);
+			setTimeout(function(){
+				fadeIn(document.getElementsByClassName('project-container')[0])
+				projectSwitch(project,btn);
+			},1000);
+		}
+		else{
+			projectSwitch(project,btn);
+		}
+	}
+});
+
+//scroll to specified div
+function scroll(classname){
+	scrollTo(document.body,document.getElementsByClassName(classname)[0].offsetTop,1000);
+}
+//recursive helper
+function scrollTo(e, t, duration) {
+  if (duration <= 0) return;
+  setTimeout(function() {
+    e.scrollTop = e.scrollTop + (t - e.scrollTop)/ duration * 10;
+    if (e.scrollTop === t) return;
+    scrollTo(e, t, duration - 10);
+  }, 10);
+}
+
+//hover over skill image animations
+var skills = document.querySelectorAll(".img-skill");
+var skill_container = document.getElementsByClassName("skill-hover")[0];
+for (i=0;i<skills.length;i++){
+	skills[i].addEventListener("mouseover", function(){
+		skill_container.innerHTML = this.getAttribute('alt');
+		skill_container.style.opacity = 1;
+	},false);
+	skills[i].addEventListener("mouseout", function(){
+		skill_container.style.opacity = 0;
+	},false);
+}
+
 document.addEventListener('DOMContentLoaded',function(){
 	css_resize();
+	setTimeout(function(){
+		document.getElementsByClassName('text-copy-first')[0].style.fill = "rgb(49, 48, 43)";
+		document.getElementsByClassName('text-copy-last')[0].style.fill = "rgb(49, 48, 43)";
+		document.getElementsByClassName('arrow')[0].style.display="block";
+	},6100);
+	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");
 },false);
 
 //recalculate 100vh size if orientation is changed
 window.addEventListener("resize",function() {
 	(window.innerWidth != current_width) ? css_resize() : "";
 },false);
-
-window.onload = function() {
-	//fill intro-panel text after 5.5s
-	setTimeout(function(){
-		document.getElementsByClassName('text-copy')[0].style.fill = "rgb(49, 48, 43)";
-		document.getElementsByClassName('arrow')[0].style.display="block";
-	},5500);
-	//resize iphone
-	$(".iphone").css("max-height",(parseInt($(".laptop").css('height'),10)-8)+"px");
-};

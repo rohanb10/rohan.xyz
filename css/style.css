@@ -215,11 +215,14 @@ svg {
 }
 
 .laptop-screen {
+	display: block;
 	position:absolute;
 	top:9%;
 	left:14.6%;
 	width:70.8%;
 	height:78.1%;
+	clip: rect(0,0,1000px,0);
+  transition: clip 1s linear;
 }
 
 .iphone {
@@ -230,11 +233,14 @@ svg {
 }
 
 .iphone-screen {
+	display: block;
 	position:absolute;
 	top:62px;
 	z-index:2;
 	left:5.75%;
 	width:46.2%;
+	clip: rect(0,0,1000px,0);
+	transition: clip 1s linear;
 }
 
 .text-medium, .project-text {
@@ -316,6 +322,10 @@ svg {
 
 .gmnoprint, .gm-style-cc, .name-intro, #googlemaps,.arrow, #bg-filter, .exp-body, .project-container {
 	display:none;
+}
+
+.project-container, .exp-body, .arrow, .project-url, .project-github{
+	opacity: 0;
 }
 
 .exp-overlay{
@@ -408,7 +418,10 @@ svg {
 	filter:contrast(100%);
 	-webkit-filter:contrast(100%);
 }
-
+.project-before, .project-description, .exp-before, .exp-body, .project-container, #googlemaps, #bg-filter, .arrow, .project-url, .project-github	{
+	-webkit-transition: opacity 1s linear;
+	transition: opacity 1s linear;
+}
 @keyframes rotate {
 	from {
 		-webkit-transform:rotate(0deg);

@@ -66,7 +66,7 @@ var projectList = [
     id:"llinder",
     name:"Llinder",
     url:"http://rohanb10.github.io/Llinder",
-    github:"https://github.com/rohanb10/llinder",
+    github:"https://github.com/rohanb10/Llinder",
     desription:"A simple one page responsive website I built for a job application in Fall 2015. The site features pure css parallax scrolling. Check out the website or view the Github for more information."
   },
   {

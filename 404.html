@@ -14,31 +14,39 @@
 	<meta name="theme-color" content="#31302b"><!-- Chrome for Android address bar -->
 	<style type="text/css">
 		body {
-			font: 200 175px 'Trebuchet MS';
-			/* transition: background-color 0.5s linear; */
-			/* -webkit-transition: background-color 0.5s linear; */
 			background-color: #134E93;
 			overflow-x:hidden;
+			color: #FFF;
 			overflow-y:hidden;
 			max-height:100vh;
 		}
 		a {
-			position: absolute;
 			color: #FFF;
+			font: 200 9em 'Trebuchet MS';
+			position: absolute;
+			top: 20vh;
+			left:20vw;
 			text-decoration: none;
 		}
 		a:hover {
 			text-shadow: 5px 8px #1E97B2, -10px -5px #F74B42, 6px -9px #538835;
 		}
+		p {
+			top: 80vh;
+			position: relative;
+			text-align: center;
+			font: 200 20px 'Trebuchet MS';
+		}
 	</style>
 </head>
 <body>
-	<a href="http://rohan.xyz">404</a>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<a class="fourofour" href="http://rohan.xyz">404</a>
+	<p>Catch the 404 to go back to rohan.xyz</p>
+	<p></p><p></p>
 	<script>
 		// change background
 		var colours= ["#134E93", "#2694f4", "#A9352D", "#037c10", "#663EA9", "#a9467c", "#FB7F00", "#7F1714", "#c43494", "#40975A"];
-		var four = $("a"),w = window.innerWidth, h = window.innerHeight, current = 0;
+		var txt = document.getElementsByTagName('a')[0],w = window.innerWidth, h = window.innerHeight, current = 0;
 		function changeBG(){
 			var next=Math.floor(Math.random()*colours.length);
 			while(current==next){
@@ -47,37 +55,36 @@
 			document.body.style.backgroundColor = colours[next];
 			current=next;
 		}
-		// setInterval(changeBG, 3000);
-
-		//bumping
-		var move = {
-			right: function () {
-				four.animate({left: (w-four.outerWidth()+5)}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
-					move.left();
-					changeBG();
-				}});
-			},
-			left: function () {
-				four.animate({left: -5}, {duration: (w*5), queue: false, easing: "linear", complete: function(){
-					move.right();
-					changeBG();
-				}});
-			},
-			down: function () {
-				four.animate({top: (h-four.outerHeight()+41)}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
-					move.up();
-					changeBG();
-				}});
-			},
-			up: function () {
-				four.animate({top: -33}, {duration: (h*5), queue: false, easing: "linear", complete: function(){
-					move.down();
-					changeBG();
-				}});
+		var xVelocity=2, yVelocity=2;
+		function move(){
+			if((parseInt(getComputedStyle(txt).left)+parseInt(txt.offsetWidth)) >= window.innerWidth){
+				xVelocity = - Math.abs(xVelocity);
+				changeBG();
 			}
-		};
-		move.down();
-		move.right();
+			if (parseInt(getComputedStyle(txt).left) <=0){
+				xVelocity = Math.abs(xVelocity);
+				changeBG();
+			}
+			if((parseInt(getComputedStyle(txt).top)+parseInt(txt.offsetHeight))-40 >= window.innerHeight){
+				yVelocity = - Math.abs(yVelocity);
+				changeBG();
+			}
+			if (parseInt(getComputedStyle(txt).top) <=-35){
+				yVelocity = Math.abs(yVelocity);
+				changeBG();
+			}
+			txt.style.left = (parseInt(getComputedStyle(txt).left) + xVelocity)+"px";
+			txt.style.top = (parseInt(getComputedStyle(txt).top) + yVelocity)+"px";
+		}
+		window.setInterval(move,5);
+		txt.addEventListener('mouseenter',function(){
+				xVelocity = xVelocity * 2;
+				yVelocity = yVelocity * 2;
+		},false);
+		txt.addEventListener('mouseout',function(){
+				xVelocity = xVelocity / 2;
+				yVelocity = yVelocity / 2;
+		},false);
 	</script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

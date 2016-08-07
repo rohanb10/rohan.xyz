@@ -103,7 +103,6 @@ svg {
 
 .text-copy-first, .text-copy-last {
 	fill: rgba(0,0,0,0);
-	-webkit-transition:all 2s linear;
 	transition:all 2s linear;
 	stroke-dasharray: 7% 28%;
 	stroke-width: 5px;
@@ -166,7 +165,6 @@ svg {
 	border:3px solid #F3F3F3;
 	display:inline-block;
 	box-shadow:inset 0 0 0 0 #F3F3F3;
-	-webkit-transition:all linear 0.5s;
 	transition:all linear 0.5s;
 }
 
@@ -189,7 +187,6 @@ svg {
 	border:3px solid #31302B;
 	display:inline-block;
 	margin:5px 0;
-	-webkit-transition:all linear 1s;
 	transition:all linear 1s;
 }
 
@@ -271,7 +268,6 @@ svg {
 	width:40px;
 	height:auto;
 	opacity:1;
-	-webkit-transition:all .3s linear;
 	transition:all .3s linear;
 }
 
@@ -292,7 +288,6 @@ svg {
 .img-skill{
 	margin:10px auto;
 	max-width:50px;
-	-webkit-transition:all .4s linear;
 	transition:all .4s linear;
 	-webkit-filter:contrast(2%);
 	filter:contrast(2%);
@@ -307,7 +302,6 @@ svg {
 	font-size:1.5em;
 	-webkit-transform:none;
 	transform:none;
-	-webkit-transition:all .4s linear;
 	transition:all .4s linear;
 }
 
@@ -343,7 +337,6 @@ svg {
 
 .exp-header span{
 	transition:all 1s linear;
-	-webkit-transition:all 1s linear;
 }
 .exp-header .flipped{
 	background-color: rgba(49,48,43,0.7);
@@ -355,8 +348,6 @@ svg {
 }
 .exp-overlay a,.exp-overlay span{
 	box-sizing:border-box;
-	border:0 solid black;
-	-webkit-transition:all 1s linear;
 	transition:all 1s linear;
 }
 .text-right {
@@ -405,7 +396,6 @@ svg {
 .img-contact {
 	width:50px;
 	height:auto;
-	-webkit-transition:all .3s linear;
 	transition:all .3s linear;
 	-webkit-filter:contrast(0%);
 	filter:contrast(0%);
@@ -416,7 +406,6 @@ svg {
 	-webkit-filter:contrast(100%);
 }
 .project-before, .project-description, .exp-before, .exp-body, .project-container, #googlemaps, #bg-filter, .arrow, .project-url, .project-github	{
-	-webkit-transition: opacity 1s linear;
 	transition: opacity 1s linear;
 }
 @keyframes rotate {

@@ -449,6 +449,9 @@ svg {
 	.project-btn .active {
 		box-shadow:inset 130px 0 0 0 #31302B;
 	}
+	.arrow {
+		width: 30px;
+	}
 
 	.name-intro{
 		font-size:2.7em;

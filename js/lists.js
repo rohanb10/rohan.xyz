@@ -5,7 +5,7 @@ var jobList = [
     image:"img/ef.jpg",
     position:"Software Developer Intern",
     date:"Summer 2015",
-    text:"<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to request home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>."
+    text:"<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to purchase home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>."
   },
   {
     id:"sl",
@@ -27,9 +27,9 @@ var jobList = [
     id:"zappos",
     name:"Zappos",
     image:"img/zappos.jpg",
-    position:"Front-End Developer Intern",
+    position:"Front-End Engineering Intern",
     date:"Summer 2016",
-    text:"<div>I will be working as an intern at Zappos.com in Las Vegas, NV this summer.</div><div>I will be working on the FEZ (Front End Zappos) team.</div><div>Details TBD.</div>"
+    text:"<div>This past summer, I worked as an intern at Zappos.com.<br>I was on the FEZ (Front End Zappos) team and worked closely with the UX and mobile app teams.<br>In my ten weeks there, I completed the following tasks:</div><ul><li>Contributed to the development of a CSS and JS front-end framework to be used across all Zappos sites. The framework is in the process of being open-sourced.</li><li>Developed the 'My Account' portal for an upcoming redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li><li>Designed and built a WebView to be used in the Zappos mobile apps as an interface for the new Zappos recommendation engine.</li></ul><div>I will update this panel with public links to my work when they go live</div>"
   }
 ];
 

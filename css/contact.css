@@ -4,11 +4,8 @@ html,body {
 	text-align: center;
 	color: #FFF;
 	font:200 1.2em Source Sans Pro;
-	position: fixed;
-	width: 100%;
+	overflow-x: hidden;
 	margin: 0;
-	padding: 0;
-	height:100%;
 }
 *{
 	position: relative;
@@ -46,8 +43,6 @@ a.before:hover:before,a.after:hover:after{
 	left: 10px;
 }
 .form-container{
-	z-index: 2;
-	width: 100%;
 	max-width: 500px;
 	margin: 0 auto;
 	border-radius: 1px;
@@ -84,28 +79,17 @@ a.before:hover:before,a.after:hover:after{
 	height: 150px;
 }
 
-.plane-frame {
-	margin: 0 auto;
-	position: absolute;
-	width: 100%;
-	top: 55vh;
-	z-index: -1;
-}
-
 .plane-container {
 	width: 200px;
 	margin: 0 auto;
-}
-
-.plane-container {
 	-webkit-animation: plane-vertical 2s alternate infinite;
 	animation: plane-vertical 2s alternate infinite;
 }
 
 @keyframes plane-vertical {
 	0% {
-		-webkit-transform: translateY(0px);
-		transform: translateY(0px);
+		-webkit-transform: translateY(-100px);
+		transform: translateY(-100px);
 	}
 	100% {
 		-webkit-transform: translateY(100px);

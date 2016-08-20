@@ -220,15 +220,18 @@ svg {
 	position:relative;
 }
 
-.laptop-screen {
+.iphone-screen, .laptop-screen {
 	display: block;
 	position:absolute;
+	clip: rect(0,0,1000px,0);
+  transition: clip 1s linear;
+}
+
+.laptop-screen {
 	top:9%;
 	left:14.6%;
 	width:70.8%;
 	height:78.1%;
-	clip: rect(0,0,1000px,0);
-  transition: clip 1s linear;
 }
 
 .iphone {
@@ -239,14 +242,10 @@ svg {
 }
 
 .iphone-screen {
-	display: block;
-	position:absolute;
 	top:62px;
 	z-index:2;
 	left:5.75%;
 	width:46.2%;
-	clip: rect(0,0,1000px,0);
-	transition: clip 1s linear;
 }
 
 .text-medium, .project-text {

@@ -5,7 +5,7 @@ var jobList = [
     image:"img/ef.jpg",
     position:"Software Developer Intern",
     date:"Summer 2015",
-    text:"<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to purchase home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='before after' href='http://eazyfriday.com' target='_blank'>here</a>."
+    text:"<div>EazyFriday is a Mumbai based software startup. Its goal is to allow users to purchase home services like electricians and plumbers through a web service and companion apps.</div><div>As an intern, I performed these tasks:</div><ul><li>Developed a dynamic user authorization system for retailers and administrators</li><li>Designed and built a retail management dashboard to control outlet operations</li><li>Designed and built the interface for back-end administrative controls for retailers</li><li>Contributed to an API to be used by the companion mobile apps</li></ul>You can view their website <a class='fancy' href='http://eazyfriday.com' target='_blank'>here</a>."
   },
   {
     id:"sl",
@@ -13,7 +13,7 @@ var jobList = [
     image:"img/sl.jpg",
     position:"Senior Online Editor",
     date:"August 2014 - Present",
-    text:"<div>Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:</div><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul><div>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a class='before after' href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a class='before after' href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.</div>"
+    text:"<div>Student Life is Washington University's only independent newspaper.<br>As Senior Online Editor, my duties include:</div><ul><li>Working with the editorial staff to design attractive, responsive web pages for their articles</li><li>Performing regular maintenance of servers, backups and archives</li><li>Resolve database errors due to heavy traffic or other unforeseen circumstances</li></ul><div>In the past, I assisted with redesign of the website to make it responsive. You can view the site <a class='fancy' href='http://studlife.com' target='_blank'>here</a> and view our special online projects <a class='fancy' href='https://github.com/rohanb10/studlife' target='_blank'>here</a>.</div>"
   },
   {
     id:"wustl",
@@ -74,6 +74,6 @@ var projectList = [
     name:"Rohan.xyz",
     url:"http://rohan.xyz",
     github:"https://github.com/rohanb10/resume",
-    desription:"I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a class='before after' target='_blank' href='404.html'>404 page.</a>"
+    desription:"I redesigned my personal website from scratch over the summer of 2016. Check out the source code at my GitHub or just inspect element instead. Don't forget the <a class='fancy' target='_blank' href='404.html'>404 page.</a>"
   }
 ];

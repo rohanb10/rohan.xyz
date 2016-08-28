@@ -151,7 +151,7 @@ for (i=0;i<expButtons.length;i++){
   		if(document.getElementsByClassName('exp-before')[0].style.display!='none'){
   			var script = document.createElement('script');
   			// script.src = "http://maps.googleapis.com/maps/api/js?sensor=false";
-  			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc&sensor=false";
+  			script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyCl4fBFahd6vX-FDkSoaLzhPihOjsAWQBc";
   			document.getElementsByTagName('head')[0].appendChild(script);
   			fadeOut(document.getElementsByClassName('exp-before')[0])
   		}

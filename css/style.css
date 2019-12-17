@@ -1,1 +1,179 @@
-@import url(https://fonts.googleapis.com/css?family=Cherry+Swash&display=swap);
+@import url("https://fonts.googleapis.com/css?family=Muli:500,600,700,800,900&display=swap");
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Muli', sans-serif;
+  background-color: #F2F2F2;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+* {
+  box-sizing: border-box; }
+
+h1 {
+  font-size: 4em;
+  font-weight: 900; }
+
+h1 span {
+  display: block; }
+
+.full-height {
+  height: 100vh; }
+
+.vert-center {
+  align-items: center; }
+
+.sections {
+  flex-direction: column;
+  justify-content: space-around;
+  display: flex; }
+  .sections .section-title {
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: right;
+    margin: 1em 0;
+    transform: translateX(0) translateY(0);
+    transition: transform 1s ease-in; }
+    .sections .section-title.slide-off-screen {
+      transform: translateX(10em) translateY(0); }
+    .sections .section-title .bg-red {
+      padding: 0.2em 0.2em 0.2em 0.45em;
+      border-bottom: 0.1em solid #BE2C2F;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative; }
+      .sections .section-title .bg-red:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #BE2C2F;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+        transition: transform 0.3s; }
+      .sections .section-title .bg-red:hover, .sections .section-title .bg-red:focus, .sections .section-title .bg-red:active {
+        color: #fff; }
+      .sections .section-title .bg-red:hover:before, .sections .section-title .bg-red:focus:before, .sections .section-title .bg-red:active:before {
+        /*remove skew on mobile*/
+        transform: scaleY(1) skew(-9deg); }
+    .sections .section-title .bg-green {
+      padding: 0.2em 0.2em 0.2em 0.45em;
+      border-bottom: 0.1em solid #56B14C;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative; }
+      .sections .section-title .bg-green:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #56B14C;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+        transition: transform 0.3s; }
+      .sections .section-title .bg-green:hover, .sections .section-title .bg-green:focus, .sections .section-title .bg-green:active {
+        color: #fff; }
+      .sections .section-title .bg-green:hover:before, .sections .section-title .bg-green:focus:before, .sections .section-title .bg-green:active:before {
+        /*remove skew on mobile*/
+        transform: scaleY(1) skew(-9deg); }
+    .sections .section-title .bg-blue {
+      padding: 0.2em 0.2em 0.2em 0.45em;
+      border-bottom: 0.1em solid #244B7A;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative; }
+      .sections .section-title .bg-blue:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #244B7A;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+        transition: transform 0.3s; }
+      .sections .section-title .bg-blue:hover, .sections .section-title .bg-blue:focus, .sections .section-title .bg-blue:active {
+        color: #fff; }
+      .sections .section-title .bg-blue:hover:before, .sections .section-title .bg-blue:focus:before, .sections .section-title .bg-blue:active:before {
+        /*remove skew on mobile*/
+        transform: scaleY(1) skew(-9deg); }
+    .sections .section-title .bg-yellow {
+      padding: 0.2em 0.2em 0.2em 0.45em;
+      border-bottom: 0.1em solid #F8C74B;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative; }
+      .sections .section-title .bg-yellow:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #F8C74B;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+        transition: transform 0.3s; }
+      .sections .section-title .bg-yellow:hover, .sections .section-title .bg-yellow:focus, .sections .section-title .bg-yellow:active {
+        color: #fff; }
+      .sections .section-title .bg-yellow:hover:before, .sections .section-title .bg-yellow:focus:before, .sections .section-title .bg-yellow:active:before {
+        /*remove skew on mobile*/
+        transform: scaleY(1) skew(-9deg); }
+    .sections .section-title .bg-purple {
+      padding: 0.2em 0.2em 0.2em 0.45em;
+      border-bottom: 0.1em solid #49266C;
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative; }
+      .sections .section-title .bg-purple:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #49266C;
+        transform: scaleY(0);
+        transform-origin: 50% 100%;
+        transition: transform 0.3s; }
+      .sections .section-title .bg-purple:hover, .sections .section-title .bg-purple:focus, .sections .section-title .bg-purple:active {
+        color: #fff; }
+      .sections .section-title .bg-purple:hover:before, .sections .section-title .bg-purple:focus:before, .sections .section-title .bg-purple:active:before {
+        /*remove skew on mobile*/
+        transform: scaleY(1) skew(-9deg); }
+
+.sidebar {
+  display: flex;
+  align-items: baseline;
+  justify-content: center; }
+  .sidebar .sidebar-text {
+    color: #F2F2F2;
+    padding: 0.25em 0;
+    writing-mode: vertical-lr;
+    vertical-align: baseline;
+    font-size: 2em;
+    transform: rotate(90deg); }
+  .sidebar.bg-red {
+    background-color: #BE2C2F; }
+  .sidebar.bg-purple {
+    background-color: #49266C; }
+  .sidebar.bg-blue {
+    background-color: #244B7A; }
+  .sidebar.bg-green {
+    background-color: #56B14C; }
+  .sidebar.bg-yellow {
+    background-color: #F8C74B; }
+
+/*# sourceMappingURL=style.css.map */

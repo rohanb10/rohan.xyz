@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:500,600,700,800,900&display=swap");
 html, body {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   width: 100%;
   font-family: 'Muli', sans-serif;
@@ -8,35 +8,46 @@ html, body {
   overflow-x: hidden;
   overflow-y: auto; }
 
-* {
-  box-sizing: border-box; }
-
 h1 {
   font-size: 4em;
   font-weight: 900; }
   h1 span {
     display: block; }
 
+.container-width {
+  max-width: 1100px;
+  padding: 1em;
+  margin: 0 auto; }
+
 .flex-container {
   display: flex; }
+  .flex-container.flex-columns {
+    flex-direction: column; }
 
-.flex-columns {
-  flex-direction: column; }
+#navigation {
+  transition: background-color 0.3s linear; }
+  #navigation.bg-red {
+    background-color: #BE2C2F; }
+  #navigation.bg-green {
+    background-color: #56B14C; }
+  #navigation.bg-blue {
+    background-color: #3369AC; }
+  #navigation.bg-yellow {
+    background-color: #F8C74B; }
+  #navigation.bg-purple {
+    background-color: #49266C; }
 
 .sections .section-title {
   cursor: pointer;
-  font-size: 2em;
-  font-weight: 700;
-  text-align: right;
-  margin: 1em 0;
+  font-size: 1.25em;
   transform: translateX(0) translateY(0);
-  transition: transform 1s ease-in; }
-  .sections .section-title .bg-red {
+  padding: .5em; }
+  .sections .section-title.bg-red {
     border-bottom: 0.1em solid #BE2C2F;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     transform: perspective(1px) translateZ(0); }
-    .sections .section-title .bg-red:before {
+    .sections .section-title.bg-red:before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -47,17 +58,17 @@ h1 {
       background: #BE2C2F;
       transform: scaleY(0);
       transform-origin: 50% 100%;
-      transition: transform 0.5s; }
-    .sections .section-title .bg-red:hover, .sections .section-title .bg-red:focus, .sections .section-title .bg-red:active {
+      transition: transform 0.3s; }
+    .sections .section-title.bg-red:hover, .sections .section-title.bg-red.wave, .sections .section-title.bg-red.focused {
       color: #fff; }
-    .sections .section-title .bg-red:hover:before, .sections .section-title .bg-red:focus:before, .sections .section-title .bg-red:active:before {
-      transform: scaleY(1) skew(-9deg); }
-  .sections .section-title .bg-green {
+    .sections .section-title.bg-red:hover:before, .sections .section-title.bg-red.wave:before {
+      transform: scaleY(1) skew(0deg); }
+  .sections .section-title.bg-green {
     border-bottom: 0.1em solid #56B14C;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     transform: perspective(1px) translateZ(0); }
-    .sections .section-title .bg-green:before {
+    .sections .section-title.bg-green:before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -68,17 +79,17 @@ h1 {
       background: #56B14C;
       transform: scaleY(0);
       transform-origin: 50% 100%;
-      transition: transform 0.5s; }
-    .sections .section-title .bg-green:hover, .sections .section-title .bg-green:focus, .sections .section-title .bg-green:active {
+      transition: transform 0.3s; }
+    .sections .section-title.bg-green:hover, .sections .section-title.bg-green.wave, .sections .section-title.bg-green.focused {
       color: #fff; }
-    .sections .section-title .bg-green:hover:before, .sections .section-title .bg-green:focus:before, .sections .section-title .bg-green:active:before {
-      transform: scaleY(1) skew(-9deg); }
-  .sections .section-title .bg-blue {
-    border-bottom: 0.1em solid #244B7A;
+    .sections .section-title.bg-green:hover:before, .sections .section-title.bg-green.wave:before {
+      transform: scaleY(1) skew(0deg); }
+  .sections .section-title.bg-blue {
+    border-bottom: 0.1em solid #3369AC;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     transform: perspective(1px) translateZ(0); }
-    .sections .section-title .bg-blue:before {
+    .sections .section-title.bg-blue:before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -86,20 +97,20 @@ h1 {
       left: 0;
       right: 0;
       bottom: 0;
-      background: #244B7A;
+      background: #3369AC;
       transform: scaleY(0);
       transform-origin: 50% 100%;
-      transition: transform 0.5s; }
-    .sections .section-title .bg-blue:hover, .sections .section-title .bg-blue:focus, .sections .section-title .bg-blue:active {
+      transition: transform 0.3s; }
+    .sections .section-title.bg-blue:hover, .sections .section-title.bg-blue.wave, .sections .section-title.bg-blue.focused {
       color: #fff; }
-    .sections .section-title .bg-blue:hover:before, .sections .section-title .bg-blue:focus:before, .sections .section-title .bg-blue:active:before {
-      transform: scaleY(1) skew(-9deg); }
-  .sections .section-title .bg-yellow {
+    .sections .section-title.bg-blue:hover:before, .sections .section-title.bg-blue.wave:before {
+      transform: scaleY(1) skew(0deg); }
+  .sections .section-title.bg-yellow {
     border-bottom: 0.1em solid #F8C74B;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     transform: perspective(1px) translateZ(0); }
-    .sections .section-title .bg-yellow:before {
+    .sections .section-title.bg-yellow:before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -110,17 +121,17 @@ h1 {
       background: #F8C74B;
       transform: scaleY(0);
       transform-origin: 50% 100%;
-      transition: transform 0.5s; }
-    .sections .section-title .bg-yellow:hover, .sections .section-title .bg-yellow:focus, .sections .section-title .bg-yellow:active {
+      transition: transform 0.3s; }
+    .sections .section-title.bg-yellow:hover, .sections .section-title.bg-yellow.wave, .sections .section-title.bg-yellow.focused {
       color: #fff; }
-    .sections .section-title .bg-yellow:hover:before, .sections .section-title .bg-yellow:focus:before, .sections .section-title .bg-yellow:active:before {
-      transform: scaleY(1) skew(-9deg); }
-  .sections .section-title .bg-purple {
+    .sections .section-title.bg-yellow:hover:before, .sections .section-title.bg-yellow.wave:before {
+      transform: scaleY(1) skew(0deg); }
+  .sections .section-title.bg-purple {
     border-bottom: 0.1em solid #49266C;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     transform: perspective(1px) translateZ(0); }
-    .sections .section-title .bg-purple:before {
+    .sections .section-title.bg-purple:before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -131,10 +142,10 @@ h1 {
       background: #49266C;
       transform: scaleY(0);
       transform-origin: 50% 100%;
-      transition: transform 0.5s; }
-    .sections .section-title .bg-purple:hover, .sections .section-title .bg-purple:focus, .sections .section-title .bg-purple:active {
+      transition: transform 0.3s; }
+    .sections .section-title.bg-purple:hover, .sections .section-title.bg-purple.wave, .sections .section-title.bg-purple.focused {
       color: #fff; }
-    .sections .section-title .bg-purple:hover:before, .sections .section-title .bg-purple:focus:before, .sections .section-title .bg-purple:active:before {
-      transform: scaleY(1) skew(-9deg); }
+    .sections .section-title.bg-purple:hover:before, .sections .section-title.bg-purple.wave:before {
+      transform: scaleY(1) skew(0deg); }
 
 /*# sourceMappingURL=style.css.map */

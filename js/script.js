@@ -1,14 +1,17 @@
-var sections, wave;
+var sections, wave, navbar;
 
 document.addEventListener('DOMContentLoaded', function() {
 	sections = document.querySelectorAll('.section-title');
+	navbar = document.getElementById('navigation');
 	startWave();
 	for (var i = 0; i < sections.length; i++){
 		sections[i].onmouseover = function() {
 			killWave();
 		}
 		sections[i].onmouseout = function() {
-			startWave();
+			if (navbar.classList.length === 0) {
+				startWave();
+			}
 		}
 	}
 }, false);
@@ -42,12 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function openNav(element, sectionName) {
 	var navbar = document.getElementById('navigation');
 	navbar.classList = [];
+	killWave();
 	if (!element.classList.contains('focused')) {
 		navbar.classList.add(element.classList[1]);
 		for (var i = 0; i < sections.length; i++) {
 			sections[i].classList.remove('focused');
 		}
-		killWave();
 		element.classList.add('focused');
 	} else {
 		startWave();

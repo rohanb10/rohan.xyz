@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:500,600,700,800,900&display=swap");
 
 html, body {
-	margin:0;
+	margin:0 auto;
 	padding:0;
 	width:100%;
 	font-family: 'Muli', sans-serif;
@@ -17,27 +17,26 @@ html, body {
 h1 {
 	font-size: 4em;
 	font-weight: 900;
+
+	span {
+		display: block;
+	}
 }
 
-h1 span {
-	display: block;
+.flex-container {
+	display: flex;
 }
 
-.full-height {
-	height: 100vh;
-}
-
-.vert-center {
-	align-items: center;
+.flex-columns {
+	flex-direction: column;
 }
 
 @mixin animated-bg($color) {
-	padding: 0.2em 0.2em 0.2em 0.45em;
 	border-bottom: 0.1em solid $color;
-
-	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	position: relative;
+	transform: perspective(1px) translateZ(0);
+
 	&:before {
 		content: "";
 		position: absolute;
@@ -49,22 +48,17 @@ h1 span {
 		background: $color;
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
-		transition: transform 0.3s;
+		transition: transform 0.5s;
 	}
 	&:hover, &:focus, &:active {
 	 	color: #fff;
 	}
 	&:hover:before, &:focus:before, &:active:before {
-		/*remove skew on mobile*/
 		transform: scaleY(1) skew(-9deg);
 	}
 }
 
 .sections {
-	flex-direction: column;
-	justify-content: space-around;
-	display: flex;
-
 	.section-title {
 		cursor: pointer;
 		font-size: 2em;
@@ -73,11 +67,6 @@ h1 span {
 		margin: 1em 0;
 		transform: translateX(0) translateY(0);
 		transition: transform 1s ease-in;
-;
-
-		&.slide-off-screen {
-			transform: translateX(10em) translateY(0);
-		}
 		
 		.bg-red {
 			@include animated-bg(#BE2C2F);
@@ -98,40 +87,5 @@ h1 span {
 		.bg-purple {
 			@include animated-bg(#49266C);
 		}
-	}
-}
-
-.sidebar {
-	display: flex;
-	align-items: baseline;
-	justify-content: center;
-
-	.sidebar-text {
-		color: #F2F2F2;
-		padding: 0.25em 0;
-		writing-mode: vertical-lr;
-		vertical-align: baseline;
-		font-size: 2em;
-		transform: rotate(90deg);
-	}
-
-	&.bg-red {
-		background-color: #BE2C2F;
-	}
-
-	&.bg-purple {
-		background-color: #49266C;
-	}
-
-	&.bg-blue {
-		background-color: #244B7A;
-	}
-
-	&.bg-green {
-		background-color: #56B14C;
-	}
-
-	&.bg-yellow {
-		background-color: #F8C74B;
 	}
 }

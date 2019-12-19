@@ -7,10 +7,28 @@
 </head>
 </head>
 <body>
-	<h1>
-		<span>rohan</span>
-		<span>bhansali</span>
-	</h1>
+	<div class="hero container-width">
+		<h1>
+			<span>rohan</span>
+			<span>bhansali</span>
+		</h1>
+	</div>
+	<div id="navigation">
+		<div class="sections container-width">
+			<span class="section-title bg-red" onclick="openNav(this, 'work')">
+				<span>Work</span>
+			</span>
+			<span class="section-title bg-green" onclick="openNav(this, 'skills')">
+				<span>Skills</span>
+			</span>
+			<span class="section-title bg-blue" onclick="openNav(this, 'panos')">
+				<span>Panos</span>
+			</span>
+			<span class="section-title bg-yellow" onclick="openNav(this, 'contact')">
+				<span>Contact</span>
+			</span>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

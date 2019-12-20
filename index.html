@@ -7,26 +7,118 @@
 </head>
 </head>
 <body>
-	<div class="hero container-width">
+	<div id="hero" class="container-width">
 		<h1>
 			<span>rohan</span>
 			<span>bhansali</span>
 		</h1>
 	</div>
 	<div id="navigation">
-		<div class="sections container-width">
-			<span class="section-title bg-red" onclick="openNav(this, 'work')">
-				<span>Work</span>
+		<div class="section-nav container-width">
+			<span class="section-title bg-red" data-name="work" onclick="toggleNav(this, 'work')">
+				<span>work</span>
 			</span>
-			<span class="section-title bg-green" onclick="openNav(this, 'skills')">
-				<span>Skills</span>
+			<span class="section-title bg-blue" data-name="skills" onclick="toggleNav(this, 'skills')">
+				<span>skills</span>
 			</span>
-			<span class="section-title bg-blue" onclick="openNav(this, 'panos')">
-				<span>Panos</span>
+			<span class="section-title bg-green" data-name="panos" onclick="toggleNav(this, 'panos')">
+				<span>panos</span>
 			</span>
-			<span class="section-title bg-yellow" onclick="openNav(this, 'contact')">
-				<span>Contact</span>
+			<span class="section-title bg-yellow" data-name="contact" onclick="toggleNav(this, 'contact')">
+				<span>contact</span>
 			</span>
+		</div>
+	</div>
+	<div id="section-container" class="hidden">
+		<div id="work" class="container-width hidden">
+		</div>
+		<div id="skills" class="container-width">
+			<div class="flexbox-grid">
+				<div class="left-col">
+					<div class="title yellow">
+						Skills
+					</div>
+					<p>To keep up with the times, developers need to be incredible versatile at using a whole variety of libraries and frameworks for their porjects</p>
+					<p>These are tools that I have worked with in the past. I'm sure this list will keep on growing</p>
+				</div>
+				<div class="right-col">
+					<div class="skill-title">Languages</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/html.png"><span class="hidden">HTML</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/css.png"><span class="hidden">CSS</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/js.png"><span class="hidden">JS</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/php.png"><span class="hidden">PHP</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/cpp.png"><span class="hidden">C++</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/swift.png"><span class="hidden">Swift</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/java.png"><span class="hidden">Java</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/sass.png"><span class="hidden">Sass</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/python.png"><span class="hidden">Python</span></div>
+					</div>
+					<div class="skill-title">Web libraries</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/react.png"><span class="hidden">React</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/angular.png"><span class="hidden">Angular</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/meteor.png"><span class="hidden">Meteor</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/redux.png"><span class="hidden">Redux</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/jquery.png"><span class="hidden">jQuery</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/socketio.png"><span class="hidden">Socket IO</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/bootstrap.png"><span class="hidden">Bootstrap</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/wordpress.png"><span class="hidden">WordPress</span></div>
+					</div>
+					<div class="skill-title">Web tools</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/aws_ec2.png"><span class="hidden">AWS EC2</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/firebase.png"><span class="hidden">Firebase</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/aws_s3.png"><span class="hidden">AWS S3</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/aws_emr.png"><span class="hidden">AWS EMR</span></div>
+					</div>
+					<div class="skill-title">DevOps tools</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/nodejs.png"><span class="hidden">NodeJS</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/grunt.png"><span class="hidden">Grunt</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/gulp.png"><span class="hidden">Gulp</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/bash.png"><span class="hidden">Bash Scripting</span></div>
+					</div>
+					<div class="skill-title">Design tools</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_photoshop.png"><span class="hidden">Photoshop</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_indesign.png"><span class="hidden">Indesign</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_xd.png"><span class="hidden">Adobe XD</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/sketch.png"><span class="hidden">Sketch</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/figma.png"><span class="hidden">Figma</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/invision.png"><span class="hidden">Invision</span></div>
+					</div>
+					<div class="skill-title">Databases</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/mysql.png"><span class="hidden">MySQL</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/postgresql.png"><span class="hidden">PostgreSQL</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/sqlite.png"><span class="hidden">SQLite</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/mongodb.png"><span class="hidden">MongoDB</span></div>
+					</div>
+					<div class="skill-title">Misc</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/pi.png"><span class="hidden">Raspberry Pi</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/arduino.png"><span class="hidden">Arduinio</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="panos" class="container-width hidden">
+		</div>
+		<div id="contact" class="container-width hidden">
+			<div>
+				<h2 class="yellow">
+					Contact
+				</h2>
+			</div>
+			<div>
+				<form action="https://formspree.io/me@rohan.xyz" method="POST">
+					<input type="email" name="replyto" placeholder="Your email" required/>
+					<textarea name="body" placeholder="Message" required></textarea>
+					<input type="hidden" name="_next" value="http://rohan.xyz" />
+					<input type="submit" id="submit-btn" value="Send">
+				</form>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>

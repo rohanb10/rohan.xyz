@@ -158,13 +158,14 @@ h1 {
 .hidden {
   display: none; }
 
-#section-container {
-  min-height: 95vh; }
-  #section-container.hidden {
-    display: none; }
-  #section-container .title {
-    font-size: 3em;
-    font-weight: 800; }
+#section-container .title {
+  font-size: 3em;
+  font-weight: 800; }
+#section-container .section {
+  display: none;
+  min-height: 90vh; }
+  #section-container .section.active {
+    display: block; }
 
 .flexbox-grid {
   display: flex; }
@@ -207,6 +208,12 @@ h1 {
       opacity: 0; }
     .skill-group .skill .img-skill:hover + span {
       opacity: 1; }
+
+.contact-blurb a {
+  color: #000; }
+.contact-blurb .clipboard-copy {
+  cursor: pointer;
+  text-decoration: underline; }
 
 @media (max-width: 500px) {
   .flexbox-grid {

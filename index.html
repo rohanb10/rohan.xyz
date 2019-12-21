@@ -29,13 +29,16 @@
 			</span>
 		</div>
 	</div>
-	<div id="section-container" class="hidden">
-		<div id="work" class="container-width hidden">
+	<div id="section-container">
+		<div id="work" class="section container-width">
+			<div class="title red">
+				Work
+			</div>
 		</div>
-		<div id="skills" class="container-width">
+		<div id="skills" class="section container-width">
 			<div class="flexbox-grid">
 				<div class="left-col">
-					<div class="title yellow">
+					<div class="title blue">
 						Skills
 					</div>
 					<p>To keep up with the times, developers need to be incredible versatile at using a whole variety of libraries and frameworks for their porjects</p>
@@ -103,21 +106,34 @@
 				</div>
 			</div>
 		</div>
-		<div id="panos" class="container-width hidden">
-		</div>
-		<div id="contact" class="container-width hidden">
-			<div>
-				<h2 class="yellow">
-					Contact
-				</h2>
+		<div id="panos" class="section container-width">
+			<div class="title green">
+				Panoramas
 			</div>
-			<div>
-				<form action="https://formspree.io/me@rohan.xyz" method="POST">
-					<input type="email" name="replyto" placeholder="Your email" required/>
-					<textarea name="body" placeholder="Message" required></textarea>
-					<input type="hidden" name="_next" value="http://rohan.xyz" />
-					<input type="submit" id="submit-btn" value="Send">
-				</form>
+		</div>
+		<div id="contact" class="section container-width">
+			<div class="flexbox-grid">
+				<div class="left-col">
+					<div class="title yellow">
+						Contact
+					</div>
+					<div class="contact-blurb">
+						<p>Looking to reach out to me?</p>
+						<p>Use the form to get in touch, or email me directly at <span class="clipboard-copy">rohanb10@gmail.com</span>.</p>
+						<p>Here's a link to my <a href="https://github.com/rohanb10" target="_blank">github</a> containing the code for this website and some of my other projects.</p>
+						<p>I'm not super active on social media, but if you're looking then here's my <a href="https://twitter.com/rohanb10" target="_blank">twitter</a>, <a href="https://instagram.com/rohanb10" target="_blank">instagram</a>, and <a href="https://linkedin.com/in/rohanb10" target="_blank">linkedin</a>.</p>
+					</div>
+				</div>
+				<div class="right-col">
+					<div class="form-container">
+						<form action="https://formspree.io/me@rohan.xyz" method="POST">
+							<input type="email" name="replyto" placeholder="Your email" required/>
+							<textarea name="body" placeholder="Message" required></textarea>
+							<input type="hidden" name="_next" value="http://rohan.xyz" />
+							<input type="submit" id="submit-btn" value="Send">
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -20,7 +20,8 @@ h1 {
     display: block; }
 
 #hero {
-  padding-bottom: 10em; }
+  padding-bottom: 10em;
+  transition: all 0.4s linear; }
 
 .flex-container {
   display: flex; }
@@ -203,9 +204,9 @@ h1 {
       display: block;
       font-size: 0.8em;
       transition: all .3s linear;
+      opacity: 0; }
+    .skill-group .skill .img-skill:hover + span {
       opacity: 1; }
-      .skill-group .skill span.hidden {
-        opacity: 0; }
 
 @media (max-width: 500px) {
   .flexbox-grid {

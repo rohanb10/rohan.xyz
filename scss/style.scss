@@ -31,6 +31,7 @@ h1 {
 
 #hero {
 	padding-bottom: 10em;
+	transition: all 0.4s linear;
 }
 
 .flex-container {
@@ -167,7 +168,7 @@ h1 {
 	justify-content: flex-start;
 	text-align: center;
 	padding: 0.5em;
-	
+
 	.skill {
 		margin-bottom: 0.5em;
 
@@ -188,10 +189,11 @@ h1 {
 			display: block;
 			font-size: 0.8em;
 			transition:all .3s linear;
+			opacity: 0;
+		}
+
+		.img-skill:hover + span {
 			opacity: 1;
-			&.hidden {
-				opacity: 0;
-			}
 		}
 	}
 }

@@ -49,7 +49,9 @@ function toggleNav(element, sectionName) {
 	//if section is section open, close it
 	if (!element.classList.contains('focused')) {
 		showContent(sectionName);
+		// change background colour
 		navbar.classList.add(element.classList[1]);
+		// reset text colour
 		for (var i = 0; i < sections.length; i++) {
 			sections[i].classList.remove('focused');
 		}
@@ -74,20 +76,18 @@ function hideContent() {
 function showContent(sectionName) {
 	document.getElementById('section-container').classList.remove('hidden');
 	navbar.scrollIntoView({ 
-		behavior: 'smooth' 
+		behavior: 'smooth'
 	});
 }
 
 
 // Skill hover
-var skills = document.querySelectorAll(".img-skill");
-for (i=0;i<skills.length;i++){
-	skills[i].addEventListener("mouseover", function(){
-		this.nextSibling.classList.remove('hidden');
-		// skillContainer.style.opacity = 1;
-	},false);
-	skills[i].addEventListener("mouseout", function(){
-		this.nextSibling.classList.add('hidden');
-		// skillContainer.style.opacity = 0;
-	},false);
-}
+// var skills = document.querySelectorAll(".img-skill");
+// for (i=0;i<skills.length;i++){
+// 	skills[i].addEventListener("mouseover", function(){
+// 		this.nextSibling.classList.remove('hidden');
+// 	},false);
+// 	skills[i].addEventListener("mouseout", function(){
+// 		this.nextSibling.classList.add('hidden');
+// 	},false);
+// }

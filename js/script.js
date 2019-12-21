@@ -69,25 +69,23 @@ function hideContent() {
 		behavior: 'smooth'
 	});
 	setTimeout(function() {
-		document.getElementById('section-container').classList.add('hidden');
+		const activeSection = document.querySelector('.active');
+		if (activeSection !== null) {
+			activeSection.classList.remove('active');
+		}
 	}, 500)
 }
 
+//REFACTOR activeSections into a reusable method
+
 function showContent(sectionName) {
-	document.getElementById('section-container').classList.remove('hidden');
+	//Close currently active section
+	const activeSection = document.querySelector('.active');
+	if (activeSection !== null) {
+		activeSection.classList.remove('active');
+	}
+	document.getElementById(sectionName).classList.add('active');
 	navbar.scrollIntoView({ 
 		behavior: 'smooth'
 	});
 }
-
-
-// Skill hover
-// var skills = document.querySelectorAll(".img-skill");
-// for (i=0;i<skills.length;i++){
-// 	skills[i].addEventListener("mouseover", function(){
-// 		this.nextSibling.classList.remove('hidden');
-// 	},false);
-// 	skills[i].addEventListener("mouseout", function(){
-// 		this.nextSibling.classList.add('hidden');
-// 	},false);
-// }

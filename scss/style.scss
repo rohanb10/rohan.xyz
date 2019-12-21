@@ -130,13 +130,16 @@ h1 {
 }
 
 #section-container {
-	&.hidden {
-		display: none;
-	}
-	min-height: 95vh;
 	.title {
 		font-size: 3em;
 		font-weight: 800;
+	}
+	.section {
+		display: none;
+		min-height: 90vh;
+		&.active {
+			display: block;
+		}
 	}
 }
 
@@ -195,6 +198,21 @@ h1 {
 		.img-skill:hover + span {
 			opacity: 1;
 		}
+	}
+}
+
+.form-container {
+
+}
+
+.contact-blurb {
+	a {
+		color: #000;
+	}
+
+	.clipboard-copy{
+		cursor: pointer;
+		text-decoration: underline;
 	}
 }
 

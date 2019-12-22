@@ -4,7 +4,7 @@ html, body {
   padding: 0;
   width: 100%;
   font-family: 'Muli', sans-serif;
-  background-color: #F2F2F2;
+  background-color: #FFF;
   overflow-x: hidden;
   overflow-y: auto; }
 
@@ -43,8 +43,8 @@ h1 {
   #navigation .section-nav .section-title {
     cursor: pointer;
     font-size: 1.25em;
-    transform: translateX(0) translateY(0);
-    padding: .5em 0; }
+    padding: .5em 0;
+    transform: translateX(0) translateY(0); }
     #navigation .section-nav .section-title span {
       display: inline-block;
       width: 4em;
@@ -163,7 +163,7 @@ h1 {
   font-weight: 800; }
 #section-container .section {
   display: none;
-  min-height: 90vh; }
+  min-height: calc(100vh - 4em); }
   #section-container .section.active {
     display: block; }
 
@@ -209,22 +209,51 @@ h1 {
     .skill-group .skill .img-skill:hover + span {
       opacity: 1; }
 
+.form-container {
+  border: 2px solid black;
+  border-radius: 2px;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 20em; }
+  .form-container input, .form-container textarea {
+    border: none;
+    border-radius: 2px;
+    font-size: 0.8em;
+    box-sizing: border-box;
+    display: block;
+    margin: 2em;
+    padding: 0.4em; }
+  .form-container input[type="email"], .form-container textarea {
+    background-color: #EFF0F1;
+    border-bottom: 1px solid #C5CCCD;
+    width: calc(100% - 4em); }
+  .form-container input[type="submit"] {
+    color: #FFF;
+    background-color: #F8C74B;
+    margin-left: auto;
+    padding: .5em 1em; }
+
 .contact-blurb a {
   color: #000; }
-.contact-blurb .clipboard-copy {
-  cursor: pointer;
-  text-decoration: underline; }
 
-@media (max-width: 500px) {
+@media (max-width: 40em) {
   .flexbox-grid {
     display: block; }
     .flexbox-grid .left-col, .flexbox-grid .right-col {
-      width: 100%; }
+      width: 100%;
+      padding: 0; }
 
   .skill-group .skill .img-skill {
     max-width: 2em;
     margin: 0.25em 0.5em; }
   .skill-group .skill span {
-    font-size: 0.7em; } }
+    font-size: 0.7em; }
+
+  .form-container {
+    margin: 3em auto;
+    width: intial; } }
+@media (max-width: 24em) {
+  #navigation .section-nav .section-title {
+    font-size: 1em; } }
 
 /*# sourceMappingURL=style.css.map */

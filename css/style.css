@@ -236,6 +236,14 @@ h1 {
 .contact-blurb a {
   color: #000; }
 
+.panorama-container .pano {
+  height: 15em;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden; }
+  .panorama-container .pano img {
+    height: 100%; }
+
 @media (max-width: 40em) {
   .flexbox-grid {
     display: block; }

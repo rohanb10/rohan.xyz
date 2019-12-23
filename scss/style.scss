@@ -239,6 +239,18 @@ h1 {
 	}
 }
 
+.panorama-container {
+	.pano {
+		height: 15em;
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		img {
+			height: 100%;
+		}
+	}
+}
+
 // FIX THIS YO
 @media (max-width: 40em){
 	.flexbox-grid {

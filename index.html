@@ -22,7 +22,7 @@
 				<span>skills</span>
 			</span>
 			<span class="section-title bg-green" data-name="panos" onclick="toggleNav(this, 'panos')">
-				<span>panos</span>
+				<span>photos</span>
 			</span>
 			<span class="section-title bg-yellow" data-name="contact" onclick="toggleNav(this, 'contact')">
 				<span>contact</span>
@@ -67,6 +67,7 @@
 						<div class="skill"><img class="img-skill" src="./assets/skills/socketio.png"><span>Socket IO</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/bootstrap.png"><span>Bootstrap</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/wordpress.png"><span>WordPress</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/qunit.png"><span>QUnit</span></div>
 					</div>
 					<div class="skill-title">Web tools</div>
 					<div class="skill-group">
@@ -80,7 +81,10 @@
 						<div class="skill"><img class="img-skill" src="./assets/skills/nodejs.png"><span>NodeJS</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/grunt.png"><span>Grunt</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/gulp.png"><span>Gulp</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/bash.png"><span>Bash Scripting</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/travis.png"><span>TravisCI</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/browserify.png"><span>Browserify</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/selenium.png"><span>Selenium</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/bash.png"><span>Bash<br>Scripting</span></div>
 					</div>
 					<div class="skill-title">Design tools</div>
 					<div class="skill-group">
@@ -108,7 +112,14 @@
 		</div>
 		<div id="panos" class="section container-width">
 			<div class="title green">
-				Panoramas
+				Photos
+			</div>
+			<div class="flexbox-grid">
+				<div class="left-col">
+					<p>I spend a lot of time outdoors and take a bunch of pictures of my adventures. The best views can be found on a random blog written by a middle aged man with a family and a van.</p>
+
+					<p>I don't have a fancy camera setup and most of these have been captured on my old but reliable iPhone 6s, with some mild post-processing on google photos. Obviously, I've only uploaded the good ones that I want people to see.</p>
+				</div>
 			</div>
 		</div>
 		<div id="contact" class="section container-width">
@@ -138,6 +149,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/PanoViewer.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

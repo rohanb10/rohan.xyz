@@ -89,3 +89,5 @@ function showContent(sectionName) {
 		behavior: 'smooth'
 	});
 }
+
+//panorama stuff

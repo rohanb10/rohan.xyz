@@ -169,15 +169,85 @@ h1 {
 
 .flexbox-grid {
   display: flex; }
-  .flexbox-grid .left-col, .flexbox-grid .right-col {
+  .flexbox-grid .left-col, .flexbox-grid .right-col, .flexbox-grid .mid-col {
     padding: 0 0.5em; }
   .flexbox-grid .left-col {
     width: 40%;
     font-weight: 400; }
+  .flexbox-grid .mid-col {
+    width: 60%;
+    margin: 0 auto; }
   .flexbox-grid .right-col {
     width: 60%;
     height: 90vh;
     overflow-y: scroll; }
+
+.work-container {
+  border-radius: 4px;
+  background-color: #EFF0F1;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s linear; }
+  .work-container .work-name {
+    font-size: 1.1em;
+    font-weight: 600; }
+  .work-container .subtitle {
+    font-size: 0.8em; }
+  .work-container:hover, .work-container:active {
+    border-bottom: 2px solid #BE2C2F;
+    background-color: #dadedf; }
+
+.card {
+  max-width: 25em;
+  margin: 5em auto 1em;
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3), 0 1em 0.75em rgba(0, 0, 0, 0.22);
+  background-color: white;
+  min-height: 500px;
+  position: relative;
+  border-radius: 4px; }
+  .card .card-logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -4em;
+    width: 8em;
+    height: 8em;
+    border-radius: 100px;
+    background-size: cover; }
+  .card .card-body {
+    padding: 4.5em 1em 0.5em; }
+    .card .card-body .card-title, .card .card-body .card-subtitle, .card .card-body .card-dates, .card .card-body .card-stack {
+      text-align: center; }
+    .card .card-body .card-title {
+      font-size: 1.2em;
+      font-weight: 600; }
+    .card .card-body .card-subtitle {
+      font-weight: 500;
+      color: #777; }
+    .card .card-body .card-dates {
+      padding-top: 0.25em;
+      font-size: 0.7em;
+      color: #BBB; }
+    .card .card-body .card-blurb, .card .card-body .card-stack {
+      font-size: 0.9em; }
+  .card .card-divider {
+    border-top: 1px solid #EFF0F1;
+    margin: 0.5em 2em; }
+
+#expensify .card-logo {
+  background-image: url("../assets/logos/expensify.png"); }
+
+#zappos .card-logo {
+  background-image: url("../assets/logos/zappos.jpg"); }
+
+#eazyfriday .card-logo {
+  background-image: url("../assets/logos/eazyfriday.jpg"); }
+
+#wustl .card-logo {
+  background-image: url("../assets/logos/wustl.jpg"); }
 
 .skill-title {
   font-weight: 600;
@@ -236,20 +306,15 @@ h1 {
 .contact-blurb a {
   color: #000; }
 
-.panorama-container .pano {
-  height: 15em;
-  width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden; }
-  .panorama-container .pano img {
-    height: 100%; }
-
 @media (max-width: 40em) {
   .flexbox-grid {
     display: block; }
-    .flexbox-grid .left-col, .flexbox-grid .right-col {
+    .flexbox-grid .left-col, .flexbox-grid .right-col, .flexbox-grid .mid-col {
       width: 100%;
       padding: 0; }
+
+  .card {
+    width: initial; }
 
   .skill-group .skill .img-skill {
     max-width: 2em;

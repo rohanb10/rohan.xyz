@@ -21,7 +21,7 @@
 			<span class="section-title bg-blue" data-name="skills" onclick="toggleNav(this, 'skills')">
 				<span>skills</span>
 			</span>
-			<span class="section-title bg-green" data-name="panos" onclick="toggleNav(this, 'panos')">
+			<span class="section-title bg-green" data-name="photos" onclick="toggleNav(this, 'photos')">
 				<span>photos</span>
 			</span>
 			<span class="section-title bg-yellow" data-name="contact" onclick="toggleNav(this, 'contact')">
@@ -33,6 +33,69 @@
 		<div id="work" class="section container-width">
 			<div class="title red">
 				Work
+			</div>
+			<div class="flexbox-grid">
+				<div class="left-col">
+					<h2>Jobs</h2>
+					<div class="work-container" data-type="job" data-name="expensify">
+						<div class="work-name">Expensify</div>
+						<div class="subtitle">San Francisco, CA</div>
+					</div>
+					<div class="work-container" data-type="job" data-name="zappos">
+						<div class="work-name">Zappos</div>
+						<div class="subtitle">Las Vegas, NV</div>
+					</div>
+					<div class="work-container" data-type="job" data-name="wustl">
+						<div class="work-name">Washington University in St. Louis</div>
+						<div class="subtitle">St Louis, MO</div>
+					</div>
+					<div class="work-container" data-type="job" data-name="eazyfriday">
+						<div class="work-name">EazyFriday</div>
+						<div class="subtitle">Mumbai, India</div>
+					</div>
+					<h2>Projects</h2>
+					<div class="work-container" data-type="project" data-name="turnstyle">
+						<div class="work-name">Turnstyle</div>
+						<div class="subtitle">iOS app</div>
+					</div>
+					<div class="work-container" data-type="project" data-name="kraudesorce">
+						<div class="work-name">KraudeSorce</div>
+						<div class="subtitle">Concept</div>
+					</div>
+				</div>
+				<div class="right-col">
+					<div id="expensify" class="card">
+						<div class="card-logo"></div>
+						<div class="card-body">
+							<div class="card-title">Expensify</div>
+							<div class="card-subtitle">Full Stack Developer</div>
+							<div class="card-dates">Jul 2017 - Apr 2019</div>
+							<div class="card-divider"></div>
+							<div class="card-blurb">
+								Expensify is a fintech company doing something something hello this is all pure trash just random filler nonsense.
+								<ul>
+									<li>I</li>
+									<li>miss</li>
+									<li>the</li>
+									<li>old</li>
+									<li>Kanye</li>
+									<li>straight</li>
+									<li>from</li>
+									<li>the</li>
+									<li>go</li>
+									<li>Kanye</li>
+								</ul>
+							</div>
+							<div class="card-divider"></div>
+							<div class="card-stack">
+								<div>Stack</div>
+								<code>ReactJS, PHP, C++, SQLite</code>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="card project-card">
+					</div> -->
+				</div>
 			</div>
 		</div>
 		<div id="skills" class="section container-width">
@@ -110,13 +173,13 @@
 				</div>
 			</div>
 		</div>
-		<div id="panos" class="section container-width">
+		<div id="photos" class="section container-width">
 			<div class="title green">
 				Photos
 			</div>
 			<div class="flexbox-grid">
-				<div class="left-col">
-					<p>I spend a lot of time outdoors and take a bunch of pictures of my adventures. The best views can be found on a random blog written by a middle aged man with a family and a van.</p>
+				<div class="mid-col">
+					<p>I spend a lot of time outdoors and take a bunch of pictures of my adventures. The best views can be found on an obscure blog written by a middle aged man with a family and a van.</p>
 
 					<p>I don't have a fancy camera setup and most of these have been captured on my old but reliable iPhone 6s, with some mild post-processing on google photos. Obviously, I've only uploaded the good ones that I want people to see.</p>
 				</div>
@@ -149,7 +212,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/PanoViewer.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

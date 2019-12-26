@@ -16,7 +16,6 @@ html, body {
 
 .container-width {
 	max-width: 1000px;
-	padding: 1em;
 	margin: 0 auto;
 }
 
@@ -70,6 +69,7 @@ h1 {
 
 #navigation {
 	transition: background-color 1s linear;
+	padding: 1em;
 	&.bg-red {
 		background-color: #BE2C2F;
 	}
@@ -130,6 +130,7 @@ h1 {
 }
 
 #section-container {
+	padding: 1em 1em 0;
 	.title {
 		font-size: 3em;
 		font-weight: 800;
@@ -190,9 +191,12 @@ h1 {
 	margin: 5em auto 1em;
 	box-shadow: 0 1em 2em rgba(0,0,0,0.30), 0 1em .75em rgba(0,0,0,0.22);
 	background-color: white;
-	min-height: 500px;
 	position: relative;
 	border-radius: 4px;
+	display: none;
+	&.active {
+		display: block;
+	}
 	.card-logo {
 		position:absolute;
 		left: 0;
@@ -202,11 +206,10 @@ h1 {
 		width: 8em;
 		height: 8em;
 		border-radius: 100px;
-		// border: 2px solid #BE2C2F;
 		background-size: cover;
 	}
 	.card-body {
-		padding: 4.5em 1em 0.5em;
+		padding: 4.5em 1em 1.5em;
 
 		.card-title, .card-subtitle, .card-dates, .card-stack {
 			text-align: center;
@@ -231,6 +234,9 @@ h1 {
 		.card-blurb, .card-stack {
 			font-size: 0.9em;
 		}
+		code {
+			font-size: 1.2em;
+		}
 		
 	}
 	.card-divider {
@@ -250,6 +256,12 @@ h1 {
 }
 #wustl .card-logo {
 	background-image: url('../assets/logos/wustl.jpg');
+}
+#kraudesorce .card-logo {
+	background-image: url('../assets/logos/kraudesorce.jpg');
+}
+#turnstyle .card-logo {
+	background-image: url('../assets/logos/turnstyle.png');
 }
 
 

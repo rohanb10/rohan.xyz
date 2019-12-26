@@ -90,4 +90,13 @@ function showContent(sectionName) {
 	});
 }
 
-//panorama stuff
+// work stuff
+
+function workPicker(workName) {
+	var workNames = document.querySelectorAll('.card.active');
+	console.log(workNames)
+	for (var i = 0; workNames.length > 0 &&  i < workNames.length; i++) {
+		workNames[i].classList.remove('active');
+	}
+	document.getElementById(workName).classList.add('active');
+}

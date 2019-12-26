@@ -10,7 +10,6 @@ html, body {
 
 .container-width {
   max-width: 1000px;
-  padding: 1em;
   margin: 0 auto; }
 
 h1 {
@@ -29,7 +28,8 @@ h1 {
     flex-direction: column; }
 
 #navigation {
-  transition: background-color 1s linear; }
+  transition: background-color 1s linear;
+  padding: 1em; }
   #navigation.bg-red {
     background-color: #BE2C2F; }
   #navigation.bg-green {
@@ -158,14 +158,16 @@ h1 {
 .hidden {
   display: none; }
 
-#section-container .title {
-  font-size: 3em;
-  font-weight: 800; }
-#section-container .section {
-  display: none;
-  min-height: calc(100vh - 4em); }
-  #section-container .section.active {
-    display: block; }
+#section-container {
+  padding: 1em 1em 0; }
+  #section-container .title {
+    font-size: 3em;
+    font-weight: 800; }
+  #section-container .section {
+    display: none;
+    min-height: calc(100vh - 4em); }
+    #section-container .section.active {
+      display: block; }
 
 .flexbox-grid {
   display: flex; }
@@ -204,9 +206,11 @@ h1 {
   margin: 5em auto 1em;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3), 0 1em 0.75em rgba(0, 0, 0, 0.22);
   background-color: white;
-  min-height: 500px;
   position: relative;
-  border-radius: 4px; }
+  border-radius: 4px;
+  display: none; }
+  .card.active {
+    display: block; }
   .card .card-logo {
     position: absolute;
     left: 0;
@@ -218,7 +222,7 @@ h1 {
     border-radius: 100px;
     background-size: cover; }
   .card .card-body {
-    padding: 4.5em 1em 0.5em; }
+    padding: 4.5em 1em 1.5em; }
     .card .card-body .card-title, .card .card-body .card-subtitle, .card .card-body .card-dates, .card .card-body .card-stack {
       text-align: center; }
     .card .card-body .card-title {
@@ -233,6 +237,8 @@ h1 {
       color: #BBB; }
     .card .card-body .card-blurb, .card .card-body .card-stack {
       font-size: 0.9em; }
+    .card .card-body code {
+      font-size: 1.2em; }
   .card .card-divider {
     border-top: 1px solid #EFF0F1;
     margin: 0.5em 2em; }
@@ -248,6 +254,12 @@ h1 {
 
 #wustl .card-logo {
   background-image: url("../assets/logos/wustl.jpg"); }
+
+#kraudesorce .card-logo {
+  background-image: url("../assets/logos/kraudesorce.jpg"); }
+
+#turnstyle .card-logo {
+  background-image: url("../assets/logos/turnstyle.png"); }
 
 .skill-title {
   font-weight: 600;

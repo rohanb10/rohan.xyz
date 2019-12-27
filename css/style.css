@@ -22,11 +22,6 @@ h1 {
   padding-bottom: 10em;
   transition: all 0.4s linear; }
 
-.flex-container {
-  display: flex; }
-  .flex-container.flex-columns {
-    flex-direction: column; }
-
 #navigation {
   transition: background-color 1s linear;
   padding: 1em; }
@@ -50,7 +45,7 @@ h1 {
       width: 4em;
       text-align: center; }
     #navigation .section-nav .section-title.bg-red {
-      border-bottom: 0.1em solid #BE2C2F;
+      border-bottom: 0.2em solid #BE2C2F;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       position: relative;
       transform: perspective(1px) translateZ(0); }
@@ -71,7 +66,7 @@ h1 {
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
     #navigation .section-nav .section-title.bg-green {
-      border-bottom: 0.1em solid #56B14C;
+      border-bottom: 0.2em solid #56B14C;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       position: relative;
       transform: perspective(1px) translateZ(0); }
@@ -92,7 +87,7 @@ h1 {
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
     #navigation .section-nav .section-title.bg-blue {
-      border-bottom: 0.1em solid #3369AC;
+      border-bottom: 0.2em solid #3369AC;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       position: relative;
       transform: perspective(1px) translateZ(0); }
@@ -113,7 +108,7 @@ h1 {
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
     #navigation .section-nav .section-title.bg-yellow {
-      border-bottom: 0.1em solid #F8C74B;
+      border-bottom: 0.2em solid #F8C74B;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       position: relative;
       transform: perspective(1px) translateZ(0); }
@@ -134,7 +129,7 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
     #navigation .section-nav .section-title.bg-purple {
-      border-bottom: 0.1em solid #49266C;
+      border-bottom: 0.2em solid #49266C;
       box-shadow: 0 0 1px rgba(0, 0, 0, 0);
       position: relative;
       transform: perspective(1px) translateZ(0); }
@@ -158,6 +153,11 @@ h1 {
 .hidden {
   display: none; }
 
+.modal-container {
+  position: relative; }
+  .modal-container.active {
+    background-color: rgba(0, 0, 0, 0.4); }
+
 #section-container {
   padding: 1em 1em 0; }
   #section-container .title {
@@ -180,9 +180,7 @@ h1 {
     width: 60%;
     margin: 0 auto; }
   .flexbox-grid .right-col {
-    width: 60%;
-    height: 90vh;
-    overflow-y: scroll; }
+    width: 60%; }
 
 .work-container {
   border-radius: 4px;
@@ -197,51 +195,56 @@ h1 {
     font-weight: 600; }
   .work-container .subtitle {
     font-size: 0.8em; }
-  .work-container:hover, .work-container:active {
-    border-bottom: 2px solid #BE2C2F;
+  .work-container:hover {
     background-color: #dadedf; }
+  .work-container:active, .work-container.active {
+    border-bottom: 2px solid #BE2C2F; }
 
-.card {
-  max-width: 25em;
-  margin: 5em auto 1em;
-  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3), 0 1em 0.75em rgba(0, 0, 0, 0.22);
-  background-color: white;
-  position: relative;
-  border-radius: 4px;
-  display: none; }
-  .card.active {
-    display: block; }
-  .card .card-logo {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: -4em;
-    width: 8em;
-    height: 8em;
-    border-radius: 100px;
-    background-size: cover; }
-  .card .card-body {
-    padding: 4.5em 1em 1.5em; }
-    .card .card-body .card-title, .card .card-body .card-subtitle, .card .card-body .card-dates, .card .card-body .card-stack {
-      text-align: center; }
-    .card .card-body .card-title {
-      font-size: 1.2em;
-      font-weight: 600; }
-    .card .card-body .card-subtitle {
-      font-weight: 500;
-      color: #777; }
-    .card .card-body .card-dates {
-      padding-top: 0.25em;
-      font-size: 0.7em;
-      color: #BBB; }
-    .card .card-body .card-blurb, .card .card-body .card-stack {
-      font-size: 0.9em; }
-    .card .card-body code {
-      font-size: 1.2em; }
-  .card .card-divider {
-    border-top: 1px solid #EFF0F1;
-    margin: 0.5em 2em; }
+.card-container {
+  padding-top: 4em; }
+  .card-container .card {
+    max-width: 30em;
+    margin: 1em auto;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3), 0 1em 0.75em rgba(0, 0, 0, 0.22);
+    background-color: white;
+    border-radius: 4px;
+    display: none;
+    position: relative; }
+    .card-container .card.active {
+      display: block; }
+    .card-container .card .card-logo {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: -4em;
+      width: 8em;
+      height: 8em;
+      border-radius: 100px;
+      background-size: cover; }
+    .card-container .card .card-body {
+      padding: 4.5em 1.5em 1.5em; }
+      .card-container .card .card-body .card-title, .card-container .card .card-body .card-subtitle, .card-container .card .card-body .card-dates, .card-container .card .card-body .card-stack {
+        text-align: center; }
+      .card-container .card .card-body .card-title {
+        font-size: 1.2em;
+        font-weight: 600; }
+      .card-container .card .card-body .card-subtitle {
+        font-weight: 500;
+        color: #777; }
+      .card-container .card .card-body .card-dates {
+        padding-top: 0.25em;
+        font-size: 0.7em;
+        color: #BBB; }
+      .card-container .card .card-body .card-blurb, .card-container .card .card-body .card-stack {
+        font-size: 0.9em; }
+      .card-container .card .card-body code {
+        font-size: 1.2em; }
+      .card-container .card .card-body ul {
+        padding-inline-start: 1.2em; }
+    .card-container .card .card-divider {
+      border-top: 1px solid #EFF0F1;
+      margin: 0.5em 2em; }
 
 #expensify .card-logo {
   background-image: url("../assets/logos/expensify.png"); }

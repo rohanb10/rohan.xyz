@@ -15,181 +15,186 @@
 	</div>
 	<div id="navigation">
 		<div class="section-nav container-width">
-			<span class="section-title bg-red" data-name="work" onclick="toggleNav(this, 'work')">
+			<span class="section-title bg-red" data-name="work" onclick="sectionPicker(this, 'work')">
 				<span>work</span>
 			</span>
-			<span class="section-title bg-blue" data-name="skills" onclick="toggleNav(this, 'skills')">
+			<span class="section-title bg-blue" data-name="skills" onclick="sectionPicker(this, 'skills')">
 				<span>skills</span>
 			</span>
-			<span class="section-title bg-green" data-name="photos" onclick="toggleNav(this, 'photos')">
+			<span class="section-title bg-green" data-name="photos" onclick="sectionPicker(this, 'photos')">
 				<span>photos</span>
 			</span>
-			<span class="section-title bg-yellow" data-name="contact" onclick="toggleNav(this, 'contact')">
+			<span class="section-title bg-yellow" data-name="contact" onclick="sectionPicker(this, 'contact')">
 				<span>contact</span>
 			</span>
 		</div>
 	</div>
 	<div id="section-container">
 		<div id="work" class="section container-width">
-			<div class="title red">
-				Work
-			</div>
 			<div class="flexbox-grid">
 				<div class="left-col">
+					<div class="title red">
+						Work
+					</div>
 					<h2>Jobs</h2>
-					<div class="work-container" onclick="workPicker('expensify')">
+					<div class="work-container" onclick="workPicker(this, 'expensify')">
 						<div class="work-name">Expensify</div>
 						<div class="subtitle">San Francisco, CA</div>
 					</div>
-					<div class="work-container" onclick="workPicker('zappos')">
+					<div class="work-container" onclick="workPicker(this, 'zappos')">
 						<div class="work-name">Zappos</div>
 						<div class="subtitle">Las Vegas, NV</div>
 					</div>
-					<div class="work-container" onclick="workPicker('wustl')">
+					<div class="work-container" onclick="workPicker(this, 'wustl')">
 						<div class="work-name">Washington University in St. Louis</div>
 						<div class="subtitle">St Louis, MO</div>
 					</div>
-					<div class="work-container" onclick="workPicker('eazyfriday')">
+					<div class="work-container" onclick="workPicker(this, 'eazyfriday')">
 						<div class="work-name">EazyFriday</div>
 						<div class="subtitle">Mumbai, India</div>
 					</div>
 					<h2>Projects</h2>
-					<div class="work-container" onclick="workPicker('turnstyle')">
+					<div class="work-container" onclick="workPicker(this, 'turnstyle')">
 						<div class="work-name">Turnstyle</div>
 						<div class="subtitle">iOS app</div>
 					</div>
-					<div class="work-container" onclick="workPicker('kraudesorce')">
+					<div class="work-container" onclick="workPicker(this, 'kraudesorce')">
 						<div class="work-name">KraudeSorce</div>
 						<div class="subtitle">iOS & Android apps</div>
 					</div>
 				</div>
 				<div class="right-col">
-					<div id="expensify" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">Expensify</div>
-							<div class="card-subtitle">Full Stack Developer</div>
-							<div class="card-dates">Jul 2017 - Apr 2019</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								Expensify is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
-								<ul>
-									<li>Built processes to monitor and remove expired and/or unused PCI data for GDPR compliance.</li>
-									<li>Developed a tool called DoubleCheck to manually confirm automated OCR data from receipts for clients who required internal audits of receipt data.</li>
-									<li>Transitioned email notifications sent out to a text-only format (from rich HTML) for future use as text notifications to use that signed up with their phone numbers instead of email addresses.</li>
-								</ul>
-							</div>
-							<div class="card-divider"></div>
-							<div class="card-stack">
-								<div>Stack</div>
-								<code>ReactJS, PHP, C++, SQLite</code>
-							</div>
-						</div>
-					</div>
-					<div id="zappos" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">Zappos</div>
-							<div class="card-subtitle">Front End Engineering Intern</div>
-							<div class="card-dates">Summer 2016</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								Zappos is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called 6pm.com.
-								<ul>
-									<li>Contributed to the development of a responsive CSS+JS framework to be used across all Zappos mobile and desktop sites.</li>
-									<li>Developed the 'My Account' portal for an upcoming responsive redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li>
-									<li>Designed and built a WebView to be used in the Zappos mobile apps as an interface for a new machine learning based recommendation engine.</li>
-								</ul>
-							</div>
-							<div class="card-divider"></div>
-							<div class="card-stack">
-								<div>Stack</div>
-								<code>ReactJS, Redux, Sass, Mustache</code>
+					<div class="card-container">
+						<div id="expensify" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">Expensify</div>
+								<div class="card-subtitle">Full Stack Developer</div>
+								<div class="card-dates">Jul 2017 - Apr 2019</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									Expensify is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
+									<ul>
+										<li>Built processes to monitor and remove expired and/or unused PCI data for GDPR compliance.</li>
+										<li>Developed a tool called DoubleCheck to manually confirm automated OCR data from receipts for clients who required internal audits of receipt data.</li>
+										<li>Transitioned email notifications sent out to a text-only format (from rich HTML) for future use as text notifications to use that signed up with their phone numbers instead of email addresses.</li>
+										<li>Participated in building a system to automate responses for customer support to decrease wait times and queue sizes for known recurring issues.</li>
+										<li>Improved internal Chrome extension which optimised workflow of Sales staff to convert leads into paying customers.</li>
+										<li>Contributed to internal tooling to help diagnose and remediate client policy and billing issues.</li>
+									</ul>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-stack">
+									<div>Stack</div>
+									<code>ReactJS, PHP, C++, SQLite</code>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div id="wustl" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">Washington University in St Louis</div>
-							<div class="card-subtitle">Teaching Assistant</div>
-							<div class="card-dates">8 semesters, 2014-2017</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								<b>CS 131 - Introduction to Computer Science</b>
-								<p>An introductory Computer Science course taught to over 500 students every semester. Using Java, it covered many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and data structures.</p>
-							</div>
-							<div class="card-blurb">
-								<b>CSE330S - Rapid Prototype Development and Creative Programming</b>
-								<p>A web development course that teaches many different skills including setting up Apache servers, databases and web security. Additionally, students are taught PHP, JavaScript, Python, AJAX, MEAN Stack, Git, Socket.IO and the frustration that comes along with debugging projects in larger group settings.</p>
-							</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								As a TA for both these courses, my duties included:
-								<ul>
-									<li>Holding weekly lab and studio sessions for around 30-50 students</li>
-									<li>Conducting weekly office hours for more individualized help</li>
-									<li>Grading of labs, studios, exams and extensions</li>
-									<li>Writing and testing new modules to be taught to students in future semesters</li>
-								</ul>
+						<div id="zappos" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">Zappos</div>
+								<div class="card-subtitle">Front End Engineering Intern</div>
+								<div class="card-dates">Summer 2016</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									Zappos is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called 6pm.com.
+									<ul>
+										<li>Contributed to the development of a responsive CSS+JS framework to be used across all Zappos mobile and desktop sites.</li>
+										<li>Developed the 'My Account' portal for an upcoming responsive redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li>
+										<li>Designed and built a WebView to be used in the Zappos mobile apps as an interface for a new machine learning based recommendation engine.</li>
+									</ul>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-stack">
+									<div>Stack</div>
+									<code>ReactJS, Redux, Sass, Mustache</code>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div id="eazyfriday" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">EazyFriday</div>
-							<div class="card-subtitle">Full Stack Engineering Intern</div>
-							<div class="card-dates">Summer 2015</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								EazyFriday was a marketplace for home services (plumbing, electricians etc). The app was designed to help digitize calendars and advertisements for service technicians in India who tended to schedule over the phone (calls or whatsapp).
-								<ul>
-									<li>Developed a dynamic user authorization system for retailers and administrators for larger operations.</li>
-									<li>Designed and built a retail management dashboard to control outlet operations.</li>
-									<li>Designed and built the interface for back-end administrative controls for technicians.</li>
-									<li>Contributed to a REST API to be used by the companion mobile apps.</li>
-								</ul>
-							</div>
-							<div class="card-divider"></div>
-							<div class="card-stack">
-								<div>Stack</div>
-								<code>MeteorJS, MongoDB, Sass, Java (Android)</code>
-							</div>
-						</div>
-					</div>
-					<div id="turnstyle" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">TurnStyle</div>
-							<div class="card-dates">Fall 2016</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								A all in one ticketing app for attendees and organisers for small-scale events
-								<ul>
-									<li>Browse through events filtered by genre, date, area or price.</li>
-									<li>Create events with custom limits for tickets and different tiers (early bird, VIP etc).</li>
-									<li>Ability for organisers to act as bouncers and scan encrypted QR code based tickets</li>
-									<li>Accept payments from attendees using OCR to extract credit card details. Payments processed through Stripe</li>
-									<li>Allow organisers to cash out payments when the event is complete using PayPal</li>
-								</ul>
+						<div id="wustl" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">Washington University in St Louis</div>
+								<div class="card-subtitle">Teaching Assistant</div>
+								<div class="card-dates">8 semesters, 2014-2017</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									<b>CS 131 - Introduction to Computer Science</b>
+									<p>An introductory Computer Science course taught to over 500 students every semester. Using Java, it covered many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and data structures.</p>
+								</div>
+								<div class="card-blurb">
+									<b>CSE330S - Rapid Prototype Development and Creative Programming</b>
+									<p>A web development course that teaches many different skills including setting up Apache servers, databases and web security. Additionally, students are taught PHP, JavaScript, Python, AJAX, MEAN Stack, Git, Socket.IO and the frustration that comes along with debugging projects in larger group settings.</p>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									As a TA for both these courses, my duties included:
+									<ul>
+										<li>Holding weekly lab and studio sessions for around 30-50 students</li>
+										<li>Conducting weekly office hours for more individualized help</li>
+										<li>Grading of labs, studios, exams and extensions</li>
+										<li>Writing and testing new modules to be taught to students in future semesters</li>
+									</ul>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div id="kraudesorce" class="card">
-						<div class="card-logo"></div>
-						<div class="card-body">
-							<div class="card-title">KraudeSorce</div>
-							<div class="card-dates">Spring 2016</div>
-							<div class="card-divider"></div>
-							<div class="card-blurb">
-								A solution to track crowd levels in dining areas in Universities, designed to scale outwards to eateries in the local community. Sort of like <i>Popular Times</i> dataset on Google, but for hyperlocal use.
-								<ul>
-									<li>iOS and Android apps to self-report crowd data using GPS.</li>
-									<li>Subscribe to notifications at specific locations to get current crowd level</li>
-									<li>Raspberry Pi sticks used to ping routers and pull number of connected devices to WiFi router(s) in each location</li>
-									<li>Used a formula of historical data, Raspberry Pi pings and live crowdsourced data to determine the "crowdedness" of a specific place</li>
-								</ul>
+						<div id="eazyfriday" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">EazyFriday</div>
+								<div class="card-subtitle">Full Stack Engineering Intern</div>
+								<div class="card-dates">Summer 2015</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									EazyFriday was a marketplace for home services (plumbing, electricians etc). The app was designed to help digitize calendars and advertisements for service technicians in India who tended to schedule over the phone (calls or whatsapp).
+									<ul>
+										<li>Developed a dynamic user authorization system for retailers and administrators for larger operations.</li>
+										<li>Designed and built a retail management dashboard to control outlet operations.</li>
+										<li>Designed and built the interface for back-end administrative controls for technicians.</li>
+										<li>Contributed to a REST API to be used by the companion mobile apps.</li>
+									</ul>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-stack">
+									<div>Stack</div>
+									<code>MeteorJS, MongoDB, Sass, Java (Android)</code>
+								</div>
+							</div>
+						</div>
+						<div id="turnstyle" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">TurnStyle</div>
+								<div class="card-dates">Fall 2016</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									A all in one ticketing app for attendees and organisers for small-scale events
+									<ul>
+										<li>Browse through events filtered by genre, date, area or price.</li>
+										<li>Create events with custom limits for tickets and different tiers (early bird, VIP etc).</li>
+										<li>Ability for organisers to act as bouncers and scan encrypted QR code based tickets</li>
+										<li>Accept payments from attendees using OCR to extract credit card details. Payments processed through Stripe</li>
+										<li>Allow organisers to cash out payments when the event is complete using PayPal</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="kraudesorce" class="card">
+							<div class="card-logo"></div>
+							<div class="card-body">
+								<div class="card-title">KraudeSorce</div>
+								<div class="card-dates">Spring 2016</div>
+								<div class="card-divider"></div>
+								<div class="card-blurb">
+									A solution to track crowd levels in dining areas in Universities, designed to scale outwards to eateries in the local community. Sort of like <i>Popular Times</i> dataset on Google, but for hyperlocal use.
+									<ul>
+										<li>iOS and Android apps to self-report crowd data using GPS.</li>
+										<li>Subscribe to notifications at specific locations to get current crowd level</li>
+										<li>Raspberry Pi sticks used to ping routers and pull number of connected devices to WiFi router(s) in each location</li>
+										<li>Used a formula of historical data, Raspberry Pi pings and live crowdsourced data to determine the "crowdedness" of a specific place</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>

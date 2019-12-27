@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	function startWave() {
 		clearInterval(wave);
-		wave = setInterval(ripple, 5000);
+		wave = setInterval(ripple, 4000);
 	}
 
 	function killWave() {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-function toggleNav(element, sectionName) {
+function sectionPicker(element, sectionName) {
 	navbar.classList = [];
 	killWave();
 	//if section is section open, close it
@@ -92,11 +92,15 @@ function showContent(sectionName) {
 
 // work stuff
 
-function workPicker(workName) {
-	var workNames = document.querySelectorAll('.card.active');
-	console.log(workNames)
+function workPicker(element, workName) {
+	var card = document.getElementById(workName);
+	var workNames = document.querySelectorAll('.card.active, .work-container.active');
 	for (var i = 0; workNames.length > 0 &&  i < workNames.length; i++) {
 		workNames[i].classList.remove('active');
 	}
-	document.getElementById(workName).classList.add('active');
+	element.classList.add('active')
+	document.getElementById(workName).classList.add('active')
+	document.getElementById(workName).parentElement.scrollIntoView({
+		behavior: 'smooth',
+	});
 }

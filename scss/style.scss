@@ -314,6 +314,35 @@ h1 {
 	}
 }
 
+#thumbnail-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	padding: 0;
+
+	.thumb {
+		box-sizing: border-box;
+		padding: 0.05em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: calc(100% / 3);
+		height: calc(100% / 3);
+		img {
+			transition: all 200ms linear;
+			width: 100%;
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+		.loading {
+
+		}
+	}
+}
+
 .form-container {
 	border: 2px solid black;
 	border-radius: 2px;
@@ -353,7 +382,7 @@ h1 {
 }
 
 // FIX THIS YO
-@media (max-width: 40em){
+@media screen and (max-width: 40em){
 	.flexbox-grid {
 		display: block;
 		.left-col, .right-col, .mid-col {
@@ -383,7 +412,7 @@ h1 {
 		width: intial;
 	}
 }
-@media (max-width: 24em) {
+@mediascreen and (max-width: 24em) {
 	#navigation {
 		.section-nav {
 			.section-title {

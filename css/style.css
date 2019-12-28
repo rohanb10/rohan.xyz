@@ -294,6 +294,27 @@ h1 {
     .skill-group .skill .img-skill:hover + span {
       opacity: 1; }
 
+#thumbnail-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  padding: 0; }
+  #thumbnail-container .thumb {
+    box-sizing: border-box;
+    padding: 0.05em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
+    height: calc(100% / 3); }
+    #thumbnail-container .thumb img {
+      transition: all 200ms linear;
+      width: 100%; }
+      #thumbnail-container .thumb img:hover {
+        transform: scale(1.1); }
+
 .form-container {
   border: 2px solid black;
   border-radius: 2px;
@@ -321,7 +342,7 @@ h1 {
 .contact-blurb a {
   color: #000; }
 
-@media (max-width: 40em) {
+@media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }
     .flexbox-grid .left-col, .flexbox-grid .right-col, .flexbox-grid .mid-col {
@@ -340,7 +361,7 @@ h1 {
   .form-container {
     margin: 3em auto;
     width: intial; } }
-@media (max-width: 24em) {
+@mediascreen and (max-width: 24em) {
   #navigation .section-nav .section-title {
     font-size: 1em; } }
 

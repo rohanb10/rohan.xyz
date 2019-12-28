@@ -1,4 +1,5 @@
 var sections, wave, navbar;
+const NUMBER_OF_PHOTOS = 27;
 
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');
@@ -84,6 +85,9 @@ function showContent(sectionName) {
 	if (activeSection !== null) {
 		activeSection.classList.remove('active');
 	}
+	if(sectionName === 'photos') {
+		genThumbnails();
+	}
 	document.getElementById(sectionName).classList.add('active');
 	navbar.scrollIntoView({ 
 		behavior: 'smooth'
@@ -103,4 +107,27 @@ function workPicker(element, workName) {
 	document.getElementById(workName).parentElement.scrollIntoView({
 		behavior: 'smooth',
 	});
+}
+
+// photos stuff
+
+function genThumbnails() {
+	const thumbContainer = document.getElementById('thumbnail-container');
+	thumbContainer.innerHTML = "";
+	var thumbNames = [];
+	for (var i = 0; i < NUMBER_OF_PHOTOS; i++) {
+		thumbNames.push( i + '.jpg');
+	}
+	//Shuffle array
+	thumbNames.sort(function() { return 0.5 - Math.random() });
+	console.log(thumbNames);
+	for (var i = 0; i < thumbNames.length; i++) {
+		var t = document.createElement('div');
+		t.classList.add('thumb');
+		var img = document.createElement('img');
+		img.src = 'assets/photos/_thumb/' + thumbNames[i];
+		t.appendChild(img);
+		console.log(t);
+		thumbContainer.appendChild(t);
+	}
 }

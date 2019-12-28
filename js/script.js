@@ -120,14 +120,12 @@ function genThumbnails() {
 	}
 	//Shuffle array
 	thumbNames.sort(function() { return 0.5 - Math.random() });
-	console.log(thumbNames);
 	for (var i = 0; i < thumbNames.length; i++) {
 		var t = document.createElement('div');
 		t.classList.add('thumb');
 		var img = document.createElement('img');
 		img.src = 'assets/photos/thumb/' + thumbNames[i];
 		t.appendChild(img);
-		console.log(t);
 		thumbContainer.appendChild(t);
 	}
 }

@@ -358,6 +358,9 @@ h1 {
   .skill-group .skill span {
     font-size: 0.7em; }
 
+  #thumbnail-container .thumb {
+    width: 50%; }
+
   .form-container {
     margin: 3em auto;
     width: intial; } }

@@ -125,7 +125,7 @@ function genThumbnails() {
 		var t = document.createElement('div');
 		t.classList.add('thumb');
 		var img = document.createElement('img');
-		img.src = 'assets/photos/_thumb/' + thumbNames[i];
+		img.src = 'assets/photos/thumb/' + thumbNames[i];
 		t.appendChild(img);
 		console.log(t);
 		thumbContainer.appendChild(t);

@@ -10,6 +10,7 @@ html, body {
 
 .container-width {
   max-width: 1000px;
+  padding: 1em;
   margin: 0 auto; }
 
 h1 {
@@ -23,8 +24,7 @@ h1 {
   transition: all 0.4s linear; }
 
 #navigation {
-  transition: background-color 1s linear;
-  padding: 1em; }
+  transition: background-color 1s linear; }
   #navigation.bg-red {
     background-color: #BE2C2F; }
   #navigation.bg-green {
@@ -153,13 +153,8 @@ h1 {
 .hidden {
   display: none; }
 
-.modal-container {
-  position: relative; }
-  .modal-container.active {
-    background-color: rgba(0, 0, 0, 0.4); }
-
 #section-container {
-  padding: 1em 1em 0; }
+  padding: 1em; }
   #section-container .title {
     font-size: 3em;
     font-weight: 800; }
@@ -294,6 +289,44 @@ h1 {
     .skill-group .skill .img-skill:hover + span {
       opacity: 1; }
 
+.photo-modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: none; }
+  .photo-modal.hidden {
+    display: none; }
+  .photo-modal .modal-content {
+    display: block;
+    width: 80%;
+    max-width: 1000px;
+    margin: auto; }
+    .photo-modal .modal-content .pinch-zoom-container {
+      height: 30em; }
+    .photo-modal .modal-content .img-container {
+      width: 100%;
+      max-height: 600px; }
+      .photo-modal .modal-content .img-container img {
+        width: 100%;
+        height: 100%; }
+    .photo-modal .modal-content .caption-container {
+      width: 100%;
+      display: flex;
+      font-size: 0.8em;
+      margin: auto;
+      justify-content: space-between; }
+      .photo-modal .modal-content .caption-container .caption {
+        color: #777; }
+      .photo-modal .modal-content .caption-container a {
+        text-decoration: underline;
+        cursor: pointer; }
+
 #thumbnail-container {
   display: flex;
   flex-direction: row;
@@ -311,9 +344,10 @@ h1 {
     height: calc(100% / 3); }
     #thumbnail-container .thumb img {
       transition: all 200ms linear;
-      width: 100%; }
-      #thumbnail-container .thumb img:hover {
-        transform: scale(1.1); }
+      width: 100%;
+      cursor: pointer; }
+    #thumbnail-container .thumb:hover img {
+      transform: scale(1.1); }
 
 .form-container {
   border: 2px solid black;
@@ -360,6 +394,11 @@ h1 {
 
   #thumbnail-container .thumb {
     width: 50%; }
+
+  .photo-modal .modal-content {
+    width: 100%; }
+    .photo-modal .modal-content .caption-container {
+      width: 80%; }
 
   .form-container {
     margin: 3em auto;

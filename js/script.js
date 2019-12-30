@@ -116,16 +116,61 @@ function genThumbnails() {
 	thumbContainer.innerHTML = "";
 	var thumbNames = [];
 	for (var i = 0; i < NUMBER_OF_PHOTOS; i++) {
-		thumbNames.push( i + '.jpg');
+		thumbNames.push({'index': i, 'thumb': 'assets/photos/thumb/' + i + '.jpg'});
 	}
 	//Shuffle array
 	thumbNames.sort(function() { return 0.5 - Math.random() });
 	for (var i = 0; i < thumbNames.length; i++) {
-		var t = document.createElement('div');
-		t.classList.add('thumb');
-		var img = document.createElement('img');
-		img.src = 'assets/photos/thumb/' + thumbNames[i];
-		t.appendChild(img);
-		thumbContainer.appendChild(t);
+		// var t = document.createElement('div');
+		// t.classList.add('thumb');
+		// t.onclick = function() {
+		// 	openPhotoModal(this, i);
+		// }
+		// var img = document.createElement('img');
+		// img.src = 'assets/photos/thumb/' + thumbNames[i];
+		// t.appendChild(img);
+		// thumbContainer.appendChild(t);
+		var t = '<div class="thumb" onClick="openPhoto(this, ' + thumbNames[i].index + ')"><img src="' + thumbNames[i].thumb + '"></div>';
+		thumbContainer.innerHTML += t;
 	}
+}
+
+/*
+
+var el = document.querySelector('.img-container');
+var pz = new PinchZoom(el, {});
+
+*/
+
+function openPhoto(thumb, photoNumber) {
+	console.log(thumb, photoNumber)
+	var img = document.getElementById('photo');
+	//show spinner
+	//preload image
+	//onload
+	img.onload = function() {
+		var el = document.querySelector('.img-container');
+		var pz = new PinchZoom(el, {});
+	}
+	img.src = 'assets/photos/' + photoNumber + '.jpg';
+	document.querySelector('.caption').innerHTML = CAPTIONS[photoNumber];
+	//hide spinner
+	//pinchzoom
+	//open modal
+	var modal = document.querySelector('.photo-modal');
+	// modal.style.top = window.pageYOffset;
+	modal.classList.remove('hidden');
+	document.onkeydown = function(evt) {
+    	evt = evt || window.event;
+	    if (evt.keyCode == 27) {
+	        closeModal();
+	    }
+	};
+
+}
+
+function closeModal() {
+	document.querySelector('.photo-modal').classList.add('hidden');
+	document.querySelector('.caption').innerHTML = ""
+	document.getElementById('photo').src = "";
 }

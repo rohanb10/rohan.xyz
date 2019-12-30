@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RB</title>
+	<title>Rohan Bhansali</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -281,22 +281,30 @@
 			</div>
 		</div>
 		<div id="photos" class="section container-width">
-			<div class="lightbox hidden">
-				<!-- <img> -->
-				<div class="caption container">
-					<div class="caption">
-					</div>	
+			<div class="photo-modal hidden">
+				<div class="modal-content">
+					<div class="img-container">
+						<img id="photo" src="">
+					</div>
+					<div class="caption-container">
+						<div class="caption">
+							Half Dome from Glacier Point, Yosemite National Park, California
+						</div>
+						<div class="modal-close-btn">[<a onclick="closeModal()">close</a>]</div>
+					</div>
 				</div>
 			</div>
-			<div class="title green">
-				Photos
-			</div>
-			<div>
-				<p>I spend a lot of time outdoors and take a bunch of pictures of my adventures. The best views can be found on an obscure blog written by a middle aged man with a family and a van.</p>
+			<div class="">
+				<div class="title green">
+					Photos
+				</div>
+				<div>
+					<p>I spend a lot of time outdoors and take a bunch of pictures of my adventures. The best views can be found on an obscure blog written by a middle aged man with a family and a van.</p>
 
-				<p>I don't have a fancy camera setup and most of these have been captured on my old but reliable iPhone 6s, with some mild post-processing on google photos. Obviously, I've only uploaded the good ones that I want people to see.</p>
-			</div>
-			<div id="thumbnail-container">
+					<p>I don't have a fancy camera setup and most of these have been captured on my old but reliable iPhone 6s, with some mild post-processing on google photos. Obviously, I've only uploaded the good ones that I want people to see.</p>
+				</div>
+				<div id="thumbnail-container">
+				</div>
 			</div>
 		</div>
 		<div id="contact" class="section container-width">
@@ -326,6 +334,8 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/captions.js"></script>
+	<script type="text/javascript" src="js/PinchZoom.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){

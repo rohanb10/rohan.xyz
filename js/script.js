@@ -1,5 +1,5 @@
 var sections, wave, navbar;
-const NUMBER_OF_PHOTOS = 27;
+const NUMBER_OF_PHOTOS = 30;
 
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');

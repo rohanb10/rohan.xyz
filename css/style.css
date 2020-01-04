@@ -73,7 +73,9 @@ h1 {
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
-        content: "\025B5"; }
+        content: "\2014"; }
+      #navigation .section-nav .section-title.bg-red.focused span:hover {
+        color: #000; }
     #navigation .section-nav .section-title.bg-green {
       border-bottom: 0.2em solid #56B14C;
       position: relative; }
@@ -96,7 +98,9 @@ h1 {
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
-        content: "\025B5"; }
+        content: "\2014"; }
+      #navigation .section-nav .section-title.bg-green.focused span:hover {
+        color: #000; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #3369AC;
       position: relative; }
@@ -119,7 +123,9 @@ h1 {
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
-        content: "\025B5"; }
+        content: "\2014"; }
+      #navigation .section-nav .section-title.bg-blue.focused span:hover {
+        color: #000; }
     #navigation .section-nav .section-title.bg-yellow {
       border-bottom: 0.2em solid #F8C74B;
       position: relative; }
@@ -142,7 +148,9 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
-        content: "\025B5"; }
+        content: "\2014"; }
+      #navigation .section-nav .section-title.bg-yellow.focused span:hover {
+        color: #000; }
     #navigation .section-nav .section-title.bg-purple {
       border-bottom: 0.2em solid #49266C;
       position: relative; }
@@ -165,7 +173,9 @@ h1 {
       #navigation .section-nav .section-title.bg-purple:hover:before, #navigation .section-nav .section-title.bg-purple.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-purple.focused span:before {
-        content: "\025B5"; }
+        content: "\2014"; }
+      #navigation .section-nav .section-title.bg-purple.focused span:hover {
+        color: #000; }
 
 .hidden {
   display: none; }

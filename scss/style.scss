@@ -61,7 +61,10 @@ h1 {
 	}
 	&.focused {
 		span:before {
-			content: "\025B5";
+			content: "\2014";
+		}
+		span:hover {
+			color: #000;
 		}
 	}
 }

@@ -361,7 +361,7 @@ h1 {
     height: calc(100% / 3);
     overflow: hidden; }
     #thumbnail-container .thumb img {
-      transition: all 200ms linear;
+      transition: all 500ms linear;
       width: 100%;
       cursor: pointer; }
     #thumbnail-container .thumb:hover img {

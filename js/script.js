@@ -135,13 +135,6 @@ function genThumbnails() {
 	}
 }
 
-/*
-
-var el = document.querySelector('.img-container');
-var pz = new PinchZoom(el, {});
-
-*/
-
 function openPhoto(thumb, photoNumber) {
 	console.log(thumb, photoNumber)
 	var img = document.getElementById('photo');

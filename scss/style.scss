@@ -31,14 +31,11 @@ h1 {
 
 #hero {
 	padding-bottom: 10em;
-	transition: all 0.4s linear;
 }
 
 @mixin animated-bg($color) {
 	border-bottom: 0.2em solid $color;
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	position: relative;
-	transform: perspective(1px) translateZ(0);
 
 	&:before {
 		content: "";
@@ -53,34 +50,52 @@ h1 {
 		transform-origin: 50% 100%;
 		transition: transform 0.3s;
 	}
+	span:before {
+		content: attr(data-content)
+	}
 	&:hover, &.wave, &.focused {
 	 	color: #fff;
 	}
 	&:hover:before, &.wave:before {
 		transform: scaleY(1) skew(0deg);
 	}
+	&.focused {
+		span:before {
+			content: "\025B5";
+		}
+	}
 }
 
 #navigation {
 	transition: background-color 1s linear;
+	position: relative;
+	background-size: 100% 0%;
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(white, white);
+	transition: 0.5s background-size linear;
+
+	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow, &.bg-purple {
+		background-size: 100% 100%;
+	}
 	&.bg-red {
-		background-color: #BE2C2F;
+		background-image: linear-gradient(#BE2C2F, #BE2C2F);
 	}
 
 	&.bg-green {
-		background-color: #56B14C;
+		background-image: linear-gradient(#56B14C, #56B14C);
 	}
 
 	&.bg-blue {
-		background-color: #3369AC;
+		background-image: linear-gradient(#3369AC, #3369AC);
 	}
 
 	&.bg-yellow {
-		background-color: #F8C74B;
+		background-image: linear-gradient(#F8C74B, #F8C74B);
 	}
 
 	&.bg-purple {
-		background-color: #49266C;
+		background-image: linear-gradient(#49266C, #49266C);
 	}
 	.section-nav {
 		.section-title {
@@ -330,8 +345,7 @@ h1 {
 			height: 30em;
 		}
 		.img-container {
-			width: 100%;
-			max-height: 600px;
+			max-height: 700px;
 			img {
 				width: 100%;
 				height:100%;
@@ -342,6 +356,7 @@ h1 {
 			display: flex;
 			font-size: 0.8em;
 			margin: auto;
+			padding-top:2em;
 			justify-content:space-between;
 			.caption {
 				color: #777;
@@ -364,12 +379,13 @@ h1 {
 
 	.thumb {
 		box-sizing: border-box;
-		padding: 0.05em;
+		padding: 0.1em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: calc(100% / 3);
 		height: calc(100% / 3);
+		overflow: hidden;
 		
 		img {
 			transition: all 200ms linear;
@@ -460,6 +476,7 @@ h1 {
 			width: 100%;
 			.caption-container {
 				width: 80%;
+				padding-top:0;
 			}
 		}
 	}

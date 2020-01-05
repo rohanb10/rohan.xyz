@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap");
 
+// $colorRed: #BE2C2F;
+// $colorGreen: #56B14C;
+// $colorBlue: #3369AC;
+// $colorYellow: #F8C74B;
+
+$colorRed:    #B33127;
+$colorGreen:  #55A360;
+$colorBlue:   #4C61A1;
+$colorYellow: #FFC619;
+
+
 html, body {
 	margin:0;
 	padding:0;
@@ -82,19 +93,19 @@ h1 {
 		background-size: 100% 100%;
 	}
 	&.bg-red {
-		background-image: linear-gradient(#BE2C2F, #BE2C2F);
+		background-image: linear-gradient($colorRed, $colorRed);
 	}
 
 	&.bg-green {
-		background-image: linear-gradient(#56B14C, #56B14C);
+		background-image: linear-gradient($colorGreen, $colorGreen);
 	}
 
 	&.bg-blue {
-		background-image: linear-gradient(#3369AC, #3369AC);
+		background-image: linear-gradient($colorBlue, $colorBlue);
 	}
 
 	&.bg-yellow {
-		background-image: linear-gradient(#F8C74B, #F8C74B);
+		background-image: linear-gradient($colorYellow, $colorYellow);
 	}
 	.section-nav {
 		.section-title {
@@ -110,19 +121,19 @@ h1 {
 			}
 
 			&.bg-red {
-				@include animated-bg(#BE2C2F);
+				@include animated-bg($colorRed);
 			}
 
 			&.bg-green {
-				@include animated-bg(#56B14C);
+				@include animated-bg($colorGreen);
 			}
 
 			&.bg-blue {
-				@include animated-bg(#3369AC);
+				@include animated-bg($colorBlue);
 			}
 
 			&.bg-yellow {
-				@include animated-bg(#F8C74B);
+				@include animated-bg($colorYellow);
 			}
 		}
 	}
@@ -140,16 +151,16 @@ h1 {
 		font-weight: 800;
 		padding-bottom: 0.5em;
 		&.red span {
-			border-bottom: 0.1em solid #BE2C2F;
+			border-bottom: 0.1em solid $colorRed;
 		}
 		&.green span {
-			border-bottom: 0.1em solid #56B14C;
+			border-bottom: 0.1em solid $colorGreen;
 		}
 		&.blue span {
-			border-bottom: 0.1em solid #3369AC;
+			border-bottom: 0.1em solid $colorBlue;
 		}
 		&.yellow span {
-			border-bottom: 0.1em solid #F8C74B;
+			border-bottom: 0.1em solid $colorYellow;
 		}
 	}
 }
@@ -187,13 +198,12 @@ h1 {
 		background-color: #dadedf;
 	}
 	&:active, &.active {
-		border-bottom: 2px solid #BE2C2F;
+		border-bottom: 2px solid $colorRed;
 	}
 }
 
 .work-card-container{
-	
-	padding-top: 4em;
+	padding: 4em 2em 0;
 	.card{
 		max-width: 30em;
 		margin: 1em auto;
@@ -271,7 +281,6 @@ h1 {
 #turnstyle .card-logo {
 	background-image: url('../assets/logos/turnstyle.png');
 }
-
 
 .skill-title {
 	font-weight: 600;
@@ -372,14 +381,13 @@ h1 {
 
 	.thumb {
 		box-sizing: border-box;
-		padding: 0.1em;
+		border: 0.1em solid #FFF;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: calc(100% / 3);
 		height: calc(100% / 3);
 		overflow: hidden;
-		
 		img {
 			transition: all 500ms linear;
 			width: 100%;
@@ -419,7 +427,7 @@ h1 {
 
 	input[type="submit"]{
 		color: #FFF;
-		background-color: #F8C74B;
+		background-color: $colorYellow;
 		margin-left: auto;
 		padding: .5em 1em;
 	}
@@ -473,9 +481,13 @@ h1 {
 		}
 	}
 
-	.card {
-		width: initial;
+	.work-card-container {
+		padding: 5em 0 0;
+		.card {
+			width: initial;
+		}
 	}
+	
 
 	.skill-group {
 		.skill {

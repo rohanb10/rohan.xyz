@@ -33,13 +33,13 @@ h1 {
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%; }
   #navigation.bg-red {
-    background-image: linear-gradient(#BE2C2F, #BE2C2F); }
+    background-image: linear-gradient(#B33127, #B33127); }
   #navigation.bg-green {
-    background-image: linear-gradient(#56B14C, #56B14C); }
+    background-image: linear-gradient(#55A360, #55A360); }
   #navigation.bg-blue {
-    background-image: linear-gradient(#3369AC, #3369AC); }
+    background-image: linear-gradient(#4C61A1, #4C61A1); }
   #navigation.bg-yellow {
-    background-image: linear-gradient(#F8C74B, #F8C74B); }
+    background-image: linear-gradient(#FFC619, #FFC619); }
   #navigation .section-nav .section-title {
     cursor: pointer;
     font-size: 1.25em;
@@ -50,7 +50,7 @@ h1 {
       width: 4em;
       text-align: center; }
     #navigation .section-nav .section-title.bg-red {
-      border-bottom: 0.2em solid #BE2C2F;
+      border-bottom: 0.2em solid #B33127;
       position: relative; }
       #navigation .section-nav .section-title.bg-red:before {
         content: "";
@@ -60,7 +60,7 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #BE2C2F;
+        background: #B33127;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
@@ -75,7 +75,7 @@ h1 {
       #navigation .section-nav .section-title.bg-red.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-green {
-      border-bottom: 0.2em solid #56B14C;
+      border-bottom: 0.2em solid #55A360;
       position: relative; }
       #navigation .section-nav .section-title.bg-green:before {
         content: "";
@@ -85,7 +85,7 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #56B14C;
+        background: #55A360;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
@@ -100,7 +100,7 @@ h1 {
       #navigation .section-nav .section-title.bg-green.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-blue {
-      border-bottom: 0.2em solid #3369AC;
+      border-bottom: 0.2em solid #4C61A1;
       position: relative; }
       #navigation .section-nav .section-title.bg-blue:before {
         content: "";
@@ -110,7 +110,7 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #3369AC;
+        background: #4C61A1;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
@@ -125,7 +125,7 @@ h1 {
       #navigation .section-nav .section-title.bg-blue.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-yellow {
-      border-bottom: 0.2em solid #F8C74B;
+      border-bottom: 0.2em solid #FFC619;
       position: relative; }
       #navigation .section-nav .section-title.bg-yellow:before {
         content: "";
@@ -135,7 +135,7 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #F8C74B;
+        background: #FFC619;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
@@ -161,13 +161,13 @@ h1 {
     font-weight: 800;
     padding-bottom: 0.5em; }
     #section-container .title.red span {
-      border-bottom: 0.1em solid #BE2C2F; }
+      border-bottom: 0.1em solid #B33127; }
     #section-container .title.green span {
-      border-bottom: 0.1em solid #56B14C; }
+      border-bottom: 0.1em solid #55A360; }
     #section-container .title.blue span {
-      border-bottom: 0.1em solid #3369AC; }
+      border-bottom: 0.1em solid #4C61A1; }
     #section-container .title.yellow span {
-      border-bottom: 0.1em solid #F8C74B; }
+      border-bottom: 0.1em solid #FFC619; }
 
 .flexbox-grid {
   display: flex; }
@@ -195,10 +195,10 @@ h1 {
   .work:hover {
     background-color: #dadedf; }
   .work:active, .work.active {
-    border-bottom: 2px solid #BE2C2F; }
+    border-bottom: 2px solid #B33127; }
 
 .work-card-container {
-  padding-top: 4em; }
+  padding: 4em 2em 0; }
   .work-card-container .card {
     max-width: 30em;
     margin: 1em auto;
@@ -335,7 +335,7 @@ h1 {
   padding: 0; }
   #thumbnail-container .thumb {
     box-sizing: border-box;
-    padding: 0.1em;
+    border: 0.1em solid #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -369,7 +369,7 @@ h1 {
     width: calc(100% - 4em); }
   .form-container input[type="submit"] {
     color: #FFF;
-    background-color: #F8C74B;
+    background-color: #FFC619;
     margin-left: auto;
     padding: .5em 1em; }
 
@@ -403,8 +403,10 @@ h1 {
       width: 100%;
       padding: 0; }
 
-  .card {
-    width: initial; }
+  .work-card-container {
+    padding: 5em 0 0; }
+    .work-card-container .card {
+      width: initial; }
 
   .skill-group .skill .img-skill {
     max-width: 2em;

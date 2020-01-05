@@ -87,10 +87,12 @@ function showSection(sectionName) {
 	}
 	//Open new section
 	document.getElementById(sectionName).classList.remove('hidden');
-	fadeOut('#hero');
-	navbar.scrollIntoView({ 
-		behavior: 'smooth',
+	fadeOut('#hero', function() {
+		navbar.scrollIntoView({ 
+			behavior: 'smooth',
+		});
 	});
+	
 	active_section = sectionName;
 }
 
@@ -169,13 +171,16 @@ function closePhotoModal() {
 }
 
 // Fade functions
-function fadeOut(elementName) {
+function fadeOut(elementName, callback) {
 	var el = document.querySelector(elementName);
 	el.classList.add('fade-out-bottom');
 	setTimeout(function() {
 		el.classList.remove('fade-out-bottom');
 		el.classList.add('hidden');
-	}, 500, el)
+	}, 500, el);
+	if (callback) {
+		callback();
+	}
 }
 
 function fadeIn(elementName, callback) {

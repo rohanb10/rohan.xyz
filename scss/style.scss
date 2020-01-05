@@ -184,7 +184,7 @@ h1 {
 	cursor: pointer;
 	padding: 0.5em;
 	margin: 0.5em 0;
-	border-bottom: 2px solid transparent;
+	border: 2px solid transparent;
 	transition: all 0.3s linear;
 
 	.work-name {
@@ -198,7 +198,7 @@ h1 {
 		background-color: #dadedf;
 	}
 	&:active, &.active {
-		border-bottom: 2px solid $colorRed;
+		border: 2px solid $colorRed;
 	}
 }
 
@@ -207,7 +207,8 @@ h1 {
 	.card{
 		max-width: 30em;
 		margin: 1em auto;
-		box-shadow: 0 1em 2em rgba(0,0,0,0.30), 0 1em .75em rgba(0,0,0,0.22);
+		// box-shadow: 0 1em 2em rgba(0,0,0,0.30), 0 1em .75em rgba(0,0,0,0.22);
+		border: 2px solid black;
 		background-color: white;
 		border-radius: 4px;
 		position: relative;
@@ -389,7 +390,7 @@ h1 {
 		height: calc(100% / 3);
 		overflow: hidden;
 		img {
-			transition: all 500ms linear;
+			transition: all 0.5s linear;
 			width: 100%;
 			cursor: pointer;
 		}
@@ -404,14 +405,14 @@ h1 {
 
 .form-container {
 	border: 2px solid black;
-	border-radius: 2px;
+	border-radius: 4px;
 	margin: 0 auto;
 	text-align: center;
 	max-width: 20em;
 
 	input, textarea {
 		border: none;
-		border-radius: 2px;
+		border-radius: 4px;
 		font-size: 0.8em;
 		box-sizing:border-box;
 		display: block;
@@ -429,7 +430,7 @@ h1 {
 		color: #FFF;
 		background-color: $colorYellow;
 		margin-left: auto;
-		padding: .5em 1em;
+		padding: .5em 1.5em;
 	}
 
 }

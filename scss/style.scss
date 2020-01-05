@@ -63,7 +63,7 @@ h1 {
 		span:before {
 			content: "\2014";
 		}
-		span:hover {
+		&:hover {
 			color: #000;
 		}
 	}
@@ -73,12 +73,12 @@ h1 {
 	transition: background-color 1s linear;
 	position: relative;
 	background-size: 100% 0%;
-	background-position: 0 100%;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	background-image: linear-gradient(white, white);
 	transition: 0.5s background-size linear;
 
-	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow, &.bg-purple {
+	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
 		background-size: 100% 100%;
 	}
 	&.bg-red {
@@ -95,10 +95,6 @@ h1 {
 
 	&.bg-yellow {
 		background-image: linear-gradient(#F8C74B, #F8C74B);
-	}
-
-	&.bg-purple {
-		background-image: linear-gradient(#49266C, #49266C);
 	}
 	.section-nav {
 		.section-title {
@@ -128,10 +124,6 @@ h1 {
 			&.bg-yellow {
 				@include animated-bg(#F8C74B);
 			}
-
-			&.bg-purple {
-				@include animated-bg(#49266C);
-			}
 		}
 	}
 }
@@ -141,31 +133,37 @@ h1 {
 }
 
 #section-container {
+	min-height: calc(100vh-4em);
 	padding: 1em;
 	.title {
 		font-size: 3em;
 		font-weight: 800;
-	}
-	.section {
-		min-height: calc(100vh);
+		padding-bottom: 0.5em;
+		&.red span {
+			border-bottom: 0.1em solid #BE2C2F;
+		}
+		&.green span {
+			border-bottom: 0.1em solid #56B14C;
+		}
+		&.blue span {
+			border-bottom: 0.1em solid #3369AC;
+		}
+		&.yellow span {
+			border-bottom: 0.1em solid #F8C74B;
+		}
 	}
 }
 
 .flexbox-grid {
 	display: flex;
-	.left-col, .right-col, .mid-col {
-		padding: 0 0.5em;
-	}
 	.left-col {
 		width: 40%;
 		font-weight: 400;
-	}
-	.mid-col {
-		width: 60%;
-		margin: 0 auto;
+		padding-right: 0.25em;
 	}
 	.right-col {
 		width: 60%;
+		padding-left: 0.25em;
 	}
 }
 
@@ -512,7 +510,7 @@ h1 {
 		width: intial;
 	}
 }
-@mediascreen and (max-width: 24em) {
+@media screen and (max-width: 20em) {
 	#navigation {
 		.section-nav {
 			.section-title {

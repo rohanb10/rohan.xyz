@@ -26,11 +26,11 @@ h1 {
   transition: background-color 1s linear;
   position: relative;
   background-size: 100% 0%;
-  background-position: 0 100%;
+  background-position: 0 0;
   background-repeat: no-repeat;
   background-image: linear-gradient(white, white);
   transition: 0.5s background-size linear; }
-  #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow, #navigation.bg-purple {
+  #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%; }
   #navigation.bg-red {
     background-image: linear-gradient(#BE2C2F, #BE2C2F); }
@@ -40,8 +40,6 @@ h1 {
     background-image: linear-gradient(#3369AC, #3369AC); }
   #navigation.bg-yellow {
     background-image: linear-gradient(#F8C74B, #F8C74B); }
-  #navigation.bg-purple {
-    background-image: linear-gradient(#49266C, #49266C); }
   #navigation .section-nav .section-title {
     cursor: pointer;
     font-size: 1.25em;
@@ -74,7 +72,7 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-red.focused span:hover {
+      #navigation .section-nav .section-title.bg-red.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-green {
       border-bottom: 0.2em solid #56B14C;
@@ -99,7 +97,7 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-green.focused span:hover {
+      #navigation .section-nav .section-title.bg-green.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #3369AC;
@@ -124,7 +122,7 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-blue.focused span:hover {
+      #navigation .section-nav .section-title.bg-blue.focused:hover {
         color: #000; }
     #navigation .section-nav .section-title.bg-yellow {
       border-bottom: 0.2em solid #F8C74B;
@@ -149,57 +147,37 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-yellow.focused span:hover {
-        color: #000; }
-    #navigation .section-nav .section-title.bg-purple {
-      border-bottom: 0.2em solid #49266C;
-      position: relative; }
-      #navigation .section-nav .section-title.bg-purple:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #49266C;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition: transform 0.3s; }
-      #navigation .section-nav .section-title.bg-purple span:before {
-        content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-purple:hover, #navigation .section-nav .section-title.bg-purple.wave, #navigation .section-nav .section-title.bg-purple.focused {
-        color: #fff; }
-      #navigation .section-nav .section-title.bg-purple:hover:before, #navigation .section-nav .section-title.bg-purple.wave:before {
-        transform: scaleY(1) skew(0deg); }
-      #navigation .section-nav .section-title.bg-purple.focused span:before {
-        content: "\2014"; }
-      #navigation .section-nav .section-title.bg-purple.focused span:hover {
+      #navigation .section-nav .section-title.bg-yellow.focused:hover {
         color: #000; }
 
 .hidden {
   display: none; }
 
 #section-container {
+  min-height: calc(100vh-4em);
   padding: 1em; }
   #section-container .title {
     font-size: 3em;
-    font-weight: 800; }
-  #section-container .section {
-    min-height: calc(100vh); }
+    font-weight: 800;
+    padding-bottom: 0.5em; }
+    #section-container .title.red span {
+      border-bottom: 0.1em solid #BE2C2F; }
+    #section-container .title.green span {
+      border-bottom: 0.1em solid #56B14C; }
+    #section-container .title.blue span {
+      border-bottom: 0.1em solid #3369AC; }
+    #section-container .title.yellow span {
+      border-bottom: 0.1em solid #F8C74B; }
 
 .flexbox-grid {
   display: flex; }
-  .flexbox-grid .left-col, .flexbox-grid .right-col, .flexbox-grid .mid-col {
-    padding: 0 0.5em; }
   .flexbox-grid .left-col {
     width: 40%;
-    font-weight: 400; }
-  .flexbox-grid .mid-col {
-    width: 60%;
-    margin: 0 auto; }
+    font-weight: 400;
+    padding-right: 0.25em; }
   .flexbox-grid .right-col {
-    width: 60%; }
+    width: 60%;
+    padding-left: 0.25em; }
 
 .work {
   border-radius: 4px;
@@ -446,7 +424,7 @@ h1 {
   .form-container {
     margin: 3em auto;
     width: intial; } }
-@mediascreen and (max-width: 24em) {
+@media screen and (max-width: 20em) {
   #navigation .section-nav .section-title {
     font-size: 1em; } }
 

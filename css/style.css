@@ -72,6 +72,8 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
         content: "\2014"; }
+      #navigation .section-nav .section-title.bg-red *::selection {
+        background-color: #B9433A; }
     #navigation .section-nav .section-title.bg-green {
       border-bottom: 0.2em solid #46864F;
       position: relative; }
@@ -95,6 +97,8 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
         content: "\2014"; }
+      #navigation .section-nav .section-title.bg-green *::selection {
+        background-color: #46864F; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #4C61A1;
       position: relative; }
@@ -118,6 +122,8 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
         content: "\2014"; }
+      #navigation .section-nav .section-title.bg-blue *::selection {
+        background-color: #4C61A1; }
     #navigation .section-nav .section-title.bg-yellow {
       border-bottom: 0.2em solid #F7C83B;
       position: relative; }
@@ -141,6 +147,8 @@ h1 {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
         content: "\2014"; }
+      #navigation .section-nav .section-title.bg-yellow *::selection {
+        background-color: #F7C83B; }
 
 .hidden {
   display: none; }
@@ -160,6 +168,17 @@ h1 {
       border-bottom: 0.1em solid #4C61A1; }
     #section-container .title.yellow span {
       border-bottom: 0.1em solid #F7C83B; }
+  #section-container #work *::selection {
+    background-color: #B9433A;
+    color: #FFF; }
+  #section-container #skills *::selection {
+    background-color: #4C61A1;
+    color: #FFF; }
+  #section-container #photos *::selection {
+    background-color: #46864F;
+    color: #FFF; }
+  #section-container #contact *::selection {
+    background-color: #F7C83B; }
 
 .flexbox-grid {
   display: flex; }
@@ -236,7 +255,7 @@ h1 {
   background-image: url("../assets/logos/expensify.png"); }
 
 #zappos .card-logo {
-  background-image: url("../assets/logos/zappos.jpg"); }
+  background-image: url("../assets/logos/zappos.png"); }
 
 #eazyfriday .card-logo {
   background-image: url("../assets/logos/eazyfriday.jpg"); }
@@ -296,20 +315,18 @@ h1 {
   .photo-modal .modal-content {
     display: block;
     width: 80%;
-    max-width: 1000px;
     margin: auto; }
-    .photo-modal .modal-content .pinch-zoom-container {
-      height: 30em; }
-    .photo-modal .modal-content .img-container {
-      max-height: 700px; }
-      .photo-modal .modal-content .img-container img {
-        width: 100%;
-        height: 100%; }
+    .photo-modal .modal-content .photo-container {
+      height: 70vh;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center; }
     .photo-modal .modal-content .caption-container {
       width: 100%;
       display: flex;
       font-size: 0.8em;
       margin: auto;
+      max-width: 1000px;
       padding-top: 2em;
       justify-content: space-between; }
       .photo-modal .modal-content .caption-container .caption {
@@ -355,6 +372,8 @@ h1 {
     display: block;
     margin: 2em;
     padding: 0.4em; }
+    .form-container input:focus, .form-container textarea:focus {
+      outline: none; }
   .form-container input[type="email"], .form-container textarea {
     background-color: #EFF0F1;
     border-bottom: 1px solid #C5CCCD;
@@ -376,14 +395,14 @@ h1 {
     transform: translateY(0);
     opacity: 1; }
   100% {
-    transform: translateY(50px);
+    transform: translateY(100px);
     opacity: 0; } }
 .fade-in-bottom {
   animation: fade-in-bottom 0.5s ease-in-out both; }
 
 @keyframes fade-in-bottom {
   0% {
-    transform: translateY(50px);
+    transform: translateY(100px);
     opacity: 0; }
   100% {
     transform: translateY(0);
@@ -400,11 +419,13 @@ h1 {
     .work-card-container .card {
       width: initial; }
 
-  .skill-group .skill .img-skill {
-    max-width: 2em;
-    margin: 0.25em 0.5em; }
-  .skill-group .skill span {
-    font-size: 0.7em; }
+  .skill-group {
+    padding: 0.5em 0; }
+    .skill-group .skill .img-skill {
+      max-width: 2em;
+      margin: 0.25em 0.5em; }
+    .skill-group .skill span {
+      font-size: 0.7em; }
 
   #thumbnail-container .thumb {
     width: 50%; }

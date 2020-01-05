@@ -138,36 +138,35 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function openPhotoModal(thumb, photoNumber) {
-		console.log(thumb, photoNumber)
-		var img = document.getElementById('photo');
 		//show spinner
 		//preload image
+		document.querySelector('.photo-container').style.backgroundImage = "url('assets/photos/" + photoNumber + ".jpg')";
 		//onload
-		img.onload = function() {
-			var el = document.querySelector('.img-container');
-			var pz = new PinchZoom(el, {});
-		}
-		img.src = 'assets/photos/' + photoNumber + '.jpg';
-		document.querySelector('.caption').innerHTML = CAPTIONS[photoNumber];
+		document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[photoNumber]);
 		//hide spinner
-		//pinchzoom
 		//open modal
 		var modal = document.querySelector('.photo-modal');
-		// modal.classList.remove('hidden');
 		fadeIn('.photo-modal');
+
+		// ESC key to close modal
 		document.onkeydown = function(evt) {
 	    	evt = evt || window.event;
 		    if (evt.keyCode == 27) {
 		        closePhotoModal();
 		    }
 		};
+	}
 
+	// Wrap caption locations on to next line
+	function wrapCaption(caption) {
+		var locationIndex = caption.lastIndexOf(',', caption.lastIndexOf(',')-1) + 1;
+		return caption.substr(0, locationIndex) + '<br>' + caption.substr(locationIndex);
 	}
 
 	function closePhotoModal() {
-		document.querySelector('.caption').innerHTML = ''
-		document.getElementById('photo').src = '';
-		document.querySelector('.photo-modal').classList.add('hidden');
+		fadeOut('.photo-modal', function() {
+			document.querySelector('.caption').innerHTML = ''
+		});
 	}
 
 // Fade functions
@@ -177,10 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		setTimeout(function() {
 			el.classList.remove('fade-out-bottom');
 			el.classList.add('hidden');
-		}, 500, el);
-		if (callback) {
-			callback();
-		}
+			if (callback) {
+				callback();
+			}
+		}, 500, el, callback);
 	}
 
 	function fadeIn(elementName, callback) {

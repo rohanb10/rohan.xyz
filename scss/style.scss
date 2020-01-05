@@ -54,7 +54,7 @@ h1 {
 		content: attr(data-content)
 	}
 	&:hover, &.wave, &.focused {
-	 	color: #fff;
+		color: #fff;
 	}
 	&:hover:before, &.wave:before {
 		transform: scaleY(1) skew(0deg);
@@ -147,11 +147,7 @@ h1 {
 		font-weight: 800;
 	}
 	.section {
-		display: none;
-		min-height: calc(100vh - 4em);
-		&.active {
-			display: block;
-		}
+		min-height: calc(100vh);
 	}
 }
 
@@ -173,7 +169,7 @@ h1 {
 	}
 }
 
-.work-container {
+.work {
 	border-radius: 4px;
 	background-color: #EFF0F1;
 	cursor: pointer;
@@ -193,11 +189,11 @@ h1 {
 		background-color: #dadedf;
 	}
 	&:active, &.active {
-	 	border-bottom: 2px solid #BE2C2F;
+		border-bottom: 2px solid #BE2C2F;
 	}
 }
 
-.card-container{
+.work-card-container{
 	
 	padding-top: 4em;
 	.card{
@@ -206,11 +202,7 @@ h1 {
 		box-shadow: 0 1em 2em rgba(0,0,0,0.30), 0 1em .75em rgba(0,0,0,0.22);
 		background-color: white;
 		border-radius: 4px;
-		display: none;
 		position: relative;
-		&.active {
-			display: block;
-		}
 		.card-logo {
 			position:absolute;
 			left: 0;
@@ -441,6 +433,37 @@ h1 {
 		color: #000;
 	}
 }
+
+.fade-out-bottom {
+	animation: fade-out-bottom 0.5s ease-in-out both;
+}
+
+@keyframes fade-out-bottom {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+}
+
+.fade-in-bottom {
+	animation: fade-in-bottom 0.5s ease-in-out both;
+}
+
+@keyframes fade-in-bottom {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
 
 // FIX THIS YO
 @media screen and (max-width: 40em){

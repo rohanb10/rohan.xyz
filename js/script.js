@@ -45,58 +45,53 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 // Navbar
-function sectionPicker(element, sectionName) {
-	navbar.classList = [];
-	killWave();
-	//if section is section open, close it
-	if (!element.classList.contains('focused')) {
-		showSection(sectionName);
-		// change background colour
-		navbar.classList.add(element.classList[1]);
-		// reset text colour
-		for (var i = 0; i < sections.length; i++) {
-			sections[i].classList.remove('focused');
+	function sectionPicker(element, sectionName) {
+		navbar.classList = [];
+		killWave();
+		//if section is section open, close it
+		if (!element.classList.contains('focused')) {
+			showSection(sectionName);
+			// change background colour
+			navbar.classList.add(element.classList[1]);
+			// reset text colour
+			for (var i = 0; i < sections.length; i++) {
+				sections[i].classList.remove('focused');
+			}
+			element.classList.add('focused');
+		} else {
+			hideSection();
+			startWave();
+			element.classList.remove('focused');
 		}
-		element.classList.add('focused');
-	} else {
-		hideSection();
-		startWave();
-		element.classList.remove('focused');
 	}
-}
 
-function hideSection() {
-	//scroll to top before hiding div
-	fadeOut('#' + active_section);
-	fadeIn('#hero', function() {
-		window.scrollTo({top: 0});
-	});
-	active_section = '';
-}
-
-function showSection(sectionName) {
-	
-	if(sectionName === 'photos') {
-		genThumbnails();
-	}
-	//Close currently active section
-	if (active_section !== '') {
-		document.getElementById(active_section).classList.add('hidden');
+	function hideSection() {
+		//scroll to top before hiding div
+		fadeOut('#' + active_section);
+		fadeIn('#hero', function() {
+			window.scrollTo({top: 0});
+		});
 		active_section = '';
 	}
-	//Open new section
-	// document.getElementById(sectionName).classList.remove('hidden');
 
-	// navbar.scrollIntoView({ 
-	// 	behavior: 'smooth'
-	// });
-	fadeIn('#' + sectionName, function() {
-		document.getElementById('hero').classList.add('hidden');
-	});
-	
-	
-	active_section = sectionName;
-}
+	function showSection(sectionName) {
+		
+		if(sectionName === 'photos') {
+			genThumbnails();
+		}
+		//Close currently active section
+		if (active_section !== '') {
+			document.getElementById(active_section).classList.add('hidden');
+			active_section = '';
+		}
+		//Open new section
+		fadeIn('#' + sectionName, function() {
+			document.getElementById('hero').classList.add('hidden');
+		});
+		
+		
+		active_section = sectionName;
+	}
 
 // Work
 	function workPicker(element, workName) {
@@ -114,9 +109,12 @@ function showSection(sectionName) {
 		fadeIn('#' + workName);
 		active_work = workName;
 
-		card.parentElement.scrollIntoView({
-			behavior: 'smooth',
-		});
+		if (window.innerWidth <= 640) {
+			card.parentElement.scrollIntoView({
+				behavior: 'smooth',
+			});	
+		}
+		
 	}
 
 // Photos

@@ -5,10 +5,10 @@
 // $colorBlue: #3369AC;
 // $colorYellow: #F8C74B;
 
-$colorRed:    #B33127;
-$colorGreen:  #55A360;
+$colorRed:    #B9433A;
+$colorGreen:  #46864F;
 $colorBlue:   #4C61A1;
-$colorYellow: #FFC619;
+$colorYellow: #F7C83B;
 
 
 html, body {
@@ -64,7 +64,7 @@ h1 {
 	span:before {
 		content: attr(data-content)
 	}
-	&:hover, &.wave, &.focused {
+	&:hover, &.wave {
 		color: #fff;
 	}
 	&:hover:before, &.wave:before {
@@ -73,9 +73,6 @@ h1 {
 	&.focused {
 		span:before {
 			content: "\2014";
-		}
-		&:hover {
-			color: #000;
 		}
 	}
 }

@@ -33,13 +33,13 @@ h1 {
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%; }
   #navigation.bg-red {
-    background-image: linear-gradient(#B33127, #B33127); }
+    background-image: linear-gradient(#B9433A, #B9433A); }
   #navigation.bg-green {
-    background-image: linear-gradient(#55A360, #55A360); }
+    background-image: linear-gradient(#46864F, #46864F); }
   #navigation.bg-blue {
     background-image: linear-gradient(#4C61A1, #4C61A1); }
   #navigation.bg-yellow {
-    background-image: linear-gradient(#FFC619, #FFC619); }
+    background-image: linear-gradient(#F7C83B, #F7C83B); }
   #navigation .section-nav .section-title {
     cursor: pointer;
     font-size: 1.25em;
@@ -50,7 +50,7 @@ h1 {
       width: 4em;
       text-align: center; }
     #navigation .section-nav .section-title.bg-red {
-      border-bottom: 0.2em solid #B33127;
+      border-bottom: 0.2em solid #B9433A;
       position: relative; }
       #navigation .section-nav .section-title.bg-red:before {
         content: "";
@@ -60,22 +60,20 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #B33127;
+        background: #B9433A;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
       #navigation .section-nav .section-title.bg-red span:before {
         content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave, #navigation .section-nav .section-title.bg-red.focused {
+      #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-red.focused:hover {
-        color: #000; }
     #navigation .section-nav .section-title.bg-green {
-      border-bottom: 0.2em solid #55A360;
+      border-bottom: 0.2em solid #46864F;
       position: relative; }
       #navigation .section-nav .section-title.bg-green:before {
         content: "";
@@ -85,20 +83,18 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #55A360;
+        background: #46864F;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
       #navigation .section-nav .section-title.bg-green span:before {
         content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave, #navigation .section-nav .section-title.bg-green.focused {
+      #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-green.focused:hover {
-        color: #000; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #4C61A1;
       position: relative; }
@@ -116,16 +112,14 @@ h1 {
         transition: transform 0.3s; }
       #navigation .section-nav .section-title.bg-blue span:before {
         content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave, #navigation .section-nav .section-title.bg-blue.focused {
+      #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-blue.focused:hover {
-        color: #000; }
     #navigation .section-nav .section-title.bg-yellow {
-      border-bottom: 0.2em solid #FFC619;
+      border-bottom: 0.2em solid #F7C83B;
       position: relative; }
       #navigation .section-nav .section-title.bg-yellow:before {
         content: "";
@@ -135,20 +129,18 @@ h1 {
         left: 0;
         right: 0;
         bottom: 0;
-        background: #FFC619;
+        background: #F7C83B;
         transform: scaleY(0);
         transform-origin: 50% 100%;
         transition: transform 0.3s; }
       #navigation .section-nav .section-title.bg-yellow span:before {
         content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave, #navigation .section-nav .section-title.bg-yellow.focused {
+      #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
         content: "\2014"; }
-      #navigation .section-nav .section-title.bg-yellow.focused:hover {
-        color: #000; }
 
 .hidden {
   display: none; }
@@ -161,13 +153,13 @@ h1 {
     font-weight: 800;
     padding-bottom: 0.5em; }
     #section-container .title.red span {
-      border-bottom: 0.1em solid #B33127; }
+      border-bottom: 0.1em solid #B9433A; }
     #section-container .title.green span {
-      border-bottom: 0.1em solid #55A360; }
+      border-bottom: 0.1em solid #46864F; }
     #section-container .title.blue span {
       border-bottom: 0.1em solid #4C61A1; }
     #section-container .title.yellow span {
-      border-bottom: 0.1em solid #FFC619; }
+      border-bottom: 0.1em solid #F7C83B; }
 
 .flexbox-grid {
   display: flex; }
@@ -195,7 +187,7 @@ h1 {
   .work:hover {
     background-color: #dadedf; }
   .work:active, .work.active {
-    border: 2px solid #B33127; }
+    border: 2px solid #B9433A; }
 
 .work-card-container {
   padding: 4em 2em 0; }
@@ -369,7 +361,7 @@ h1 {
     width: calc(100% - 4em); }
   .form-container input[type="submit"] {
     color: #FFF;
-    background-color: #FFC619;
+    background-color: #F7C83B;
     margin-left: auto;
     padding: .5em 1.5em; }
 

@@ -186,10 +186,7 @@ h1 {
     font-size: 3em;
     font-weight: 800; }
   #section-container .section {
-    display: none;
-    min-height: calc(100vh - 4em); }
-    #section-container .section.active {
-      display: block; }
+    min-height: calc(100vh); }
 
 .flexbox-grid {
   display: flex; }
@@ -204,7 +201,7 @@ h1 {
   .flexbox-grid .right-col {
     width: 60%; }
 
-.work-container {
+.work {
   border-radius: 4px;
   background-color: #EFF0F1;
   cursor: pointer;
@@ -212,29 +209,26 @@ h1 {
   margin: 0.5em 0;
   border-bottom: 2px solid transparent;
   transition: all 0.3s linear; }
-  .work-container .work-name {
+  .work .work-name {
     font-size: 1.1em;
     font-weight: 600; }
-  .work-container .subtitle {
+  .work .subtitle {
     font-size: 0.8em; }
-  .work-container:hover {
+  .work:hover {
     background-color: #dadedf; }
-  .work-container:active, .work-container.active {
+  .work:active, .work.active {
     border-bottom: 2px solid #BE2C2F; }
 
-.card-container {
+.work-card-container {
   padding-top: 4em; }
-  .card-container .card {
+  .work-card-container .card {
     max-width: 30em;
     margin: 1em auto;
     box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3), 0 1em 0.75em rgba(0, 0, 0, 0.22);
     background-color: white;
     border-radius: 4px;
-    display: none;
     position: relative; }
-    .card-container .card.active {
-      display: block; }
-    .card-container .card .card-logo {
+    .work-card-container .card .card-logo {
       position: absolute;
       left: 0;
       right: 0;
@@ -244,27 +238,27 @@ h1 {
       height: 8em;
       border-radius: 100px;
       background-size: cover; }
-    .card-container .card .card-body {
+    .work-card-container .card .card-body {
       padding: 4.5em 1.5em 1.5em; }
-      .card-container .card .card-body .card-title, .card-container .card .card-body .card-subtitle, .card-container .card .card-body .card-dates, .card-container .card .card-body .card-stack {
+      .work-card-container .card .card-body .card-title, .work-card-container .card .card-body .card-subtitle, .work-card-container .card .card-body .card-dates, .work-card-container .card .card-body .card-stack {
         text-align: center; }
-      .card-container .card .card-body .card-title {
+      .work-card-container .card .card-body .card-title {
         font-size: 1.2em;
         font-weight: 600; }
-      .card-container .card .card-body .card-subtitle {
+      .work-card-container .card .card-body .card-subtitle {
         font-weight: 500;
         color: #777; }
-      .card-container .card .card-body .card-dates {
+      .work-card-container .card .card-body .card-dates {
         padding-top: 0.25em;
         font-size: 0.7em;
         color: #BBB; }
-      .card-container .card .card-body .card-blurb, .card-container .card .card-body .card-stack {
+      .work-card-container .card .card-body .card-blurb, .work-card-container .card .card-body .card-stack {
         font-size: 0.9em; }
-      .card-container .card .card-body code {
+      .work-card-container .card .card-body code {
         font-size: 1.2em; }
-      .card-container .card .card-body ul {
+      .work-card-container .card .card-body ul {
         padding-inline-start: 1.2em; }
-    .card-container .card .card-divider {
+    .work-card-container .card .card-divider {
       border-top: 1px solid #EFF0F1;
       margin: 0.5em 2em; }
 
@@ -404,6 +398,26 @@ h1 {
 .contact-blurb a {
   color: #000; }
 
+.fade-out-bottom {
+  animation: fade-out-bottom 0.5s ease-in-out both; }
+
+@keyframes fade-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1; }
+  100% {
+    transform: translateY(50px);
+    opacity: 0; } }
+.fade-in-bottom {
+  animation: fade-in-bottom 0.5s ease-in-out both; }
+
+@keyframes fade-in-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }

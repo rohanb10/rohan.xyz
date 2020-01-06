@@ -106,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// add new workcard / active btn
 		element.classList.add('active')
-		fadeIn('#' + workName);
+		// fadeIn('#' + workName);
+		card.classList.remove('hidden');
 		active_work = workName;
 
 		if (window.innerWidth <= 640) {
@@ -185,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function fadeIn(elementName, callback) {
 		var el = document.querySelector(elementName);
 		el.classList.remove('hidden');
-		el.classList.add('fade-in-bottom');
+		// el.classList.add('fade-in-bottom');
 		setTimeout(function() {
 			el.classList.remove('fade-in-bottom');
 		}, 500, el);

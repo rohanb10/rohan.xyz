@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-</head>
 <body>
 	<div id="hero" class="container-width">
 		<h1>
@@ -36,7 +35,7 @@
 					<div class="title red">
 						<span>Work</span>
 					</div>
-					<h2>Jobs</h2>
+					<div class="work-title">Jobs</div>
 					<div class="work" onclick="workPicker(this, 'expensify')">
 						<div class="work-name">Expensify</div>
 						<div class="subtitle">San Francisco, CA</div>
@@ -53,7 +52,7 @@
 						<div class="work-name">EazyFriday</div>
 						<div class="subtitle">Mumbai, India</div>
 					</div>
-					<h2>Projects</h2>
+					<div class="work-title">Projects</div>
 					<div class="work" onclick="workPicker(this, 'turnstyle')">
 						<div class="work-name">Turnstyle</div>
 						<div class="subtitle">iOS app</div>
@@ -120,11 +119,11 @@
 								<div class="card-dates">8 semesters, 2014-2017</div>
 								<div class="card-divider"></div>
 								<div class="card-blurb">
-									<b>CS 131 - Introduction to Computer Science</b>
+									<b>CSE 131 - Introduction to Computer Science</b>
 									<p>An introductory Computer Science course taught to over 500 students every semester. Using Java, it covered many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and data structures.</p>
 								</div>
 								<div class="card-blurb">
-									<b>CSE330S - Rapid Prototype Development and Creative Programming</b>
+									<b>CSE 330S - Rapid Prototype Development and Creative Programming</b>
 									<p>A web development course that teaches many different skills including setting up Apache servers, databases and web security. Additionally, students are taught PHP, JavaScript, Python, AJAX, MEAN Stack, Git, Socket.IO and the frustration that comes along with debugging projects in larger group settings.</p>
 								</div>
 								<div class="card-divider"></div>
@@ -202,13 +201,13 @@
 			</div>
 		</div>
 		<div id="skills" class="section hidden container-width">
-			<div class="title blue">
-				<span>Skills</span>
-			</div>
 			<div class="flexbox-grid">
 				<div class="left-col">
-					<p>To keep up with the times, developers need to be incredibly versatile at using a whole variety of libraries and frameworks for their projects</p>
-					<p>These are tools that I have worked with in the past. I'm sure this list will keep on growing</p>
+					<div class="title blue">
+						<span>Skills</span>
+					</div>
+					<p>To keep up with the times, developers need to be incredibly versatile at using a whole variety of libraries and frameworks for their projects.</p>
+					<p>These are tools I have worked with in the past and I'm sure this list will keep on growing.</p>
 				</div>
 				<div class="right-col">
 					<div class="skill-title">Languages</div>
@@ -244,6 +243,16 @@
 						<div class="skill"><img class="img-skill" src="./assets/skills/wordpress.png"><span>WordPress</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/squarespace.png"><span>Squarespace</span></div>
 					</div>
+					<div class="skill-title">Design tools</div>
+					<div class="skill-group">
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_photoshop.png"><span>Photoshop</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_indesign.png"><span>Indesign</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_xd.png"><span>Adobe XD</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/sketch.png"><span>Sketch</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/figma.png"><span>Figma</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/invision.png"><span>Invision</span></div>
+						<div class="skill"><img class="img-skill" src="./assets/skills/balsamiq.png"><span>Balsamiq</span></div>
+					</div>
 					<div class="skill-title">DevOps tools</div>
 					<div class="skill-group">
 						<div class="skill"><img class="img-skill" src="./assets/skills/nodejs.png"><span>NodeJS</span></div>
@@ -254,16 +263,6 @@
 						<div class="skill"><img class="img-skill" src="./assets/skills/selenium.png"><span>Selenium</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/modernizr.png"><span>Modernizr</span></div>
 						<div class="skill"><img class="img-skill" src="./assets/skills/bash.png"><span>Bash<br>Scripting</span></div>
-					</div>
-					<div class="skill-title">Design tools</div>
-					<div class="skill-group">
-						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_photoshop.png"><span>Photoshop</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_indesign.png"><span>Indesign</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/adobe_xd.png"><span>Adobe XD</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/sketch.png"><span>Sketch</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/figma.png"><span>Figma</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/invision.png"><span>Invision</span></div>
-						<div class="skill"><img class="img-skill" src="./assets/skills/balsamiq.png"><span>Balsamiq</span></div>
 					</div>
 					<div class="skill-title">Databases</div>
 					<div class="skill-group">
@@ -320,7 +319,7 @@
 				<div class="right-col">
 					<div class="form-container">
 						<form action="https://formspree.io/xgeojgwn" method="POST">
-							<h3>Message me</h3>
+							<div class="form-title">Message me</div>
 							<input type="email" name="_replyto" placeholder="Your Email" required/>
 							<textarea name="body" placeholder="Message" rows="7" required></textarea>
 							<input type="hidden" name="_next" value="https://rohan.xyz" />
@@ -331,9 +330,9 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/captions.js"></script>
-	<script type="text/javascript" src="js/smoothscroll.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/captions.js"></script>
+	<script src="js/smoothscroll.min.js"></script>
+	<script src="js/script.js"></script>
 	<script>
 		(function(r,o,h,a,n){r.GoogleAnalyticsObject=h;r[h]||(r[h]=function(){
 			(r[h].q=r[h].q||[]).push(arguments)});r[h].l=+new Date;a=o.createElement('script');

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap");
 html, body {
   margin: 0;
   padding: 0;
@@ -26,10 +26,9 @@ h1 {
   transition: background-color 1s linear;
   position: relative;
   background-size: 100% 0%;
-  background-position: 0 0;
   background-repeat: no-repeat;
-  background-image: linear-gradient(white, white);
-  transition: 0.5s background-size linear; }
+  background-image: linear-gradient(#FFF, #FFF);
+  transition: background-size .5s linear; }
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%; }
   #navigation.bg-red {
@@ -63,11 +62,11 @@ h1 {
         background: #B9433A;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform 0.3s; }
+        transition: transform .3s; }
       #navigation .section-nav .section-title.bg-red span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
-        color: #fff; }
+        color: #FFF; }
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
@@ -88,11 +87,11 @@ h1 {
         background: #46864F;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform 0.3s; }
+        transition: transform .3s; }
       #navigation .section-nav .section-title.bg-green span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
-        color: #fff; }
+        color: #FFF; }
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
@@ -113,11 +112,11 @@ h1 {
         background: #4C61A1;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform 0.3s; }
+        transition: transform .3s; }
       #navigation .section-nav .section-title.bg-blue span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
-        color: #fff; }
+        color: #FFF; }
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
@@ -138,11 +137,11 @@ h1 {
         background: #F7C83B;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform 0.3s; }
+        transition: transform .3s; }
       #navigation .section-nav .section-title.bg-yellow span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
-        color: #fff; }
+        color: #FFF; }
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
@@ -158,8 +157,8 @@ h1 {
   padding: 1em; }
   #section-container .title {
     font-size: 3em;
-    font-weight: 800;
-    padding-bottom: 0.5em; }
+    font-weight: 900;
+    padding-bottom: .5em; }
     #section-container .title.red span {
       border-bottom: 0.1em solid #B9433A; }
     #section-container .title.green span {
@@ -184,27 +183,26 @@ h1 {
   display: flex; }
   .flexbox-grid .left-col {
     width: 40%;
-    font-weight: 400;
-    padding-right: 0.25em; }
+    padding-right: .25em; }
   .flexbox-grid .right-col {
     width: 60%;
-    padding-left: 0.25em; }
+    padding-left: .25em; }
 
 .work {
   border-radius: 4px;
-  background-color: #EFF0F1;
+  background-color: #EEE;
   cursor: pointer;
-  padding: 0.5em;
-  margin: 0.5em 0;
+  padding: .5em;
+  margin: .5em 0;
   border: 2px solid transparent;
-  transition: all 0.3s linear; }
+  transition: all .3s linear; }
   .work .work-name {
     font-size: 1.1em;
     font-weight: 600; }
   .work .subtitle {
-    font-size: 0.8em; }
+    font-size: .8em; }
   .work:hover {
-    background-color: #dadedf; }
+    background-color: #DDD; }
   .work:active, .work.active {
     border: 2px solid #B9433A; }
 
@@ -213,8 +211,8 @@ h1 {
   .work-card-container .card {
     max-width: 30em;
     margin: 1em auto;
-    border: 2px solid black;
-    background-color: white;
+    border: 2px solid #000;
+    background-color: #FFF;
     border-radius: 4px;
     position: relative; }
     .work-card-container .card .card-logo {
@@ -235,21 +233,20 @@ h1 {
         font-size: 1.2em;
         font-weight: 600; }
       .work-card-container .card .card-body .card-subtitle {
-        font-weight: 500;
         color: #777; }
       .work-card-container .card .card-body .card-dates {
-        padding-top: 0.25em;
-        font-size: 0.7em;
-        color: #BBB; }
+        padding-top: .25em;
+        font-size: .7em;
+        color: #AAA; }
       .work-card-container .card .card-body .card-blurb, .work-card-container .card .card-body .card-stack {
-        font-size: 0.9em; }
+        font-size: .9em; }
       .work-card-container .card .card-body code {
         font-size: 1.2em; }
       .work-card-container .card .card-body ul {
         padding-inline-start: 1.2em; }
     .work-card-container .card .card-divider {
-      border-top: 1px solid #EFF0F1;
-      margin: 0.5em 2em; }
+      border-top: 1px solid #EEE;
+      margin: .5em 2em; }
 
 #expensify .card-logo {
   background-image: url("../assets/logos/expensify.png"); }
@@ -279,11 +276,11 @@ h1 {
   flex-wrap: wrap;
   justify-content: flex-start;
   text-align: center;
-  padding: 0.5em; }
+  padding: .5em; }
   .skill-group .skill {
-    margin-bottom: 0.5em; }
+    margin-bottom: .5em; }
     .skill-group .skill .img-skill {
-      margin: 0.5em 1em 0.25em;
+      margin: .5em 1em .25em;
       max-width: 3em;
       transition: all .4s linear;
       -webkit-filter: contrast(2%);
@@ -293,7 +290,7 @@ h1 {
         -webkit-filter: contrast(100%); }
     .skill-group .skill span {
       display: block;
-      font-size: 0.8em;
+      font-size: .8em;
       transition: all .3s linear;
       opacity: 0; }
     .skill-group .skill .img-skill:hover + span {
@@ -324,13 +321,11 @@ h1 {
     .photo-modal .modal-content .caption-container {
       width: 100%;
       display: flex;
-      font-size: 0.8em;
+      font-size: .8em;
       margin: auto;
       max-width: 1000px;
       padding-top: 2em;
       justify-content: space-between; }
-      .photo-modal .modal-content .caption-container .caption {
-        color: #777; }
       .photo-modal .modal-content .caption-container a {
         text-decoration: underline;
         cursor: pointer; }
@@ -352,14 +347,14 @@ h1 {
     height: calc(100% / 3);
     overflow: hidden; }
     #thumbnail-container .thumb img {
-      transition: all 0.5s linear;
+      transition: all .5s linear;
       width: 100%;
       cursor: pointer; }
     #thumbnail-container .thumb:hover img {
       transform: scale(1.1); }
 
 .form-container {
-  border: 2px solid black;
+  border: 2px solid #000;
   border-radius: 4px;
   margin: 0 auto;
   text-align: center;
@@ -367,16 +362,16 @@ h1 {
   .form-container input, .form-container textarea {
     border: none;
     border-radius: 4px;
-    font-size: 0.8em;
+    font-size: .8em;
     box-sizing: border-box;
     display: block;
     margin: 2em;
-    padding: 0.4em; }
+    padding: .4em; }
     .form-container input:focus, .form-container textarea:focus {
       outline: none; }
   .form-container input[type="email"], .form-container textarea {
-    background-color: #EFF0F1;
-    border-bottom: 1px solid #C5CCCD;
+    background-color: #EEE;
+    border-bottom: 1px solid #DDD;
     width: calc(100% - 4em); }
   .form-container input[type="submit"] {
     color: #FFF;
@@ -386,9 +381,12 @@ h1 {
 
 .contact-blurb a {
   color: #000; }
+  .contact-blurb a:hover {
+    background-color: #F7C83B;
+    text-decoration-color: #F7C83B; }
 
 .fade-out-bottom {
-  animation: fade-out-bottom 0.5s ease-in-out both; }
+  animation: fade-out-bottom .5s ease-in-out both; }
 
 @keyframes fade-out-bottom {
   0% {
@@ -398,7 +396,7 @@ h1 {
     transform: translateY(100px);
     opacity: 0; } }
 .fade-in-bottom {
-  animation: fade-in-bottom 0.5s ease-in-out both; }
+  animation: fade-in-bottom .5s ease-in-out both; }
 
 @keyframes fade-in-bottom {
   0% {
@@ -420,10 +418,10 @@ h1 {
       width: initial; }
 
   .skill-group {
-    padding: 0.5em 0; }
+    padding: .5em 0; }
     .skill-group .skill .img-skill {
       max-width: 2em;
-      margin: 0.25em 0.5em; }
+      margin: .25em .5em; }
     .skill-group .skill span {
       font-size: 0.7em; }
 

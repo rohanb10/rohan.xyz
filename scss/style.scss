@@ -1,28 +1,20 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap");
-
-// $colorRed: #BE2C2F;
-// $colorGreen: #56B14C;
-// $colorBlue: #3369AC;
-// $colorYellow: #F8C74B;
+@import url("https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap");
 
 $colorRed:    #B9433A;
 $colorGreen:  #46864F;
 $colorBlue:   #4C61A1;
 $colorYellow: #F7C83B;
+$colorWhite:  #FFF;
 
 
 html, body {
-	margin:0;
-	padding:0;
-	width:100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 	font-family: 'Muli', sans-serif;
-	background-color:#FFF;
-	overflow-x:hidden;
-	overflow-y:auto;
-}
-
-* {
-	// box-sizing:border-box;
+	background-color: $colorWhite;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .container-width {
@@ -45,7 +37,7 @@ h1 {
 }
 
 @mixin animated-bg($color) {
-	border-bottom: 0.2em solid $color;
+	border-bottom: .2em solid $color;
 	position: relative;
 
 	&:before {
@@ -59,13 +51,13 @@ h1 {
 		background: $color;
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
-		transition: transform 0.3s;
+		transition: transform .3s;
 	}
 	span:before {
 		content: attr(data-content)
 	}
 	&:hover, &.wave {
-		color: #fff;
+		color: $colorWhite;
 	}
 	&:hover:before, &.wave:before {
 		transform: scaleY(1) skew(0deg);
@@ -83,11 +75,12 @@ h1 {
 #navigation {
 	transition: background-color 1s linear;
 	position: relative;
+	// background: linear-gradient($colorWhite, $colorWhite) 100% 0 no-repeat;
 	background-size: 100% 0%;
-	background-position: 0 0;
+	// background-position: 0 0;
 	background-repeat: no-repeat;
-	background-image: linear-gradient(white, white);
-	transition: 0.5s background-size linear;
+	background-image: linear-gradient($colorWhite, $colorWhite);
+	transition: background-size .5s linear;
 
 	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
 		background-size: 100% 100%;
@@ -148,32 +141,32 @@ h1 {
 	padding: 1em;
 	.title {
 		font-size: 3em;
-		font-weight: 800;
-		padding-bottom: 0.5em;
+		font-weight: 900;
+		padding-bottom: .5em;
 		&.red span {
-			border-bottom: 0.1em solid $colorRed;
+			border-bottom: .1em solid $colorRed;
 		}
 		&.green span {
-			border-bottom: 0.1em solid $colorGreen;
+			border-bottom: .1em solid $colorGreen;
 		}
 		&.blue span {
-			border-bottom: 0.1em solid $colorBlue;
+			border-bottom: .1em solid $colorBlue;
 		}
 		&.yellow span {
-			border-bottom: 0.1em solid $colorYellow;
+			border-bottom: .1em solid $colorYellow;
 		}
 	}
 	#work *::selection {
 		background-color: $colorRed;
-		color: #FFF;
+		color: $colorWhite;
 	}
 	#skills *::selection {
 		background-color: $colorBlue;
-		color: #FFF;
+		color: $colorWhite;
 	}
 	#photos *::selection {
 		background-color: $colorGreen;
-		color: #FFF;
+		color: $colorWhite;
 	}
 	#contact *::selection {
 		background-color: $colorYellow;
@@ -184,33 +177,32 @@ h1 {
 	display: flex;
 	.left-col {
 		width: 40%;
-		font-weight: 400;
-		padding-right: 0.25em;
+		padding-right: .25em;
 	}
 	.right-col {
 		width: 60%;
-		padding-left: 0.25em;
+		padding-left: .25em;
 	}
 }
 
 .work {
 	border-radius: 4px;
-	background-color: #EFF0F1;
+	background-color: #EEE;
 	cursor: pointer;
-	padding: 0.5em;
-	margin: 0.5em 0;
+	padding: .5em;
+	margin: .5em 0;
 	border: 2px solid transparent;
-	transition: all 0.3s linear;
+	transition: all .3s linear;
 
 	.work-name {
 		font-size: 1.1em;
 		font-weight: 600;
 	}
 	.subtitle {
-		font-size: 0.8em;
+		font-size: .8em;
 	}
 	&:hover {	
-		background-color: #dadedf;
+		background-color: #DDD;
 	}
 	&:active, &.active {
 		border: 2px solid $colorRed;
@@ -222,8 +214,8 @@ h1 {
 	.card{
 		max-width: 30em;
 		margin: 1em auto;
-		border: 2px solid black;
-		background-color: white;
+		border: 2px solid #000;
+		background-color: $colorWhite;
 		border-radius: 4px;
 		position: relative;
 		.card-logo {
@@ -250,18 +242,17 @@ h1 {
 			}
 
 			.card-subtitle {
-				font-weight: 500;
 				color: #777;
 			}
 
 			.card-dates {
-				padding-top: 0.25em;
-				font-size: 0.7em;
-				color: #BBB;
+				padding-top: .25em;
+				font-size: .7em;
+				color: #AAA;
 			}
 
 			.card-blurb, .card-stack {
-				font-size: 0.9em;
+				font-size: .9em;
 			}
 			code {
 				font-size: 1.2em;
@@ -272,8 +263,8 @@ h1 {
 			
 		}
 		.card-divider {
-			border-top: 1px solid #EFF0F1;
-			margin: 0.5em 2em;
+			border-top: 1px solid #EEE;
+			margin: .5em 2em;
 		}
 	}
 }
@@ -308,13 +299,13 @@ h1 {
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	text-align: center;
-	padding: 0.5em;
+	padding: .5em;
 
 	.skill {
-		margin-bottom: 0.5em;
+		margin-bottom: .5em;
 
 		.img-skill {
-			margin:0.5em 1em 0.25em;
+			margin:.5em 1em .25em;
 			max-width:3em;
 			transition:all .4s linear;
 			-webkit-filter:contrast(2%);
@@ -328,7 +319,7 @@ h1 {
 
 		span {
 			display: block;
-			font-size: 0.8em;
+			font-size: .8em;
 			transition:all .3s linear;
 			opacity: 0;
 		}
@@ -345,7 +336,7 @@ h1 {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: #FFF;
+	background-color: $colorWhite;
 	z-index: 1;
 	left: 0;
 	top: 0;
@@ -359,7 +350,6 @@ h1 {
 		margin: auto;
 		.photo-container {
 			height: 70vh;
-			// background-image: url('../assets/logos/turnstyle.png');
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -367,14 +357,11 @@ h1 {
 		.caption-container {
 			width: 100%;
 			display: flex;
-			font-size: 0.8em;
+			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;
 			padding-top:2em;
 			justify-content:space-between;
-			.caption {
-				color: #777;
-			}
 			a {
 				text-decoration: underline;
 				cursor: pointer;
@@ -393,7 +380,7 @@ h1 {
 
 	.thumb {
 		box-sizing: border-box;
-		border: 0.1em solid #FFF;
+		border: .1em solid $colorWhite;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -401,21 +388,18 @@ h1 {
 		height: calc(100% / 3);
 		overflow: hidden;
 		img {
-			transition: all 0.5s linear;
+			transition: all .5s linear;
 			width: 100%;
 			cursor: pointer;
 		}
 		&:hover img {
 			transform: scale(1.1);
 		}
-		.loading {
-
-		}
 	}
 }
 
 .form-container {
-	border: 2px solid black;
+	border: 2px solid #000;
 	border-radius: 4px;
 	margin: 0 auto;
 	text-align: center;
@@ -424,24 +408,24 @@ h1 {
 	input, textarea {
 		border: none;
 		border-radius: 4px;
-		font-size: 0.8em;
+		font-size: .8em;
 		box-sizing:border-box;
 		display: block;
 		margin: 2em;
-		padding: 0.4em;
+		padding: .4em;
 		&:focus {
 			outline: none;
 		}
 	}
 
 	input[type="email"], textarea {
-		background-color: #EFF0F1;
-		border-bottom: 1px solid #C5CCCD;
+		background-color: #EEE;
+		border-bottom: 1px solid #DDD;
 		width: calc(100% - 4em);
 	}
 
 	input[type="submit"]{
-		color: #FFF;
+		color: $colorWhite;
 		background-color: $colorYellow;
 		margin-left: auto;
 		padding: .5em 1.5em;
@@ -452,11 +436,15 @@ h1 {
 .contact-blurb {
 	a {
 		color: #000;
+		&:hover {
+			background-color: $colorYellow;
+			text-decoration-color: $colorYellow;
+		}
 	}
 }
 
 .fade-out-bottom {
-	animation: fade-out-bottom 0.5s ease-in-out both;
+	animation: fade-out-bottom .5s ease-in-out both;
 }
 
 @keyframes fade-out-bottom {
@@ -471,7 +459,7 @@ h1 {
 }
 
 .fade-in-bottom {
-	animation: fade-in-bottom 0.5s ease-in-out both;
+	animation: fade-in-bottom .5s ease-in-out both;
 }
 
 @keyframes fade-in-bottom {
@@ -505,14 +493,14 @@ h1 {
 	
 
 	.skill-group {
-		padding: 0.5em 0;
+		padding: .5em 0;
 		.skill {
 			.img-skill {
 				max-width: 2em;
-				margin: 0.25em 0.5em;
+				margin: .25em .5em;
 			}
 			span {
-				font-size: 0.7em
+				font-size: .7em
 			}
 		}
 	}

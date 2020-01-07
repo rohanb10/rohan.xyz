@@ -146,8 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[photoNumber]);
 		//hide spinner
 		//open modal
-		var modal = document.querySelector('.photo-modal');
-		fadeIn('.photo-modal');
+		// var modal = document.querySelector('.photo-modal')
+		document.querySelector('.photo-modal').classList.remove('hidden');
+		fadeIn('.modal-content');
 
 		// ESC key to close modal
 		document.onkeydown = function(evt) {
@@ -165,7 +166,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function closePhotoModal() {
-		fadeOut('.photo-modal', function() {
+		fadeOut('.modal-content', function() {
+			document.querySelector('.photo-modal').classList.add('hidden');
 			document.querySelector('.caption').innerHTML = ''
 		});
 	}
@@ -186,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function fadeIn(elementName, callback) {
 		var el = document.querySelector(elementName);
 		el.classList.remove('hidden');
-		// el.classList.add('fade-in-bottom');
+		el.classList.add('fade-in-bottom');
 		setTimeout(function() {
 			el.classList.remove('fade-in-bottom');
 		}, 500, el);

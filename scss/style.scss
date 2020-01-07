@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:400,600,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap");
 
 $colorRed:    #B9433A;
 $colorGreen:  #46864F;
@@ -177,11 +177,11 @@ h1 {
 	display: flex;
 	.left-col {
 		width: 40%;
-		padding-right: .25em;
+		padding-right: .5em;
 	}
 	.right-col {
 		width: 60%;
-		padding-left: .25em;
+		padding-left: .5em;
 	}
 }
 
@@ -288,10 +288,10 @@ h1 {
 	background-image: url('../assets/logos/turnstyle.png');
 }
 
-.skill-title {
-	font-weight: 600;
+.skill-title, .work-title, .form-title {
+	font-weight: 800;
 	font-size: 1.3em;
-	padding-bottom: 1em;
+	padding: .5em 0;
 }
 
 .skill-group {

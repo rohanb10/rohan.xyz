@@ -13,7 +13,7 @@ const CAPTIONS = {
 	11: "Peak of Monte Grona, Lake Como, Italy",
 	12: "Puez-Geisler National Park, South Tyrol, Italy",
 	13: "Vembanad Lake, Cochin, Kerala, India",
-	14: "Angel Island State Park, San Francisco, California",
+	14: "Angel Island State Park, San Francisco Bay, California",
 	15: "Soberanes Point, Carmel, Monterey, California",
 	16: "West Point Lighthouse, Discovery Park, Seattle, Washington",
 	17: "Wallace Falls State Park, Snohomish County, Washington",

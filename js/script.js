@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function sectionPicker(element, sectionName) {
 		navbar.classList = [];
 		killWave();
-		//if section is section open, close it
+		//if section is open, close it
 		if (!element.classList.contains('focused')) {
 			showSection(sectionName);
 			// change background colour
@@ -88,8 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		fadeIn('#' + sectionName, function() {
 			document.getElementById('hero').classList.add('hidden');
 		});
-		
-		
 		active_section = sectionName;
 	}
 
@@ -106,10 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// add new workcard / active btn
 		element.classList.add('active')
-		// fadeIn('#' + workName);
 		card.classList.remove('hidden');
 		active_work = workName;
 
+		//  Scroll down to card if mobile device (40em)
 		if (window.innerWidth <= 640) {
 			card.parentElement.scrollIntoView({
 				behavior: 'smooth',

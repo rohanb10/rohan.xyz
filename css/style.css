@@ -25,10 +25,11 @@ h1 {
 #navigation {
   transition: background-color 1s linear;
   position: relative;
-  background-size: 100% 0%;
+  background-size: 100% 0;
+  background-position: 0 100%;
   background-repeat: no-repeat;
   background-image: linear-gradient(#FFF, #FFF);
-  transition: background-size .5s linear; }
+  transition: background-size .4s linear; }
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%; }
   #navigation.bg-red {
@@ -62,7 +63,7 @@ h1 {
         background: #B9433A;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .3s; }
+        transition: transform .4s ease; }
       #navigation .section-nav .section-title.bg-red span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
@@ -87,7 +88,7 @@ h1 {
         background: #46864F;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .3s; }
+        transition: transform .4s ease; }
       #navigation .section-nav .section-title.bg-green span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
@@ -112,7 +113,7 @@ h1 {
         background: #4C61A1;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .3s; }
+        transition: transform .4s ease; }
       #navigation .section-nav .section-title.bg-blue span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
@@ -137,7 +138,7 @@ h1 {
         background: #F7C83B;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .3s; }
+        transition: transform .4s ease; }
       #navigation .section-nav .section-title.bg-yellow span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
@@ -152,32 +153,29 @@ h1 {
 .hidden {
   display: none; }
 
-#section-container {
-  min-height: calc(100vh-4em);
-  padding: 1em; }
-  #section-container .title {
-    font-size: 3em;
-    font-weight: 900;
-    padding-bottom: .5em; }
-    #section-container .title.red span {
-      border-bottom: 0.1em solid #B9433A; }
-    #section-container .title.green span {
-      border-bottom: 0.1em solid #46864F; }
-    #section-container .title.blue span {
-      border-bottom: 0.1em solid #4C61A1; }
-    #section-container .title.yellow span {
-      border-bottom: 0.1em solid #F7C83B; }
-  #section-container #work *::selection {
-    background-color: #B9433A;
-    color: #FFF; }
-  #section-container #skills *::selection {
-    background-color: #4C61A1;
-    color: #FFF; }
-  #section-container #photos *::selection {
-    background-color: #46864F;
-    color: #FFF; }
-  #section-container #contact *::selection {
-    background-color: #F7C83B; }
+#section-container .title {
+  font-size: 3em;
+  font-weight: 900;
+  padding-bottom: .5em; }
+  #section-container .title.red span {
+    border-bottom: 0.1em solid #B9433A; }
+  #section-container .title.green span {
+    border-bottom: 0.1em solid #46864F; }
+  #section-container .title.blue span {
+    border-bottom: 0.1em solid #4C61A1; }
+  #section-container .title.yellow span {
+    border-bottom: 0.1em solid #F7C83B; }
+#section-container #work *::selection {
+  background-color: #B9433A;
+  color: #FFF; }
+#section-container #skills *::selection {
+  background-color: #4C61A1;
+  color: #FFF; }
+#section-container #photos *::selection {
+  background-color: #46864F;
+  color: #FFF; }
+#section-container #contact *::selection {
+  background-color: #F7C83B; }
 
 .flexbox-grid {
   display: flex; }
@@ -283,11 +281,9 @@ h1 {
       margin: .5em 1em .25em;
       max-width: 3em;
       transition: all .4s linear;
-      -webkit-filter: contrast(2%);
       filter: contrast(2%); }
       .skill-group .skill .img-skill:hover {
-        filter: contrast(100%);
-        -webkit-filter: contrast(100%); }
+        filter: contrast(100%); }
     .skill-group .skill span {
       display: block;
       font-size: .8em;
@@ -411,6 +407,9 @@ h1 {
     .flexbox-grid .left-col, .flexbox-grid .right-col, .flexbox-grid .mid-col {
       width: 100%;
       padding: 0; }
+
+  .container-width {
+    padding: 1em; }
 
   .work-card-container {
     padding: 5em 0 0; }

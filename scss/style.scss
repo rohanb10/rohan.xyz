@@ -51,7 +51,7 @@ h1 {
 		background: $color;
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
-		transition: transform .3s;
+		transition: transform .4s ease;
 	}
 	span:before {
 		content: attr(data-content)
@@ -75,12 +75,11 @@ h1 {
 #navigation {
 	transition: background-color 1s linear;
 	position: relative;
-	// background: linear-gradient($colorWhite, $colorWhite) 100% 0 no-repeat;
-	background-size: 100% 0%;
-	// background-position: 0 0;
+	background-size: 100% 0;
+	background-position: 0 100%;
 	background-repeat: no-repeat;
 	background-image: linear-gradient($colorWhite, $colorWhite);
-	transition: background-size .5s linear;
+	transition: background-size .4s linear;
 
 	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
 		background-size: 100% 100%;
@@ -137,8 +136,7 @@ h1 {
 }
 
 #section-container {
-	min-height: calc(100vh-4em);
-	padding: 1em;
+	// min-height: calc(100vh-4em);
 	.title {
 		font-size: 3em;
 		font-weight: 900;
@@ -211,6 +209,7 @@ h1 {
 
 .work-card-container{
 	padding: 4em 2em 0;
+
 	.card{
 		max-width: 30em;
 		margin: 1em auto;
@@ -218,6 +217,7 @@ h1 {
 		background-color: $colorWhite;
 		border-radius: 4px;
 		position: relative;
+
 		.card-logo {
 			position:absolute;
 			left: 0;
@@ -229,28 +229,25 @@ h1 {
 			border-radius: 100px;
 			background-size: cover;
 		}
+
 		.card-body {
 			padding: 4.5em 1.5em 1.5em;
 
 			.card-title, .card-subtitle, .card-dates, .card-stack {
 				text-align: center;
 			}
-
 			.card-title {
 				font-size: 1.2em;
 				font-weight: 600;
 			}
-
 			.card-subtitle {
 				color: #777;
 			}
-
 			.card-dates {
 				padding-top: .25em;
 				font-size: .7em;
 				color: #AAA;
 			}
-
 			.card-blurb, .card-stack {
 				font-size: .9em;
 			}
@@ -260,8 +257,8 @@ h1 {
 			ul {
 				padding-inline-start: 1.2em;
 			}
-			
 		}
+
 		.card-divider {
 			border-top: 1px solid #EEE;
 			margin: .5em 2em;
@@ -308,12 +305,10 @@ h1 {
 			margin:.5em 1em .25em;
 			max-width:3em;
 			transition:all .4s linear;
-			-webkit-filter:contrast(2%);
 			filter:contrast(2%);
 
 			&:hover {
 				filter:contrast(100%);
-				-webkit-filter:contrast(100%);
 			}
 		}
 
@@ -341,13 +336,16 @@ h1 {
 	left: 0;
 	top: 0;
 	overflow: none;
+
 	&.hidden {
 		display: none;
 	}
+
 	.modal-content {
 		display: block;
 		width: 80%;
 		margin: auto;
+
 		.photo-container {
 			height: 70vh;
 			background-size: contain;
@@ -473,8 +471,6 @@ h1 {
 	}
 }
 
-
-// FIX THIS YO
 @media screen and (max-width: 40em){
 	.flexbox-grid {
 		display: block;
@@ -484,6 +480,10 @@ h1 {
 		}
 	}
 
+	.container-width {
+		padding: 1em;
+	}
+
 	.work-card-container {
 		padding: 5em 0 0;
 		.card {
@@ -491,7 +491,6 @@ h1 {
 		}
 	}
 	
-
 	.skill-group {
 		padding: .5em 0;
 		.skill {

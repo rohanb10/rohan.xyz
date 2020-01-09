@@ -423,6 +423,7 @@ h1 {
 	}
 
 	input[type="submit"]{
+		-webkit-appearance: none;
 		color: $colorWhite;
 		background-color: $colorYellow;
 		margin-left: auto;

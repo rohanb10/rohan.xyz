@@ -415,6 +415,8 @@ h1 {
     padding: 5em 0 0; }
     .work-card-container .card {
       width: initial; }
+      .work-card-container .card .card-body {
+        padding: 4.5em 1em 1em; }
 
   .skill-group {
     padding: .5em 0; }

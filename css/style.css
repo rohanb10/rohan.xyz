@@ -370,6 +370,7 @@ h1 {
     border-bottom: 1px solid #DDD;
     width: calc(100% - 4em); }
   .form-container input[type="submit"] {
+    -webkit-appearance: none;
     color: #FFF;
     background-color: #F7C83B;
     margin-left: auto;

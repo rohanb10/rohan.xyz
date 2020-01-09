@@ -488,6 +488,9 @@ h1 {
 		padding: 5em 0 0;
 		.card {
 			width: initial;
+			.card-body {
+				padding: 4.5em 1em 1em;
+			}
 		}
 	}
 	

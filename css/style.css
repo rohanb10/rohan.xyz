@@ -349,15 +349,15 @@ h1 {
     #thumbnail-container .thumb:hover img {
       transform: scale(1.1); }
 
-.about-blurb a {
-  color: #000; }
-  .about-blurb a:hover {
-    background-color: #F7C83B;
-    text-decoration-color: #F7C83B; }
-.about-blurb .social {
-  border: 2px solid #000;
-  border-radius: 4px;
-  text-align: center; }
+.social {
+  text-align: right; }
+  .social h2 {
+    margin-bottom: 0; }
+  .social a {
+    color: #000; }
+    .social a:hover {
+      background-color: #F7C83B;
+      text-decoration-color: #F7C83B; }
 
 .me {
   height: 20em;
@@ -365,7 +365,7 @@ h1 {
   background-image: url("../assets/me.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
   transition: background-image .3s ease-in-out; }
   .me:hover {
     background-image: url("../assets/me.gif"); }

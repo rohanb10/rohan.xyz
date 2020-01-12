@@ -359,6 +359,9 @@ h1 {
       background-color: #F7C83B;
       text-decoration-color: #F7C83B; }
 
+.about-blurb p:nth-of-type(0) {
+  margin-top: 0; }
+
 .me {
   height: 20em;
   width: 100%;

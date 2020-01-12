@@ -23,7 +23,6 @@ h1 {
   padding-bottom: 10em; }
 
 #navigation {
-  transition: background-color 1s linear;
   position: relative;
   background-size: 100% 0;
   background-position: 0 100%;
@@ -53,7 +52,7 @@ h1 {
       border-bottom: 0.2em solid #B9433A;
       position: relative; }
       #navigation .section-nav .section-title.bg-red:before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: -1;
         top: 0;
@@ -71,14 +70,12 @@ h1 {
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
-        content: "\2014"; }
-      #navigation .section-nav .section-title.bg-red *::selection {
-        background-color: #B9433A; }
+        content: '\2014'; }
     #navigation .section-nav .section-title.bg-green {
       border-bottom: 0.2em solid #46864F;
       position: relative; }
       #navigation .section-nav .section-title.bg-green:before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: -1;
         top: 0;
@@ -96,14 +93,12 @@ h1 {
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
-        content: "\2014"; }
-      #navigation .section-nav .section-title.bg-green *::selection {
-        background-color: #46864F; }
+        content: '\2014'; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #4C61A1;
       position: relative; }
       #navigation .section-nav .section-title.bg-blue:before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: -1;
         top: 0;
@@ -121,14 +116,12 @@ h1 {
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
-        content: "\2014"; }
-      #navigation .section-nav .section-title.bg-blue *::selection {
-        background-color: #4C61A1; }
+        content: '\2014'; }
     #navigation .section-nav .section-title.bg-yellow {
       border-bottom: 0.2em solid #F7C83B;
       position: relative; }
       #navigation .section-nav .section-title.bg-yellow:before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: -1;
         top: 0;
@@ -146,9 +139,7 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
-        content: "\2014"; }
-      #navigation .section-nav .section-title.bg-yellow *::selection {
-        background-color: #F7C83B; }
+        content: '\2014'; }
 
 .hidden {
   display: none; }
@@ -179,6 +170,8 @@ h1 {
 
 .flexbox-grid {
   display: flex; }
+  .flexbox-grid .left-col, .flexbox-grid .right-col {
+    box-sizing: border-box; }
   .flexbox-grid .left-col {
     width: 40%;
     padding-right: .5em; }
@@ -301,8 +294,7 @@ h1 {
   background-color: #FFF;
   z-index: 1;
   left: 0;
-  top: 0;
-  overflow: none; }
+  top: 0; }
   .photo-modal.hidden {
     display: none; }
   .photo-modal .modal-content {
@@ -370,7 +362,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: right;
   transition: background-image .3s ease-in-out; }
-  .me:hover {
+  .me:hover, .me:active {
     background-image: url("../assets/me.gif"); }
 
 .fade-out-bottom {
@@ -427,9 +419,8 @@ h1 {
       width: 80%;
       padding-top: 0; }
 
-  .form-container {
-    margin: 3em auto;
-    width: intial; } }
+  .me {
+    max-height: 16em; } }
 @media screen and (max-width: 20em) {
   #navigation .section-nav .section-title {
     font-size: 1em; } }

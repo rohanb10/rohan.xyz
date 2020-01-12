@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap');
 
 $colorRed:    #B9433A;
 $colorGreen:  #46864F;
@@ -41,7 +41,7 @@ h1 {
 	position: relative;
 
 	&:before {
-		content: "";
+		content: '';
 		position: absolute;
 		z-index: -1;
 		top: 0;
@@ -64,16 +64,12 @@ h1 {
 	}
 	&.focused {
 		span:before {
-			content: "\2014";
+			content: '\2014';
 		}
-	}
-	*::selection {
-		background-color: $color;
 	}
 }
 
 #navigation {
-	transition: background-color 1s linear;
 	position: relative;
 	background-size: 100% 0;
 	background-position: 0 100%;
@@ -172,6 +168,9 @@ h1 {
 
 .flexbox-grid {
 	display: flex;
+	.left-col, .right-col {
+		box-sizing: border-box;
+	}
 	.left-col {
 		width: 40%;
 		padding-right: .5em;
@@ -334,7 +333,6 @@ h1 {
 	z-index: 1;
 	left: 0;
 	top: 0;
-	overflow: none;
 
 	&.hidden {
 		display: none;
@@ -426,7 +424,7 @@ h1 {
 	background-repeat: no-repeat;
 	background-position: right;
 	transition:background-image .3s ease-in-out;
-	&:hover {
+	&:hover, &:active {
 		background-image: url('../assets/me.gif');
 	}
 }
@@ -461,7 +459,7 @@ h1 {
 	}
 }
 
-@media screen and (max-width: 40em){
+@media screen and (max-width: 40em) {
 	.flexbox-grid {
 		display: block;
 		.left-col, .right-col {
@@ -513,9 +511,8 @@ h1 {
 		}
 	}
 
-	.form-container {
-		margin: 3em auto;
-		width: intial;
+	.me {
+		max-height: 16em;
 	}
 }
 @media screen and (max-width: 20em) {

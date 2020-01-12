@@ -75,9 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function showSection(sectionName) {
-		
 		if(sectionName === 'photos') {
 			genThumbnails();
+		} else if (sectionName === 'about') {
+			var img = new Image();
+			img.src = 'assets/me.gif';
 		}
 		//Close currently active section
 		if (active_section !== '') {

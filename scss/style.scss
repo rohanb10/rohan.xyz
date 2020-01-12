@@ -395,18 +395,20 @@ h1 {
 	}
 }
 
-.about-blurb {
+.social {
+
+	text-align: right;
+
+	h2 {
+		margin-bottom: 0;
+	}
+
 	a {
 		color: #000;
 		&:hover {
 			background-color: $colorYellow;
 			text-decoration-color: $colorYellow;
 		}
-	}
-	.social {
-		border: 2px solid #000;
-		border-radius: 4px;
-		text-align: center;
 	}
 }
 
@@ -416,7 +418,7 @@ h1 {
 	background-image: url('../assets/me.jpg');
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: right;
 	transition:background-image .3s ease-in-out;
 	&:hover {
 		background-image: url('../assets/me.gif');

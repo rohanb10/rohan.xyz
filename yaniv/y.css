@@ -1,24 +1,19 @@
 html, body {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	width: 100%;
+	max-width: 500px;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: auto;
 	font-family: 'Arial', sans-serif;
+	text-align: center;
 }
 
-.game {
-	margin: 0 auto;
-	width: 100%;
-}
 .hidden {
 	display: none;
 }
 
-div {
-	text-align: center;
-}
 button {
 	margin: 1em 0;
 	padding: 0.5em;

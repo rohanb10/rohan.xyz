@@ -80,7 +80,6 @@ h1 {
 	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
 		background-size: 100% 100%;
 		width: 100%;
-		position: fixed;
 	}
 	&.bg-red {
 		background-image: linear-gradient($colorRed, $colorRed);
@@ -134,7 +133,6 @@ h1 {
 }
 
 #section-container {
-	margin-top: 4em;
 	.title {
 		font-size: 3em;
 		font-weight: 900;
@@ -386,7 +384,7 @@ h1 {
 		height: calc(100% / 3);
 		overflow: hidden;
 		img {
-			transition: all .5s linear;
+			transition: all .5s ease-in-out;
 			width: 100%;
 			cursor: pointer;
 		}

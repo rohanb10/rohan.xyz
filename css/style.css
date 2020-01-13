@@ -25,12 +25,14 @@ h1 {
 #navigation {
   position: relative;
   background-size: 100% 0;
-  background-position: 0 100%;
+  background-position: 0 0;
   background-repeat: no-repeat;
   background-image: linear-gradient(#FFF, #FFF);
   transition: background-size .4s linear; }
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
-    background-size: 100% 100%; }
+    background-size: 100% 100%;
+    width: 100%;
+    position: fixed; }
   #navigation.bg-red {
     background-image: linear-gradient(#B9433A, #B9433A); }
   #navigation.bg-green {
@@ -144,29 +146,31 @@ h1 {
 .hidden {
   display: none; }
 
-#section-container .title {
-  font-size: 3em;
-  font-weight: 900;
-  padding-bottom: .5em; }
-  #section-container .title.red span {
-    border-bottom: 0.1em solid #B9433A; }
-  #section-container .title.green span {
-    border-bottom: 0.1em solid #46864F; }
-  #section-container .title.blue span {
-    border-bottom: 0.1em solid #4C61A1; }
-  #section-container .title.yellow span {
-    border-bottom: 0.1em solid #F7C83B; }
-#section-container #work *::selection {
-  background-color: #B9433A;
-  color: #FFF; }
-#section-container #skills *::selection {
-  background-color: #4C61A1;
-  color: #FFF; }
-#section-container #photos *::selection {
-  background-color: #46864F;
-  color: #FFF; }
-#section-container #about *::selection {
-  background-color: #F7C83B; }
+#section-container {
+  margin-top: 4em; }
+  #section-container .title {
+    font-size: 3em;
+    font-weight: 900;
+    padding-bottom: .5em; }
+    #section-container .title.red span {
+      border-bottom: 0.1em solid #B9433A; }
+    #section-container .title.green span {
+      border-bottom: 0.1em solid #46864F; }
+    #section-container .title.blue span {
+      border-bottom: 0.1em solid #4C61A1; }
+    #section-container .title.yellow span {
+      border-bottom: 0.1em solid #F7C83B; }
+  #section-container #work *::selection {
+    background-color: #B9433A;
+    color: #FFF; }
+  #section-container #skills *::selection {
+    background-color: #4C61A1;
+    color: #FFF; }
+  #section-container #photos *::selection {
+    background-color: #46864F;
+    color: #FFF; }
+  #section-container #about *::selection {
+    background-color: #F7C83B; }
 
 .flexbox-grid {
   display: flex; }
@@ -362,7 +366,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: right;
   transition: background-image .3s ease-in-out; }
-  .me:hover, .me:active {
+  .me:hover, .me:active, .me:focus {
     background-image: url("../assets/me.gif"); }
 
 .fade-out-bottom {

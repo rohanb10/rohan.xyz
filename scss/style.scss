@@ -72,13 +72,15 @@ h1 {
 #navigation {
 	position: relative;
 	background-size: 100% 0;
-	background-position: 0 100%;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	background-image: linear-gradient($colorWhite, $colorWhite);
 	transition: background-size .4s linear;
 
 	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
 		background-size: 100% 100%;
+		width: 100%;
+		position: fixed;
 	}
 	&.bg-red {
 		background-image: linear-gradient($colorRed, $colorRed);
@@ -132,6 +134,7 @@ h1 {
 }
 
 #section-container {
+	margin-top: 4em;
 	.title {
 		font-size: 3em;
 		font-weight: 900;
@@ -424,7 +427,7 @@ h1 {
 	background-repeat: no-repeat;
 	background-position: right;
 	transition:background-image .3s ease-in-out;
-	&:hover, &:active {
+	&:hover, &:active, &:focus {
 		background-image: url('../assets/me.gif');
 	}
 }

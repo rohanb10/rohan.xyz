@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			genThumbnails();
 		} else if (sectionName === 'about') {
 			var img = new Image();
+			img.src = 'assets/me.jpg';
 			img.src = 'assets/me.gif';
 		}
 		//Close currently active section

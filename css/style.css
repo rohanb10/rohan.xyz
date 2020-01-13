@@ -15,7 +15,8 @@ html, body {
 
 h1 {
   font-size: 4em;
-  font-weight: 900; }
+  font-weight: 900;
+  text-shadow: 2px 1px 2px #AAA; }
   h1 span {
     display: block; }
 
@@ -363,7 +364,9 @@ h1 {
   background-repeat: no-repeat;
   background-position: right;
   transition: background-image .3s ease-in-out; }
-  .me:hover, .me:active, .me:focus {
+  .me:before {
+    content: ''; }
+  .me:hover {
     background-image: url("../assets/me.gif"); }
 
 .fade-out-bottom {
@@ -422,8 +425,17 @@ h1 {
 
   .me {
     max-height: 16em; } }
-@media screen and (max-width: 20em) {
+@media screen and (max-width: 24em) {
+  #navigation .section-nav .section-title {
+    font-size: 1.1em; } }
+@media screen and (max-width: 21em) {
   #navigation .section-nav .section-title {
     font-size: 1em; } }
+@media screen and (max-width: 19em) {
+  h1 {
+    font-size: 3.5em; }
+
+  #navigation .section-nav .section-title {
+    font-size: 0.9em; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap');
 
-$colorRed:    #B9433A;
-$colorGreen:  #46864F;
-$colorBlue:   #4C61A1;
-$colorYellow: #F7C83B;
-$colorWhite:  #FFF;
+$colorRed:    #b9433a;
+$colorGreen:  #46864f;
+$colorBlue:   #4c61a1;
+$colorYellow: #f7c83b;
+$colorWhite:  #fff;
 
 
 html, body {
@@ -26,7 +26,7 @@ html, body {
 h1 {
 	font-size: 4em;
 	font-weight: 900;
-	text-shadow: 2px 1px 2px #AAA;
+	text-shadow: 2px 1px 2px #aaa;
 
 	span {
 		display: block;
@@ -180,12 +180,15 @@ h1 {
 	.right-col {
 		width: 60%;
 		padding-left: .5em;
+		&.extra-padding {
+			padding-left: 4em;
+		}
 	}
 }
 
 .work {
 	border-radius: 4px;
-	background-color: #EEE;
+	background-color: #eee;
 	cursor: pointer;
 	padding: .5em;
 	margin: .5em 0;
@@ -200,7 +203,7 @@ h1 {
 		font-size: .8em;
 	}
 	&:hover {	
-		background-color: #DDD;
+		background-color: #ddd;
 	}
 	&:active, &.active {
 		border: 2px solid $colorRed;
@@ -258,12 +261,11 @@ h1 {
 				padding-inline-start: 1.2em;
 			}
 		}
-
-		.card-divider {
-			border-top: 1px solid #EEE;
-			margin: .5em 2em;
-		}
 	}
+}
+.divider {
+	border-top: 1px solid #EEE;
+	margin: .5em 2em;
 }
 
 #expensify .card-logo {
@@ -342,7 +344,7 @@ h1 {
 
 	.modal-content {
 		display: block;
-		width: 80%;
+		width: 100%;
 		margin: auto;
 
 		.photo-container {
@@ -352,7 +354,7 @@ h1 {
 			background-position: center center;
 		}
 		.caption-container {
-			width: 100%;
+			width: 80%;
 			display: flex;
 			font-size: .8em;
 			margin: auto;
@@ -396,9 +398,7 @@ h1 {
 }
 
 .social {
-
 	text-align: right;
-
 	h2 {
 		margin-bottom: 0;
 	}
@@ -416,6 +416,12 @@ h1 {
 	p:nth-of-type(0) {
 		margin-top: 0;
 	}
+	.tilt:hover {
+		display: inline-block;
+		transform: rotate(-20deg);
+		transform-origin: 35% 50%;
+		transition: transform .2s linear;
+	}
 }
 
 .me {
@@ -426,9 +432,6 @@ h1 {
 	background-repeat: no-repeat;
 	background-position: right;
 	transition:background-image .3s ease-in-out;
-	&:before {
-		content: '';
-	}
 	&:hover{
 		background-image: url('../assets/me.gif');
 	}
@@ -470,6 +473,9 @@ h1 {
 		.left-col, .right-col {
 			width: 100%;
 			padding: 0;
+			&.extra-padding {
+				padding: 0;
+			}
 		}
 	}
 
@@ -500,24 +506,18 @@ h1 {
 		}
 	}
 
-	#thumbnail-container {
-		.thumb {
-			width: 50%;
-		}
+	#thumbnail-container .thumb {
+		width: 50%;
 	}
 
-	.photo-modal {
-		.modal-content {
-			width: 100%;
-			.caption-container {
-				width: 80%;
-				padding-top:0;
-			}
-		}
+	.photo-modal .modal-content .caption-container {
+		padding-top:0;
 	}
 
 	.me {
+		margin-top: 2em;
 		max-height: 16em;
+		background-position: center;
 	}
 }
 @media screen and (max-width: 24em) {
@@ -536,6 +536,6 @@ h1 {
 		font-size: 3.5em;
 	}
 	#navigation .section-nav .section-title {
-		font-size: 0.9em;
+		font-size: .9em;
 	}
 }

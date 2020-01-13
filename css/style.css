@@ -31,8 +31,7 @@ h1 {
   transition: background-size .4s linear; }
   #navigation.bg-red, #navigation.bg-green, #navigation.bg-blue, #navigation.bg-yellow {
     background-size: 100% 100%;
-    width: 100%;
-    position: fixed; }
+    width: 100%; }
   #navigation.bg-red {
     background-image: linear-gradient(#B9433A, #B9433A); }
   #navigation.bg-green {
@@ -146,31 +145,29 @@ h1 {
 .hidden {
   display: none; }
 
-#section-container {
-  margin-top: 4em; }
-  #section-container .title {
-    font-size: 3em;
-    font-weight: 900;
-    padding-bottom: .5em; }
-    #section-container .title.red span {
-      border-bottom: 0.1em solid #B9433A; }
-    #section-container .title.green span {
-      border-bottom: 0.1em solid #46864F; }
-    #section-container .title.blue span {
-      border-bottom: 0.1em solid #4C61A1; }
-    #section-container .title.yellow span {
-      border-bottom: 0.1em solid #F7C83B; }
-  #section-container #work *::selection {
-    background-color: #B9433A;
-    color: #FFF; }
-  #section-container #skills *::selection {
-    background-color: #4C61A1;
-    color: #FFF; }
-  #section-container #photos *::selection {
-    background-color: #46864F;
-    color: #FFF; }
-  #section-container #about *::selection {
-    background-color: #F7C83B; }
+#section-container .title {
+  font-size: 3em;
+  font-weight: 900;
+  padding-bottom: .5em; }
+  #section-container .title.red span {
+    border-bottom: 0.1em solid #B9433A; }
+  #section-container .title.green span {
+    border-bottom: 0.1em solid #46864F; }
+  #section-container .title.blue span {
+    border-bottom: 0.1em solid #4C61A1; }
+  #section-container .title.yellow span {
+    border-bottom: 0.1em solid #F7C83B; }
+#section-container #work *::selection {
+  background-color: #B9433A;
+  color: #FFF; }
+#section-container #skills *::selection {
+  background-color: #4C61A1;
+  color: #FFF; }
+#section-container #photos *::selection {
+  background-color: #46864F;
+  color: #FFF; }
+#section-container #about *::selection {
+  background-color: #F7C83B; }
 
 .flexbox-grid {
   display: flex; }
@@ -339,7 +336,7 @@ h1 {
     height: calc(100% / 3);
     overflow: hidden; }
     #thumbnail-container .thumb img {
-      transition: all .5s linear;
+      transition: all .5s ease-in-out;
       width: 100%;
       cursor: pointer; }
     #thumbnail-container .thumb:hover img {

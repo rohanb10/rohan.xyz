@@ -72,7 +72,7 @@ h1 {
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
-        content: '\2014'; }
+        content: '\00d7'; }
     #navigation .section-nav .section-title.bg-green {
       border-bottom: 0.2em solid #46864f;
       position: relative; }
@@ -95,7 +95,7 @@ h1 {
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
-        content: '\2014'; }
+        content: '\00d7'; }
     #navigation .section-nav .section-title.bg-blue {
       border-bottom: 0.2em solid #4c61a1;
       position: relative; }
@@ -118,7 +118,7 @@ h1 {
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
-        content: '\2014'; }
+        content: '\00d7'; }
     #navigation .section-nav .section-title.bg-yellow {
       border-bottom: 0.2em solid #f7c83b;
       position: relative; }
@@ -141,7 +141,7 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
-        content: '\2014'; }
+        content: '\00d7'; }
 
 .hidden {
   display: none; }

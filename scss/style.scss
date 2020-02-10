@@ -65,7 +65,7 @@ h1 {
 	}
 	&.focused {
 		span:before {
-			content: '\2014';
+			content: '\00d7';
 		}
 	}
 }

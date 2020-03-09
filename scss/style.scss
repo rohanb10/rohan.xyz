@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,800,900&display=swap');
 
 $colorRed:    #b9433a;
 $colorGreen:  #46864f;
@@ -26,7 +26,6 @@ html, body {
 h1 {
 	font-size: 4em;
 	font-weight: 900;
-	text-shadow: 2px 1px 2px #aaa;
 
 	span {
 		display: block;
@@ -52,7 +51,7 @@ h1 {
 		background: $color;
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
-		transition: transform .4s ease;
+		transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
 	}
 	span:before {
 		content: attr(data-content)
@@ -61,7 +60,7 @@ h1 {
 		color: $colorWhite;
 	}
 	&:hover:before, &.wave:before {
-		transform: scaleY(1) skew(0deg);
+		transform: scaleY(1) skew(-7deg);
 	}
 	&.focused {
 		span:before {
@@ -138,17 +137,21 @@ h1 {
 		font-size: 3em;
 		font-weight: 900;
 		padding-bottom: .5em;
-		&.red span {
-			border-bottom: .1em solid $colorRed;
+		position: relative;
+
+		div {
+			position: relative;
+			z-index: 2;
+			text-align: center;
+			color: $colorWhite;
 		}
-		&.green span {
-			border-bottom: .1em solid $colorGreen;
-		}
-		&.blue span {
-			border-bottom: .1em solid $colorBlue;
-		}
-		&.yellow span {
-			border-bottom: .1em solid $colorYellow;
+		.stroke {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+    		transform: translateY(-50%) translateX(-50%);
+    		width: 100%;
+    		max-width: 300px;
 		}
 	}
 	#work *::selection {
@@ -334,7 +337,7 @@ h1 {
 	width: 100%;
 	height: 100%;
 	background-color: $colorWhite;
-	z-index: 1;
+	z-index: 3;
 	left: 0;
 	top: 0;
 

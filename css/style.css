@@ -387,38 +387,52 @@ h1 {
     transform: translateY(0);
     opacity: 1; }
   100% {
-    transform: translateY(100px);
+    transform: translateY(50vh);
     opacity: 0; } }
 .fade-in-bottom {
   animation: fade-in-bottom .5s ease-in-out both; }
 
 @keyframes fade-in-bottom {
   0% {
-    transform: translateY(100px);
+    transform: translateY(50vh);
     opacity: 0; }
   100% {
     transform: translateY(0);
     opacity: 1; } }
-.slide-in-top {
-  animation: slide-in-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
-  .slide-in-top.delay {
+.slide-down {
+  animation: slide-down 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
+  .slide-down.delay {
     animation-delay: .5s; }
 
-@keyframes slide-in-top {
+@keyframes slide-down {
   0% {
-    transform: translateY(-800px);
+    transform: translateY(-25vh);
     opacity: 0; }
   100% {
     transform: translateY(0);
     opacity: 1; } }
 .wipe {
-  animation: wipe 1.5s cubic-bezier(1, -0.06, 0.39, 0.39); }
+  animation: wipe 1.5s cubic-bezier(1, -0.06, 0.39, 0.39) both; }
+  .wipe.delay {
+    animation-delay: 1.5s;
+    animation-duration: 0.5s;
+    animation-timing-function: linear; }
 
 @keyframes wipe {
   0% {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
   100% {
-    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); } }
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    -webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); } }
+.fade-in {
+  animation: fade-in 1s linear both; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }

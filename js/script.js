@@ -4,8 +4,6 @@ const NUMBER_OF_PHOTOS = 30;
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');
 	sections = navbar.querySelectorAll('.section-title');
-	ripple(1000);
-	startWave();
 	for (var i = 0; i < sections.length; i++){
 		sections[i].onmouseover = function() {
 			killWave();
@@ -16,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 	}
+	ripple(1000);
+	startWave();
 }, false);
 
 // Wave

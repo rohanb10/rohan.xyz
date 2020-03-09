@@ -416,9 +416,9 @@ h1 {
 
 @keyframes wipe {
   0% {
-    clip: rect(0px, 0px, 400px, 0px); }
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
   100% {
-    clip: rect(0px, 600px, 400px, 0px); } }
+    clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }

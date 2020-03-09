@@ -4,7 +4,7 @@ const NUMBER_OF_PHOTOS = 30;
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');
 	sections = navbar.querySelectorAll('.section-title');
-	// ripple();
+	ripple(1000);
 	startWave();
 	for (var i = 0; i < sections.length; i++){
 		sections[i].onmouseover = function() {
@@ -19,11 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 // Wave
-	function ripple() {
-		for (var i = 0; i < sections.length; i++) {
-			setTimeout(rippleUp, 150 * i, sections[i]);
-			setTimeout(rippleDown, (sections.length * 150) + (200 * i), sections[i]);
-		}
+	function ripple(delay) {
+		delay = delay === undefined ? 0 : delay;
+		setTimeout(function () {
+			for (var i = 0; i < sections.length; i++) {
+				setTimeout(rippleUp, 150 * i, sections[i]);
+				setTimeout(rippleDown, (sections.length * 150) + (200 * i), sections[i]);
+			}
+		}, delay)
 	}
 
 	function rippleUp(section) {
@@ -70,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		fadeOut('#' + active_section);
 		fadeIn('#hero', function() {
 			window.scrollTo({top: 0});
+			ripple(1000);
 		});
 		active_section = '';
 	}

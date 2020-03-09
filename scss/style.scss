@@ -490,15 +490,14 @@ h1 {
 
 .wipe {
 	animation: wipe 1.5s cubic-bezier(1,-0.06,.39,.39);
-	// animation-delay:;
 }
 
 @keyframes wipe { 
 	0% {
-		clip: rect(0px,0px,400px,0px);
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 	}
 	100% {
-		clip: rect(0px,600px,400px,0px);
+		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 	}
 }
 

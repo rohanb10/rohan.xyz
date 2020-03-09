@@ -4,7 +4,7 @@ const NUMBER_OF_PHOTOS = 30;
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');
 	sections = navbar.querySelectorAll('.section-title');
-	ripple();
+	// ripple();
 	startWave();
 	for (var i = 0; i < sections.length; i++){
 		sections[i].onmouseover = function() {
@@ -196,4 +196,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (callback) {
 			callback();
 		}
+	}
+
+	function slideIn(elementName, callback) {
+		var el = document.querySelector(elementName);
+		el.classList.remove('hidden');
+		el.classList.add('slide-in-left');
 	}

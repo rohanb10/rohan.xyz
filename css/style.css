@@ -69,7 +69,7 @@ h1 {
       #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
-        transform: scaleY(1) skew(-7deg); }
+        transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-green {
@@ -92,7 +92,7 @@ h1 {
       #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
-        transform: scaleY(1) skew(-7deg); }
+        transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-blue {
@@ -115,7 +115,7 @@ h1 {
       #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
-        transform: scaleY(1) skew(-7deg); }
+        transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-yellow {
@@ -138,7 +138,7 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
-        transform: scaleY(1) skew(-7deg); }
+        transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
         content: '\00d7'; }
 
@@ -399,6 +399,26 @@ h1 {
   100% {
     transform: translateY(0);
     opacity: 1; } }
+.slide-in-top {
+  animation: slide-in-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
+  .slide-in-top.delay {
+    animation-delay: .5s; }
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-800px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+.wipe {
+  animation: wipe 1.5s cubic-bezier(1, -0.06, 0.39, 0.39); }
+
+@keyframes wipe {
+  0% {
+    clip: rect(0px, 0px, 400px, 0px); }
+  100% {
+    clip: rect(0px, 600px, 400px, 0px); } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }

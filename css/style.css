@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Muli:400,600,800, 900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli:400,600,800,900&display=swap");
 html, body {
   margin: 0;
   padding: 0;
@@ -15,8 +15,7 @@ html, body {
 
 h1 {
   font-size: 4em;
-  font-weight: 900;
-  text-shadow: 2px 1px 2px #aaa; }
+  font-weight: 900; }
   h1 span {
     display: block; }
 
@@ -64,13 +63,13 @@ h1 {
         background: #b9433a;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .4s ease; }
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
       #navigation .section-nav .section-title.bg-red span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
-        transform: scaleY(1) skew(0deg); }
+        transform: scaleY(1) skew(-7deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-green {
@@ -87,13 +86,13 @@ h1 {
         background: #46864f;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .4s ease; }
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
       #navigation .section-nav .section-title.bg-green span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
-        transform: scaleY(1) skew(0deg); }
+        transform: scaleY(1) skew(-7deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-blue {
@@ -110,13 +109,13 @@ h1 {
         background: #4c61a1;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .4s ease; }
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
       #navigation .section-nav .section-title.bg-blue span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
-        transform: scaleY(1) skew(0deg); }
+        transform: scaleY(1) skew(-7deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
         content: '\00d7'; }
     #navigation .section-nav .section-title.bg-yellow {
@@ -133,13 +132,13 @@ h1 {
         background: #f7c83b;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .4s ease; }
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
       #navigation .section-nav .section-title.bg-yellow span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
         color: #fff; }
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
-        transform: scaleY(1) skew(0deg); }
+        transform: scaleY(1) skew(-7deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {
         content: '\00d7'; }
 
@@ -149,15 +148,20 @@ h1 {
 #section-container .title {
   font-size: 3em;
   font-weight: 900;
-  padding-bottom: .5em; }
-  #section-container .title.red span {
-    border-bottom: 0.1em solid #b9433a; }
-  #section-container .title.green span {
-    border-bottom: 0.1em solid #46864f; }
-  #section-container .title.blue span {
-    border-bottom: 0.1em solid #4c61a1; }
-  #section-container .title.yellow span {
-    border-bottom: 0.1em solid #f7c83b; }
+  padding-bottom: .5em;
+  position: relative; }
+  #section-container .title div {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff; }
+  #section-container .title .stroke {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    max-width: 300px; }
 #section-container #work *::selection {
   background-color: #b9433a;
   color: #fff; }
@@ -297,7 +301,7 @@ h1 {
   width: 100%;
   height: 100%;
   background-color: #fff;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0; }
   .photo-modal.hidden {

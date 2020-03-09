@@ -60,7 +60,7 @@ h1 {
 		color: $colorWhite;
 	}
 	&:hover:before, &.wave:before {
-		transform: scaleY(1) skew(-7deg);
+		transform: scaleY(1) skew(0deg);
 	}
 	&.focused {
 		span:before {
@@ -467,6 +467,38 @@ h1 {
 	100% {
 		transform: translateY(0);
 		opacity: 1;
+	}
+}
+
+.slide-in-top {
+	animation: slide-in-top .5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	&.delay {
+		animation-delay: .5s;
+	}
+}
+
+@keyframes slide-in-top {
+	0% {
+		transform: translateY(-800px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.wipe {
+	animation: wipe 1.5s cubic-bezier(1,-0.06,.39,.39);
+	// animation-delay:;
+}
+
+@keyframes wipe { 
+	0% {
+		clip: rect(0px,0px,400px,0px);
+	}
+	100% {
+		clip: rect(0px,600px,400px,0px);
 	}
 }
 

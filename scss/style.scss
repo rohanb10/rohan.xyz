@@ -58,6 +58,7 @@ h1 {
 	}
 	&:hover, &.wave {
 		color: $colorWhite;
+		transition-duration: .4s;
 	}
 	&:hover:before, &.wave:before {
 		transform: scaleY(1) skew(0deg);
@@ -489,7 +490,7 @@ h1 {
 }
 
 .wipe {
-	animation: wipe 1.5s cubic-bezier(1,-0.06,.39,.39) both;
+	animation: wipe 1.5s cubic-bezier(1,-0.06,.39,.39) both;	
 	&.delay {
 		animation-delay: 1.5s;
 		animation-duration: 0.5s;

@@ -67,7 +67,8 @@ h1 {
       #navigation .section-nav .section-title.bg-red span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-red:hover, #navigation .section-nav .section-title.bg-red.wave {
-        color: #fff; }
+        color: #fff;
+        transition-duration: .4s; }
       #navigation .section-nav .section-title.bg-red:hover:before, #navigation .section-nav .section-title.bg-red.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-red.focused span:before {
@@ -90,7 +91,8 @@ h1 {
       #navigation .section-nav .section-title.bg-green span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-green:hover, #navigation .section-nav .section-title.bg-green.wave {
-        color: #fff; }
+        color: #fff;
+        transition-duration: .4s; }
       #navigation .section-nav .section-title.bg-green:hover:before, #navigation .section-nav .section-title.bg-green.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-green.focused span:before {
@@ -113,7 +115,8 @@ h1 {
       #navigation .section-nav .section-title.bg-blue span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-blue:hover, #navigation .section-nav .section-title.bg-blue.wave {
-        color: #fff; }
+        color: #fff;
+        transition-duration: .4s; }
       #navigation .section-nav .section-title.bg-blue:hover:before, #navigation .section-nav .section-title.bg-blue.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-blue.focused span:before {
@@ -136,7 +139,8 @@ h1 {
       #navigation .section-nav .section-title.bg-yellow span:before {
         content: attr(data-content); }
       #navigation .section-nav .section-title.bg-yellow:hover, #navigation .section-nav .section-title.bg-yellow.wave {
-        color: #fff; }
+        color: #fff;
+        transition-duration: .4s; }
       #navigation .section-nav .section-title.bg-yellow:hover:before, #navigation .section-nav .section-title.bg-yellow.wave:before {
         transform: scaleY(1) skew(0deg); }
       #navigation .section-nav .section-title.bg-yellow.focused span:before {

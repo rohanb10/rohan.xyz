@@ -109,7 +109,7 @@ h1 {
 	}
 */
 @mixin delays($interval : 500, $start: 0, $total: 10) {
-	@for $i from 0 to $total {
+	@for $i from 0 through $total {
 		$ms : $start + ($i * $interval);
 		&.delay-#{$ms} {
 			animation-delay: #{$ms}ms;
@@ -342,23 +342,24 @@ h1 {
 	background-image: url('../assets/logos/turnstyle.png');
 }
 
-.work-title, .form-title {
-	font-weight: 800;
-	font-size: 1.3em;
-	padding: .5em 0;
+.skill-title, .work-title {
+	text-transform: uppercase;
+	font-size: .75em;
+	letter-spacing: 2px;
+	color: #777;
+	font-weight: 700;
+	margin-bottom: .25em;
+}
+
+.work-title {
+	font-weight: 400;
+	letter-spacing: 2px;
+	margin: 2.5em 0 .5em;
+	font-family: sans-serif;
 }
 
 .skill-group {
 	margin-bottom: 1em;
-
-	.skill-title {
-		text-transform: uppercase;
-		font-size: .75em;
-		letter-spacing: 2px;
-		color: #777;
-		font-weight: 700;
-		margin-bottom: .25em;
-	}
 
 	.icons {
 		display: flex;

@@ -84,7 +84,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function showSection(sectionName) {
 		// pre-loading
-		if(sectionName === 'photos') {
+		if(sectionName === 'work') {
+			console.log(active_work);
+			if (active_work !== ''){
+				console.log('hello');
+				document.querySelector('.work.active').classList.remove('active');
+				document.getElementById(active_work).classList.add('hidden');
+				active_work = '';
+			}
+		} else if(sectionName === 'photos') {
 			genThumbnails();
 		} else if (sectionName === 'about') {
 			var img = new Image();

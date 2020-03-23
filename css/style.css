@@ -300,20 +300,22 @@ h1 {
 #turnstyle .card-logo {
   background-image: url("../assets/logos/turnstyle.png"); }
 
-.work-title, .form-title {
-  font-weight: 800;
-  font-size: 1.3em;
-  padding: .5em 0; }
+.skill-title, .work-title {
+  text-transform: uppercase;
+  font-size: .75em;
+  letter-spacing: 2px;
+  color: #777;
+  font-weight: 700;
+  margin-bottom: .25em; }
+
+.work-title {
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 2.5em 0 .5em;
+  font-family: sans-serif; }
 
 .skill-group {
   margin-bottom: 1em; }
-  .skill-group .skill-title {
-    text-transform: uppercase;
-    font-size: .75em;
-    letter-spacing: 2px;
-    color: #777;
-    font-weight: 700;
-    margin-bottom: .25em; }
   .skill-group .icons {
     display: flex;
     flex-wrap: wrap;
@@ -508,6 +510,8 @@ h1 {
     animation-delay: 3000ms; }
   .fade-up.delay-3100 {
     animation-delay: 3100ms; }
+  .fade-up.delay-3200 {
+    animation-delay: 3200ms; }
 
 @keyframes fade-up {
   0% {
@@ -558,6 +562,8 @@ h1 {
     animation-delay: 3800ms; }
   .fade-left.delay-3900 {
     animation-delay: 3900ms; }
+  .fade-left.delay-4000 {
+    animation-delay: 4000ms; }
 
 @keyframes fade-left {
   0% {
@@ -618,6 +624,8 @@ h1 {
     animation-delay: 4300ms; }
   .fade-right.delay-4400 {
     animation-delay: 4400ms; }
+  .fade-right.delay-4500 {
+    animation-delay: 4500ms; }
 
 @keyframes fade-right {
   0% {

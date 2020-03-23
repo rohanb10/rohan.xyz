@@ -22,6 +22,11 @@ h1 {
 #hero {
   padding-bottom: 10em; }
 
+/* 	Loop for delays
+	&.delay-X {
+		animation-delay: X ms;
+	}
+*/
 #navigation {
   position: relative;
   background-size: 100% 0;
@@ -227,6 +232,7 @@ h1 {
       width: 8em;
       height: 8em;
       border-radius: 100px;
+      border: 2px solid #000;
       background-size: cover; }
     .work-card-container .card .card-body {
       padding: 4.5em 1.5em 1.5em; }
@@ -247,6 +253,30 @@ h1 {
         font-size: 1.2em; }
       .work-card-container .card .card-body ul {
         padding-inline-start: 1.2em; }
+      .work-card-container .card .card-body a {
+        color: #000;
+        text-decoration: none;
+        padding: 0 2px;
+        border-bottom: 1px solid #b9433a;
+        position: relative;
+        z-index: 1; }
+        .work-card-container .card .card-body a:before {
+          position: absolute;
+          content: "";
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-image: linear-gradient(0deg, #b9433a 0%, #b9433a 100%, #fff 100%);
+          z-index: -1;
+          transition: all .2s linear;
+          transform: scaleY(0);
+          transform-origin: 50% 100%; }
+        .work-card-container .card .card-body a:hover {
+          transition: all .2s linear;
+          color: #fff; }
+        .work-card-container .card .card-body a:hover:before {
+          transform: scaleY(1); }
 
 .divider {
   border-top: 1px solid #EEE;
@@ -270,32 +300,38 @@ h1 {
 #turnstyle .card-logo {
   background-image: url("../assets/logos/turnstyle.png"); }
 
-.skill-title, .work-title, .form-title {
+.work-title, .form-title {
   font-weight: 800;
   font-size: 1.3em;
   padding: .5em 0; }
 
 .skill-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  text-align: center;
-  padding: .5em; }
-  .skill-group .skill {
-    margin-bottom: .5em; }
-    .skill-group .skill .img-skill {
-      margin: .5em 1em .25em;
+  margin-bottom: 1em; }
+  .skill-group .skill-title {
+    text-transform: uppercase;
+    font-size: .75em;
+    letter-spacing: 2px;
+    color: #777;
+    font-weight: 700;
+    margin-bottom: .25em; }
+  .skill-group .icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: center; }
+    .skill-group .icons .skill .img-skill {
+      margin: .5em .55em;
       max-width: 3em;
       transition: all .4s linear;
-      filter: contrast(2%); }
-      .skill-group .skill .img-skill:hover {
+      filter: contrast(65%); }
+      .skill-group .icons .skill .img-skill:hover {
         filter: contrast(100%); }
-    .skill-group .skill span {
+    .skill-group .icons .skill span {
       display: block;
       font-size: .8em;
       transition: all .3s linear;
       opacity: 0; }
-    .skill-group .skill .img-skill:hover + span {
+    .skill-group .icons .skill .img-skill:hover + span {
       opacity: 1; }
 
 .photo-modal {
@@ -348,7 +384,7 @@ h1 {
     height: calc(100% / 3);
     overflow: hidden; }
     #thumbnail-container .thumb img {
-      transition: all .5s ease-in-out;
+      transition: all 1s ease-in-out;
       width: 100%;
       cursor: pointer; }
     #thumbnail-container .thumb:hover img {
@@ -359,10 +395,29 @@ h1 {
   .social h2 {
     margin-bottom: 0; }
   .social a {
-    color: #000; }
+    color: #000;
+    text-decoration: none;
+    padding: 0 2px;
+    border-bottom: 1px solid #f7c83b;
+    position: relative;
+    z-index: 1; }
+    .social a:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(0deg, #f7c83b 0%, #f7c83b 100%, #fff 100%);
+      z-index: -1;
+      transition: all .2s linear;
+      transform: scaleY(0);
+      transform-origin: 50% 100%; }
     .social a:hover {
-      background-color: #f7c83b;
-      text-decoration-color: #f7c83b; }
+      transition: all .2s linear;
+      color: #000; }
+    .social a:hover:before {
+      transform: scaleY(1); }
 
 .about-blurb p:nth-of-type(0) {
   margin-top: 0; }
@@ -375,6 +430,7 @@ h1 {
 .me {
   height: 20em;
   width: 100%;
+  margin: 1.25em 0;
   background-image: url("../assets/me.jpg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -383,26 +439,16 @@ h1 {
   .me:hover {
     background-image: url("../assets/me.gif"); }
 
-.fade-out-bottom {
-  animation: fade-out-bottom .5s ease-in-out both; }
+.fade-down {
+  animation: fade-down .5s ease-in-out both; }
 
-@keyframes fade-out-bottom {
+@keyframes fade-down {
   0% {
     transform: translateY(0);
     opacity: 1; }
   100% {
     transform: translateY(50vh);
     opacity: 0; } }
-.fade-in-bottom {
-  animation: fade-in-bottom .5s ease-in-out both; }
-
-@keyframes fade-in-bottom {
-  0% {
-    transform: translateY(50vh);
-    opacity: 0; }
-  100% {
-    transform: translateY(0);
-    opacity: 1; } }
 .slide-down {
   animation: slide-down 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
   .slide-down.delay {
@@ -416,10 +462,9 @@ h1 {
     transform: translateY(0);
     opacity: 1; } }
 .wipe {
-  animation: wipe 1.5s cubic-bezier(1, -0.06, 0.39, 0.39) both; }
+  animation: wipe 1s cubic-bezier(1, -0.06, 0.39, 0.39) both; }
   .wipe.delay {
-    animation-delay: 1.5s;
-    animation-duration: 0.5s;
+    animation-delay: 1s;
     animation-timing-function: linear; }
 
 @keyframes wipe {
@@ -437,6 +482,175 @@ h1 {
     opacity: 0; }
   100% {
     opacity: 1; } }
+.fade-up {
+  animation: fade-up 1s ease-in-out both; }
+  .fade-up.delay-2000 {
+    animation-delay: 2000ms; }
+  .fade-up.delay-2100 {
+    animation-delay: 2100ms; }
+  .fade-up.delay-2200 {
+    animation-delay: 2200ms; }
+  .fade-up.delay-2300 {
+    animation-delay: 2300ms; }
+  .fade-up.delay-2400 {
+    animation-delay: 2400ms; }
+  .fade-up.delay-2500 {
+    animation-delay: 2500ms; }
+  .fade-up.delay-2600 {
+    animation-delay: 2600ms; }
+  .fade-up.delay-2700 {
+    animation-delay: 2700ms; }
+  .fade-up.delay-2800 {
+    animation-delay: 2800ms; }
+  .fade-up.delay-2900 {
+    animation-delay: 2900ms; }
+  .fade-up.delay-3000 {
+    animation-delay: 3000ms; }
+  .fade-up.delay-3100 {
+    animation-delay: 3100ms; }
+
+@keyframes fade-up {
+  0% {
+    transform: translateY(40vh);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+.fade-left {
+  animation: fade-left 1s ease-in-out both; }
+  .fade-left.delay-2000 {
+    animation-delay: 2000ms; }
+  .fade-left.delay-2100 {
+    animation-delay: 2100ms; }
+  .fade-left.delay-2200 {
+    animation-delay: 2200ms; }
+  .fade-left.delay-2300 {
+    animation-delay: 2300ms; }
+  .fade-left.delay-2400 {
+    animation-delay: 2400ms; }
+  .fade-left.delay-2500 {
+    animation-delay: 2500ms; }
+  .fade-left.delay-2600 {
+    animation-delay: 2600ms; }
+  .fade-left.delay-2700 {
+    animation-delay: 2700ms; }
+  .fade-left.delay-2800 {
+    animation-delay: 2800ms; }
+  .fade-left.delay-2900 {
+    animation-delay: 2900ms; }
+  .fade-left.delay-3000 {
+    animation-delay: 3000ms; }
+  .fade-left.delay-3100 {
+    animation-delay: 3100ms; }
+  .fade-left.delay-3200 {
+    animation-delay: 3200ms; }
+  .fade-left.delay-3300 {
+    animation-delay: 3300ms; }
+  .fade-left.delay-3400 {
+    animation-delay: 3400ms; }
+  .fade-left.delay-3500 {
+    animation-delay: 3500ms; }
+  .fade-left.delay-3600 {
+    animation-delay: 3600ms; }
+  .fade-left.delay-3700 {
+    animation-delay: 3700ms; }
+  .fade-left.delay-3800 {
+    animation-delay: 3800ms; }
+  .fade-left.delay-3900 {
+    animation-delay: 3900ms; }
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(40vw);
+    opacity: 0; }
+  100% {
+    transform: translateX(0);
+    opacity: 1; } }
+.fade-right {
+  animation: fade-right 1s ease-in-out both; }
+  .fade-right.delay-2000 {
+    animation-delay: 2000ms; }
+  .fade-right.delay-2100 {
+    animation-delay: 2100ms; }
+  .fade-right.delay-2200 {
+    animation-delay: 2200ms; }
+  .fade-right.delay-2300 {
+    animation-delay: 2300ms; }
+  .fade-right.delay-2400 {
+    animation-delay: 2400ms; }
+  .fade-right.delay-2500 {
+    animation-delay: 2500ms; }
+  .fade-right.delay-2600 {
+    animation-delay: 2600ms; }
+  .fade-right.delay-2700 {
+    animation-delay: 2700ms; }
+  .fade-right.delay-2800 {
+    animation-delay: 2800ms; }
+  .fade-right.delay-2900 {
+    animation-delay: 2900ms; }
+  .fade-right.delay-3000 {
+    animation-delay: 3000ms; }
+  .fade-right.delay-3100 {
+    animation-delay: 3100ms; }
+  .fade-right.delay-3200 {
+    animation-delay: 3200ms; }
+  .fade-right.delay-3300 {
+    animation-delay: 3300ms; }
+  .fade-right.delay-3400 {
+    animation-delay: 3400ms; }
+  .fade-right.delay-3500 {
+    animation-delay: 3500ms; }
+  .fade-right.delay-3600 {
+    animation-delay: 3600ms; }
+  .fade-right.delay-3700 {
+    animation-delay: 3700ms; }
+  .fade-right.delay-3800 {
+    animation-delay: 3800ms; }
+  .fade-right.delay-3900 {
+    animation-delay: 3900ms; }
+  .fade-right.delay-4000 {
+    animation-delay: 4000ms; }
+  .fade-right.delay-4100 {
+    animation-delay: 4100ms; }
+  .fade-right.delay-4200 {
+    animation-delay: 4200ms; }
+  .fade-right.delay-4300 {
+    animation-delay: 4300ms; }
+  .fade-right.delay-4400 {
+    animation-delay: 4400ms; }
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(-40vw);
+    opacity: 0; }
+  100% {
+    transform: translateX(0);
+    opacity: 1; } }
+.fade-out-bottom {
+  animation: fade-out-bottom .5s linear both; }
+
+@keyframes fade-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh); } }
+.fade-out-right {
+  animation: fade-out-right .5s linear both; }
+
+@keyframes fade-out-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translateX(50vh); } }
+@media screen and (max-width: 56em) {
+  .skill-group .icons .skill .img-skill {
+    max-width: 2.4em; } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }
@@ -457,12 +671,14 @@ h1 {
         padding: 4.5em 1em 1em; }
 
   .skill-group {
-    padding: .5em 0; }
-    .skill-group .skill .img-skill {
-      max-width: 2em;
-      margin: .25em .5em; }
-    .skill-group .skill span {
-      font-size: 0.7em; }
+    margin-bottom: 0; }
+    .skill-group .icons {
+      padding: .5em 0; }
+      .skill-group .icons .skill .img-skill {
+        max-width: 2em;
+        margin: .25em .5em; }
+      .skill-group .icons .skill span {
+        font-size: 0.7em; }
 
   #thumbnail-container .thumb {
     width: 50%; }
@@ -471,8 +687,7 @@ h1 {
     padding-top: 0; }
 
   .me {
-    margin-top: 2em;
-    max-height: 16em;
+    max-height: 14em;
     background-position: center; } }
 @media screen and (max-width: 24em) {
   #navigation .section-nav .section-title {

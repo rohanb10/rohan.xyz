@@ -49,28 +49,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Navbar
 	function sectionPicker(element, sectionName) {
+		//remove current navbar bg colour
 		navbar.classList = [];
 		killWave();
-		//if section is open, close it
-		if (!element.classList.contains('focused')) {
+
+		//if section is already open, close it
+		if (element.classList.contains('focused')) {
+			hideAllSections();
+			startWave();
+			element.classList.remove('focused');
+		} else{
+			// change open section to sectionName
 			showSection(sectionName);
-			// change background colour
+
+			// change navbar colour to new section
 			navbar.classList.add(element.classList[1]);
-			// reset text colour
+
+			// remove .focused class and reset text
 			for (var i = 0; i < sections.length; i++) {
 				sections[i].classList.remove('focused');
 			}
 			element.classList.add('focused');
-		} else {
-			hideSection();
-			startWave();
-			element.classList.remove('focused');
 		}
 	}
 
-	function hideSection() {
-		//scroll to top before hiding div
-		fadeOut('#' + active_section);
+	function hideAllSections() {
+		fadeOut('#' + active_section, 'bottom');
 		fadeIn('#hero', function() {
 			window.scrollTo({top: 0});
 			ripple(1000);
@@ -79,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function showSection(sectionName) {
+		// pre-loading
 		if(sectionName === 'photos') {
 			genThumbnails();
 		} else if (sectionName === 'about') {
@@ -86,16 +91,22 @@ document.addEventListener('DOMContentLoaded', function() {
 			img.src = 'assets/me.jpg';
 			img.src = 'assets/me.gif';
 		}
-		//Close currently active section
+
+		//Close currently active section, and open new one after
 		if (active_section !== '') {
-			document.getElementById(active_section).classList.add('hidden');
-			active_section = '';
+			fadeOut('#'+ active_section, 'bottom', function() {
+				fadeIn('#'+sectionName);
+				active_section = sectionName;
+			});
+			// active_section = '';
+		} else {
+
+			//Open new section
+			fadeIn('#' + sectionName, function() {
+				document.getElementById('hero').classList.add('hidden');
+			});
+			active_section = sectionName;
 		}
-		//Open new section
-		fadeIn('#' + sectionName, function() {
-			document.getElementById('hero').classList.add('hidden');
-		});
-		active_section = sectionName;
 	}
 
 // Work
@@ -105,13 +116,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		// remove current work card / active btn
 		if (active_work !== '') {
 			document.querySelector('.work.active').classList.remove('active');
-			document.querySelector('#' + active_work).classList.add('hidden');
-			active_work = '';
+			fadeOut('#' + active_work, 'right', function() {
+				card.classList.remove('hidden');
+			});
+		} else {
+			card.classList.remove('hidden');
 		}
-
-		// add new workcard / active btn
-		element.classList.add('active')
-		card.classList.remove('hidden');
+		element.classList.add('active');
 		active_work = workName;
 
 		//  Scroll down to card if mobile device (40em)
@@ -120,7 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				behavior: 'smooth',
 			});	
 		}
-		
+	}
+
+	// helper
+	function showWorkCard(card) {
+		card.classList.remove('hidden');
 	}
 
 // Photos
@@ -137,21 +152,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		thumbNames.sort(function() { return 0.5 - Math.random() });
 
 		// Dump onto page
+		var delay = 3000;
 		for (var i = 0; i < thumbNames.length; i++) {
-			var t = '<div class="thumb" onClick="openPhotoModal(this, ' + thumbNames[i].index + ')"><img src="' + thumbNames[i].thumb + '"></div>';
+			// delay the first 12 images for cool animated effect, display the ones after without delay for better peformace
+			thumbDelay = (i < 12) ? delay + parseInt(i * 100) : 0;
+			var t = '<div class="thumb fade-up" style="animation-delay: ' + thumbDelay + 'ms" onClick="openPhotoModal(this, ' + thumbNames[i].index + ')"><img src="' + thumbNames[i].thumb + '"></div>';
 			thumbContainer.innerHTML += t;
 		}
 	}
 
 	function openPhotoModal(thumb, photoNumber) {
-		//show spinner
 		//preload image
 		document.querySelector('.photo-container').style.backgroundImage = "url('assets/photos/" + photoNumber + ".jpg')";
 		//onload
 		document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[photoNumber]);
-		//hide spinner
-		//open modal
-		// var modal = document.querySelector('.photo-modal')
+		//show modal
 		document.querySelector('.photo-modal').classList.remove('hidden');
 		fadeIn('.modal-content');
 
@@ -171,39 +186,35 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function closePhotoModal() {
-		fadeOut('.modal-content', function() {
+		fadeOut('.modal-content', 'bottom', function() {
 			document.querySelector('.photo-modal').classList.add('hidden');
 			document.querySelector('.caption').innerHTML = ''
 		});
 	}
 
 // Fade functions
-	function fadeOut(elementName, callback) {
+	function fadeOut(elementName, direction, callback) {
 		var el = document.querySelector(elementName);
-		el.classList.add('fade-out-bottom');
+		var fadeClassName = 'fade-out-' + direction;
+		el.classList.add(fadeClassName);
 		setTimeout(function() {
-			el.classList.remove('fade-out-bottom');
+			el.classList.remove(fadeClassName);
 			el.classList.add('hidden');
 			if (callback) {
 				callback();
 			}
-		}, 500, el, callback);
+		}, 500, el, fadeClassName, callback);
 	}
 
 	function fadeIn(elementName, callback) {
 		var el = document.querySelector(elementName);
 		el.classList.remove('hidden');
-		el.classList.add('fade-in-bottom');
+		el.classList.add('fade-in');
 		setTimeout(function() {
-			el.classList.remove('fade-in-bottom');
+			el.classList.remove('fade-in');
 		}, 500, el);
 		if (callback) {
 			callback();
 		}
 	}
 
-	function slideIn(elementName, callback) {
-		var el = document.querySelector(elementName);
-		el.classList.remove('hidden');
-		el.classList.add('slide-in-left');
-	}

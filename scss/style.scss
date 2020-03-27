@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,600,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,700,800,900&display=swap');
 
-$colorRed:    #b9433a;
-$colorGreen:  #46864f;
-$colorBlue:   #4c61a1;
-$colorYellow: #f7c83b;
+// $colorOne:    #b9433a;
+$colorOne:    #EA4347;
+// $colorTwo:   #4c61a1;
+$colorTwo:   #6DC1C5;
+// $colorThree:  #46864f;
+$colorThree:  #7FBF90;
+
+$colorFour: #f7c83b;
 $colorWhite:  #fff;
 $colorBlack:  #000;
+$colorTransparent: rgba(0,0,0,0);
 
 
 html, body {
@@ -125,24 +130,24 @@ h1 {
 	background-image: linear-gradient($colorWhite, $colorWhite);
 	transition: background-size .4s linear;
 
-	&.bg-red, &.bg-green, &.bg-blue, &.bg-yellow {
+	&.bg-one, &.bg-three, &.bg-two, &.bg-four {
 		background-size: 100% 100%;
 		width: 100%;
 	}
-	&.bg-red {
-		background-image: linear-gradient($colorRed, $colorRed);
+	&.bg-one {
+		background-image: linear-gradient($colorOne, $colorOne);
 	}
 
-	&.bg-green {
-		background-image: linear-gradient($colorGreen, $colorGreen);
+	&.bg-two {
+		background-image: linear-gradient($colorTwo, $colorTwo);
 	}
 
-	&.bg-blue {
-		background-image: linear-gradient($colorBlue, $colorBlue);
+	&.bg-three {
+		background-image: linear-gradient($colorThree, $colorThree);
 	}
 
-	&.bg-yellow {
-		background-image: linear-gradient($colorYellow, $colorYellow);
+	&.bg-four {
+		background-image: linear-gradient($colorFour, $colorFour);
 	}
 	.section-nav {
 		.section-title {
@@ -157,20 +162,20 @@ h1 {
 				text-align: center;
 			}
 
-			&.bg-red {
-				@include animated-bg($colorRed);
+			&.bg-one {
+				@include animated-bg($colorOne);
 			}
 
-			&.bg-green {
-				@include animated-bg($colorGreen);
+			&.bg-three {
+				@include animated-bg($colorThree);
 			}
 
-			&.bg-blue {
-				@include animated-bg($colorBlue);
+			&.bg-two {
+				@include animated-bg($colorTwo);
 			}
 
-			&.bg-yellow {
-				@include animated-bg($colorYellow);
+			&.bg-four {
+				@include animated-bg($colorFour);
 			}
 		}
 	}
@@ -182,40 +187,94 @@ h1 {
 
 #section-container {
 	.title {
-		font-size: 3em;
-		font-weight: 900;
-		padding-bottom: .5em;
-		position: relative;
+		margin-bottom: 2em;
 
-		div {
-			position: relative;
-			z-index: 2;
+		.text-container {
+			font-size: 2em;
+			font-weight: 800;
+			padding: 0 .5em;
 			text-align: center;
-			color: $colorWhite;
-		}
-		.stroke {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-    		transform: translateY(-50%) translateX(-50%);
-    		width: 100%;
-    		max-width: 300px;
+			position: relative;
+
+			.text-underline {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 1;
+
+				&.bg-one {
+					width: 3.5em;
+					background-image: linear-gradient(0deg, $colorTransparent 25%, $colorOne 25%, $colorOne 45%, $colorTransparent 45%);
+				}
+				&.bg-two {
+					width: 3.5em;
+					background-image: linear-gradient(0deg, $colorTransparent 25%, $colorTwo 25%, $colorTwo 45%, $colorTransparent 45%);
+				}
+				&.bg-three {
+					width: 7em;
+					background-image: linear-gradient(0deg, $colorTransparent 25%, $colorThree 25%, $colorThree 45%, $colorTransparent 45%);
+				}
+				&.bg-four {
+					width: 5.5em;
+					background-image: linear-gradient(0deg, $colorTransparent 25%, $colorFour 25%, $colorFour 45%, $colorTransparent 45%);
+				}
+			}
 		}
 	}
 	#work *::selection {
-		background-color: $colorRed;
+		background-color: $colorOne;
 		color: $colorWhite;
 	}
 	#skills *::selection {
-		background-color: $colorBlue;
+		background-color: $colorTwo;
 		color: $colorWhite;
 	}
 	#photos *::selection {
-		background-color: $colorGreen;
+		background-color: $colorThree;
 		color: $colorWhite;
 	}
 	#about *::selection {
-		background-color: $colorYellow;
+		background-color: $colorFour;
+	}
+
+	.title-container {
+		
+		position: relative;
+		padding: 0 .5em 1.5em;
+		margin: 1em 0;
+
+		.text {
+			font-weight: 900;
+			position: relative;
+			z-index: 2;
+			font-size: 3em;
+
+			&.smaller {
+				font-size: 2em;
+			}
+		}
+
+		.underline {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+
+			.bg-one {
+				background-image: linear-gradient(0deg, $colorWhite 45%, $colorOne 45%, $colorOne 85%, $colorWhite 85%);
+			}
+		}
+
+		.underline-yellow {
+			background-image: linear-gradient(0deg, $colorWhite 55%, $colorOne 55%, $colorOne 75%, $colorWhite 75%);
+			// background-image: linear-gradient(0deg, $colorWhite 45%, $colorTwo 45%, $colorTwo 85%, $colorWhite 85%);
+			// background-image: linear-gradient(0deg, $colorWhite 45%, $colorFour 45%, $colorFour 85%, $colorWhite 85%);
+			// background-image: linear-gradient(0deg, $colorWhite 45%, $colorThree 45%, $colorThree 85%, $colorWhite 85%);
+		}
 	}
 }
 
@@ -257,7 +316,7 @@ h1 {
 		background-color: #ddd;
 	}
 	&:active, &.active {
-		border: 2px solid $colorRed;
+		border: 2px solid $colorOne;
 	}
 }
 
@@ -313,7 +372,7 @@ h1 {
 				padding-inline-start: 1.2em;
 			}
 			a {
-				@include hyperlink($colorRed, $colorWhite);
+				@include hyperlink($colorOne, $colorWhite);
 			}
 		}
 	}
@@ -371,10 +430,10 @@ h1 {
 				margin: .5em .55em;
 				max-width: 3em;
 				transition: all .4s linear;
-				filter:contrast(65%);
+				filter: blur(.5px) contrast(65%);
 
 				&:hover {
-					filter:contrast(100%);
+					filter: blur(0) contrast(100%);
 				}
 			}
 
@@ -470,7 +529,7 @@ h1 {
 	}
 
 	a {
-		@include hyperlink($colorYellow)
+		@include hyperlink($colorFour)
 	}
 }
 
@@ -535,20 +594,36 @@ h1 {
 
 .wipe {
 	animation: wipe 1s cubic-bezier(1,-0.06,.39,.39) both;	
-	&.delay {
-		animation-delay: 1s;
-		animation-timing-function: linear;
-	}
 }
 
 @keyframes wipe { 
 	0% {
-		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 		-webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 	}
 	100% {
-		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 		-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+	}
+}
+
+.wipe-up {
+	animation: wipe-up 1s linear both;
+	animation-delay: 1s;
+}
+
+@keyframes wipe-up { 
+	0% {
+		-webkit-clip-path: polygon(0 55%, 100% 55%, 100% 55%, 0 55%);
+		clip-path: polygon(0 55%, 100% 55%, 100% 55%, 0 55%);
+	}
+	55% {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 55%, 0 55%);
+		clip-path: polygon(0 0, 100% 0, 100% 55%, 0 55%);
+	}
+	100% {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}
 }
 

@@ -19,16 +19,16 @@
 	</div>
 	<div id="navigation">
 		<div class="section-nav container-width">
-			<span class="section-title bg-red" onclick="sectionPicker(this, 'work')">
+			<span class="section-title bg-one" onclick="sectionPicker(this, 'work')">
 				<span data-content="work"></span>
 			</span>
-			<span class="section-title bg-blue" onclick="sectionPicker(this, 'skills')">
+			<span class="section-title bg-two" onclick="sectionPicker(this, 'skills')">
 				<span data-content="skills"></span>
 			</span>
-			<span class="section-title bg-green" onclick="sectionPicker(this, 'photos')">
+			<span class="section-title bg-three" onclick="sectionPicker(this, 'photos')">
 				<span data-content="photos"></span>
 			</span>
-			<span class="section-title bg-yellow" onclick="sectionPicker(this, 'about')">
+			<span class="section-title bg-four" onclick="sectionPicker(this, 'about')">
 				<span data-content="about"></span>
 			</span>
 		</div>
@@ -38,8 +38,11 @@
 			<div class="flexbox-grid">
 				<div class="left-col">
 					<div class="title">
-						<div class="wipe delay">work</div>
-						<img class="stroke wipe" src="./assets/strokes/red.svg">
+						<span class="text-container">
+							<span class="text-underline bg-one wipe">
+								<span class="text wipe-up delay">work</span>
+							</span>
+						</span>
 					</div>
 					<div class="work-title fade-right delay-2000">Jobs</div>
 					<div class="work fade-right delay-2200" onclick="workPicker(this, 'expensify')">
@@ -209,8 +212,11 @@
 			<div class="flexbox-grid">
 				<div class="left-col">
 					<div class="title">
-						<div class="wipe delay">skills</div>
-						<img class="stroke wipe" src="./assets/strokes/blue.svg">
+						<span class="text-container">
+							<span class="text-underline bg-two wipe">
+								<span class="text wipe-up delay">skills</span>
+							</span>
+						</span>
 					</div>
 					<div>
 						<p class="fade-right delay-2000">Nothing screams "hire me" more than an entire webpage dedicated to programming languages, tools and libraries.</p>
@@ -319,8 +325,11 @@
 			<div class="flexbox-grid">
 				<div class="left-col">
 					<div class="title">
-						<div class="wipe delay">photos</div>
-						<img class="stroke wipe" src="./assets/strokes/green.svg">
+						<span class="text-container">
+							<span class="text-underline bg-three wipe">
+								<span class="text wipe-up delay">photography</span>
+							</span>
+						</span>
 					</div>
 					<p class="fade-right delay-2000">The best views can be found on an obscure blog written by a middle aged man with a middle aged van.</p>
 				</div>
@@ -332,8 +341,11 @@
 			<div class="flexbox-grid">
 				<div class="left-col">
 					<div class="title">
-						<div class="wipe delay">about me</div>
-						<img class="stroke wipe" src="./assets/strokes/yello.svg">
+						<span class="text-container">
+							<span class="text-underline bg-four wipe">
+								<span class="text wipe-up delay">about me</span>
+							</span>
+						</span>
 					</div>
 				</div>
 			</div>

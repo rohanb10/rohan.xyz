@@ -430,10 +430,10 @@ h1 {
 				margin: .5em .55em;
 				max-width: 3em;
 				transition: all .4s linear;
-				filter: blur(.5px) contrast(65%);
+				filter: contrast(65%);
 
 				&:hover {
-					filter: blur(0) contrast(100%);
+					filter: contrast(100%);
 				}
 			}
 

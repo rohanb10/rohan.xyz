@@ -357,9 +357,9 @@ h1 {
       margin: .5em .55em;
       max-width: 3em;
       transition: all .4s linear;
-      filter: blur(0.5px) contrast(65%); }
+      filter: contrast(65%); }
       .skill-group .icons .skill .img-skill:hover {
-        filter: blur(0) contrast(100%); }
+        filter: contrast(100%); }
     .skill-group .icons .skill span {
       display: block;
       font-size: .8em;

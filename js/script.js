@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	function hideAllSections() {
 		fadeOut('#' + active_section, 'bottom');
 		fadeIn('#hero', function() {
-			window.scrollTo({top: 0});
+			// window.scrollTo({top: 0});
 			ripple(1000);
 		});
 		active_section = '';

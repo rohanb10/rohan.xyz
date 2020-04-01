@@ -27,6 +27,10 @@ html, body {
 	max-width: 1000px;
 	padding: 1em;
 	margin: 0 auto;
+
+	&.no-padding {
+		padding: 0;
+	}
 }
 
 h1 {
@@ -44,6 +48,7 @@ h1 {
 
 @mixin animated-bg($color) {
 	border-bottom: .2em solid $color;
+	box-sizing: border-box;
 	position: relative;
 
 	&:before {
@@ -150,10 +155,11 @@ h1 {
 		background-image: linear-gradient($colorFour, $colorFour);
 	}
 	.section-nav {
+		font-size: 1.25em;
+		padding: .5em 1em .5em;
 		.section-title {
 			cursor: pointer;
-			font-size: 1.25em;
-			padding: .5em 0;
+			padding: .5em 0 .3em; // padding-bottom effectively .5em because of .2em border-bottom
 			transform: translateX(0) translateY(0);
 
 			span {
@@ -702,10 +708,6 @@ h1 {
 		}
 	}
 
-	.container-width {
-		padding: 1em;
-	}
-
 	.work-card-container {
 		padding: 5em 0 0;
 		.card {
@@ -748,14 +750,14 @@ h1 {
 
 // 384px
 @media screen and (max-width: 24em) {
-	#navigation .section-nav .section-title {
+	#navigation .section-nav {
 		font-size: 1.1em;
 	}
 }
 
 // 336px
 @media screen and (max-width: 21em) {
-	#navigation .section-nav .section-title {
+	#navigation .section-nav {
 		font-size: 1em;
 	}
 }
@@ -765,7 +767,7 @@ h1 {
 	h1 {
 		font-size: 3.5em;
 	}
-	#navigation .section-nav .section-title {
+	#navigation .section-nav {
 		font-size: .9em;
 	}
 }

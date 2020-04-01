@@ -12,6 +12,8 @@ html, body {
   max-width: 1000px;
   padding: 1em;
   margin: 0 auto; }
+  .container-width.no-padding {
+    padding: 0; }
 
 h1 {
   font-size: 4em;
@@ -45,111 +47,117 @@ h1 {
     background-image: linear-gradient(#7FBF90, #7FBF90); }
   #navigation.bg-four {
     background-image: linear-gradient(#f7c83b, #f7c83b); }
-  #navigation .section-nav .section-title {
-    cursor: pointer;
+  #navigation .section-nav {
     font-size: 1.25em;
-    padding: .5em 0;
-    transform: translateX(0) translateY(0); }
-    #navigation .section-nav .section-title span {
-      display: inline-block;
-      width: 4em;
-      text-align: center; }
-    #navigation .section-nav .section-title.bg-one {
-      border-bottom: 0.2em solid #EA4347;
-      position: relative; }
-      #navigation .section-nav .section-title.bg-one:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #EA4347;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
-      #navigation .section-nav .section-title.bg-one span:before {
-        content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-one:hover, #navigation .section-nav .section-title.bg-one.wave {
-        color: #fff;
-        transition-duration: .4s; }
-      #navigation .section-nav .section-title.bg-one:hover:before, #navigation .section-nav .section-title.bg-one.wave:before {
-        transform: scaleY(1) skew(0deg); }
-      #navigation .section-nav .section-title.bg-one.focused span:before {
-        content: '\00d7'; }
-    #navigation .section-nav .section-title.bg-three {
-      border-bottom: 0.2em solid #7FBF90;
-      position: relative; }
-      #navigation .section-nav .section-title.bg-three:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #7FBF90;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
-      #navigation .section-nav .section-title.bg-three span:before {
-        content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-three:hover, #navigation .section-nav .section-title.bg-three.wave {
-        color: #fff;
-        transition-duration: .4s; }
-      #navigation .section-nav .section-title.bg-three:hover:before, #navigation .section-nav .section-title.bg-three.wave:before {
-        transform: scaleY(1) skew(0deg); }
-      #navigation .section-nav .section-title.bg-three.focused span:before {
-        content: '\00d7'; }
-    #navigation .section-nav .section-title.bg-two {
-      border-bottom: 0.2em solid #6DC1C5;
-      position: relative; }
-      #navigation .section-nav .section-title.bg-two:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #6DC1C5;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
-      #navigation .section-nav .section-title.bg-two span:before {
-        content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-two:hover, #navigation .section-nav .section-title.bg-two.wave {
-        color: #fff;
-        transition-duration: .4s; }
-      #navigation .section-nav .section-title.bg-two:hover:before, #navigation .section-nav .section-title.bg-two.wave:before {
-        transform: scaleY(1) skew(0deg); }
-      #navigation .section-nav .section-title.bg-two.focused span:before {
-        content: '\00d7'; }
-    #navigation .section-nav .section-title.bg-four {
-      border-bottom: 0.2em solid #f7c83b;
-      position: relative; }
-      #navigation .section-nav .section-title.bg-four:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #f7c83b;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
-      #navigation .section-nav .section-title.bg-four span:before {
-        content: attr(data-content); }
-      #navigation .section-nav .section-title.bg-four:hover, #navigation .section-nav .section-title.bg-four.wave {
-        color: #fff;
-        transition-duration: .4s; }
-      #navigation .section-nav .section-title.bg-four:hover:before, #navigation .section-nav .section-title.bg-four.wave:before {
-        transform: scaleY(1) skew(0deg); }
-      #navigation .section-nav .section-title.bg-four.focused span:before {
-        content: '\00d7'; }
+    padding: .5em 1em .5em; }
+    #navigation .section-nav .section-title {
+      cursor: pointer;
+      padding: .5em 0 .3em;
+      transform: translateX(0) translateY(0); }
+      #navigation .section-nav .section-title span {
+        display: inline-block;
+        width: 4em;
+        text-align: center; }
+      #navigation .section-nav .section-title.bg-one {
+        border-bottom: 0.2em solid #EA4347;
+        box-sizing: border-box;
+        position: relative; }
+        #navigation .section-nav .section-title.bg-one:before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #EA4347;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+        #navigation .section-nav .section-title.bg-one span:before {
+          content: attr(data-content); }
+        #navigation .section-nav .section-title.bg-one:hover, #navigation .section-nav .section-title.bg-one.wave {
+          color: #fff;
+          transition-duration: .4s; }
+        #navigation .section-nav .section-title.bg-one:hover:before, #navigation .section-nav .section-title.bg-one.wave:before {
+          transform: scaleY(1) skew(0deg); }
+        #navigation .section-nav .section-title.bg-one.focused span:before {
+          content: '\00d7'; }
+      #navigation .section-nav .section-title.bg-three {
+        border-bottom: 0.2em solid #7FBF90;
+        box-sizing: border-box;
+        position: relative; }
+        #navigation .section-nav .section-title.bg-three:before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #7FBF90;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+        #navigation .section-nav .section-title.bg-three span:before {
+          content: attr(data-content); }
+        #navigation .section-nav .section-title.bg-three:hover, #navigation .section-nav .section-title.bg-three.wave {
+          color: #fff;
+          transition-duration: .4s; }
+        #navigation .section-nav .section-title.bg-three:hover:before, #navigation .section-nav .section-title.bg-three.wave:before {
+          transform: scaleY(1) skew(0deg); }
+        #navigation .section-nav .section-title.bg-three.focused span:before {
+          content: '\00d7'; }
+      #navigation .section-nav .section-title.bg-two {
+        border-bottom: 0.2em solid #6DC1C5;
+        box-sizing: border-box;
+        position: relative; }
+        #navigation .section-nav .section-title.bg-two:before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #6DC1C5;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+        #navigation .section-nav .section-title.bg-two span:before {
+          content: attr(data-content); }
+        #navigation .section-nav .section-title.bg-two:hover, #navigation .section-nav .section-title.bg-two.wave {
+          color: #fff;
+          transition-duration: .4s; }
+        #navigation .section-nav .section-title.bg-two:hover:before, #navigation .section-nav .section-title.bg-two.wave:before {
+          transform: scaleY(1) skew(0deg); }
+        #navigation .section-nav .section-title.bg-two.focused span:before {
+          content: '\00d7'; }
+      #navigation .section-nav .section-title.bg-four {
+        border-bottom: 0.2em solid #f7c83b;
+        box-sizing: border-box;
+        position: relative; }
+        #navigation .section-nav .section-title.bg-four:before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: #f7c83b;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+        #navigation .section-nav .section-title.bg-four span:before {
+          content: attr(data-content); }
+        #navigation .section-nav .section-title.bg-four:hover, #navigation .section-nav .section-title.bg-four.wave {
+          color: #fff;
+          transition-duration: .4s; }
+        #navigation .section-nav .section-title.bg-four:hover:before, #navigation .section-nav .section-title.bg-four.wave:before {
+          transform: scaleY(1) skew(0deg); }
+        #navigation .section-nav .section-title.bg-four.focused span:before {
+          content: '\00d7'; }
 
 .hidden {
   display: none; }
@@ -689,9 +697,6 @@ h1 {
       .flexbox-grid .left-col.extra-padding, .flexbox-grid .right-col.extra-padding {
         padding: 0; }
 
-  .container-width {
-    padding: 1em; }
-
   .work-card-container {
     padding: 5em 0 0; }
     .work-card-container .card {
@@ -719,16 +724,16 @@ h1 {
     max-height: 14em;
     background-position: center; } }
 @media screen and (max-width: 24em) {
-  #navigation .section-nav .section-title {
+  #navigation .section-nav {
     font-size: 1.1em; } }
 @media screen and (max-width: 21em) {
-  #navigation .section-nav .section-title {
+  #navigation .section-nav {
     font-size: 1em; } }
 @media screen and (max-width: 19em) {
   h1 {
     font-size: 3.5em; }
 
-  #navigation .section-nav .section-title {
+  #navigation .section-nav {
     font-size: .9em; } }
 
 /*# sourceMappingURL=style.css.map */

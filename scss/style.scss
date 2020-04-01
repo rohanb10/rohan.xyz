@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap');
 
-// $colorOne:    #b9433a;
-$colorOne:    #EA4347;
-// $colorTwo:   #4c61a1;
-$colorTwo:   #6DC1C5;
-// $colorThree:  #46864f;
-$colorThree:  #7FBF90;
-
-$colorFour: #f7c83b;
-$colorWhite:  #fff;
-$colorBlack:  #000;
-$colorTransparent: rgba(0,0,0,0);
-
-
 html, body {
 	margin: 0;
 	padding: 0;
@@ -21,6 +8,15 @@ html, body {
 	background-color: $colorWhite;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
+
+h1 {
+	font-size: 4em;
+	font-weight: 900;
+
+	span {
+		display: block;
+	}
 }
 
 .container-width {
@@ -33,98 +29,30 @@ html, body {
 	}
 }
 
-h1 {
-	font-size: 4em;
-	font-weight: 900;
+.hidden {
+	display: none;
+}
 
-	span {
-		display: block;
+.flexbox-grid {
+	display: flex;
+	.left-col, .right-col {
+		box-sizing: border-box;
+	}
+	.left-col {
+		width: 40%;
+		padding-right: .5em;
+	}
+	.right-col {
+		width: 60%;
+		padding-left: .5em;
+		&.extra-padding {
+			padding-left: 4em;
+		}
 	}
 }
 
 #hero {
 	padding-bottom: 10em;
-}
-
-@mixin animated-bg($color) {
-	border-bottom: .2em solid $color;
-	box-sizing: border-box;
-	position: relative;
-
-	&:before {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: $color;
-		transform: scaleY(0);
-		transform-origin: 50% 100%;
-		transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
-	}
-	span:before {
-		content: attr(data-content)
-	}
-	&:hover, &.wave {
-		color: $colorWhite;
-		transition-duration: .4s;
-	}
-	&:hover:before, &.wave:before {
-		transform: scaleY(1) skew(0deg);
-	}
-	&.focused {
-		span:before {
-			content: '\00d7';
-		}
-	}
-}
-
-@mixin hyperlink($background-color, $text-color: $colorBlack) {
-	color: $colorBlack;
-	text-decoration: none;
-	padding: 0 2px;
-	border-bottom: 1px solid $background-color;
-	position: relative;
-	z-index: 1;
-
-	&:before {
-		position: absolute;
-		content: "";
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background-image: linear-gradient(0deg, $background-color 0%, $background-color 100%, $colorWhite 100%);
-		z-index: -1;
-		transition: all .2s linear;
-		transform: scaleY(0);
-		transform-origin: 50% 100%;
-	}
-
-	&:hover {
-		transition: all .2s linear;
-		color: $text-color;
-	}
-
-	&:hover:before {
-		transform: scaleY(1);
-	}
-}
-
-/* 	Loop for delays
-	&.delay-X {
-		animation-delay: X ms;
-	}
-*/
-@mixin delays($interval : 500, $start: 0, $total: 10) {
-	@for $i from 0 through $total {
-		$ms : $start + ($i * $interval);
-		&.delay-#{$ms} {
-			animation-delay: #{$ms}ms;
-		}
-	}
 }
 
 #navigation {
@@ -135,23 +63,23 @@ h1 {
 	background-image: linear-gradient($colorWhite, $colorWhite);
 	transition: background-size .4s linear;
 
-	&.bg-one, &.bg-three, &.bg-two, &.bg-four {
+	&[data-bg-color="one"], &[data-bg-color="two"], &[data-bg-color="three"], &[data-bg-color="four"] {
 		background-size: 100% 100%;
 		width: 100%;
 	}
-	&.bg-one {
+	&[data-bg-color="one"] {
 		background-image: linear-gradient($colorOne, $colorOne);
 	}
 
-	&.bg-two {
+	&[data-bg-color="two"] {
 		background-image: linear-gradient($colorTwo, $colorTwo);
 	}
 
-	&.bg-three {
+	&[data-bg-color="three"] {
 		background-image: linear-gradient($colorThree, $colorThree);
 	}
 
-	&.bg-four {
+	&[data-bg-color="four"] {
 		background-image: linear-gradient($colorFour, $colorFour);
 	}
 	.section-nav {
@@ -168,27 +96,23 @@ h1 {
 				text-align: center;
 			}
 
-			&.bg-one {
+			&[data-bg-color="one"] {
 				@include animated-bg($colorOne);
 			}
 
-			&.bg-three {
-				@include animated-bg($colorThree);
-			}
-
-			&.bg-two {
+			&[data-bg-color="two"] {
 				@include animated-bg($colorTwo);
 			}
 
-			&.bg-four {
+			&[data-bg-color="three"] {
+				@include animated-bg($colorThree);
+			}
+
+			&[data-bg-color="four"] {
 				@include animated-bg($colorFour);
 			}
 		}
 	}
-}
-
-.hidden {
-	display: none;
 }
 
 #section-container {
@@ -243,24 +167,6 @@ h1 {
 	}
 	#about *::selection {
 		background-color: $colorFour;
-	}
-}
-
-.flexbox-grid {
-	display: flex;
-	.left-col, .right-col {
-		box-sizing: border-box;
-	}
-	.left-col {
-		width: 40%;
-		padding-right: .5em;
-	}
-	.right-col {
-		width: 60%;
-		padding-left: .5em;
-		&.extra-padding {
-			padding-left: 4em;
-		}
 	}
 }
 
@@ -333,6 +239,10 @@ h1 {
 			.card-blurb, .card-stack {
 				font-size: .9em;
 			}
+			.divider {
+				border-top: 1px solid #EEE;
+				margin: .5em 2em;
+			}
 			code {
 				font-size: 1.2em;
 			}
@@ -344,10 +254,6 @@ h1 {
 			}
 		}
 	}
-}
-.divider {
-	border-top: 1px solid #EEE;
-	margin: .5em 2em;
 }
 
 #expensify .card-logo {
@@ -430,6 +336,7 @@ h1 {
 	z-index: 3;
 	left: 0;
 	top: 0;
+	box-shadow: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23);
 
 	&.hidden {
 		display: none;
@@ -441,7 +348,7 @@ h1 {
 		margin: auto;
 
 		.photo-container {
-			height: 70vh;
+			height: 80vh;
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -452,8 +359,8 @@ h1 {
 			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;
-			padding-top:2em;
-			justify-content:space-between;
+			padding-top: 2em;
+			justify-content: space-between;
 			a {
 				text-decoration: underline;
 				cursor: pointer;
@@ -497,7 +404,7 @@ h1 {
 	}
 
 	a {
-		@include hyperlink($colorFour)
+		@include hyperlink($colorFour);
 	}
 }
 
@@ -527,167 +434,6 @@ h1 {
 	}
 }
 
-.fade-down {
-	animation: fade-down .5s ease-in-out both;
-}
-
-@keyframes fade-down {
-	0% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-	100% {
-		transform: translateY(50vh);
-		opacity: 0;
-	}
-}
-
-.slide-down {
-	animation: slide-down .5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	&.delay {
-		animation-delay: .5s;
-	}
-}
-
-@keyframes slide-down {
-	0% {
-		transform: translateY(-25vh);
-		opacity: 0;
-	}
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
-.wipe {
-	animation: wipe 1s cubic-bezier(1,-0.06,.39,.39) both;	
-}
-
-@keyframes wipe { 
-	0% {
-		-webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-	}
-	100% {
-		-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
-		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
-	}
-}
-
-.wipe-up {
-	animation: wipe-up 1s linear both;
-	animation-delay: 1s;
-}
-
-@keyframes wipe-up { 
-	0% {
-		-webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
-	}
-	25% {
-		-webkit-clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0% 100%);
-		clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0% 100%);
-	}
-	100% {
-		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-	}
-}
-
-.fade-in {
-	animation: fade-in 1s linear both;
-}
-
-@keyframes fade-in { 
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-.fade-up {
-	animation: fade-up 1s ease-in-out both;
-	@include delays(100, 2000, 12);
-}
-
-@keyframes fade-up {
-	0% {
-		transform: translateY(40vh);
-		opacity: 0;
-	}
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
-.fade-left {
-	animation: fade-left 1s ease-in-out both;
-	@include delays(100, 2000, 20);
-}
-
-@keyframes fade-left {
-	0% {
-		transform: translateX(40vw);
-		opacity: 0;
-	}
-	100% {
-		transform: translateX(0);
-		opacity: 1;
-	}
-}
-
-.fade-right {
-	animation: fade-right 1s ease-in-out both;
-	@include delays(100, 2000, 25);
-}
-
-@keyframes fade-right {
-	0% {
-		transform: translateX(-40vw);
-		opacity: 0;
-	}
-	100% {
-		transform: translateX(0);
-		opacity: 1;
-	}
-}
-
-.fade-out-bottom {
-	animation: fade-out-bottom .5s linear both;
-}
-
-@keyframes fade-out-bottom { 
-	0% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(100vh);
-	}
-}
-
-.fade-out-right {
-	animation: fade-out-right .5s linear both;
-}
-
-@keyframes fade-out-right { 
-	0% {
-		transform: translateX(0);
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		transform: translateX(50vh);
-	}
-}
 // 896px
 @media screen and (max-width: 56em) {
 	.skill-group .icons .skill .img-skill {

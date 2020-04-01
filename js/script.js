@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var card = document.getElementById(workName);
 
 		// remove current work card / active btn
-		if (active_work !== '') {
+		if (active_work !== '' && active_work != workName) {
 			document.querySelector('.work.active').classList.remove('active');
 			fadeOut('#' + active_work, 'right', function() {
 				card.classList.remove('hidden');

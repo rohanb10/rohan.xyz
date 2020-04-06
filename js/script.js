@@ -65,7 +65,7 @@ function sectionPicker(element, sectionName) {
 		showSection(sectionName);
 
 		//change navbar bg colour
-		navbar.classList.add(element.classList[1]);
+		navbar.classList.add('active');
 		navbar.setAttribute('data-bg-color', element.getAttribute('data-bg-color'));
 
 		// remove .active class and reset text
@@ -134,11 +134,6 @@ function workPicker(element, workName) {
 			behavior: 'smooth',
 		});	
 	}
-}
-
-// helper
-function showWorkCard(card) {
-	card.classList.remove('hidden');
 }
 
 // Photos
@@ -211,7 +206,7 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	el.classList.remove('hidden');
 	el.classList.add(animationName);
 	setTimeout(function() {
-		el.classList.remove('fade-in');
+		el.classList.remove(animationName);
 	}, animationDuration, el);
 	if (callback) {
 		callback();

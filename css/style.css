@@ -9,7 +9,6 @@
 		animation-delay: X ms;
 	}
 */
-@import url("https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap");
 .slide-in-down {
   animation: slide-in-down 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) both; }
   .slide-in-down.delay-500 {

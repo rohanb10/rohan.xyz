@@ -1,6 +1,16 @@
-var navbar, navbarSections;
-var active_section = '', active_work = '';
+var navbar, navbarSections, active_section = null, active_work = '';
 const NUMBER_OF_PHOTOS = 30;
+
+// clear hash on page load
+history.pushState(null, null, window.location.pathname);
+
+// back button fail safe
+window.addEventListener('popstate', function() {
+	navbarSections.forEach((s) => {
+		s.classList.remove('active');
+	});
+	hideAllSections();
+});
 
 document.addEventListener('DOMContentLoaded', function() {
 	navbar = document.getElementById('navigation');
@@ -44,45 +54,49 @@ function startWave() {
 
 function killWave() {
 	clearInterval(wave);
-	for (var i = 0; i < navbarSections.length; i++) {
-		navbarSections[i].classList.remove('wave');
-	}
+	navbarSections.forEach((s) => {
+		s.classList.remove('wave');
+	});
 }
-var goop;
+
 // Navbar
-function sectionPicker(element, sectionName) {
+function sectionPicker(navButton) {
+	var sectionName = navButton.querySelector('span').getAttribute('data-content');
 	killWave();
-	//remove current navbar bg colour
-	navbar.classList = [];
+
+	//reset navbar bg and buttons
+	navbar.setAttribute('data-bg-color', '');
+	navbar.classList.remove('active');
+	navbarSections.forEach((s) => {
+		s.classList.remove('active');
+	});
 
 	//if selected section is already open, shut it down
-	if (element.classList.contains('active')) {
-		element.classList.remove('active');
-		navbar.setAttribute('data-bg-color', '');
+	if (sectionName === active_section) {
 		hideAllSections();
 	} else{
-		// change open section to sectionName
+		// open section
 		showSection(sectionName);
 
-		//change navbar bg colour
+		//change navbar bg colour and .active 
+		navbar.setAttribute('data-bg-color', navButton.getAttribute('data-bg-color'));
 		navbar.classList.add('active');
-		navbar.setAttribute('data-bg-color', element.getAttribute('data-bg-color'));
-
-		// remove .active class and reset text
-		for (var i = 0; i < navbarSections.length; i++) {
-			navbarSections[i].classList.remove('active');
-		}
-		element.classList.add('active');
+		navButton.classList.add('active');
+		
+		history.pushState('', '', '#');
 	}
 }
 
 function hideAllSections() {
+
 	animateOut('#' + active_section, 'fade-out-bottom');
 	animateIn('#hero', 'fade-in', function() {
 		ripple(1000);
 		startWave();
 	}, 500);
-	active_section = '';
+
+	history.pushState(null, null, window.location.pathname);
+	active_section = null;
 }
 
 function showSection(sectionName) {
@@ -100,7 +114,7 @@ function showSection(sectionName) {
 	}
 
 	// if no section is open
-	if (active_section === ''){
+	if (active_section === null){
 		document.getElementById('hero').classList.add('hidden');
 		document.getElementById(sectionName).classList.remove('hidden');
 		active_section = sectionName;
@@ -152,7 +166,7 @@ function genThumbnails() {
 	// Dump onto page
 	var delay = 3000;
 	for (var i = 0; i < thumbNames.length; i++) {
-		// delay the first 12 images for cool animated effect, display the ones after normally for better peformance
+		// delay the first 15 images for cool animated effect, display the ones after normally for better peformance
 		thumbDelay = (i < 15) ? delay + parseInt(i * 100) : 0;
 		var t = '<div class="thumb fade-in-up" style="animation-delay: ' + thumbDelay + 'ms" onClick="openPhotoModal(this, ' + thumbNames[i].index + ')"><img src="' + thumbNames[i].thumb + '"></div>';
 		thumbContainer.innerHTML += t;

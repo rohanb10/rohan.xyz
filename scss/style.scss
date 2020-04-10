@@ -3,7 +3,7 @@ html, body {
 	padding: 0;
 	width: 100%;
 	font-family: 'Muli', sans-serif;
-	background-color: $colorWhite;
+	background-color: $color-white;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -29,6 +29,41 @@ h1 {
 
 .hidden {
 	display: none;
+}
+
+.bucket {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	width: 3em;
+	height: 3em;
+	cursor: pointer;
+	z-index: 2;
+	transition: all .3s linear;
+	.bucket-tooltip {
+		display: none;
+		position: absolute;
+		right: 3em;
+		width: 8em;
+		top: .8em;
+	}
+	img {
+		border-radius: .5em;
+		opacity: .4;
+		width: 100%;
+	}
+	&:hover {
+		img {
+			animation: jiggle 1s both;
+		}
+		.bucket-tooltip {
+			display: block;
+			animation: fade-in .3s linear;
+		}
+	}
+	&:active img{
+		opacity: .6;
+	}
 }
 
 .flexbox-grid {
@@ -58,7 +93,7 @@ h1 {
 	background-size: 100% 0;
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	background-image: linear-gradient($colorWhite, $colorWhite);
+	background-image: linear-gradient($color-white, $color-white);
 	transition: background-size .4s linear;
 
 	&[data-bg-color="one"], &[data-bg-color="two"], &[data-bg-color="three"], &[data-bg-color="four"] {
@@ -66,19 +101,19 @@ h1 {
 		width: 100%;
 	}
 	&[data-bg-color="one"] {
-		background-image: linear-gradient($colorOne, $colorOne);
+		background-image: linear-gradient($color-one, $color-one);
 	}
 
 	&[data-bg-color="two"] {
-		background-image: linear-gradient($colorTwo, $colorTwo);
+		background-image: linear-gradient($color-two, $color-two);
 	}
 
 	&[data-bg-color="three"] {
-		background-image: linear-gradient($colorThree, $colorThree);
+		background-image: linear-gradient($color-three, $color-three);
 	}
 
 	&[data-bg-color="four"] {
-		background-image: linear-gradient($colorFour, $colorFour);
+		background-image: linear-gradient($color-four, $color-four);
 	}
 	.section-nav {
 		font-size: 1.25em;
@@ -95,19 +130,19 @@ h1 {
 			}
 
 			&[data-bg-color="one"] {
-				@include animated-bg($colorOne);
+				@include animated-bg($color-one);
 			}
 
 			&[data-bg-color="two"] {
-				@include animated-bg($colorTwo);
+				@include animated-bg($color-two);
 			}
 
 			&[data-bg-color="three"] {
-				@include animated-bg($colorThree);
+				@include animated-bg($color-three);
 			}
 
 			&[data-bg-color="four"] {
-				@include animated-bg($colorFour);
+				@include animated-bg($color-four);
 			}
 		}
 	}
@@ -134,37 +169,47 @@ h1 {
 
 				&.bg-one {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $colorTransparent 0%, $colorOne 0%, $colorOne 20%, $colorTransparent 20%);
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-one 0%, $color-one 20%, $color-transparent 20%);
 				}
 				&.bg-two {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $colorTransparent 0%, $colorTwo 0%, $colorTwo 20%, $colorTransparent 20%);
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-two 0%, $color-two 20%, $color-transparent 20%);
 				}
 				&.bg-three {
-					width: 7em;
-					background-image: linear-gradient(0deg, $colorTransparent 0%, $colorThree 0%, $colorThree 20%, $colorTransparent 20%);
+					width: 7.5em;
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-three 0%, $color-three 20%, $color-transparent 20%);
 				}
 				&.bg-four {
 					width: 5.5em;
-					background-image: linear-gradient(0deg, $colorTransparent 0%, $colorFour 0%, $colorFour 20%, $colorTransparent 20%);
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-four 0%, $color-four 20%, $color-transparent 20%);
 				}
 			}
 		}
 	}
 	#work *::selection {
-		background-color: $colorOne;
-		color: $colorWhite;
+		background-color: $color-one;
+		color: $color-white;
 	}
 	#skills *::selection {
-		background-color: $colorTwo;
-		color: $colorWhite;
+		background-color: $color-two;
+		color: $color-white;
 	}
 	#photos *::selection {
-		background-color: $colorThree;
-		color: $colorWhite;
+		background-color: $color-three;
+		color: $color-white;
 	}
 	#about *::selection {
-		background-color: $colorFour;
+		background-color: $color-four;
+	}
+	&.active .bucket{
+		bottom: 1em;
+		right: 1em;
+		width: 2em;
+		height: 2em;
+		.bucket-tooltip {
+			top: .25em;
+			right: 2em;
+		}
 	}
 }
 
@@ -188,7 +233,7 @@ h1 {
 		background-color: #ddd;
 	}
 	&:active, &.active {
-		border: 2px solid $colorOne;
+		border: 2px solid $color-one;
 	}
 }
 
@@ -198,8 +243,8 @@ h1 {
 	.card{
 		max-width: 30em;
 		margin: 1em auto;
-		border: 2px solid $colorBlack;
-		background-color: $colorWhite;
+		border: 2px solid $color-black;
+		background-color: $color-white;
 		border-radius: 4px;
 		position: relative;
 
@@ -212,7 +257,7 @@ h1 {
 			width: 8em;
 			height: 8em;
 			border-radius: 100px;
-			border: 2px solid $colorBlack;
+			border: 2px solid $color-black;
 			background-size: cover;
 		}
 
@@ -248,7 +293,7 @@ h1 {
 				padding-inline-start: 1.2em;
 			}
 			a {
-				@include hyperlink($colorOne, $colorWhite);
+				@include hyperlink($color-one, $color-white);
 			}
 		}
 	}
@@ -330,8 +375,8 @@ h1 {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: $colorWhite;
-	z-index: 2;
+	background-color: $color-white;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	box-shadow: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23);
@@ -377,7 +422,7 @@ h1 {
 
 	.thumb {
 		box-sizing: border-box;
-		border: .1em solid $colorWhite;
+		border: .1em solid $color-white;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -402,7 +447,7 @@ h1 {
 	}
 
 	a {
-		@include hyperlink($colorFour);
+		@include hyperlink($color-four);
 	}
 }
 
@@ -436,6 +481,16 @@ h1 {
 @media screen and (max-width: 56em) {
 	.skill-group .icons .skill .img-skill {
 		max-width: 2.4em;
+	}
+	.bucket {
+		width: 2.5em;
+		height: 2.5em;
+		bottom: 1.5em;
+		right: 1.5em;
+		.bucket-tooltip {
+			top: .5em;
+			right: 2.5em;
+		}
 	}
 }
 
@@ -496,6 +551,9 @@ h1 {
 @media screen and (max-width: 24em) {
 	#navigation .section-nav {
 		font-size: 1.1em;
+	}
+	#section-container.active .bucket{
+		display: none;
 	}
 }
 

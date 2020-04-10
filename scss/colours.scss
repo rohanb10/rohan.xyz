@@ -1,10 +1,22 @@
-$colorWhite:  #fff;
-$colorBlack:  #000;
-$colorOne:    #EA4347;
-$colorTwo:   #6DC1C5;
-$colorThree:  #7FBF90;
-$colorFour: #f7c83b;
-$colorTransparent: rgba(0,0,0,0);
+
+// Fixed colours
+$color-white:  #fff;
+$color-black:  #000;
+$color-transparent: rgba(0,0,0,0);
+
+// Dynamic colours
+:root {
+	--color-one: #EA4347;
+	--color-two: #6DC1C5;
+	--color-three: #7FBF90;
+	--color-four: #f7c83b;
+}
+
+$color-one:    var(--color-one);
+$color-two:    var(--color-two);
+$color-three:  var(--color-three);
+$color-four:   var(--color-four);
+
 
 // Old
 // $colorOne:    #b9433a;

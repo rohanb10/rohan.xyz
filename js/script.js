@@ -29,6 +29,39 @@ document.addEventListener('DOMContentLoaded', function() {
 	startWave();
 }, false);
 
+const COLOR_SCHEMES = {
+	// REDDISH, BLUEISH, GREENISH, YELLOWISH
+	1: ['#EA4347', '#6DC1C5', '#42B362', '#F7C83B'],
+	2: ['#F05C88', '#4D63D1', '#6FB8B8', '#E0AD1F'],
+	3: ['#6F71D8', '#77CBF9', '#30B06A', '#F49D1A'],
+	4: ['#FF5781', '#77BAFE', '#6ECF8E', '#DFA8FF'],
+	5: ['#DA496B', '#0D87D3', '#329555', '#FFA805'],
+	6: ['#DE5E5E', '#6F7DF6', '#629361', '#8FCDFF'],
+}
+
+function changeColorScheme(index = false, shuffle = true ) {
+	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
+	var scheme = COLOR_SCHEMES[index];
+	scheme = shuffle ? scheme.sort(() => {return 0.5 - Math.random()}) : scheme;
+	console.log(index, scheme);
+	var root = document.documentElement;
+	root.style.setProperty('--color-one', scheme[0]);
+	root.style.setProperty('--color-two', scheme[1]);
+	root.style.setProperty('--color-three', scheme[2]);
+	root.style.setProperty('--color-four', scheme[3]);
+	return index;
+}
+var currentSchemeIndex = changeColorScheme();
+
+function bucket() {
+	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length + 1;
+	var nextSchemeIndex = currentSchemeIndex;
+	while (nextSchemeIndex === currentSchemeIndex) {
+		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes))
+	}
+	changeColorScheme(nextSchemeIndex)
+}
+
 // Wave
 function ripple(interval = 0) {
 	setTimeout(function () {
@@ -78,17 +111,19 @@ function sectionPicker(navButton) {
 		// open section
 		showSection(sectionName);
 
-		//change navbar bg colour and .active 
+		//change navbar bg colour and .active
 		navbar.setAttribute('data-bg-color', navButton.getAttribute('data-bg-color'));
 		navbar.classList.add('active');
 		navButton.classList.add('active');
+		document.getElementById('section-container').classList.add('active');
 		
 		history.pushState('', '', '#');
 	}
 }
 
 function hideAllSections() {
-
+	navbar.setAttribute('data-bg-color', '');
+	document.getElementById('section-container').classList.remove('active');
 	animateOut('#' + active_section, 'fade-out-bottom');
 	animateIn('#hero', 'fade-in', function() {
 		ripple(1000);
@@ -161,7 +196,7 @@ function genThumbnails() {
 		thumbNames.push({'index': i, 'thumb': 'assets/photos/thumb/' + i + '.jpg'});
 	}
 	// Shuffle array
-	thumbNames.sort(function() { return 0.5 - Math.random() });
+	thumbNames.sort(() => {return 0.5 - Math.random()});
 
 	// Dump onto page
 	var delay = 3000;

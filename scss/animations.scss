@@ -68,6 +68,9 @@
 
 .fade-in {
 	animation: fade-in 1s linear both;
+	.quickly {
+		animation-duration: .3s;
+	}
 }
 
 @keyframes fade-in { 
@@ -172,5 +175,24 @@
 	to {
 		opacity: 0;
 		transform: translateX(50vh);
+	}
+}
+
+@keyframes jiggle {
+	0%, 80% {
+		transform: translateX(0);
+		transform-origin: 50% 50%;
+	}
+	15% {
+		transform: translateX(-.5em) rotate(-6deg);
+	}
+	30% {
+		transform: translateX(.5em) rotate(6deg);
+	}
+	45% {
+		transform: translateX(-.5em) rotate(-3.6deg);
+	}
+	60% {
+		transform: translateX(.5em) rotate(2.4deg);
 	}
 }

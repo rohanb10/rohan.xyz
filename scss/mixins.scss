@@ -37,12 +37,21 @@
 	span:before {
 		content: attr(data-content)
 	}
-	&:hover, &.wave {
+	&.wave {
 		color: $color-white;
 		transition-duration: .4s;
+		&:before {
+			transform: scaleY(1) skew(0deg);	
+		}
 	}
-	&:hover:before, &.wave:before {
-		transform: scaleY(1) skew(0deg);
+	@media (hover:hover) {
+		&:hover {
+			color: $color-white;
+			transition-duration: .4s;
+			&:before {
+				transform: scaleY(1) skew(0deg);	
+			}
+		}
 	}
 	&.active {
 		span:before {

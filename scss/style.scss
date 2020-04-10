@@ -56,7 +56,7 @@ h1 {
 		img {
 			animation: jiggle 1s both;
 		}
-		.bucket-tooltip {
+		&.default-colors .bucket-tooltip {
 			display: block;
 			animation: fade-in .3s linear;
 		}
@@ -404,7 +404,7 @@ h1 {
 			max-width: 1000px;
 			padding-top: 2em;
 			justify-content: space-between;
-			a {
+			.modal-close-btn {
 				text-decoration: underline;
 				cursor: pointer;
 			}

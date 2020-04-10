@@ -61,8 +61,6 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } }
 .fade-in {
   animation: fade-in 1s linear both; }
-  .fade-in .quickly {
-    animation-duration: .3s; }
 
 @keyframes fade-in {
   from {
@@ -307,7 +305,7 @@ h1 {
     width: 100%; }
   .bucket:hover img {
     animation: jiggle 1s both; }
-  .bucket:hover .bucket-tooltip {
+  .bucket:hover.default-colors .bucket-tooltip {
     display: block;
     animation: fade-in .3s linear; }
   .bucket:active img {
@@ -376,11 +374,17 @@ h1 {
           transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
         #navigation .section-nav .section-title[data-bg-color="one"] span:before {
           content: attr(data-content); }
-        #navigation .section-nav .section-title[data-bg-color="one"]:hover, #navigation .section-nav .section-title[data-bg-color="one"].wave {
+        #navigation .section-nav .section-title[data-bg-color="one"].wave {
           color: #fff;
           transition-duration: .4s; }
-        #navigation .section-nav .section-title[data-bg-color="one"]:hover:before, #navigation .section-nav .section-title[data-bg-color="one"].wave:before {
-          transform: scaleY(1) skew(0deg); }
+          #navigation .section-nav .section-title[data-bg-color="one"].wave:before {
+            transform: scaleY(1) skew(0deg); }
+        @media (hover: hover) {
+          #navigation .section-nav .section-title[data-bg-color="one"]:hover {
+            color: #fff;
+            transition-duration: .4s; }
+            #navigation .section-nav .section-title[data-bg-color="one"]:hover:before {
+              transform: scaleY(1) skew(0deg); } }
         #navigation .section-nav .section-title[data-bg-color="one"].active span:before {
           content: '\00d7'; }
       #navigation .section-nav .section-title[data-bg-color="two"] {
@@ -401,11 +405,17 @@ h1 {
           transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
         #navigation .section-nav .section-title[data-bg-color="two"] span:before {
           content: attr(data-content); }
-        #navigation .section-nav .section-title[data-bg-color="two"]:hover, #navigation .section-nav .section-title[data-bg-color="two"].wave {
+        #navigation .section-nav .section-title[data-bg-color="two"].wave {
           color: #fff;
           transition-duration: .4s; }
-        #navigation .section-nav .section-title[data-bg-color="two"]:hover:before, #navigation .section-nav .section-title[data-bg-color="two"].wave:before {
-          transform: scaleY(1) skew(0deg); }
+          #navigation .section-nav .section-title[data-bg-color="two"].wave:before {
+            transform: scaleY(1) skew(0deg); }
+        @media (hover: hover) {
+          #navigation .section-nav .section-title[data-bg-color="two"]:hover {
+            color: #fff;
+            transition-duration: .4s; }
+            #navigation .section-nav .section-title[data-bg-color="two"]:hover:before {
+              transform: scaleY(1) skew(0deg); } }
         #navigation .section-nav .section-title[data-bg-color="two"].active span:before {
           content: '\00d7'; }
       #navigation .section-nav .section-title[data-bg-color="three"] {
@@ -426,11 +436,17 @@ h1 {
           transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
         #navigation .section-nav .section-title[data-bg-color="three"] span:before {
           content: attr(data-content); }
-        #navigation .section-nav .section-title[data-bg-color="three"]:hover, #navigation .section-nav .section-title[data-bg-color="three"].wave {
+        #navigation .section-nav .section-title[data-bg-color="three"].wave {
           color: #fff;
           transition-duration: .4s; }
-        #navigation .section-nav .section-title[data-bg-color="three"]:hover:before, #navigation .section-nav .section-title[data-bg-color="three"].wave:before {
-          transform: scaleY(1) skew(0deg); }
+          #navigation .section-nav .section-title[data-bg-color="three"].wave:before {
+            transform: scaleY(1) skew(0deg); }
+        @media (hover: hover) {
+          #navigation .section-nav .section-title[data-bg-color="three"]:hover {
+            color: #fff;
+            transition-duration: .4s; }
+            #navigation .section-nav .section-title[data-bg-color="three"]:hover:before {
+              transform: scaleY(1) skew(0deg); } }
         #navigation .section-nav .section-title[data-bg-color="three"].active span:before {
           content: '\00d7'; }
       #navigation .section-nav .section-title[data-bg-color="four"] {
@@ -451,11 +467,17 @@ h1 {
           transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
         #navigation .section-nav .section-title[data-bg-color="four"] span:before {
           content: attr(data-content); }
-        #navigation .section-nav .section-title[data-bg-color="four"]:hover, #navigation .section-nav .section-title[data-bg-color="four"].wave {
+        #navigation .section-nav .section-title[data-bg-color="four"].wave {
           color: #fff;
           transition-duration: .4s; }
-        #navigation .section-nav .section-title[data-bg-color="four"]:hover:before, #navigation .section-nav .section-title[data-bg-color="four"].wave:before {
-          transform: scaleY(1) skew(0deg); }
+          #navigation .section-nav .section-title[data-bg-color="four"].wave:before {
+            transform: scaleY(1) skew(0deg); }
+        @media (hover: hover) {
+          #navigation .section-nav .section-title[data-bg-color="four"]:hover {
+            color: #fff;
+            transition-duration: .4s; }
+            #navigation .section-nav .section-title[data-bg-color="four"]:hover:before {
+              transform: scaleY(1) skew(0deg); } }
         #navigation .section-nav .section-title[data-bg-color="four"].active span:before {
           content: '\00d7'; }
 
@@ -675,7 +697,7 @@ h1 {
       max-width: 1000px;
       padding-top: 2em;
       justify-content: space-between; }
-      .photo-modal .modal-content .caption-container a {
+      .photo-modal .modal-content .caption-container .modal-close-btn {
         text-decoration: underline;
         cursor: pointer; }
 

@@ -68,9 +68,6 @@
 
 .fade-in {
 	animation: fade-in 1s linear both;
-	.quickly {
-		animation-duration: .3s;
-	}
 }
 
 @keyframes fade-in { 

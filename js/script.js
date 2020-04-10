@@ -43,7 +43,6 @@ function changeColorScheme(index = false, shuffle = true ) {
 	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
 	var scheme = COLOR_SCHEMES[index];
 	scheme = shuffle ? scheme.sort(() => {return 0.5 - Math.random()}) : scheme;
-	console.log(index, scheme);
 	var root = document.documentElement;
 	root.style.setProperty('--color-one', scheme[0]);
 	root.style.setProperty('--color-two', scheme[1]);
@@ -53,13 +52,17 @@ function changeColorScheme(index = false, shuffle = true ) {
 }
 var currentSchemeIndex = changeColorScheme();
 
-function bucket() {
+function bucket(el) {
+	killWave();
 	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length + 1;
 	var nextSchemeIndex = currentSchemeIndex;
 	while (nextSchemeIndex === currentSchemeIndex) {
 		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes))
 	}
-	changeColorScheme(nextSchemeIndex)
+	currentSchemeIndex = changeColorScheme(nextSchemeIndex);
+	el.classList.remove('default-colors');
+	ripple(1000);
+	startWave();
 }
 
 // Wave
@@ -237,7 +240,7 @@ function closePhotoModal() {
 	});
 }
 
-// Fade functions
+// Animate functions
 function animateOut(elementName, animationName, callback, animationDuration = 500) {
 	var el = document.querySelector(elementName);
 	el.classList.add(animationName);

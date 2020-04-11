@@ -82,16 +82,13 @@ function changeColours(one, two, three, four) {
 	array[1] = two;
 	array[2] = three;
 	array[3] = four;
-	console.log(array);
 	array.forEach((c, i) => {
-		if (c.charAt(0) != '#') {
-			c = '#' + c;
-		}
-		array[i] = c;
+		array[i] = c.charAt(0) === '#' ? c : '#' + c;
 	});
-	console.log('2', array);
 	changeColorScheme(false, false, array);
+	return 'The new colours are: ' + array[0] + ', ' + array[1] + ', ' + array[2] + ', ' + array[3];
 }
+console.log('Hi Kam');
 
 // Wave
 function ripple(interval = 0) {

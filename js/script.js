@@ -39,11 +39,19 @@ const COLOR_SCHEMES = {
 	6: ['#DE5E5E', '#6F7DF6', '#629361', '#8FCDFF'],
 }
 
-function changeColorScheme(index = false, shuffle = true ) {
+function changeColorScheme(index = false, shuffle = true, forceColours) {
+	var root = document.documentElement;
+	if (forceColours) {
+		root.style.setProperty('--color-one', forceColours[0]);
+		root.style.setProperty('--color-two', forceColours[1]);
+		root.style.setProperty('--color-three', forceColours[2]);
+		root.style.setProperty('--color-four', forceColours[3]);
+		return;
+	}
+
 	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
 	var scheme = COLOR_SCHEMES[index];
 	scheme = shuffle ? scheme.sort(() => {return 0.5 - Math.random()}) : scheme;
-	var root = document.documentElement;
 	root.style.setProperty('--color-one', scheme[0]);
 	root.style.setProperty('--color-two', scheme[1]);
 	root.style.setProperty('--color-three', scheme[2]);
@@ -61,8 +69,28 @@ function bucket(el) {
 	}
 	currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 	el.classList.remove('default-colors');
-	ripple(1000);
-	startWave();
+	if (navbar.classList.length === 0) {
+		ripple(1000);
+		startWave();
+	} else {
+		ripple();
+	}
+}
+function changeColours(one, two, three, four) {
+	var array = [];
+	array[0] = one;
+	array[1] = two;
+	array[2] = three;
+	array[3] = four;
+	console.log(array);
+	array.forEach((c, i) => {
+		if (c.charAt(0) != '#') {
+			c = '#' + c;
+		}
+		array[i] = c;
+	});
+	console.log('2', array);
+	changeColorScheme(false, false, array);
 }
 
 // Wave

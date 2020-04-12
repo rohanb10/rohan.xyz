@@ -175,21 +175,15 @@
 	}
 }
 
-@keyframes jiggle {
-	0%, 80% {
-		transform: translateX(0);
-		transform-origin: 50% 50%;
+.fade-out {
+	animation: fade-out 1.5s linear both;
+}
+
+@keyframes fade-out { 
+	0% {
+		opacity: 1;
 	}
-	15% {
-		transform: translateX(-.5em) rotate(-6deg);
-	}
-	30% {
-		transform: translateX(.5em) rotate(6deg);
-	}
-	45% {
-		transform: translateX(-.5em) rotate(-3.6deg);
-	}
-	60% {
-		transform: translateX(.5em) rotate(2.4deg);
+	100% {
+		opacity: 0;
 	}
 }

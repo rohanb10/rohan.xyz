@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap");
 :root {
-  --color-one: #EA4347;
-  --color-two: #6DC1C5;
-  --color-three: #7FBF90;
-  --color-four: #f7c83b; }
+  --color-one: $color-white;
+  --color-two: $color-white;
+  --color-three: $color-white;
+  --color-four: $color-white; }
 
 /* 	Loop for delays
 	&.delay-X {
@@ -247,18 +247,14 @@
   to {
     opacity: 0;
     transform: translateX(50vh); } }
-@keyframes jiggle {
-  0%, 80% {
-    transform: translateX(0);
-    transform-origin: 50% 50%; }
-  15% {
-    transform: translateX(-0.5em) rotate(-6deg); }
-  30% {
-    transform: translateX(0.5em) rotate(6deg); }
-  45% {
-    transform: translateX(-0.5em) rotate(-3.6deg); }
-  60% {
-    transform: translateX(0.5em) rotate(2.4deg); } }
+.fade-out {
+  animation: fade-out 1.5s linear both; }
+
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 html, body {
   margin: 0;
   padding: 0;
@@ -290,26 +286,31 @@ h1 {
   right: 2em;
   width: 3em;
   height: 3em;
-  cursor: pointer;
   z-index: 2;
   transition: all .3s linear; }
-  .bucket .bucket-tooltip {
-    display: none;
+  .bucket .bucket-tooltip-assist, .bucket .bucket-tooltip-action {
+    opacity: 0;
     position: absolute;
-    right: 3em;
+    right: 4em;
     width: 8em;
-    top: .8em; }
+    top: .8em;
+    padding: .25em .5em;
+    border-radius: .5em;
+    background-color: #fff; }
   .bucket img {
     border-radius: .5em;
     opacity: .4;
-    width: 100%; }
+    width: 100%;
+    cursor: pointer;
+    transition: transform .3s linear;
+    transform: rotate(0deg); }
   .bucket:hover img {
-    animation: jiggle 1s both; }
-  .bucket:hover.default-colors .bucket-tooltip {
-    display: block;
-    animation: fade-in .3s linear; }
+    transform: rotate(23deg); }
   .bucket:active img {
     opacity: .6; }
+  .bucket.default-colors:hover .bucket-tooltip-assist {
+    animation: fade-in .3s linear;
+    opacity: 1; }
 
 .flexbox-grid {
   display: flex; }
@@ -333,7 +334,7 @@ h1 {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: linear-gradient(#fff, #fff);
-  transition: background-size .4s linear; }
+  transition: background-size .4s linear, background-image .4s linear; }
   #navigation[data-bg-color="one"], #navigation[data-bg-color="two"], #navigation[data-bg-color="three"], #navigation[data-bg-color="four"] {
     background-size: 100% 100%;
     width: 100%; }
@@ -524,9 +525,9 @@ h1 {
   right: 1em;
   width: 2em;
   height: 2em; }
-  #section-container.active .bucket .bucket-tooltip {
-    top: .25em;
-    right: 2em; }
+  #section-container.active .bucket .bucket-tooltip-assist, #section-container.active .bucket .bucket-tooltip-action {
+    top: 0;
+    right: 3em; }
 
 .work {
   border-radius: 4px;
@@ -782,9 +783,9 @@ h1 {
     height: 2.5em;
     bottom: 1.5em;
     right: 1.5em; }
-    .bucket .bucket-tooltip {
-      top: .5em;
-      right: 2.5em; } }
+    .bucket .bucket-tooltip-assist, .bucket .bucket-tooltip-action {
+      top: 0;
+      right: 3em; } }
 @media screen and (max-width: 40em) {
   .flexbox-grid {
     display: block; }

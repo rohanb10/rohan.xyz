@@ -30,65 +30,55 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 const COLOR_SCHEMES = {
-	// REDDISH, BLUEISH, GREENISH, YELLOWISH
-	1: ['#EA4347', '#6DC1C5', '#42B362', '#F7C83B'],
-	2: ['#F05C88', '#4D63D1', '#6FB8B8', '#E0AD1F'],
-	3: ['#6F71D8', '#77CBF9', '#30B06A', '#F49D1A'],
-	4: ['#FF5781', '#77BAFE', '#6ECF8E', '#DFA8FF'],
-	5: ['#DA496B', '#0D87D3', '#329555', '#FFA805'],
-	6: ['#DE5E5E', '#6F7DF6', '#629361', '#8FCDFF'],
+	1: ['#EA4347', '#6DC1C5', '#30B06A', '#F7C83B'],
+	2: ['#F05C88', '#6F7DF6', '#77CBF9' ,'#FFA805'],
+	3: ['#DE5E5E', '#B8EF45' ,'#42B362' ,'#DFA8FF'],
+	4: ['#DA496B', '#4D63D1' ,'#629337' ,'#F57E09'],
+	5: ['#EFC2B8', '#95BBD9' ,'#BCDC96' ,'#EEDE97'],
+	6: ['#913030', '#214C63' ,'#246B50' ,'#C28147'],
 }
 
-function changeColorScheme(index = false, shuffle = true, forceColours) {
-	var root = document.documentElement;
-	if (forceColours) {
-		root.style.setProperty('--color-one', forceColours[0]);
-		root.style.setProperty('--color-two', forceColours[1]);
-		root.style.setProperty('--color-three', forceColours[2]);
-		root.style.setProperty('--color-four', forceColours[3]);
-		return;
-	}
-
+function changeColorScheme(index = false, shuffle = true) {
+	// check if manually set or pick from random
 	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
+
+	// get from array and maybe shuffle
 	var scheme = COLOR_SCHEMES[index];
 	scheme = shuffle ? scheme.sort(() => {return 0.5 - Math.random()}) : scheme;
+
+	// apply it to the css variables
+	var root = document.documentElement;
 	root.style.setProperty('--color-one', scheme[0]);
 	root.style.setProperty('--color-two', scheme[1]);
 	root.style.setProperty('--color-three', scheme[2]);
 	root.style.setProperty('--color-four', scheme[3]);
 	return index;
 }
-var currentSchemeIndex = changeColorScheme();
+var currentSchemeIndex = changeColorScheme(1);
 
 function bucket(el) {
 	killWave();
-	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length + 1;
+	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length;
 	var nextSchemeIndex = currentSchemeIndex;
 	while (nextSchemeIndex === currentSchemeIndex) {
-		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes))
+		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes)) + 1;
 	}
-	currentSchemeIndex = changeColorScheme(nextSchemeIndex);
+	// show / modify tooltip
 	el.classList.remove('default-colors');
+	document.querySelector('bucket-tooltip-action');
+	animateIn('.bucket-tooltip-action', 'fade-in', function() {
+		animateOut('.bucket-tooltip-action', 'fade-out', null, 1500);
+	}, 1);
+
+	currentSchemeIndex = changeColorScheme(nextSchemeIndex);
+	// replay animations
 	if (navbar.classList.length === 0) {
-		ripple(1000);
+		ripple(500);
 		startWave();
 	} else {
 		ripple();
 	}
 }
-function changeColours(one, two, three, four) {
-	var array = [];
-	array[0] = one;
-	array[1] = two;
-	array[2] = three;
-	array[3] = four;
-	array.forEach((c, i) => {
-		array[i] = c.charAt(0) === '#' ? c : '#' + c;
-	});
-	changeColorScheme(false, false, array);
-	return 'The new colours are: ' + array[0] + ', ' + array[1] + ', ' + array[2] + ', ' + array[3];
-}
-console.log('Hi Kam');
 
 // Wave
 function ripple(interval = 0) {

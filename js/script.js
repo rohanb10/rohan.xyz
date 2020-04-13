@@ -35,7 +35,7 @@ const COLOR_SCHEMES = {
 	3: ['#DE5E5E', '#B8EF45' ,'#42B362' ,'#DFA8FF'],
 	4: ['#DA496B', '#4D63D1' ,'#629337' ,'#F57E09'],
 	5: ['#EFC2B8', '#95BBD9' ,'#BCDC96' ,'#EEDE97'],
-	6: ['#913030', '#214C63' ,'#246B50' ,'#C28147'],
+	6: ['#913030', '#275A77' ,'#246B50' ,'#C28147'],
 }
 
 function changeColorScheme(index = false, shuffle = true) {

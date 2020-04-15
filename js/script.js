@@ -64,7 +64,8 @@ function bucket(el) {
 		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes)) + 1;
 	}
 	// show / modify tooltip
-	el.classList.remove('default-colors');
+	el.parentElement.classList.remove('default-colors');
+	el.parentElement.classList.add('changed');
 	document.querySelector('bucket-tooltip-action');
 	animateIn('.bucket-tooltip-action', 'fade-in', function() {
 		animateOut('.bucket-tooltip-action', 'fade-out', null, 1500);

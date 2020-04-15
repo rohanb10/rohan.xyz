@@ -58,6 +58,7 @@ h1 {
 		cursor: pointer;
 		transition: transform .3s linear;
 		transform: rotate(0deg);
+		flex-shrink: 0;
 		&:hover {
 			transform: rotate(23deg);
 		}

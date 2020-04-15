@@ -310,7 +310,8 @@ h1 {
     width: 100%;
     cursor: pointer;
     transition: transform .3s linear;
-    transform: rotate(0deg); }
+    transform: rotate(0deg);
+    flex-shrink: 0; }
     .bucket img:hover {
       transform: rotate(23deg); }
     .bucket img:active {

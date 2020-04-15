@@ -37,10 +37,12 @@
 
 @keyframes wipe-in-right { 
 	from {
+		-ms-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 		-webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 	}
 	to {
+		-ms-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 		-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
 	}
@@ -53,14 +55,17 @@
 
 @keyframes wipe-in-up { 
 	0% {
+		-ms-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
 		-webkit-clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
 		clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
 	}
 	25% {
+		-ms-clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0% 100%);
 		-webkit-clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0% 100%);
 		clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0% 100%);
 	}
 	100% {
+		-ms-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}

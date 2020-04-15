@@ -6,6 +6,7 @@ html, body {
 	background-color: $color-white;
 	overflow-x: hidden;
 	overflow-y: auto;
+	scroll-behavior: smooth;
 }
 
 h1 {
@@ -39,12 +40,13 @@ h1 {
 	height: 3em;
 	z-index: 2;
 	transition: all .3s linear;
-	.bucket-tooltip-assist, .bucket-tooltip-action {
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+	div .bucket-tooltip-assist, .bucket-tooltip-action {
 		opacity: 0;
-		position: absolute;
-		right: 4em;
-		width: 8em;
-		top: .8em;
+		margin-right: .5em;
+		white-space: nowrap;
 		padding: .25em .5em;
 		border-radius: .5em;
 		background-color: $color-white;
@@ -56,17 +58,31 @@ h1 {
 		cursor: pointer;
 		transition: transform .3s linear;
 		transform: rotate(0deg);
+		&:hover {
+			transform: rotate(23deg);
+		}
+		&:active {
+			opacity: .6;
+		}
 	}
-	&:hover img {
-		transform: rotate(23deg);
+	&.default-colors {
+		.bucket-tooltip-action {
+			display: none;
+		}
+		&:hover .bucket-tooltip-assist {
+			animation: fade-in .3s linear;
+			opacity: 1;
+		}
 	}
-	&:active img{
-		opacity: .6;
+	&.changed {
+		div .bucket-tooltip-action {
+			display: block;
+		}
+		div .bucket-tooltip-assist {
+			display: none;
+		}
 	}
-	&.default-colors:hover .bucket-tooltip-assist {
-		animation: fade-in .3s linear;
-		opacity: 1;
-	}
+	
 }
 
 .flexbox-grid {
@@ -98,6 +114,8 @@ h1 {
 	background-repeat: no-repeat;
 	background-image: linear-gradient($color-white, $color-white);
 	transition: background-size .4s linear, background-image .4s linear;
+	-webkit-user-select: none;
+	user-select: none;
 
 	&[data-bg-color="one"], &[data-bg-color="two"], &[data-bg-color="three"], &[data-bg-color="four"] {
 		background-size: 100% 100%;

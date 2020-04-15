@@ -262,7 +262,8 @@ html, body {
   font-family: 'Muli', sans-serif;
   background-color: #fff;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  scroll-behavior: smooth; }
 
 h1 {
   font-size: 4em;
@@ -287,13 +288,14 @@ h1 {
   width: 3em;
   height: 3em;
   z-index: 2;
-  transition: all .3s linear; }
-  .bucket .bucket-tooltip-assist, .bucket .bucket-tooltip-action {
+  transition: all .3s linear;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse; }
+  .bucket div .bucket-tooltip-assist, .bucket .bucket-tooltip-action {
     opacity: 0;
-    position: absolute;
-    right: 4em;
-    width: 8em;
-    top: .8em;
+    margin-right: .5em;
+    white-space: nowrap;
     padding: .25em .5em;
     border-radius: .5em;
     background-color: #fff; }
@@ -304,13 +306,19 @@ h1 {
     cursor: pointer;
     transition: transform .3s linear;
     transform: rotate(0deg); }
-  .bucket:hover img {
-    transform: rotate(23deg); }
-  .bucket:active img {
-    opacity: .6; }
+    .bucket img:hover {
+      transform: rotate(23deg); }
+    .bucket img:active {
+      opacity: .6; }
+  .bucket.default-colors .bucket-tooltip-action {
+    display: none; }
   .bucket.default-colors:hover .bucket-tooltip-assist {
     animation: fade-in .3s linear;
     opacity: 1; }
+  .bucket.changed div .bucket-tooltip-action {
+    display: block; }
+  .bucket.changed div .bucket-tooltip-assist {
+    display: none; }
 
 .flexbox-grid {
   display: flex; }
@@ -334,7 +342,9 @@ h1 {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: linear-gradient(#fff, #fff);
-  transition: background-size .4s linear, background-image .4s linear; }
+  transition: background-size .4s linear, background-image .4s linear;
+  -webkit-user-select: none;
+  user-select: none; }
   #navigation[data-bg-color="one"], #navigation[data-bg-color="two"], #navigation[data-bg-color="three"], #navigation[data-bg-color="four"] {
     background-size: 100% 100%;
     width: 100%; }

@@ -56,6 +56,18 @@ function changeColorScheme(index = false, shuffle = true) {
 }
 var currentSchemeIndex = changeColorScheme(1);
 
+// Manually set the colour scheme through the console
+function changeColours(c1, c2, c3, c4){
+	var root = document.documentElement;
+	root.style.setProperty('--color-one', c1);
+	root.style.setProperty('--color-two', c2);
+	root.style.setProperty('--color-three', c3);
+	root.style.setProperty('--color-four', c4);
+	currentSchemeIndex = -1;
+	return 'New Colours: ' + c1 + ', ' + c2 + ', ' + c3 + ', ' + c4;
+}
+console.log("changeColours('#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD')");
+
 function bucket(el) {
 	killWave();
 	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length;

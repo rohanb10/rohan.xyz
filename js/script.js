@@ -5,26 +5,20 @@ const NUMBER_OF_PHOTOS = 30;
 history.pushState(null, null, window.location.pathname);
 
 // back button fail safe
-window.addEventListener('popstate', function() {
+window.addEventListener('popstate', () => {
 	navbarSections.forEach((s) => {
 		s.classList.remove('active');
 	});
 	hideAllSections();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
-	for (var i = 0; i < navbarSections.length; i++){
-		navbarSections[i].onmouseover = function() {
-			killWave();
-		}
-		navbarSections[i].onmouseout = function() {
-			if (navbar.classList.length === 0) {
-				startWave();
-			}
-		}
-	}
+	navbarSections.forEach(section => {
+		section.onmouseover = () => killWave();
+		section.onmouseout = () => { if (active_section === null) startWave() }
+	});
 	ripple(1000);
 	startWave();
 }, false);
@@ -38,7 +32,10 @@ const COLOR_SCHEMES = {
 	6: ['#913030', '#275A77' ,'#246B50' ,'#C28147'],
 }
 
-function changeColorScheme(index = false, shuffle = true) {
+function changeColorScheme(index = -1, shuffle = true) {
+	if (index <= 0 || index > Object.keys(COLOR_SCHEMES).length) {
+		return 'Please enter a valid index';
+	}
 	// check if manually set or pick from random
 	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
 
@@ -66,10 +63,12 @@ function changeColours(c1, c2, c3, c4){
 	currentSchemeIndex = -1;
 	return 'New Colours: ' + c1 + ', ' + c2 + ', ' + c3 + ', ' + c4;
 }
-console.log("changeColours('#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD')");
+console.log(`changeColours('#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD')`);
 
+var isWavy = (section) => section.classList.contains('wave');
 function bucket(el) {
-	killWave();
+	// check if wave is active
+	var isWavy = Array.prototype.slice.call(navbarSections).some((section) => section.classList.contains('wave'));
 	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length;
 	var nextSchemeIndex = currentSchemeIndex;
 	while (nextSchemeIndex === currentSchemeIndex) {
@@ -79,16 +78,19 @@ function bucket(el) {
 	el.parentElement.classList.remove('default-colors');
 	el.parentElement.classList.add('changed');
 	document.querySelector('bucket-tooltip-action');
-	animateIn('.bucket-tooltip-action', 'fade-in', function() {
+	animateIn('.bucket-tooltip-action', 'fade-in', () => {
 		animateOut('.bucket-tooltip-action', 'fade-out', null, 1500);
 	}, 1);
 
-	currentSchemeIndex = changeColorScheme(nextSchemeIndex);
-	// replay animations
-	if (navbar.classList.length === 0) {
-		ripple(500);
-		startWave();
-	} else {
+	if (isWavy) {
+		killWave();
+		setTimeout(() => {
+			currentSchemeIndex = changeColorScheme(nextSchemeIndex);
+			ripple();
+			if (active_section === null) startWave();
+		}, 400);
+	} else  {
+		currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 		ripple();
 	}
 }
@@ -96,10 +98,10 @@ function bucket(el) {
 // Wave
 function ripple(interval = 0) {
 	setTimeout(function () {
-		for (var i = 0; i < navbarSections.length; i++) {
-			setTimeout(rippleUp, 150 * i, navbarSections[i]);
-			setTimeout(rippleDown, (navbarSections.length * 150) + (200 * i), navbarSections[i]);
-		}
+		navbarSections.forEach((s, i, sections) => {
+			setTimeout(rippleUp, 150 * i, s);
+			setTimeout(rippleDown, (sections.length * 150) + (200 * i), s);
+		});
 	}, interval);
 }
 
@@ -156,7 +158,7 @@ function hideAllSections() {
 	navbar.setAttribute('data-bg-color', '');
 	document.getElementById('section-container').classList.remove('active');
 	animateOut('#' + active_section, 'fade-out-bottom');
-	animateIn('#hero', 'fade-in', function() {
+	animateIn('#hero', 'fade-in', () => {
 		ripple(1000);
 		startWave();
 	}, 500);
@@ -185,7 +187,7 @@ function showSection(sectionName) {
 		document.getElementById(sectionName).classList.remove('hidden');
 		active_section = sectionName;
 	} else {
-		animateOut('#'+ active_section, 'fade-out-bottom', function() {
+		animateOut(`#${active_section}`, 'fade-out-bottom', () => {
 			document.getElementById(sectionName).classList.remove('hidden');
 			active_section = sectionName;
 		});
@@ -199,7 +201,7 @@ function workPicker(element, workName) {
 	// remove current work card / active btn
 	if (active_work !== '' && active_work != workName) {
 		document.querySelector('.work.active').classList.remove('active');
-		animateOut('#' + active_work, 'fade-out-right', function() {
+		animateOut(`#${active_work}`, 'fade-out-right', () => {
 			card.classList.remove('hidden');
 		});
 	} else {
@@ -219,60 +221,69 @@ function workPicker(element, workName) {
 // Photos
 function genThumbnails() {
 	const thumbContainer = document.getElementById('thumbnail-container');
+	const DELAY = 3000;
+	var thumbs = [];
+
 	// Reset container
 	thumbContainer.innerHTML = '';
-	var thumbNames = [];
+
 	// Gen thumbarray
 	for (var i = 0; i < NUMBER_OF_PHOTOS; i++) {
-		thumbNames.push({'index': i, 'thumb': 'assets/photos/thumb/' + i + '.jpg'});
+		thumbs.push({index: i, path: `assets/photos/thumb/${i}.jpg`});
 	}
 	// Shuffle array
-	thumbNames.sort(() => {return 0.5 - Math.random()});
-
+	thumbs.sort(() => {return 0.5 - Math.random()});
+	
 	// Dump onto page
-	var delay = 3000;
-	for (var i = 0; i < thumbNames.length; i++) {
-		// delay the first 15 images for cool animated effect, display the ones after normally for better peformance
-		thumbDelay = (i < 15) ? delay + parseInt(i * 100) : 0;
-		var t = '<div class="thumb fade-in-up" style="animation-delay: ' + thumbDelay + 'ms" onClick="openPhotoModal(this, ' + thumbNames[i].index + ')"><img src="' + thumbNames[i].thumb + '"></div>';
-		thumbContainer.innerHTML += t;
-	}
+	thumbs.forEach((t, i) => {
+		var thumb = Object.assign(document.createElement('div'), {
+			className: 'thumb fade-in-up',
+			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
+			onclick: () => openPhotoModal(t.index),
+		});
+		thumb.appendChild(Object.assign(document.createElement('img'), {src: t.path}));
+		thumbContainer.appendChild(thumb);
+	})
 }
 
-function openPhotoModal(thumb, photoNumber) {
-	//preload image/caption
-	document.querySelector('.photo-container').style.backgroundImage = 'url("assets/photos/' + photoNumber + '.jpg")';
-	document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[photoNumber]);
+function openPhotoModal(index) {
+	// load image/caption
+	document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${index}.jpg')`;
+	document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[index]);
+
 	//show modal
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
 
-	// ESC key to close modal
-	document.onkeydown = function(evt) {
-    	evt = evt || window.event;
-	    if (evt.keyCode == 27) {
-	        closePhotoModal();
-	    }
-	};
+	document.addEventListener('keydown', escapeToClose);
 }
 
 // Wrap caption locations on to next line
 function wrapCaption(caption) {
-	var locationIndex = caption.lastIndexOf(',', caption.lastIndexOf(',')-1) + 1;
+	var locationIndex = caption.lastIndexOf(',', caption.lastIndexOf(',') - 1) + 1;
 	return caption.substr(0, locationIndex) + '<br>' + caption.substr(locationIndex);
 }
 
+// ESC key to close modal
+function escapeToClose(e) {
+	console.log(e.keyCode);
+	if (e.keyCode === 27) {
+		closePhotoModal();
+	}
+}
+
 function closePhotoModal() {
-	animateOut('.photo-modal', 'slide-out-bottom', function() {
+	animateOut('.photo-modal', 'slide-out-bottom', () => {
 		document.querySelector('.photo-container').style.backgroundImage = '';
 		document.querySelector('.caption').innerHTML = '';
 	});
+	document.removeEventListener('keydown', escapeToClose);
 }
 
 // Animate functions
 function animateOut(elementName, animationName, callback, animationDuration = 500) {
 	var el = document.querySelector(elementName);
 	el.classList.add(animationName);
-	setTimeout(function() {
+	setTimeout(() => {
 		el.classList.remove(animationName);
 		el.classList.add('hidden');
 		if (callback) {
@@ -285,7 +296,7 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	var el = document.querySelector(elementName);
 	el.classList.remove('hidden');
 	el.classList.add(animationName);
-	setTimeout(function() {
+	setTimeout(() => {
 		el.classList.remove(animationName);
 	}, animationDuration, el);
 	if (callback) {

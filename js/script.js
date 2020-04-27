@@ -227,28 +227,50 @@ function genThumbnails() {
 	thumbContainer.innerHTML = '';
 
 	// Gen thumbarray
-	for (var i = 0; i < Object.keys(PHOTOS).length + 1; i++) {
-		thumbs.push({index: i, path: `assets/photos/thumb/${i}.jpg`});
+	for (var i = 0; i < Object.keys(PHOTOS).length; i++) {
+		thumbs.push({index: i, path: `assets/photos/thumb/${i}.jpg`, bg: PHOTOS[i].dominantColor});
 	}
 	// Shuffle array
-	thumbs.sort(() => {return 0.5 - Math.random()});
+	// thumbs.sort(() => {return 0.5 - Math.random()});
 	
-	// Dump onto page
+	// Build each thumbnail, loading overlay and zoom
 	thumbs.forEach((t, i) => {
 		var thumb = Object.assign(document.createElement('div'), {
 			className: 'thumb fade-in-up',
+			className: 'thumb',
 			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
 			onclick: () => openPhotoModal(t.index),
 		});
-		thumb.appendChild(Object.assign(document.createElement('img'), {src: t.path}));
+
+		var overlay = Object.assign(document.createElement('div'), {
+			className: 'loading-overlay',
+			style: `background-color: ${t.bg}`,
+		});
+		thumb.appendChild(overlay);
+		var hoverTimeout;
+		var img = Object.assign(document.createElement('img'), {
+			src: t.path,
+			onload: () => {
+				overlay.style.opacity = 0;
+				setTimeout(() => {overlay.style.display = 'none'}, 500);
+			},
+			onerror: () => {overlay.style.display = 'none'},
+			onmousemove: (e) => {img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`},
+		});
+		thumb.appendChild(img);
+
 		thumbContainer.appendChild(thumb);
 	})
+}
+
+function helper(el) {
+	console.log(el);
 }
 
 function openPhotoModal(index) {
 	// load image/caption
 	document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${index}.jpg')`;
-	document.querySelector('.caption').innerHTML = wrapCaption(PHOTOS[index]);
+	document.querySelector('.caption').innerHTML = wrapCaption(PHOTOS[index].caption);
 
 	//show modal
 	animateIn('.photo-modal', 'slide-in-up', null, 500);

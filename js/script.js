@@ -237,7 +237,8 @@ function genThumbnails() {
 	thumbs.forEach((t, i) => {
 		var thumb = Object.assign(document.createElement('div'), {
 			className: 'thumb fade-in-up',
-			style: `animation-delay: ${DELAY + parseInt(i * 150)}ms`,
+			className: 'thumb',
+			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
 			onclick: () => openPhotoModal(t.index),
 		});
 

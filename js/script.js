@@ -231,14 +231,13 @@ function genThumbnails() {
 		thumbs.push({index: i, path: `assets/photos/thumb/${i}.jpg`, bg: PHOTOS[i].dominantColor});
 	}
 	// Shuffle array
-	// thumbs.sort(() => {return 0.5 - Math.random()});
+	thumbs.sort(() => {return 0.5 - Math.random()});
 	
 	// Build each thumbnail, loading overlay and zoom
 	thumbs.forEach((t, i) => {
 		var thumb = Object.assign(document.createElement('div'), {
 			className: 'thumb fade-in-up',
-			className: 'thumb',
-			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
+			style: `animation-delay: ${DELAY + parseInt(i * 150)}ms`,
 			onclick: () => openPhotoModal(t.index),
 		});
 

@@ -571,6 +571,8 @@ h1 {
 
 	#thumbnail-container .thumb {
 		width: 50%;
+		padding-bottom: calc(100% / 3);
+		border-width: 1px;
 	}
 
 	.photo-modal .modal-content .caption-container {

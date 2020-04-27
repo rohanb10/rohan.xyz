@@ -1,5 +1,4 @@
 var navbar, navbarSections, active_section = null, active_work = '';
-const NUMBER_OF_PHOTOS = 30;
 
 // clear hash on page load
 history.pushState(null, null, window.location.pathname);
@@ -228,7 +227,7 @@ function genThumbnails() {
 	thumbContainer.innerHTML = '';
 
 	// Gen thumbarray
-	for (var i = 0; i < NUMBER_OF_PHOTOS; i++) {
+	for (var i = 0; i < Object.keys(PHOTOS).length + 1; i++) {
 		thumbs.push({index: i, path: `assets/photos/thumb/${i}.jpg`});
 	}
 	// Shuffle array
@@ -249,7 +248,7 @@ function genThumbnails() {
 function openPhotoModal(index) {
 	// load image/caption
 	document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${index}.jpg')`;
-	document.querySelector('.caption').innerHTML = wrapCaption(CAPTIONS[index]);
+	document.querySelector('.caption').innerHTML = wrapCaption(PHOTOS[index]);
 
 	//show modal
 	animateIn('.photo-modal', 'slide-in-up', null, 500);

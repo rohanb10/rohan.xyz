@@ -1,4 +1,4 @@
-const CAPTIONS = {
+const PHOTOS = {
 	0: "Kangchendzonga National Park, Sikkim, India",
 	1: "Half Dome from Glacier Point, Yosemite National Park, California",
 	2: "Blue Lake, Inyo National Forest, California",

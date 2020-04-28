@@ -192,3 +192,18 @@
 		opacity: 0;
 	}
 }
+
+// In place animations
+@keyframes loading {
+	0%, 100% {
+		-ms-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+		-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+		clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+	}
+	50% {
+		-ms-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+		-webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+
+	}
+}

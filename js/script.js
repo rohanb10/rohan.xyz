@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const COLOR_SCHEMES = {
 	1: ['#EA4347', '#6DC1C5', '#30B06A', '#F7C83B'],
 	2: ['#F05C88', '#6F7DF6', '#77CBF9' ,'#FFA805'],
-	3: ['#DE5E5E', '#B8EF45' ,'#42B362' ,'#DFA8FF'],
+	3: ['#DE5E5E', '#45B6EF' ,'#42B362' ,'#DFA8FF'],
 	4: ['#DA496B', '#4D63D1' ,'#629337' ,'#F57E09'],
 	5: ['#EFC2B8', '#95BBD9' ,'#BCDC96' ,'#EEDE97'],
 	6: ['#913030', '#275A77' ,'#246B50' ,'#C28147'],

@@ -233,27 +233,28 @@ function genThumbnails() {
 	// Shuffle array
 	thumbs.sort(() => {return 0.5 - Math.random()});
 	
-	// Build each thumbnail, loading overlay and zoom
+	// Build each thumbnail, loading placeholder and zoom
 	thumbs.forEach((t, i) => {
 		var thumb = Object.assign(document.createElement('div'), {
 			className: 'thumb fade-in-up',
+			// className: 'thumb',
 			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
 			onclick: () => openPhotoModal(t.index),
 		});
 
-		var overlay = Object.assign(document.createElement('div'), {
-			className: 'loading-overlay',
+		var placeholder = Object.assign(document.createElement('div'), {
+			className: 'placeholder',
 			style: `background-color: ${t.bg}`,
 		});
-		thumb.appendChild(overlay);
-		var hoverTimeout;
+		thumb.appendChild(placeholder);
+
 		var img = Object.assign(document.createElement('img'), {
 			src: t.path,
 			onload: () => {
-				overlay.style.opacity = 0;
-				setTimeout(() => {overlay.style.display = 'none'}, 500);
+				placeholder.style.opacity = 0;
+				setTimeout(() => {placeholder.style.display = 'none'}, 500);
 			},
-			onerror: () => {overlay.style.display = 'none'},
+			onerror: () => {placeholder.style.display = 'none'},
 			onmousemove: (e) => {img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`},
 		});
 		thumb.appendChild(img);
@@ -262,14 +263,19 @@ function genThumbnails() {
 	})
 }
 
-function helper(el) {
-	console.log(el);
-}
-
 function openPhotoModal(index) {
-	// load image/caption
-	document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${index}.jpg')`;
-	document.querySelector('.caption').innerHTML = wrapCaption(PHOTOS[index].caption);
+	// Load image in background
+	Object.assign(document.createElement('img'), {
+		src: `assets/photos/${index}.jpg`,
+		onload: () => {
+			// add image to container and end loading animation
+			document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${index}.jpg')`;
+			// setTimeout(() => {endLoadingAnimation()}, 3500);
+			endLoadingAnimation();
+		},
+		onerror: () => {endLoadingAnimation()},
+	});
+	document.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[index].caption);
 
 	//show modal
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
@@ -277,15 +283,33 @@ function openPhotoModal(index) {
 	document.addEventListener('keydown', escapeToClose);
 }
 
-// Wrap caption locations on to next line
-function wrapCaption(caption) {
-	var locationIndex = caption.lastIndexOf(',', caption.lastIndexOf(',') - 1) + 1;
-	return caption.substr(0, locationIndex) + '<br>' + caption.substr(locationIndex);
+// Animate the loading bars out and then fadeout the overlay
+function endLoadingAnimation() {
+	var loadingDiv = document.querySelector('.loading');
+	var bars = loadingDiv.querySelectorAll('.bar');
+	var animationCount = bars.length;
+	var completedAnimations = 0;
+	bars.forEach((bar, i) => {
+		bar.addEventListener('animationiteration', function _listener(e) {
+			if (i === 0 || completedAnimations > 0){
+				e.target.classList.add('loaded');
+				completedAnimations++;
+				bar.removeEventListener('animationiteration', _listener);
+			}
+			if (completedAnimations >= animationCount) {
+				setTimeout(() => {loadingDiv.style.opacity = 0}, 500);
+			}
+		});
+	});
+}
+
+function formatCaptions(c) {
+	var locationIndex = c.lastIndexOf(',', c.lastIndexOf(',') - 1) + 1;
+	return c.substr(0, locationIndex) + '<br>' + c.substr(locationIndex);
 }
 
 // ESC key to close modal
 function escapeToClose(e) {
-	console.log(e.keyCode);
 	if (e.keyCode === 27) {
 		closePhotoModal();
 	}
@@ -295,8 +319,15 @@ function closePhotoModal() {
 	animateOut('.photo-modal', 'slide-out-bottom', () => {
 		document.querySelector('.photo-container').style.backgroundImage = '';
 		document.querySelector('.caption').innerHTML = '';
+		resetLoadingAnimation();
 	});
 	document.removeEventListener('keydown', escapeToClose);
+}
+
+function resetLoadingAnimation() {
+	var loadingDiv = document.querySelector('.loading');
+	loadingDiv.style.opacity = 1;
+	loadingDiv.querySelectorAll('.bar').forEach((bar) => {bar.classList.remove('loaded')});
 }
 
 // Animate functions
@@ -306,9 +337,7 @@ function animateOut(elementName, animationName, callback, animationDuration = 50
 	setTimeout(() => {
 		el.classList.remove(animationName);
 		el.classList.add('hidden');
-		if (callback) {
-			callback();
-		}
+		if (callback) callback();
 	}, animationDuration, el, animationName, callback);
 }
 
@@ -319,8 +348,6 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	setTimeout(() => {
 		el.classList.remove(animationName);
 	}, animationDuration, el);
-	if (callback) {
-		callback();
-	}
+	if (callback) callback();
 }
 

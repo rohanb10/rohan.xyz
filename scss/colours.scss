@@ -1,15 +1,15 @@
 
 // Fixed colours
-$color-white:  #fff;
-$color-black:  #000;
+$color-white: #fff;
+$color-black: #000;
 $color-transparent: rgba(0,0,0,0);
 
 // Dynamic colours
 :root {
-	--color-one: $color-white;
-	--color-two: $color-white;
+	--color-one:   $color-white;
+	--color-two:   $color-white;
 	--color-three: $color-white;
-	--color-four: $color-white;
+	--color-four:  $color-white;
 }
 
 // These variables are set using JS

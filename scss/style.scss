@@ -269,6 +269,7 @@ h1 {
 		background-color: $color-white;
 		border-radius: 4px;
 		position: relative;
+		display: none;
 
 		.card-logo {
 			position:absolute;
@@ -317,6 +318,9 @@ h1 {
 			a {
 				@include hyperlink($color-one, $color-white);
 			}
+		}
+		&.active {
+			display: block;
 		}
 	}
 }
@@ -411,6 +415,22 @@ h1 {
 		display: block;
 		width: 100%;
 		margin: auto;
+		&.loaded {
+			.photo-container .loading {
+				opacity: 0;
+			}
+			.button-container {
+				opacity: 1;
+				.modal-next-btn, .modal-prev-btn {
+					cursor: pointer;
+					touch-action: unset;
+					pointer-events: unset;
+				}
+			}
+		}
+		&.no-staggered-delays .photo-container .loading .bars .bar:nth-of-type(n) {
+			animation-delay: .5s
+		}
 
 		.photo-container {
 			height: 80vh;
@@ -427,45 +447,61 @@ h1 {
 				background-color: $color-white;
 				transition: all .5s ease-in-out;
 				.bars .bar {
-					padding-bottom: 4px;
-					width: 36px;
-					margin-bottom: 3px;
-					animation: loading 1.5s infinite ease-in-out both;
+					display: inline-block;
+					padding-right: 5px;
+					height: 40px;
+					animation: loading 1.25s infinite ease-in-out both;
 					transition: all .5s ease-in-out;
 					&:nth-of-type(1){
 						background-color: $color-one;
-						animation-delay: .2s
+						animation-delay: .5s
 					}
 					&:nth-of-type(2){
 						background-color: $color-two;
-						animation-delay: .3s
+						animation-delay: .6s
 					}
 					&:nth-of-type(3){
 						background-color: $color-three;
-						animation-delay: .4s
+						animation-delay: .7s
 					}
 					&:nth-of-type(4){
 						background-color: $color-four;
-						animation-delay: .5s
+						animation-delay: .8s
 					}
-					&.loaded {
+					&.done {
 						animation: none;
-						transform: translateX(-100vw);
+						transform: translateY(100vw);
 					}
 				}
 			}
 		}
-		.caption-container {
+		.caption-container, .button-container {
 			width: 80%;
 			display: flex;
+			justify-content: space-between;
 			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;
+		}
+		.caption-container {
 			padding-top: 2em;
-			justify-content: space-between;
 			.modal-close-btn {
 				text-decoration: underline;
 				cursor: pointer;
+			}
+		}
+		.button-container {
+			padding-bottom: 2em;
+			transition: all .5s ease-in-out;
+			opacity: 0;
+			.modal-next-btn, .modal-prev-btn {
+				text-decoration: underline;
+				touch-action: none;
+				pointer-events: none;
+				&.disabled {
+					opacity: 0;	
+					
+				}
 			}
 		}
 	}
@@ -489,6 +525,7 @@ h1 {
 		padding-bottom: calc(200% / 9);
 
 		overflow: hidden;
+		// transition: transform .35s ease-in-out;
 		
 		.placeholder, img {
 			position: absolute;
@@ -505,7 +542,7 @@ h1 {
 		}
 		img {
 			z-index: 1;
-			transition: transform .35s ease-in-out;
+			transition: transform .3s ease-in-out;
 		}
 		&:hover img {
 			transform: scale(1.1);

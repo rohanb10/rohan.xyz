@@ -330,11 +330,9 @@ function endLoadingAnimation() {
 	var completedAnimations = 0;
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
-			if (i === 0 || completedAnimations > 0 || animationCount > 0){
-				e.target.classList.add('done');
-				completedAnimations++;
-				bar.removeEventListener('animationiteration', _listener);
-			}
+			e.target.classList.add('done');
+			completedAnimations++;
+			bar.removeEventListener('animationiteration', _listener);
 			if (completedAnimations >= animationCount) {
 				setTimeout(() => {modalDiv.classList.add('loaded')}, 500);
 			}

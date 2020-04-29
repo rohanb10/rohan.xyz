@@ -32,10 +32,10 @@
 }
 
 .wipe-in-right {
-	animation: wipe-in-right 1s cubic-bezier(1,-0.06,.39,.39) both;	
+	animation: wipe-in-right .3s cubic-bezier(1,-0.06,.39,.39) both;
 }
 
-@keyframes wipe-in-right { 
+@keyframes wipe-in-right {
 	from {
 		-ms-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 		-webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -50,7 +50,7 @@
 
 .wipe-in-up {
 	animation: wipe-in-up 1s linear both;
-	animation-delay: 1s;
+	animation-delay: .5s;
 }
 
 @keyframes wipe-in-up { 
@@ -86,7 +86,7 @@
 
 .fade-in-up {
 	animation: fade-in-up 1s ease-in-out both;
-	@include delays(100, 2000, 12);
+	@include delays(100, 1500, 12);
 }
 
 @keyframes fade-in-up {
@@ -102,7 +102,7 @@
 
 .fade-in-left {
 	animation: fade-in-left 1s ease-in-out both;
-	@include delays(100, 2000, 20);
+	@include delays(100, 1500, 20);
 }
 
 @keyframes fade-in-left {
@@ -118,7 +118,7 @@
 
 .fade-in-right {
 	animation: fade-in-right 1s ease-in-out both;
-	@include delays(100, 2000, 25);
+	@include delays(100, 1500, 25);
 }
 
 @keyframes fade-in-right {

@@ -130,7 +130,6 @@ function sectionPicker(navButton) {
 	killWave();
 
 	//reset navbar bg and buttons
-	navbar.setAttribute('data-bg-color', '');
 	navbar.classList.remove('active');
 	navbarSections.forEach((s) => {
 		s.classList.remove('active');
@@ -145,6 +144,7 @@ function sectionPicker(navButton) {
 
 		//change navbar bg colour and .active
 		navbar.setAttribute('data-bg-color', navButton.getAttribute('data-bg-color'));
+		navbar.setAttribute('data-open', 'true');
 		navbar.classList.add('active');
 		navButton.classList.add('active');
 		document.getElementById('section-container').classList.add('active');
@@ -154,25 +154,27 @@ function sectionPicker(navButton) {
 }
 
 function hideAllSections() {
-	navbar.setAttribute('data-bg-color', '');
+	navbar.setAttribute('data-open', 'false');
 	document.getElementById('section-container').classList.remove('active');
-	animateOut('#' + active_section, 'fade-out-bottom');
-	animateIn('#hero', 'fade-in', () => {
-		ripple(1000);
-		startWave();
-	}, 500);
+	
+	document.getElementById('hero').classList.remove('minimize');
+	ripple(1000);
+	startWave();
 
 	history.pushState(null, null, window.location.pathname);
+
+	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
+	
 }
 
 function showSection(sectionName) {
 	// pre-loading
-	if(active_work !== '' && sectionName !== 'work') {
+	if (sectionName === 'work' && active_work !== '') {
 		document.querySelector('.work.active').classList.remove('active');
 		document.getElementById(active_work).classList.add('hidden');
 		active_work = '';
-	} else if(sectionName === 'photos') {
+	} else if (sectionName === 'photos') {
 		genThumbnails();
 	} else if (sectionName === 'about') {
 		var img = new Image();
@@ -182,15 +184,18 @@ function showSection(sectionName) {
 
 	// if no section is open
 	if (active_section === null){
-		document.getElementById('hero').classList.add('hidden');
-		document.getElementById(sectionName).classList.remove('hidden');
-		active_section = sectionName;
+		// document.getElementById('hero').classList.add('hidden');
+		document.getElementById('hero').classList.add('minimize');
+		//wait for minimize to complete
+		setTimeout(() => {
+			document.getElementById(sectionName).classList.remove('hidden');
+		}, 1000);
 	} else {
 		animateOut(`#${active_section}`, 'fade-out-bottom', () => {
 			document.getElementById(sectionName).classList.remove('hidden');
-			active_section = sectionName;
 		});
 	}
+	active_section = sectionName;
 }
 
 // Work
@@ -219,7 +224,7 @@ function workPicker(element, workName) {
 
 function genThumbnails() {
 	const thumbContainer = document.getElementById('thumbnail-container');
-	const DELAY = 3000;
+	const delay = 2000;
 	var thumbs = [];
 
 	// Reset container
@@ -233,7 +238,7 @@ function genThumbnails() {
 		var thumb = Object.assign(document.createElement('div'), {
 			className: 'thumb fade-in-up',
 			// className: 'thumb',
-			style: `animation-delay: ${((i < 15) ? DELAY + parseInt(i * 100) : 0)}ms`,
+			style: `animation-delay: ${((i < 15) ? delay + parseInt(i * 100) : 0)}ms`,
 			onclick: () => openPhotoModal(i),
 		});
 
@@ -325,7 +330,7 @@ function endLoadingAnimation() {
 	var completedAnimations = 0;
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
-			if (i === 0 || completedAnimations > 0){
+			if (i === 0 || completedAnimations > 0 || animationCount > 0){
 				e.target.classList.add('done');
 				completedAnimations++;
 				bar.removeEventListener('animationiteration', _listener);

@@ -4,18 +4,7 @@ html, body {
 	width: 100%;
 	font-family: 'Muli', sans-serif;
 	background-color: $color-white;
-	overflow-x: hidden;
-	overflow-y: auto;
 	scroll-behavior: smooth;
-}
-
-h1 {
-	font-size: 4em;
-	font-weight: 900;
-
-	span {
-		display: block;
-	}
 }
 
 .container-width {
@@ -34,8 +23,8 @@ h1 {
 
 .bucket {
 	position: fixed;
-	bottom: 2em;
-	right: 2em;
+	bottom: 1em;
+	right: 1em;
 	width: 3em;
 	height: 3em;
 	z-index: 3;
@@ -56,7 +45,7 @@ h1 {
 		opacity: .4;
 		width: 100%;
 		cursor: pointer;
-		transition: transform .3s linear;
+		transition: transform .3s ease-in-out;
 		transform: rotate(0deg);
 		flex-shrink: 0;
 		&:hover {
@@ -71,7 +60,7 @@ h1 {
 			display: none;
 		}
 		&:hover .bucket-tooltip-assist {
-			animation: fade-in .3s linear;
+			animation: fade-in .3s ease-in-out;
 			opacity: 1;
 		}
 	}
@@ -103,25 +92,44 @@ h1 {
 		}
 	}
 }
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 3.81em;
+	align-self: flex-start;
+	&.sticky-nav {
+		top: 0;
+	}
+}
 
 #hero {
-	padding-bottom: 10em;
+	height: 24em;
+	overflow-y: hidden;
+	transition: all .6s ease-in-out;
+	transition-delay: .4s;
+	padding: 0 1em;
+	h1 {
+		font-size: 4em;
+		font-weight: 900;
+		span {
+			display: block;
+		}
+	}
+	&.minimize {
+		height: 0;
+	}
 }
 
 #navigation {
-	position: relative;
-	background-size: 100% 0;
-	background-position: 0 0;
+	z-index: 3;
+	background-position: 0 100%;
 	background-repeat: no-repeat;
 	background-image: linear-gradient($color-white, $color-white);
-	transition: background-size .4s linear, background-image .4s linear;
+	transition: background-size .4s linear;
 	-webkit-user-select: none;
 	user-select: none;
+	font-size: 1.25em;
 
-	&[data-bg-color="one"], &[data-bg-color="two"], &[data-bg-color="three"], &[data-bg-color="four"] {
-		background-size: 100% 100%;
-		width: 100%;
-	}
 	&[data-bg-color="one"] {
 		background-image: linear-gradient($color-one, $color-one);
 	}
@@ -137,8 +145,13 @@ h1 {
 	&[data-bg-color="four"] {
 		background-image: linear-gradient($color-four, $color-four);
 	}
+	&[data-open="false"] {
+		background-size: 100% 0%;
+	}
+	&[data-open="true"] {
+		background-size: 100% 100%;
+	}
 	.section-nav {
-		font-size: 1.25em;
 		padding: .5em 1em .5em;
 		.section-title {
 			cursor: pointer;
@@ -224,8 +237,6 @@ h1 {
 		background-color: $color-four;
 	}
 	&.active .bucket{
-		bottom: 1em;
-		right: 1em;
 		width: 2em;
 		height: 2em;
 		.bucket-tooltip-assist, .bucket-tooltip-action {
@@ -269,7 +280,11 @@ h1 {
 		background-color: $color-white;
 		border-radius: 4px;
 		position: relative;
-		display: none;
+		display: block;
+
+		&.hidden {
+			display: none;
+		}
 
 		.card-logo {
 			position:absolute;
@@ -414,6 +429,7 @@ h1 {
 	.modal-content {
 		display: block;
 		width: 100%;
+		height: 95%;
 		margin: auto;
 		&.loaded {
 			.photo-container .loading {
@@ -433,7 +449,7 @@ h1 {
 		}
 
 		.photo-container {
-			height: 80vh;
+			height: 80%;
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -482,16 +498,14 @@ h1 {
 			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;
+			padding: 2em 0 1em;
 		}
-		.caption-container {
-			padding-top: 2em;
-			.modal-close-btn {
-				text-decoration: underline;
-				cursor: pointer;
-			}
+		.caption-container .modal-close-btn {
+			text-decoration: underline;
+			cursor: pointer;
 		}
 		.button-container {
-			padding-bottom: 2em;
+			padding: 1em 0 2em;
 			transition: all .5s ease-in-out;
 			opacity: 0;
 			.modal-next-btn, .modal-prev-btn {
@@ -514,6 +528,7 @@ h1 {
 	justify-content: flex-start;
 	align-content: stretch;
 	padding: 0;
+	overflow-y: hidden;
 
 	.thumb {
 		position: relative;
@@ -541,7 +556,6 @@ h1 {
 			transition: opacity .5s ease-in-out;
 		}
 		img {
-			z-index: 1;
 			transition: transform .3s ease-in-out;
 		}
 		&:hover img {
@@ -595,8 +609,6 @@ h1 {
 	.bucket {
 		width: 2.5em;
 		height: 2.5em;
-		bottom: 1.5em;
-		right: 1.5em;
 		.bucket-tooltip-assist, .bucket-tooltip-action {
 			top: 0;
 			right: 3em;
@@ -661,27 +673,42 @@ h1 {
 
 // 384px
 @media screen and (max-width: 24em) {
-	#navigation .section-nav {
+	#hero {
+		padding: 0 2.5em;
+	}
+	#navigation {
 		font-size: 1.1em;
+		.section-nav {
+			text-align: center;
+		}
 	}
 	#section-container.active .bucket{
 		display: none;
+	}
+	.sticky.not-sticky-mobile {
+		position: initial;
 	}
 }
 
 // 336px
 @media screen and (max-width: 21em) {
-	#navigation .section-nav {
+	#hero {
+		padding: 0 2em;
+	}
+	#navigation {
 		font-size: 1em;
 	}
 }
 
 // 304px
 @media screen and (max-width: 19em) {
-	h1 {
-		font-size: 3.5em;
+	#hero{
+		padding: 0 1.5em;
+		h1 {
+			font-size: 3.5em;
+		}
 	}
-	#navigation .section-nav {
+	#navigation {
 		font-size: .9em;
 	}
 }

@@ -21,8 +21,8 @@
 			<span class="slide-in-down delay-500">bhansali</span>
 		</h1>
 	</div>
-	<div id="navigation">
-		<div class="section-nav container-width no-padding">
+	<div id="navigation" class="sticky sticky-nav" data-open='false'>
+		<div class="section-nav container-width">
 			<span class="section-title" data-bg-color="one" onclick="sectionPicker(this)">
 				<span data-content="work"></span>
 			</span>
@@ -48,29 +48,29 @@
 							</span>
 						</span>
 					</div>
-					<div class="work-title fade-in-right delay-2000">Jobs</div>
-					<div class="work fade-in-right delay-2200" onclick="workPicker(this, 'expensify')">
+					<div class="work-title fade-in-right delay-1500">Jobs</div>
+					<div class="work fade-in-right delay-1700" onclick="workPicker(this, 'expensify')">
 						<div class="work-name">Expensify</div>
 						<div class="subtitle">San Francisco, CA</div>
 					</div>
-					<div class="work fade-in-right delay-2300" onclick="workPicker(this, 'zappos')">
+					<div class="work fade-in-right delay-1800" onclick="workPicker(this, 'zappos')">
 						<div class="work-name">Zappos</div>
 						<div class="subtitle">Las Vegas, NV</div>
 					</div>
-					<div class="work fade-in-right delay-2400" onclick="workPicker(this, 'wustl')">
+					<div class="work fade-in-right delay-1900" onclick="workPicker(this, 'wustl')">
 						<div class="work-name">Washington University</div>
 						<div class="subtitle">St Louis, MO</div>
 					</div>
-					<div class="work fade-in-right delay-2500" onclick="workPicker(this, 'eazyfriday')">
+					<div class="work fade-in-right delay-2000" onclick="workPicker(this, 'eazyfriday')">
 						<div class="work-name">EazyFriday</div>
 						<div class="subtitle">Mumbai, India</div>
 					</div>
-					<div class="work-title fade-in-right delay-3000">Projects</div>
-					<div class="work fade-in-right delay-3100" onclick="workPicker(this, 'turnstyle')">
+					<div class="work-title fade-in-right delay-2500">Projects</div>
+					<div class="work fade-in-right delay-2600" onclick="workPicker(this, 'turnstyle')">
 						<div class="work-name">Turnstyle</div>
 						<div class="subtitle">iOS app</div>
 					</div>
-					<div class="work fade-in-right delay-3200" onclick="workPicker(this, 'kraudesorce')">
+					<div class="work fade-in-right delay-2700" onclick="workPicker(this, 'kraudesorce')">
 						<div class="work-name">KraudeSorce</div>
 						<div class="subtitle">iOS & Android apps</div>
 					</div>
@@ -214,7 +214,7 @@
 		</div>
 		<div id="skills" class="section hidden">
 			<div class="flexbox-grid">
-				<div class="left-col">
+				<div class="left-col sticky not-sticky-mobile">
 					<div class="title">
 						<span class="text-container">
 							<span class="text-underline bg-two wipe-in-right">
@@ -223,12 +223,12 @@
 						</span>
 					</div>
 					<div>
-						<p class="fade-in-right delay-2000">Nothing screams "hire me" more than an entire webpage dedicated to programming languages, tools and libraries.</p>
+						<p class="fade-in-right delay-1500">Nothing screams "hire me" more than an entire webpage dedicated to programming languages, tools and libraries.</p>
 						<p class="fade-in-right delay-2100">This is that webpage.</p>
 					</div>
 				</div>
 				<div class="right-col">
-					<div class="skill-group fade-in-left delay-2600">
+					<div class="skill-group fade-in-left delay-2100">
 						<div class="skill-title">Languages</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/html.png"><span>HTML</span></div>
@@ -242,7 +242,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/python.png"><span>Python</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-2700">
+					<div class="skill-group fade-in-left delay-2200">
 						<div class="skill-title">Web libraries</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/react.png"><span>ReactJS</span></div>
@@ -255,7 +255,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/qunit.png"><span>QUnit</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-2800">
+					<div class="skill-group fade-in-left delay-2300">
 						<div class="skill-title">Design tools</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/adobe_photoshop.png"><span>Photoshop</span></div>
@@ -268,7 +268,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/balsamiq.png"><span>Balsamiq</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-2900">
+					<div class="skill-group fade-in-left delay-2400">
 						<div class="skill-title">Web platforms and services</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/firebase.png"><span>Google<br>Firebase</span></div>
@@ -281,7 +281,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/squarespace.png"><span>Squarespace</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-3000">
+					<div class="skill-group fade-in-left delay-2500">
 						<div class="skill-title">DevOps tools</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/nodejs.png"><span>NodeJS</span></div>
@@ -295,7 +295,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/bash.png"><span>Bash<br>Scripting</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-3100">
+					<div class="skill-group fade-in-left delay-2600">
 						<div class="skill-title">Databases</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/mysql.png"><span>MySQL</span></div>
@@ -304,7 +304,7 @@
 							<div class="skill"><img class="img-skill" src="./assets/skills/mongodb.png"><span>MongoDB</span></div>
 						</div>
 					</div>
-					<div class="skill-group fade-in-left delay-3200">
+					<div class="skill-group fade-in-left delay-2700">
 						<div class="skill-title">Misc</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" src="./assets/skills/pi.png"><span>Raspberry<br>Pi</span></div>
@@ -348,7 +348,7 @@
 							</span>
 						</span>
 					</div>
-					<p class="fade-in-right delay-2000">The best views can be found on an obscure blog written by a middle aged man with a middle aged van.</p>
+					<p class="fade-in-right delay-1500">The best views can be found on an obscure blog written by a middle aged man with a middle aged van.</p>
 				</div>
 			</div>
 			<div id="thumbnail-container">
@@ -369,8 +369,8 @@
 			<div class="flexbox-grid">
 				<div class="left-col">
 					<div class="about-blurb">
-						<p class="fade-in-right delay-2000">I'm a web developer from Bombay and I spend most of my time offline.</p>
-						<div class="fade-in-right delay-2100">
+						<p class="fade-in-right delay-1500">I'm a web developer from Bombay and I spend most of my time offline.</p>
+						<div class="fade-in-right delay-1600">
 							<p>Things that I like:</p>
 							<ul>
 								<li>KitKats</li>
@@ -380,7 +380,7 @@
 								<li>Public transit</li>
 							</ul>
 						</div>
-						<div class="fade-in-right delay-2200">
+						<div class="fade-in-right delay-1700">
 							<p>Things that I don't like:</p>
 							<ul>
 								<li>Raisins</li>
@@ -393,15 +393,15 @@
 					</div>
 				</div>
 				<div class="right-col extra-padding">
-					<div class="me fade-in-left delay-4000"><span>&nbsp;</span></div>
+					<div class="me fade-in-left delay-3000"><span>&nbsp;</span></div>
 					<div class="social">
-						<h2 class="fade-in-left delay-2500">@rohanb10</h2>
+						<h2 class="fade-in-left delay-2000">@rohanb10</h2>
 						<div>
-							<span class="fade-in-left delay-3900"><a href="mailto:rohanb10@gmail.com?subject=Hello!" target="_blank" rel="noreferrer">email</a> / </span>
-							<span class="fade-in-left delay-3800"><a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a> / </span>
-							<span class="fade-in-left delay-3700"><a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a> / </span>
-							<span class="fade-in-left delay-3600"><a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a> / </span>
-							<span class="fade-in-left delay-3500"><a href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a></span>
+							<span class="fade-in-left delay-2900"><a href="mailto:rohanb10@gmail.com?subject=Hello!" target="_blank" rel="noreferrer">email</a> / </span>
+							<span class="fade-in-left delay-2800"><a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a> / </span>
+							<span class="fade-in-left delay-2700"><a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a> / </span>
+							<span class="fade-in-left delay-2600"><a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a> / </span>
+							<span class="fade-in-left delay-2500"><a href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a></span>
 						</div>
 					</div>
 				</div>

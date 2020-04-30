@@ -92,6 +92,7 @@ function bucket(el) {
 		currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 		ripple();
 	}
+	track('#bucket', nextSchemeIndex, 'click');
 }
 
 // Wave
@@ -138,10 +139,10 @@ function sectionPicker(navButton) {
 	//if selected section is already open, shut it down
 	if (sectionName === active_section) {
 		hideAllSections();
+		track('#', 'Back to Home', 'pageview');
 	} else{
 		// open section
 		showSection(sectionName);
-
 		//change navbar bg colour and .active
 		navbar.setAttribute('data-bg-color', navButton.getAttribute('data-bg-color'));
 		navbar.setAttribute('data-open', 'true');
@@ -150,6 +151,7 @@ function sectionPicker(navButton) {
 		document.getElementById('section-container').classList.add('active');
 		
 		history.pushState('', '', '#');
+		track(`#${sectionName}`, sectionName, 'pageview');
 	}
 }
 
@@ -170,27 +172,38 @@ function hideAllSections() {
 
 function showSection(sectionName) {
 	// pre-loading
-	if (sectionName === 'work' && active_work !== '') {
-		document.querySelector('.work.active').classList.remove('active');
-		document.getElementById(active_work).classList.add('hidden');
-		active_work = '';
-	} else if (sectionName === 'photos') {
-		genThumbnails();
-	} else if (sectionName === 'about') {
-		var img = new Image();
-		img.src = 'assets/me.jpg';
-		img.src = 'assets/me.gif';
+	switch(sectionName) {
+		case 'work':
+			if (active_work === '') break;
+			document.querySelector('.work.active').classList.remove('active');
+			document.getElementById(active_work).classList.add('hidden');
+			active_work = '';
+			break;
+
+		case 'skills':
+			document.querySelectorAll('.img-skill').forEach((img) => {img.src = img.getAttribute('data-src')});
+			break;
+
+		case 'photos':
+			genThumbnails();
+			break;
+
+		case 'about':
+			document.getElementById('me-jpg').src = 'assets/me.jpg';
+			document.getElementById('me-gif').src = 'assets/me.gif';
+			break;
 	}
 
 	// if no section is open
 	if (active_section === null){
-		// document.getElementById('hero').classList.add('hidden');
 		document.getElementById('hero').classList.add('minimize');
 		//wait for minimize to complete
 		setTimeout(() => {
 			document.getElementById(sectionName).classList.remove('hidden');
 		}, 1000);
 	} else {
+		// changing sections
+		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 		animateOut(`#${active_section}`, 'fade-out-bottom', () => {
 			document.getElementById(sectionName).classList.remove('hidden');
 		});
@@ -213,7 +226,7 @@ function workPicker(element, workName) {
 	}
 	element.classList.add('active');
 	active_work = workName;
-
+	track('#work', workName, 'click');
 	//  Scroll down to card if mobile device (40em)
 	if (window.innerWidth <= 640) {
 		card.parentElement.scrollIntoView({
@@ -288,6 +301,7 @@ function loadPhoto(i, delay = 0) {
 			setTimeout(() => {
 				document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
+				track('#photos', identifyPhoto(PHOTOS[i].caption), 'click');
 			}, delay);
 		},
 		onerror: () => {endLoadingAnimation()},
@@ -359,6 +373,16 @@ function formatCaptions(c) {
 	return c.substr(0, locationIndex) + '<br>' + c.substr(locationIndex);
 }
 
+function identifyPhoto(c) {
+	if (c.substr(0, c.indexOf(',')).indexOf('Park') >= 0 || c.indexOf(',') <= 12) return c.substr(0, c.indexOf(','));
+	var stop = c.indexOf(' ');
+	while (stop < 12) {
+		stop = c.indexOf(' ', stop + 1);
+		if (c.indexOf(',') <= stop) return c.substr(0, c.indexOf(','));
+	}
+	return c.substr(0, stop);
+}
+
 // ESC key to close modal
 function escapeToClose(e) {
 	if (e.keyCode === 27) {
@@ -373,6 +397,11 @@ function closePhotoModal() {
 		startLoadingAnimation();
 	});
 	document.removeEventListener('keydown', escapeToClose);
+}
+
+function track(href, name, eventType) {
+	if (typeof clicky === 'undefined') return;
+	clicky.log(href, name, eventType);
 }
 
 // Animate functions

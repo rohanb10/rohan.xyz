@@ -271,7 +271,7 @@ function genThumbnails() {
 		});
 		img.onmouseover = () => {
 			setTimeout(() => {
-				this.addEventListener('mousemove', panZoom, false, this);
+				img.addEventListener('mousemove', panZoom, false, this);
 			}, 300);
 		}
 		img.onmouseout = () => {
@@ -344,14 +344,18 @@ function endLoadingAnimation() {
 	var completedAnimations = 0;
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
-			e.target.classList.add('done');
-			completedAnimations++;
-			bar.removeEventListener('animationiteration', _listener);
+			if (i === 0 || completedAnimations > 0){
+				e.target.classList.add('done');
+				completedAnimations++;
+				bar.removeEventListener('animationiteration', _listener);
+			}
 			if (completedAnimations >= animationCount) {
-				setTimeout(() => {modalDiv.classList.add('loaded')}, 500);
+				setTimeout(() => {modalDiv.classList.add('loaded');return}, 500);
 			}
 		});
 	});
+	// fallback for shit browsers
+	setTimeout(() => {modalDiv.classList.add('loaded');return}, 4000);
 }
 
 function startLoadingAnimation(alreadyOpen = false) {
@@ -364,7 +368,7 @@ function startLoadingAnimation(alreadyOpen = false) {
 	}
 
 	modalDiv.querySelectorAll('.bar').forEach((bar, i) => {
-		setTimeout(() => {bar.classList.remove('done')}, i*100);
+		setTimeout(() => {bar.classList.remove('done')}, i * 100);
 	});
 }
 

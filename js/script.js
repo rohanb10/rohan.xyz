@@ -95,24 +95,20 @@ function changeColours(c){
 console.log(`changeColours(['#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD'])`);
 
 function bucket(el) {
-	if (el.classList.contains('clicked')) return;
+	if (el.parentElement.classList.contains('changing')) return;
+
 	var nextSchemeIndex = currentSchemeIndex;
 	while (nextSchemeIndex === currentSchemeIndex) {
 		nextSchemeIndex = (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length)) + 1;
 	}
-	// show / modify tooltip
-	el.parentElement.classList.remove('default-colors');
-	el.parentElement.classList.add('changed');
-	document.querySelector('bucket-tooltip-action');
-	animateIn('.bucket-tooltip-action', 'fade-in', () => {
-		animateOut('.bucket-tooltip-action', 'fade-out', null, 1500);
-	}, 1);
 
-	el.classList.add('clicked');
+	// show / modify tooltip
+	el.parentElement.classList.add('changing');
+	setTimeout(() => {el.parentElement.classList.remove('changing')}, 1500);
+
 	if (active_section !== null) {
 		transitionColorScheme(nextSchemeIndex, () => {
 			ripple();
-			setTimeout(() => {el.classList.remove('clicked')}, 1200);
 		});
 	} else {
 		var isWavy = navbar.querySelector('.section-title.wave');
@@ -121,7 +117,6 @@ function bucket(el) {
 			currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 			ripple();
 			startWave();
-			setTimeout(() => {el.classList.remove('clicked')}, 1200);
 		}, isWavy ? 400 : 0);
 	}
 	currentSchemeIndex = nextSchemeIndex;
@@ -195,6 +190,7 @@ function hideAllSections() {
 	document.getElementById('section-container').classList.remove('active');
 	
 	document.getElementById('hero').classList.remove('minimize');
+	killWave();
 	ripple(1000);
 	startWave();
 
@@ -387,7 +383,13 @@ function endLoadingAnimation() {
 	var completedAnimations = 0;
 
 	// fallback for shit browsers
-	var fallback = setTimeout(() => {modalDiv.classList.add('loaded')}, 4000);
+	var barTimers = []
+	var fallback = setTimeout(() => {
+		bars.forEach((bar, i) => {
+			barTimers[i] = setTimeout(()=>{bar.classList.add('done')}, i*100);
+		});
+		setTimeout(()=>{modalDiv.classList.add('loaded')},500);
+	}, 3000);
 
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
@@ -395,6 +397,7 @@ function endLoadingAnimation() {
 				e.target.classList.add('done');
 				completedAnimations++;
 				bar.removeEventListener('animationiteration', _listener);
+				clearTimeout(barTimers[i]);
 			}
 			if (completedAnimations >= animationCount) {
 				setTimeout(() => {

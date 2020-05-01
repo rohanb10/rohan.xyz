@@ -22,19 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
 	startWave();
 }, false);
 
+function rgbArray(rgb) {
+	rgb = rgb.substr(4).split(')')[0].split(',');
+	return [parseInt(rgb[0]),parseInt(rgb[1]),parseInt(rgb[2])];
+}
+
+function transitionColorScheme(schemeID, callback) {
+	var root = document.documentElement.style;
+	var nextColors = [], currentColors = [], colorTimers = [], done=0;
+
+	var scheme = COLOR_SCHEMES[schemeID].sort(() => {return 0.5 - Math.random()});
+	scheme.forEach((c,i) => {
+		nextColors.push(rgbArray(c));
+		currentColors.push(rgbArray(root.getPropertyValue(`--color-${i+1}`)));
+	});
+
+	currentColors.forEach((rgb, i) => {
+		colorTimers[i] = setInterval(()=> {
+			rgb.forEach((cc,j) => {
+				rgb[j] = cc > nextColors[i][j] ? cc - 1 : cc < nextColors[i][j] ? cc + 1 : cc;
+			})
+			root.setProperty(`--color-${i+1}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
+			if (rgb[0] === nextColors[i][0] && rgb[1] === nextColors[i][1] && rgb[2] === nextColors[i][2]) {
+				clearInterval(colorTimers[i]);
+				if (++done >= 4 && callback) callback();
+			}
+		}, 1);
+	});
+}
+
 const COLOR_SCHEMES = {
-	1: ['#EA4347', '#6DC1C5', '#30B06A', '#F7C83B'],
-	2: ['#F05C88', '#6F7DF6', '#77CBF9' ,'#FFA805'],
-	3: ['#DE5E5E', '#45B6EF' ,'#42B362' ,'#DFA8FF'],
-	4: ['#DA496B', '#4D63D1' ,'#629337' ,'#F57E09'],
-	5: ['#EFC2B8', '#95BBD9' ,'#BCDC96' ,'#EEDE97'],
-	6: ['#913030', '#275A77' ,'#246B50' ,'#C28147'],
+	1: ['rgb(247,200, 59)', 'rgb( 48,176,106)', 'rgb(109,193,197)', 'rgb(234, 67, 71)'],
+	2: ['rgb(240, 92,136)', 'rgb(111,125,246)', 'rgb(119,203,249)', 'rgb(255,168,  5)'],
+	3: ['rgb(222, 94, 94)', 'rgb( 69,182,239)', 'rgb( 66,179, 98)', 'rgb(223,168,255)'],
+	4: ['rgb(218, 73,107)', 'rgb( 77, 99,209)', 'rgb( 98,147, 55)', 'rgb(245,126,  9)'],
+	5: ['rgb(239,194,184)', 'rgb(149,187,217)', 'rgb(188,220,150)', 'rgb(238,222,151)'],
+	6: ['rgb(145, 48, 48)', 'rgb( 39, 90,119)', 'rgb( 36,107, 80)', 'rgb(194,129, 71)'],
 }
 
 function changeColorScheme(index = -1, shuffle = true) {
-	if (index <= 0 || index > Object.keys(COLOR_SCHEMES).length) {
-		return 'Please enter a valid index';
-	}
+	if (index <= 0 || index > Object.keys(COLOR_SCHEMES).length) return 'Please enter a valid index';
+
 	// check if manually set or pick from random
 	index = index || (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length + 1));
 
@@ -44,34 +72,33 @@ function changeColorScheme(index = -1, shuffle = true) {
 
 	// apply it to the css variables
 	var root = document.documentElement;
-	root.style.setProperty('--color-one', scheme[0]);
-	root.style.setProperty('--color-two', scheme[1]);
-	root.style.setProperty('--color-three', scheme[2]);
-	root.style.setProperty('--color-four', scheme[3]);
+	root.style.setProperty('--color-1', scheme[0]);
+	root.style.setProperty('--color-2', scheme[1]);
+	root.style.setProperty('--color-3', scheme[2]);
+	root.style.setProperty('--color-4', scheme[3]);
 	return index;
 }
 var currentSchemeIndex = changeColorScheme(1);
 
 // Manually set the colour scheme through the console
-function changeColours(c1, c2, c3, c4){
+function changeColours(c){
 	var root = document.documentElement;
-	root.style.setProperty('--color-one', c1);
-	root.style.setProperty('--color-two', c2);
-	root.style.setProperty('--color-three', c3);
-	root.style.setProperty('--color-four', c4);
+	var returnString = 'New Colours: '
+	c.forEach((hex,i) => {
+		hex = `rgb(${+`0x${hex[1]}${hex[2]}`},${+`0x${hex[3]}${hex[4]}`},${+`0x${hex[5]}${hex[6]}`})`
+		root.style.setProperty(`--color-${i+1}`, hex);
+		returnString += hex + ', ';
+	});
 	currentSchemeIndex = -1;
-	return 'New Colours: ' + c1 + ', ' + c2 + ', ' + c3 + ', ' + c4;
+	return returnString;
 }
-console.log(`changeColours('#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD')`);
+console.log(`changeColours(['#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD'])`);
 
-var isWavy = (section) => section.classList.contains('wave');
 function bucket(el) {
-	// check if wave is active
-	var isWavy = Array.prototype.slice.call(navbarSections).some((section) => section.classList.contains('wave'));
-	var numberOfSchemes = Object.keys(COLOR_SCHEMES).length;
+	if (el.classList.contains('clicked')) return;
 	var nextSchemeIndex = currentSchemeIndex;
 	while (nextSchemeIndex === currentSchemeIndex) {
-		nextSchemeIndex = (Math.floor(Math.random() * numberOfSchemes)) + 1;
+		nextSchemeIndex = (Math.floor(Math.random() * Object.keys(COLOR_SCHEMES).length)) + 1;
 	}
 	// show / modify tooltip
 	el.parentElement.classList.remove('default-colors');
@@ -81,25 +108,32 @@ function bucket(el) {
 		animateOut('.bucket-tooltip-action', 'fade-out', null, 1500);
 	}, 1);
 
-	if (isWavy) {
+	el.classList.add('clicked');
+	if (active_section !== null) {
+		transitionColorScheme(nextSchemeIndex, () => {
+			ripple();
+			setTimeout(() => {el.classList.remove('clicked')}, 1200);
+		});
+	} else {
+		var isWavy = navbar.querySelector('.section-title.wave');
 		killWave();
 		setTimeout(() => {
 			currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 			ripple();
-			if (active_section === null) startWave();
-		}, 400);
-	} else  {
-		currentSchemeIndex = changeColorScheme(nextSchemeIndex);
-		ripple();
+			startWave();
+			setTimeout(() => {el.classList.remove('clicked')}, 1200);
+		}, isWavy ? 400 : 0);
 	}
+	currentSchemeIndex = nextSchemeIndex;
 	track(`Colour Changed: ${nextSchemeIndex}`, '#bucket');
 }
 
 // Wave
+var wave, crests = [];
 function ripple(interval = 0) {
 	setTimeout(function () {
 		navbarSections.forEach((s, i, sections) => {
-			setTimeout(rippleUp, 150 * i, s);
+			crests[i] = setTimeout(rippleUp, 150 * i, s);
 			setTimeout(rippleDown, (sections.length * 150) + (200 * i), s);
 		});
 	}, interval);
@@ -112,7 +146,6 @@ function rippleDown(section) {
 	section.classList.remove('wave');
 }
 
-var wave;
 function startWave() {
 	clearInterval(wave);
 	wave = setInterval(ripple, 4000);
@@ -120,8 +153,9 @@ function startWave() {
 
 function killWave() {
 	clearInterval(wave);
+	crests.forEach(c => {clearTimeout(c)});
 	navbarSections.forEach((s) => {
-		s.classList.remove('wave');
+		rippleDown(s);
 	});
 }
 
@@ -140,7 +174,7 @@ function sectionPicker(navButton) {
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
 		hideAllSections();
-		track('Back to Home', '#');
+		track('Back to Home', '#Home');
 	} else{
 		// open section
 		showSection(sectionID);
@@ -168,7 +202,6 @@ function hideAllSections() {
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
-	
 }
 
 function showSection(sectionID) {
@@ -232,9 +265,7 @@ function workPicker(element, workName) {
 	active_work = workName;
 	//  Scroll down to card if mobile device (40em)
 	if (window.innerWidth <= 640) {
-		card.parentElement.scrollIntoView({
-			behavior: 'smooth',
-		});	
+		window.scroll({ top: document.querySelector(`#${active_section} .left-col`).scrollHeight, left: 0, behavior: 'smooth' });
 	}
 	history.pushState('', '', `#work?${workName}`);
 	track(`Work - ${workName}`);
@@ -354,6 +385,10 @@ function endLoadingAnimation() {
 	var bars = modalDiv.querySelectorAll('.bar');
 	var animationCount = bars.length;
 	var completedAnimations = 0;
+
+	// fallback for shit browsers
+	var fallback = setTimeout(() => {modalDiv.classList.add('loaded')}, 4000);
+
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
 			if (i === 0 || completedAnimations > 0){
@@ -362,13 +397,13 @@ function endLoadingAnimation() {
 				bar.removeEventListener('animationiteration', _listener);
 			}
 			if (completedAnimations >= animationCount) {
-				setTimeout(() => {modalDiv.classList.add('loaded');return}, 500);
+				setTimeout(() => {
+					modalDiv.classList.add('loaded');
+					clearTimeout(fallback);
+				}, 500);
 			}
 		});
 	});
-
-	// fallback for shit browsers
-	setTimeout(() => {modalDiv.classList.add('loaded');return}, 4000);
 }
 
 function startLoadingAnimation(alreadyOpen = false) {

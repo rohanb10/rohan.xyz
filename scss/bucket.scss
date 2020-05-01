@@ -1,0 +1,80 @@
+.bucket {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	width: 3em;
+	height: 3em;
+	z-index: 3;
+	transition: all .3s linear;
+	display: flex;
+	align-items: center;
+	flex-direction: row-reverse;
+	-webkit-user-select: none;
+	user-select: none;
+	div .bucket-tooltip-assist, .bucket-tooltip-action {
+		opacity: 0;
+		margin-right: .5em;
+		white-space: nowrap;
+		padding: .25em .5em;
+		border-radius: .5em;
+		background-color: $color-white;
+	}
+	img {
+		border-radius: .6em;
+		opacity: .4;
+		width: 100%;
+		cursor: pointer;
+		transition: all .3s ease-in-out;
+		transform: rotate(0deg);
+		flex-shrink: 0;
+		&:active, &.clicked {
+			opacity: .6;
+		}
+		@media(hover:hover){
+			&:hover {
+				transform: rotate(-25deg);
+			}
+			&:active, &.clicked {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	&.default-colors {
+		.bucket-tooltip-action {
+			display: none;
+		}
+		&:hover .bucket-tooltip-assist {
+			animation: fade-in .3s ease-in-out;
+			opacity: 1;
+		}
+	}
+	&.changed {
+		div .bucket-tooltip-action {
+			display: block;
+		}
+		div .bucket-tooltip-assist {
+			display: none;
+		}
+	}
+	@media screen and (max-width: 56em) {
+		width: 2.5em;
+		height: 2.5em;
+		.bucket-tooltip-assist, .bucket-tooltip-action {
+			top: 0;
+			right: 3em;
+		}
+	}
+}
+#section-container.active .bucket {
+	width: 2em;
+	height: 2em;
+	.bucket-tooltip-assist, .bucket-tooltip-action {
+		top: 0;
+		right: 3em;
+	}
+	@media screen and (max-width: 24em) {
+		opacity: 0;
+		touch-action: unset;
+		pointer-events: unset;
+	}
+}

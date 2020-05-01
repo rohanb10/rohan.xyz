@@ -1,0 +1,55 @@
+#id-about {
+	.right-col {
+		padding-left: 4em;
+		@media screen and (max-width: 40em) {
+			padding-left: 0;
+		}
+	}
+	.social {
+		text-align: right;
+		h2 {
+			margin-bottom: 0;
+		}
+
+		a {
+			@include hyperlink($color-four);
+		}
+		.mobile-only {
+			display: none;
+			@media screen and (max-width: 45em) {
+				display: initial;
+			}
+		}
+	}
+
+	.about-blurb {
+		p:nth-of-type(0) {
+			margin-top: 0;
+		}
+		.tilt:hover {
+			display: inline-block;
+			transform: rotate(-20deg);
+			transform-origin: 35% 50%;
+			transition: transform .2s linear;
+		}
+	}
+
+	.me {
+		width: 100%;
+		margin: 1.25em 0;
+		position: relative;
+		#me-gif, #me-jpg {
+			width: 100%;
+		}
+		#me-gif {
+			position: absolute;
+			right: 0;
+			top: 0;
+			opacity: 0;
+			transition: opacity .3s ease-in-out;
+			&:hover{
+				opacity: 1;
+			}
+		}
+	}
+}

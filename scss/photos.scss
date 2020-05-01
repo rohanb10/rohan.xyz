@@ -1,0 +1,164 @@
+
+#thumbnail-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	padding: 0;
+
+	.thumb {
+		position: relative;
+		border: .1em solid $color-white;
+		box-sizing: border-box;
+
+		width: calc(100% / 3);
+		height: 0;
+		padding-bottom: calc(200% / 9);
+
+		overflow: hidden;
+		// transition: transform .35s ease-in-out;
+		
+		.placeholder, img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+		}
+		.placeholder {
+			z-index: 2;
+			opacity: 1;
+			transition: opacity .5s ease-in-out;
+		} 
+		@media (hover:hover) {
+			img {
+				transition: transform .3s ease-in-out;
+			}
+			&:hover img {
+				transform: scale(1.1);
+			}
+		}
+		@media screen and (max-width: 40em) {
+			width: 50%;
+			padding-bottom: calc(100% / 3);
+			border-width: 1px;
+		}
+	}
+}
+
+.photo-modal {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: $color-white;
+	z-index: 4;
+	left: 0;
+	top: 0;
+	box-shadow: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23);
+
+	&.hidden {
+		display: none;
+	}
+
+	.modal-content {
+		display: block;
+		width: 100%;
+		height: 95%;
+		margin: auto;
+		&.loaded {
+			.photo-container .loading {
+				opacity: 0;
+			}
+			.button-container {
+				opacity: 1;
+				.modal-next-btn, .modal-prev-btn {
+					cursor: pointer;
+					touch-action: unset;
+					pointer-events: unset;
+				}
+			}
+		}
+		&.no-staggered-delays .photo-container .loading .bars .bar:nth-of-type(n) {
+			animation-delay: .5s
+		}
+
+		.photo-container {
+			height: 80%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+			.loading {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: $color-white;
+				transition: all .5s ease-in-out;
+				.bars .bar {
+					display: inline-block;
+					padding-right: 5px;
+					height: 40px;
+					animation: loading 1.25s infinite ease-in-out both;
+					transition: all .5s ease-in-out;
+					&:nth-of-type(1){
+						background-color: $color-one;
+						animation-delay: .5s;
+					}
+					&:nth-of-type(2){
+						background-color: $color-two;
+						animation-delay: .6s;
+					}
+					&:nth-of-type(3){
+						background-color: $color-three;
+						animation-delay: .7s;
+					}
+					&:nth-of-type(4){
+						background-color: $color-four;
+						animation-delay: .8s;
+					}
+					&.done {
+						animation: none;
+						transform: translateY(100vw);
+					}
+				}
+			}
+		}
+		.caption-container, .button-container {
+			width: 80%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: .8em;
+			margin: auto;
+			max-width: 1000px;
+			padding: 2em 0 1em;
+			@media screen and (max-width: 40em) {
+				padding-bottom: 0;
+			}
+		}
+		.caption-container .modal-close-btn {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.button-container {
+			padding: 1em 0 2em;
+			transition: all .5s ease-in-out;
+			opacity: 0;
+			.modal-next-btn, .modal-prev-btn {
+				text-decoration: underline;
+				touch-action: none;
+				pointer-events: none;
+				&.disabled {
+					opacity: 0;	
+					
+				}
+			}
+		}
+	}
+}

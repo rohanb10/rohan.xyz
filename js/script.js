@@ -92,7 +92,7 @@ function bucket(el) {
 		currentSchemeIndex = changeColorScheme(nextSchemeIndex);
 		ripple();
 	}
-	track('#bucket', nextSchemeIndex, 'click');
+	track(`Colour Changed: ${nextSchemeIndex}`, '#bucket');
 }
 
 // Wave
@@ -127,7 +127,8 @@ function killWave() {
 
 // Navbar
 function sectionPicker(navButton) {
-	var sectionName = navButton.querySelector('span').getAttribute('data-content');
+	var sectionID = navButton.querySelector('span').getAttribute('data-section-id');
+	var sectionName = navButton.querySelector('span').getAttribute('data-section-name');
 	killWave();
 
 	//reset navbar bg and buttons
@@ -137,12 +138,12 @@ function sectionPicker(navButton) {
 	});
 
 	//if selected section is already open, shut it down
-	if (sectionName === active_section) {
+	if (sectionID === active_section) {
 		hideAllSections();
-		track('#', 'Back to Home', 'pageview');
+		track('Back to Home', '#');
 	} else{
 		// open section
-		showSection(sectionName);
+		showSection(sectionID);
 		//change navbar bg colour and .active
 		navbar.setAttribute('data-bg-color', navButton.getAttribute('data-bg-color'));
 		navbar.setAttribute('data-open', 'true');
@@ -150,8 +151,8 @@ function sectionPicker(navButton) {
 		navButton.classList.add('active');
 		document.getElementById('section-container').classList.add('active');
 		
-		history.pushState('', '', '#');
-		track(`#${sectionName}`, sectionName, 'pageview');
+		history.pushState('', '', `#${sectionName}`);
+		track(sectionName);
 	}
 }
 
@@ -170,25 +171,26 @@ function hideAllSections() {
 	
 }
 
-function showSection(sectionName) {
+function showSection(sectionID) {
 	// pre-loading
-	switch(sectionName) {
-		case 'work':
+	switch(sectionID) {
+		case 'id-work':
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
 			active_work = '';
 			break;
 
-		case 'skills':
+		case 'id-skills':
 			document.querySelectorAll('.img-skill').forEach((img) => {img.src = img.getAttribute('data-src')});
 			break;
 
-		case 'photos':
+		case 'id-photos':
+			closePhotoModal();
 			genThumbnails();
 			break;
 
-		case 'about':
+		case 'id-about':
 			document.getElementById('me-jpg').src = 'assets/me.jpg';
 			document.getElementById('me-gif').src = 'assets/me.gif';
 			break;
@@ -199,40 +201,43 @@ function showSection(sectionName) {
 		document.getElementById('hero').classList.add('minimize');
 		//wait for minimize to complete
 		setTimeout(() => {
-			document.getElementById(sectionName).classList.remove('hidden');
+			document.getElementById(sectionID).classList.remove('hidden');
 		}, 1000);
 	} else {
 		// changing sections
 		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 		animateOut(`#${active_section}`, 'fade-out-bottom', () => {
-			document.getElementById(sectionName).classList.remove('hidden');
+			document.getElementById(sectionID).classList.remove('hidden');
 		});
 	}
-	active_section = sectionName;
+	active_section = sectionID;
 }
 
 // Work
 function workPicker(element, workName) {
-	var card = document.getElementById(workName);
+	// cancel if already open
+	if (active_work === workName) return;
 
-	// remove current work card / active btn
-	if (active_work !== '' && active_work != workName) {
+	var card = document.getElementById(workName);
+	if (active_work === '') {
+		card.classList.remove('hidden');
+	} else {
+		// hide preivous card if one is open
 		document.querySelector('.work.active').classList.remove('active');
 		animateOut(`#${active_work}`, 'fade-out-right', () => {
 			card.classList.remove('hidden');
 		});
-	} else {
-		card.classList.remove('hidden');
 	}
 	element.classList.add('active');
 	active_work = workName;
-	track('#work', workName, 'click');
 	//  Scroll down to card if mobile device (40em)
 	if (window.innerWidth <= 640) {
 		card.parentElement.scrollIntoView({
 			behavior: 'smooth',
 		});	
 	}
+	history.pushState('', '', `#work?${workName}`);
+	track(`Work - ${workName}`);
 }
 
 function genThumbnails() {
@@ -290,7 +295,14 @@ function panZoom(e){
 function openPhotoModal(i) {
 	loadPhoto(i);
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
-	document.addEventListener('keydown', escapeToClose);
+
+	// ESC key to close modal
+	document.addEventListener('keydown', function _close(e) {
+		if (e.keyCode === 27) {
+			closePhotoModal();
+			document.removeEventListener('keydown', _close);
+		}
+	});
 }
 
 function loadPhoto(i, delay = 0) {
@@ -301,12 +313,12 @@ function loadPhoto(i, delay = 0) {
 			setTimeout(() => {
 				document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
-				track('#photos', identifyPhoto(PHOTOS[i].caption), 'click');
+				track(identifyPhoto(PHOTOS[i].caption));
 			}, delay);
 		},
 		onerror: () => {endLoadingAnimation()},
 	});
-
+	history.pushState('', '', `#photos?${i+1}`);
 	document.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
 	active_photo = i;
 
@@ -354,6 +366,7 @@ function endLoadingAnimation() {
 			}
 		});
 	});
+
 	// fallback for shit browsers
 	setTimeout(() => {modalDiv.classList.add('loaded');return}, 4000);
 }
@@ -387,25 +400,17 @@ function identifyPhoto(c) {
 	return c.substr(0, stop);
 }
 
-// ESC key to close modal
-function escapeToClose(e) {
-	if (e.keyCode === 27) {
-		closePhotoModal();
-	}
-}
-
 function closePhotoModal() {
 	animateOut('.photo-modal', 'slide-out-bottom', () => {
 		document.querySelector('.photo-container').style.backgroundImage = '';
 		document.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
-	document.removeEventListener('keydown', escapeToClose);
 }
 
-function track(href, name, eventType) {
+function track(name, el = false) {
 	if (typeof clicky === 'undefined') return;
-	clicky.log(href, name, eventType);
+	clicky.log(el ? el : window.location.hash, name)
 }
 
 // Animate functions

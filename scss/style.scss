@@ -4,7 +4,6 @@ html, body {
 	width: 100%;
 	font-family: 'Muli', sans-serif;
 	background-color: $color-white;
-	scroll-behavior: smooth;
 }
 
 .container-width {
@@ -222,19 +221,19 @@ html, body {
 			}
 		}
 	}
-	#work *::selection {
+	#id-work *::selection {
 		background-color: $color-one;
 		color: $color-white;
 	}
-	#skills *::selection {
+	#id-skills *::selection {
 		background-color: $color-two;
 		color: $color-white;
 	}
-	#photos *::selection {
+	#id-photos *::selection {
 		background-color: $color-three;
 		color: $color-white;
 	}
-	#about *::selection {
+	#id-about *::selection {
 		background-color: $color-four;
 	}
 	&.active .bucket{
@@ -497,6 +496,7 @@ html, body {
 			width: 80%;
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;

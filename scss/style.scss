@@ -184,6 +184,7 @@ html, body {
 
 #section-container {
 	scroll-behavior: smooth;
+	overflow-y: hidden;
 	.title {
 		margin-bottom: 2em;
 
@@ -530,7 +531,6 @@ html, body {
 	justify-content: flex-start;
 	align-content: stretch;
 	padding: 0;
-	overflow-y: hidden;
 
 	.thumb {
 		position: relative;

@@ -148,8 +148,8 @@ function startWave() {
 
 function killWave() {
 	clearInterval(wave);
-	crests.forEach(c => {clearTimeout(c)});
-	navbarSections.forEach((s) => {
+	navbarSections.forEach((s,i) => {
+		clearTimeout(crests[i]);
 		rippleDown(s);
 	});
 }
@@ -444,6 +444,7 @@ function closePhotoModal() {
 		document.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
+	history.pushState('', '', '#photos');
 }
 
 function track(name, el = false) {

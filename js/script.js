@@ -325,6 +325,8 @@ function openPhotoModal(i) {
 
 	// ESC key to close modal
 	document.addEventListener('keydown', function _close(e) {
+		if (e.keyCode === 39) nextPhoto();
+		if (e.keyCode === 37) prevPhoto();
 		if (e.keyCode === 27) {
 			closePhotoModal();
 			document.removeEventListener('keydown', _close);
@@ -362,14 +364,14 @@ function loadPhoto(i, delay = 0) {
 }
 
 function nextPhoto() {
-	if (active_photo + 1 >= PHOTOS.length) return;
+	if (active_photo + 1 >= PHOTOS.length || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	active_photo++;
 	startLoadingAnimation(true);
 	loadPhoto(active_photo, 500);
 }
 
 function prevPhoto() {
-	if (active_photo <= 0) return;
+	if (active_photo <= 0 || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	active_photo--;
 	startLoadingAnimation(true);
 	loadPhoto(active_photo, 500);
@@ -378,18 +380,9 @@ function prevPhoto() {
 // Animate the loading bars out and then fadeout the overlay
 function endLoadingAnimation() {
 	var modalDiv = document.querySelector('.modal-content')
-	var bars = modalDiv.querySelectorAll('.bar');
+	var bars = modalDiv.querySelectorAll('.bars div');
 	var animationCount = bars.length;
 	var completedAnimations = 0;
-
-	// fallback for shit browsers
-	var barTimers = []
-	var fallback = setTimeout(() => {
-		bars.forEach((bar, i) => {
-			barTimers[i] = setTimeout(()=>{bar.classList.add('done')}, i*100);
-		});
-		setTimeout(()=>{modalDiv.classList.add('loaded')},500);
-	}, 3000);
 
 	bars.forEach((bar, i) => {
 		bar.addEventListener('animationiteration', function _listener(e) {
@@ -397,12 +390,10 @@ function endLoadingAnimation() {
 				e.target.classList.add('done');
 				completedAnimations++;
 				bar.removeEventListener('animationiteration', _listener);
-				clearTimeout(barTimers[i]);
 			}
 			if (completedAnimations >= animationCount) {
 				setTimeout(() => {
 					modalDiv.classList.add('loaded');
-					clearTimeout(fallback);
 				}, 500);
 			}
 		});
@@ -418,7 +409,7 @@ function startLoadingAnimation(alreadyOpen = false) {
 		modalDiv.classList.remove('no-staggered-delays');
 	}
 
-	modalDiv.querySelectorAll('.bar').forEach((bar, i) => {
+	modalDiv.querySelectorAll('.bars div').forEach((bar, i) => {
 		setTimeout(() => {bar.classList.remove('done')}, i * 100);
 	});
 }

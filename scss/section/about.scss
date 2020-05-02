@@ -23,14 +23,14 @@
 	}
 
 	.about-blurb {
-		p:nth-of-type(0) {
-			margin-top: 0;
-		}
-		.tilt:hover {
+		.tilt {
 			display: inline-block;
-			transform: rotate(-20deg);
-			transform-origin: 35% 50%;
-			transition: transform .2s linear;
+			transform-origin: 30% 50%;
+			transition: transform .2s $ease-in-out-cubic;
+			&:hover {
+				transform: rotate(-20deg);
+				
+			}
 		}
 	}
 

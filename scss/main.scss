@@ -1,13 +1,131 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap');
 
-@import 'colours';
+@import 'variables';
 @import 'mixins';
 @import 'animations';
 
 @import 'navigation';
 @import 'bucket';
-@import 'work';
-@import 'skills';
-@import 'photos';
-@import 'about';
-@import 'style';
+
+@import 'section/container';
+@import 'section/work';
+@import 'section/skills';
+@import 'section/photos';
+@import 'section/about';
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: 'Muli', sans-serif;
+	background-color: $color-white;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.flexbox-grid {
+	display: flex;
+	.left-col, .right-col {
+		box-sizing: border-box;
+	}
+	.left-col {
+		width: 40%;
+		padding-right: .5em;
+	}
+	.right-col {
+		width: 60%;
+		padding-left: .5em;
+	}
+	@media screen and (max-width: 40em) {
+		display: block;
+		.left-col, .right-col {
+			width: 100%;
+			padding: 0;
+		}
+	}
+}
+
+.container-width {
+	max-width: 1000px;
+	padding: 1em;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+a {
+	color: $color-black;
+	text-decoration: none;
+	padding: 0 2px;
+	border-bottom: 1px solid $color-black;
+	position: relative;
+	z-index: 1;
+	&:hover {
+		transition: all .2s $ease-in-out-cubic;
+		color: $color-black;
+	}
+	&:hover:before {
+		transform: scaleY(1);
+	}
+	&:before {
+		position: absolute;
+		content: "";
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		transition: all .2s $ease-in-out-cubic;
+		transform: scaleY(0);
+		transform-origin: 50% 100%;
+	}
+}
+
+#hero {
+	height: 24em;
+	overflow-y: hidden;
+	transition: all .6s $ease-in-out-cubic;
+	transition-delay: .4s;
+	padding: 0 1em;
+	h1 {
+		font-size: 4em;
+		font-weight: 900;
+		&>span {
+			display: block;
+			.ro::selection, .ro.wave {
+				color: $color-one;
+			}
+			.han::selection, .han.wave {
+				color: $color-two;
+			}
+			.bhan::selection, .bhan.wave {
+				color: $color-three;
+			}
+			.sali::selection, .sali.wave {
+				color: $color-four;
+			}
+		}
+	}
+	&.minimize {
+		height: 0;
+	}
+	@media screen and (max-width: 24em) {
+		padding: 0 2.5em;
+	}
+	@media screen and (max-width: 21em) {
+		padding: 0 2em;
+	}
+	@media screen and (max-width: 19em) {
+		padding: 0 1.5em;
+		h1 {
+			font-size: 3.5em;
+		}
+	}
+}
+/*
+	RESPONSIVE BREAKS
+	40em	640px	(Single column layout)
+	24em	384px
+	21em	336px
+	19em	304px
+*/

@@ -3,10 +3,13 @@
 	background-position: 0 100%;
 	background-repeat: no-repeat;
 	background-image: linear-gradient($color-white, $color-white);
-	transition: background-size .4s linear;
+	transition: background-size .4s $ease-in-out-cubic;
 	-webkit-user-select: none;
 	user-select: none;
 	font-size: 1.25em;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 
 	&[data-bg-color="one"] {
 		background-image: linear-gradient($color-one, $color-one);
@@ -29,36 +32,71 @@
 	&[data-open="true"] {
 		background-size: 100% 100%;
 	}
-	&.sticky-nav {
-		top: 0;
-	}
+
 	.section-nav {
 		padding: .5em 1em .5em;
 		.section-title {
 			cursor: pointer;
 			padding: .5em 0 .3em; // padding-bottom effectively .5em => .2em border-bottom
 			transform: translateX(0) translateY(0);
-
-			span {
-				display: inline-block;
-				width: 4em;
-				text-align: center;
-			}
-
+			box-sizing: border-box;
+			position: relative;
+			transition-duration: .4s;
 			&[data-bg-color="one"] {
-				@include animated-bg($color-one);
+				@include navbar-bg($color-one);
 			}
 
 			&[data-bg-color="two"] {
-				@include animated-bg($color-two);
+				@include navbar-bg($color-two);
 			}
 
 			&[data-bg-color="three"] {
-				@include animated-bg($color-three);
+				@include navbar-bg($color-three);
 			}
 
 			&[data-bg-color="four"] {
-				@include animated-bg($color-four);
+				@include navbar-bg($color-four);
+			}
+			span{
+				position: relative;
+				z-index: 1;
+				display: inline-block;
+				width: 4em;
+				text-align: center;
+				&:before {
+					content: attr(data-section-name)
+				}
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				z-index: 0;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				transform: scaleY(0);
+				transform-origin: 50% 100%;
+				transition: transform .4s cubic-bezier(0.77, 0, 0.175, 1);
+			}
+			&.active {
+				span:before {
+					content: '\00d7';
+				}
+			}
+			&.wave {
+				color: $color-white;
+				&:before {
+					transform: scaleY(1);
+				}
+			}
+			@media (hover:hover) {
+				&:hover {
+					color: $color-white;
+					&:before {
+						transform: scaleY(1);
+					}
+				}
 			}
 		}
 	}

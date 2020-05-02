@@ -5,12 +5,9 @@
 	width: 3em;
 	height: 3em;
 	z-index: 3;
-	transition: all .3s linear;
 	display: flex;
 	align-items: center;
 	flex-direction: row-reverse;
-	-webkit-user-select: none;
-	user-select: none;
 	div .bucket-tooltip-assist, .bucket-tooltip-action {
 		opacity: 0;
 		margin-right: .5em;
@@ -18,25 +15,25 @@
 		padding: .25em .5em;
 		border-radius: .5em;
 		background-color: $color-white;
-		transition: opacity .5s ease-in-out;
+		transition: opacity .5s $ease-in-out-cubic;
 	}
 	img {
-		border-radius: .6em;
+		border-radius: .5em;
 		opacity: .4;
 		width: 100%;
 		cursor: pointer;
-		transition: all .3s ease-in-out;
+		transition: all .3s $ease-in-out-cubic;
 		transform: rotate(0deg);
 		flex-shrink: 0;
 		&:hover {
 			transform: rotate(-20deg);
 		}
+		&::selection {
+			background-color: $color-transparent;
+		}
 	}
 	.bucket-tooltip-action {
 		display: none;
-	}
-	&:hover .bucket-tooltip-assist {
-		opacity: 1;
 	}
 	&.changing {
 		div .bucket-tooltip-action {
@@ -61,8 +58,8 @@
 	}
 }
 #section-container.active .bucket {
-	width: 2em;
-	height: 2em;
+	width: 2.25em;
+	height: 2.25em;
 	.bucket-tooltip-assist, .bucket-tooltip-action {
 		top: 0;
 		right: 3em;

@@ -1,0 +1,62 @@
+#section-container {
+	scroll-behavior: smooth;
+	.title {
+		margin-bottom: 2em;
+		.text-container {
+			font-size: 2em;
+			font-weight: 900;
+			padding: 0 .5em;
+			text-align: center;
+			position: relative;
+
+			.text-underline {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 2;
+				overflow-x: hidden;
+				transform-origin: left bottom;
+
+				&.bg-one {
+					width: 3.5em;
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-one 0%, $color-one 20%, $color-transparent 20%);
+				}
+				&.bg-two {
+					width: 3.5em;
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-two 0%, $color-two 20%, $color-transparent 20%);
+				}
+				&.bg-three {
+					width: 7.5em;
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-three 0%, $color-three 20%, $color-transparent 20%);
+				}
+				&.bg-four {
+					width: 5.5em;
+					background-image: linear-gradient(0deg, $color-transparent 0%, $color-four 0%, $color-four 20%, $color-transparent 20%);
+				}
+				.text {
+					position: relative;
+					z-index: 1;
+					display: block;
+					overflow-y: hidden;
+				}
+			}
+		}
+	}
+	#id-work *::selection {
+		background-color: $color-one;
+	}
+	#id-skills *::selection {
+		background-color: $color-two;
+	}
+	#id-photos *::selection {
+		background-color: $color-three;
+	}
+	#id-about *::selection {
+		background-color: $color-four;
+	}
+	@media screen and (max-width: 24em){
+		overflow-y: hidden;
+	}
+}

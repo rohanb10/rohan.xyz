@@ -17,3 +17,6 @@ $color-one:    var(--color-1);
 $color-two:    var(--color-2);
 $color-three:  var(--color-3);
 $color-four:   var(--color-4);
+
+$ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1);
+$ease-up-out-cubic: cubic-bezier(.77,-.36,.08,1);

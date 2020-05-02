@@ -92,16 +92,16 @@ a {
 		font-weight: 900;
 		&>span {
 			display: block;
-			.ro::selection, .ro.wave {
+			.ro.wave {
 				color: $color-one;
 			}
-			.han::selection, .han.wave {
+			.han.wave {
 				color: $color-two;
 			}
-			.bhan::selection, .bhan.wave {
+			.bhan.wave {
 				color: $color-three;
 			}
-			.sali::selection, .sali.wave {
+			.sali.wave {
 				color: $color-four;
 			}
 		}

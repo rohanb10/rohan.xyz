@@ -1,4 +1,4 @@
-var navbar, navbarSections, active_section = null, active_work = '', active_photo = null;
+var navbar, navbarSections, names, active_section = null, active_work = '', active_photo = null;
 
 // clear hash on page load
 history.pushState(null, null, window.location.pathname);
@@ -14,6 +14,18 @@ window.addEventListener('popstate', () => {
 document.addEventListener('DOMContentLoaded', () => {
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
+	names = document.querySelectorAll('#hero span span');
+	navbarSections.forEach((span,i) => {
+		span.addEventListener('mousemove', () => {
+			console.log('hello', i);
+			names[i].classList.add('wave');
+		});
+		span.addEventListener('mouseout', () => {
+			console.log('bye', i);
+			names[i].classList.remove('wave');
+		});
+	});
+	
 	navbarSections.forEach(section => {
 		section.onmouseover = () => killWave();
 		section.onmouseout = () => { if (active_section === null) startWave() }
@@ -128,17 +140,19 @@ var wave, crests = [];
 function ripple(interval = 0) {
 	setTimeout(function () {
 		navbarSections.forEach((s, i, sections) => {
-			crests[i] = setTimeout(rippleUp, 150 * i, s);
-			setTimeout(rippleDown, (sections.length * 150) + (200 * i), s);
+			crests[i] = setTimeout(rippleUp, 150 * i, s, names[i]);
+			setTimeout(rippleDown, (sections.length * 150) + (200 * i), s, names[i]);
 		});
 	}, interval);
 }
 
-function rippleUp(section) {
+function rippleUp(section, name) {
 	section.classList.add('wave');
+	name.classList.add('wave');
 }
-function rippleDown(section) {
+function rippleDown(section, name) {
 	section.classList.remove('wave');
+	name.classList.remove('wave');
 }
 
 function startWave() {
@@ -150,7 +164,7 @@ function killWave() {
 	clearInterval(wave);
 	navbarSections.forEach((s,i) => {
 		clearTimeout(crests[i]);
-		rippleDown(s);
+		rippleDown(s, names[i]);
 	});
 }
 

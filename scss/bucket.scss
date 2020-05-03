@@ -8,6 +8,8 @@
 	display: flex;
 	align-items: center;
 	flex-direction: row-reverse;
+	transition: all .3s ease-in-out;
+	transition-delay: .5s;
 	div .bucket-tooltip-assist, .bucket-tooltip-action {
 		opacity: 0;
 		margin-right: .5em;

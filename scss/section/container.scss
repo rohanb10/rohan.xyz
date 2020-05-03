@@ -16,7 +16,7 @@
 				left: 0;
 				right: 0;
 				z-index: 2;
-				overflow-x: hidden;
+				overflow: hidden;
 				transform-origin: left bottom;
 
 				&.bg-one {
@@ -39,7 +39,6 @@
 					position: relative;
 					z-index: 1;
 					display: block;
-					overflow-y: hidden;
 				}
 			}
 		}

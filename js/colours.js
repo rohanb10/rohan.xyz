@@ -16,7 +16,7 @@ function changeColours(c){
 		root.style.setProperty(`--color-${i}`, hex);
 		returnString += hex + ', ';
 	});
-	currentSchemeIndex = -1;
+	currentScheme = -1;
 	return returnString;
 }
 console.log(`changeColours(['#AAAAAA', '#BBBBBB', '#CCCCCC', '#DDDDDD'])`);
@@ -56,7 +56,7 @@ function transitionColorScheme(index, callback) {
 function changeColorScheme(index, shuffle = true) {
 	if (index < 0 || index >= COLOR_SCHEMES.length) return 'Please enter a valid index';
 	// check if manually set or pick from random
-	index = index || currentSchemeIndex;
+	index = index || currentScheme;
 
 	var scheme = COLOR_SCHEMES[index];
 	if (shuffle) scheme.sort(() => {return 0.5 - Math.random()});
@@ -71,28 +71,27 @@ function changeColorScheme(index, shuffle = true) {
 function bucket(el) {
 	if (el.parentElement.classList.contains('changing')) return;
 
-	var nextSchemeIndex = currentSchemeIndex + 1 < Object.keys(COLOR_SCHEMES).length ? currentSchemeIndex + 1 : 0;
-	console.log(currentSchemeIndex, nextSchemeIndex);
+	var nextScheme = currentScheme + 1 < Object.keys(COLOR_SCHEMES).length ? currentScheme + 1 : 0;
 	// show / modify tooltip
 	el.parentElement.classList.add('changing');
 	setTimeout(() => {el.parentElement.classList.remove('changing')}, 1500);
 
 	if (active_section !== null) {
-		transitionColorScheme(nextSchemeIndex, () => {
+		transitionColorScheme(nextScheme, () => {
 			ripple();
 		});
 	} else {
 		var isWavy = navbar.querySelector('.section-title.wave');
 		killWave();
 		setTimeout(() => {
-			changeColorScheme(nextSchemeIndex);
+			changeColorScheme(nextScheme);
 			ripple();
 			startWave();
 		}, isWavy ? 400 : 0);
 	}
-	currentSchemeIndex = nextSchemeIndex
-	track(`Colour Changed: ${nextSchemeIndex}`, '#bucket');
+	currentScheme = nextScheme
+	track(`Colour Changed: ${nextScheme}`, '#bucket');
 }
 
-var currentSchemeIndex = 0;
+var currentScheme = 0;
 changeColorScheme();

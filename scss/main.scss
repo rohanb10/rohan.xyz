@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap');
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	html:after {
+		content: 'Use a better browser to see this website. NASA uses Google Ultron. And yet here you are on IE';
+		margin: 6em;
+		position: absolute;
+	}
+	body {
+		display: none;
+	}
+}
+
 @import 'variables';
 @import 'mixins';
 @import 'animations';
@@ -92,17 +103,45 @@ a {
 		font-weight: 900;
 		&>span {
 			display: block;
-			.ro.wave {
-				color: $color-one;
+			.ro {
+				background-image: linear-gradient(0deg, $color-one, $color-one 50%, #000 50%);
+				&.wave {
+					color: $color-one;
+				}
 			}
-			.han.wave {
-				color: $color-two;
+			.han {
+				background-image: linear-gradient(0deg, $color-two, $color-two 50%, #000 50%);
+				&.wave {
+					color: $color-two;
+				}
 			}
-			.bhan.wave {
-				color: $color-three;
+			.bhan {
+				background-image: linear-gradient(0deg, $color-three, $color-three 50%, #000 50%);
+				&.wave {
+					color: $color-three;
+				}
 			}
-			.sali.wave {
-				color: $color-four;
+			.sali {
+				background-image: linear-gradient(0deg, $color-four, $color-four 50%, #000 50%);
+				&.wave {
+					color: $color-four;
+				}
+			}
+			.ro, .han, .bhan, .sali {
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-size: 100% 200%;
+				background-position: 0% 0%;
+				transition: background-position .3s linear;
+				&.wave {
+					background-position: 100% 100%;
+				}
+				@supports (-ms-ime-align:auto) {
+					background: none;
+				}
+				@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+					background: none;
+				}
 			}
 		}
 	}

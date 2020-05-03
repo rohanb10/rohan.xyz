@@ -43,7 +43,7 @@ function transitionColorScheme(index, callback) {
 			rgb.forEach((cc,j) => {
 				rgb[j] = cc > nextColors[i][j] ? cc - 1 : cc < nextColors[i][j] ? cc + 1 : cc;
 			})
-			root.setProperty(`--color-${i+1}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
+			root.setProperty(`--color-${i}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
 			if (rgb[0] === nextColors[i][0] && rgb[1] === nextColors[i][1] && rgb[2] === nextColors[i][2]) {
 				clearInterval(colorTimers[i]);
 				if (++done >= 4 && callback) callback();

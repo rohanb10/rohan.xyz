@@ -30,3 +30,177 @@ const PHOTOS = [
 	{index: 28, bg: "#709BC3", caption: "Four Mile Trail, Yosemite National Park, California"},
 	{index: 29, bg: "#E9906E", caption: "Shilshole Bay, Ballard, Seattle, Washington"}
 ];
+
+function genThumbnails() {
+	const thumbContainer = document.getElementById('thumbnail-container');
+	const delay = 2000;
+	var thumbs = [];
+
+	// Reset container
+	thumbContainer.innerHTML = '';
+
+	// Shuffle array
+	PHOTOS.sort(() => {return 0.5 - Math.random()});
+	
+	// Build each thumbnail DOMobject, loading placeholder and zoom
+	PHOTOS.forEach((t, i) => {
+		var thumb = Object.assign(document.createElement('div'), {
+			className: 'thumb fade-in-up',
+			// className: 'thumb',
+			style: `animation-delay: ${((i < 15) ? delay + parseInt(i * 100) : 0)}ms`,
+			onclick: () => openPhotoModal(i),
+		});
+
+		var placeholder = Object.assign(document.createElement('div'), {
+			className: 'placeholder',
+			style: `background-color: ${t.bg}`,
+		});
+		thumb.appendChild(placeholder);
+
+		var img = Object.assign(document.createElement('img'), {
+			src: `assets/photos/thumb/${t.index}.jpg`,
+			onload: () => {
+				placeholder.style.opacity = 0;
+				setTimeout(() => {placeholder.style.display = 'none'}, 500);
+			},
+			onerror: () => {placeholder.style.display = 'none'},
+		});
+		img.onmouseover = () => {
+			setTimeout(() => {
+				img.addEventListener('mousemove', panZoom, false, this);
+			}, 300);
+		}
+		img.onmouseout = () => {
+			img.removeEventListener('mousemove', panZoom);
+		}
+		thumb.appendChild(img);
+
+		thumbContainer.appendChild(thumb);
+	})
+}
+
+function panZoom(e){
+	e.target.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`
+}
+
+function openPhotoModal(i) {
+	loadPhoto(i);
+	animateIn('.photo-modal', 'slide-in-up', null, 500);
+
+	// ESC key to close modal
+	document.addEventListener('keydown', function _close(e) {
+		if (e.keyCode === 39) nextPhoto();
+		if (e.keyCode === 37) prevPhoto();
+		if (e.keyCode === 27) {
+			closePhotoModal();
+			document.removeEventListener('keydown', _close);
+		}
+	});
+}
+
+function closePhotoModal() {
+	animateOut('.photo-modal', 'slide-out-bottom', () => {
+		document.querySelector('.photo-container').style.backgroundImage = '';
+		document.querySelector('.caption').innerHTML = '';
+		startLoadingAnimation();
+	});
+	history.pushState('', '', '#photos');
+}
+
+ 
+function nextPhoto() {
+	if (active_photo + 1 >= PHOTOS.length || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
+	active_photo++;
+	startLoadingAnimation(true);
+	loadPhoto(active_photo, 500);
+}
+
+function prevPhoto() {
+	if (active_photo <= 0 || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
+	active_photo--;
+	startLoadingAnimation(true);
+	loadPhoto(active_photo, 500);
+}
+
+
+function loadPhoto(i, delay = 0) {
+	// Load image in background before showing in div
+	Object.assign(document.createElement('img'), {
+		src: `assets/photos/${PHOTOS[i].index}.jpg`,
+		onload: () => {
+			setTimeout(() => {
+				document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
+				endLoadingAnimation();
+				track(identifyPhoto(PHOTOS[i].caption));
+			}, delay);
+		},
+		onerror: () => {endLoadingAnimation()},
+	});
+	history.pushState('', '', `#photos?${i+1}`);
+	document.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
+	active_photo = i;
+
+	var next = document.querySelector('.modal-next-btn');
+	var prev = document.querySelector('.modal-prev-btn');
+	if (active_photo + 1 >= PHOTOS.length) {
+		next.classList.add('disabled');
+	} else if (active_photo <= 0) {
+		prev.classList.add('disabled');
+	} else {
+		next.classList.remove('disabled');
+		prev.classList.remove('disabled');
+	}
+}
+
+
+// Animate the loading bars out and then fadeout the overlay
+function endLoadingAnimation() {
+	var modalDiv = document.querySelector('.modal-content')
+	var bars = modalDiv.querySelectorAll('.bars div');
+	var animationCount = bars.length;
+	var completedAnimations = 0;
+
+	bars.forEach((bar, i) => {
+		bar.addEventListener('animationiteration', function _listener(e) {
+			if (i === 0 || completedAnimations > 0){
+				e.target.classList.add('done');
+				completedAnimations++;
+				bar.removeEventListener('animationiteration', _listener);
+			}
+			if (completedAnimations >= animationCount) {
+				setTimeout(() => {
+					modalDiv.classList.add('loaded');
+				}, 500);
+			}
+		});
+	});
+}
+
+function startLoadingAnimation(alreadyOpen = false) {
+	var modalDiv = document.querySelector('.modal-content');
+	modalDiv.classList.remove('loaded');
+	if (alreadyOpen) {
+		modalDiv.classList.add('no-staggered-delays');	
+	} else {
+		modalDiv.classList.remove('no-staggered-delays');
+	}
+
+	modalDiv.querySelectorAll('.bars div').forEach((bar, i) => {
+		setTimeout(() => {bar.classList.remove('done')}, i * 100);
+	});
+}
+
+function formatCaptions(c) {
+	var locationIndex = c.lastIndexOf(',', c.lastIndexOf(',') - 1) + 1;
+	return c.substr(0, locationIndex) + '<br>' + c.substr(locationIndex);
+}
+
+function identifyPhoto(c) {
+	if (c.substr(0, c.indexOf(',')).indexOf('Park') >= 0 || c.indexOf(',') <= 12) return c.substr(0, c.indexOf(','));
+	var stop = c.indexOf(' ');
+	while (stop < 12) {
+		stop = c.indexOf(' ', stop + 1);
+		if (c.indexOf(',') <= stop) return c.substr(0, c.indexOf(','));
+	}
+	return c.substr(0, stop);
+}

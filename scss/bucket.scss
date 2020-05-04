@@ -1,7 +1,7 @@
 .bucket {
 	position: fixed;
-	bottom: 1em;
-	right: 1em;
+	bottom: 1.5em;
+	right: 1.5em;
 	z-index: 3;
 	display: flex;
 	align-items: center;
@@ -70,8 +70,8 @@
 }
 #section-container.active .bucket {
 	@media screen and (min-width: 40em) {
-		bottom: .75em;
-		right: .75em;
+		bottom: 1em;
+		right: 1em;
 		img {
 			width: 2.25em;
 			height: 2.25em;

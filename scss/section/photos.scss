@@ -64,10 +64,12 @@
 	}
 
 	.modal-content {
-		display: block;
+		display: flex;
+		flex-direction: column;
 		width: 100%;
-		height: 95%;
 		margin: auto;
+		align-items:center;
+		justify-content: center;
 		&.loaded {
 			.photo-container .loading {
 				opacity: 0;
@@ -91,7 +93,8 @@
 		}
 
 		.photo-container {
-			height: 80%;
+			height: 80vh;
+			width: 100vw;
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -131,6 +134,9 @@
 						transform: translateY(100vh);
 					}
 				}
+			}
+			@media screen and (max-width: 40em) {
+				height: 60vh;
 			}
 		}
 		.caption-container, .button-container {

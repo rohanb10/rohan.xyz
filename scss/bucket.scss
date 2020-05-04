@@ -2,73 +2,86 @@
 	position: fixed;
 	bottom: 1em;
 	right: 1em;
-	width: 3em;
-	height: 3em;
 	z-index: 3;
 	display: flex;
 	align-items: center;
 	flex-direction: row-reverse;
 	transition: all .3s ease-in-out;
-	transition-delay: .5s;
-	div .bucket-tooltip-assist, .bucket-tooltip-action {
-		opacity: 0;
+	img {
+		width: 3em;
+		height: 3em;
+		cursor: pointer;
+		transition: all .3s $ease-in-out-cubic;
+		border-radius: .5em;
+		transform: rotate(0deg);
+		flex-shrink: 0;
+		background-position: center center;
+		background-size: 100%;
+		background-repeat: no-repeat;
+		background-image: url('../assets/paint-bucket-spill.png');
+		&:hover {
+			transform: rotate(-20deg);
+			background-size: 95% 95%;
+			background-image: linear-gradient(45deg, 
+				var(--next-color-0), var(--next-color-0) 30%, 
+				var(--next-color-1) 30%, var(--next-color-1) 47%, 
+				var(--next-color-2) 47%, var(--next-color-2) 60%, 
+				var(--next-color-3) 60%);
+		}
+		&::selection {
+			background-color: $color-transparent;
+		}
+	}
+
+	.tooltip {
+		touch-actions: unset;
+		pointer-events: unset;
 		margin-right: .5em;
 		white-space: nowrap;
 		padding: .25em .5em;
 		border-radius: .5em;
 		background-color: $color-white;
 		transition: opacity .5s $ease-in-out-cubic;
-	}
-	img {
-		border-radius: .5em;
-		opacity: .4;
-		width: 100%;
-		cursor: pointer;
-		transition: all .3s $ease-in-out-cubic;
-		transform: rotate(0deg);
-		flex-shrink: 0;
-		&:hover {
-			transform: rotate(-20deg);
-		}
-		&::selection {
-			background-color: $color-transparent;
+		opacity: 0;
+		&:before {
+			content: attr(data-hover)
 		}
 	}
-	.bucket-tooltip-action {
-		display: none;
+	img:hover + .tooltip, .tooltip.changing {
+		opacity: 1;
 	}
 	&.changing {
-		div .bucket-tooltip-action {
-			display: block;
-			opacity: 1;
-		}
-		div .bucket-tooltip-assist {
-			display: none;
-		}
 		img, img:hover {
-			opacity: .6;
 			transform: rotate(-45deg);
+		}
+		.tooltip {
+			opacity: 1;
+			&:before {
+				content: attr(data-click);
+			}
 		}
 	}
 	@media screen and (max-width: 56em) {
-		width: 2.5em;
-		height: 2.5em;
-		.bucket-tooltip-assist, .bucket-tooltip-action {
-			top: 0;
-			right: 3em;
+		img {
+			width: 2.5em;
+			height: 2.5em;
 		}
 	}
 }
 #section-container.active .bucket {
-	width: 2.25em;
-	height: 2.25em;
-	.bucket-tooltip-assist, .bucket-tooltip-action {
-		top: 0;
-		right: 3em;
+	@media screen and (min-width: 40em) {
+		bottom: .75em;
+		right: .75em;
+		img {
+			width: 2.25em;
+			height: 2.25em;
+		}
+		.tooltip {
+			font-size: .8em;
+		}
 	}
-	@media screen and (max-width: 24em) {
-		opacity: 0;
-		touch-action: unset;
-		pointer-events: unset;
+	@media screen and (max-width: 40em) {
+		right: -3em;
+		transition-delay: .5s;
 	}
 }

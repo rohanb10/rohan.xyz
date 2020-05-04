@@ -11,24 +11,6 @@ window.addEventListener('popstate', () => {
 	hideAllSections();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-	navbar = document.getElementById('navigation');
-	navbarSections = navbar.querySelectorAll('.section-title');
-	names = document.querySelectorAll('#hero span span');
-	navbarSections.forEach((span,i) => {
-		span.addEventListener('mousemove', () => {names[i].classList.add('wave')});
-		span.addEventListener('mouseout', () => {names[i].classList.remove('wave')});
-	});
-	
-	navbarSections.forEach(section => {
-		section.onmouseover = () => killWave();
-		section.onmouseout = () => { if (active_section === null) startWave() }
-	});
-	ripple(1000);
-	startWave();
-}, false);
-
-
 // Wave
 var wave, crests = [];
 function ripple(interval = 0) {
@@ -203,3 +185,29 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	if (callback) callback();
 }
 
+var debounced;
+function mobileViewportHack() {
+	document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+window.addEventListener('resize', () => {
+	clearTimeout(debounced);
+	debounced = setTimeout(mobileViewportHack, 1000);
+});
+mobileViewportHack();
+
+document.addEventListener('DOMContentLoaded', () => {
+	navbar = document.getElementById('navigation');
+	navbarSections = navbar.querySelectorAll('.section-title');
+	names = document.querySelectorAll('#hero span span');
+	navbarSections.forEach((span,i) => {
+		span.addEventListener('mousemove', () => {names[i].classList.add('wave')});
+		span.addEventListener('mouseout', () => {names[i].classList.remove('wave')});
+	});
+	
+	navbarSections.forEach(section => {
+		section.onmouseover = () => killWave();
+		section.onmouseout = () => { if (active_section === null) startWave() }
+	});
+	ripple(1000);
+	startWave();
+}, false);

@@ -1,8 +1,8 @@
 const PHOTOS = [
 	{index: 0, bg: "#89979A", caption: "Kangchendzonga National Park, Sikkim, India"},
 	{index: 1, bg: "#6D86B8", caption: "Half Dome from Glacier Point, Yosemite National Park, California"},
-	{index: 2, bg: "#82B0D8", caption: "Blue Lake, Inyo National Forest, California"},
-	{index: 3, bg: "#B36F3C", caption: "Lakes Trail, Kings Canyon National Park, California"},
+	{index: 2, bg: "#82B0D8", caption: "Blue Lake, John Muir Wilderness, Inyo National Forest, California"},
+	{index: 3, bg: "#B36F3C", caption: "Emerald Lake, Lakes Trail, Kings Canyon National Park, California"},
 	{index: 4, bg: "#2F343B", caption: "Horsetooth Mountain, Fort Collins, Colorado"},
 	{index: 5, bg: "#B8C9CC", caption: "Dolores Park, Mission, San Francisco, California"},
 	{index: 6, bg: "#8B6151", caption: "Kaibab National Forest, Grand Canyon, Arizona"},

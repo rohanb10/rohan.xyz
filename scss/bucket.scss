@@ -19,17 +19,6 @@
 		background-size: 100%;
 		background-repeat: no-repeat;
 		background-image: url('../assets/paint-bucket-spill.png');
-		@media (hover:hover) {
-			&:hover {
-				transform: rotate(-20deg);
-				background-size: 95% 95%;
-				background-image: linear-gradient(45deg, 
-					var(--next-color-0), var(--next-color-0) 30%, 
-					var(--next-color-1) 30%, var(--next-color-1) 47%, 
-					var(--next-color-2) 47%, var(--next-color-2) 60%, 
-					var(--next-color-3) 60%);
-			}
-		}
 	}
 	
 
@@ -40,7 +29,7 @@
 		white-space: nowrap;
 		padding: .25em .5em;
 		border-radius: .5em;
-		background-color: $color-white;
+		background-color: $c-w;
 		transition: opacity .5s $ease-in-out-cubic;
 		opacity: 0;
 		&:before {
@@ -57,11 +46,7 @@
 		img:hover {
 			transform: rotate(-20deg);
 			background-size: 95% 95%;
-			background-image: linear-gradient(45deg, 
-				var(--next-color-0), var(--next-color-0) 30%, 
-				var(--next-color-1) 30%, var(--next-color-1) 47%, 
-				var(--next-color-2) 47%, var(--next-color-2) 60%, 
-				var(--next-color-3) 60%);
+			background-image: linear-gradient(45deg, var(--nc-0), var(--nc-0) 30%, var(--nc-1) 30%, var(--nc-1) 47%, var(--nc-2) 47%, var(--nc-2) 60%, var(--nc-3) 60%);
 		}
 	}
 	&.changing {
@@ -69,11 +54,7 @@
 			transform: rotate(-45deg);
 			@media (hover:none) {
 				background-size: 95% 95%;
-				background-image: linear-gradient(45deg, 
-					var(--color-0), var(--color-0) 30%, 
-					var(--color-1) 30%, var(--color-1) 47%, 
-					var(--color-2) 47%, var(--color-2) 60%, 
-					var(--color-3) 60%);
+				background-image: linear-gradient(45deg, $c-1, $c-1 30%, $c-2 30%, $c-2 47%, $c-3 47%, $c-3 60%, $c-4 60%);
 			}
 		}
 		.tooltip {

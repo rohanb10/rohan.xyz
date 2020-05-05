@@ -76,6 +76,11 @@ function navControl(navButton) {
 }
 
 function showSection(sectionID) {
+	// load smoothscroll polyfill if not loaded already
+	var head = document.querySelector('head');
+	if (head.querySelector('script').name === undefined) {
+		head.prepend(Object.assign(document.createElement('script'), {src: 'js/smoothscroll.js', name:'ss_polyfill'}));
+	}
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
@@ -151,7 +156,7 @@ function workPicker(element, workName) {
 	active_work = workName;
 	//  Scroll down to card if mobile device (40em)
 	if (window.innerWidth <= 640) {
-		window.scroll({ top: document.querySelector(`#${active_section} .left-col`).scrollHeight, left: 0, behavior: 'smooth' });
+		card.parentElement.scrollIntoView({behavior:'smooth'});
 	}
 	history.pushState('', '', `#work?${workName}`);
 	track(`Work - ${workName}`);
@@ -191,7 +196,7 @@ function mobileViewportHack() {
 }
 window.addEventListener('resize', () => {
 	clearTimeout(debounced);
-	debounced = setTimeout(mobileViewportHack, 1000);
+	debounced = setTimeout(mobileViewportHack, 100);
 });
 mobileViewportHack();
 

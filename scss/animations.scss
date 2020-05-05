@@ -23,14 +23,10 @@
 }
 
 @keyframes slide-in-up {
-	0% {
+	from {
 		transform: translateY(100vh);
-		opacity: 0;
 	}
-	1% {
-		opacity: 1;
-	}
-	100% {
+	to {
 		transform: translateY(0);
 	}
 }

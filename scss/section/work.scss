@@ -27,7 +27,7 @@
 			background-color: #ddd;
 		}
 		&:active, &.active {
-			border: 2px solid $color-one;
+			border: 2px solid $c-1;
 		}
 	}
 
@@ -37,8 +37,8 @@
 		.card{
 			max-width: 30em;
 			margin: 1em auto;
-			border: 2px solid $color-black;
-			background-color: $color-white;
+			border: 2px solid $c-b;
+			background-color: $c-w;
 			border-radius: 4px;
 			position: relative;
 			display: block;
@@ -56,7 +56,7 @@
 				width: 8em;
 				height: 8em;
 				border-radius: 100px;
-				border: 2px solid $color-black;
+				border: 2px solid $c-b;
 				background-color: white;
 				background-size: cover;
 			}
@@ -93,7 +93,7 @@
 					padding-inline-start: 1.2em;
 				}
 				a {
-					@include hyperlink($color-one, $color-white);
+					@include hyperlink($c-1, $c-w);
 				}
 			}
 		}

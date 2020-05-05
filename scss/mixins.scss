@@ -19,12 +19,12 @@
 	}
 }
 
-@mixin hyperlink($background-color, $hover-color: $color-black) {
-	color: $color-black;
+@mixin hyperlink($background-color, $hover-color: $c-b) {
+	color: $c-b;
 	border-color: $background-color;
 
 	&:before {
-		background-image: linear-gradient(0deg, $background-color 0%, $background-color 100%, $color-white 100%);
+		background-image: linear-gradient(0deg, $background-color 0%, $background-color 100%, $c-w 100%);
 	}
 
 	&:hover {

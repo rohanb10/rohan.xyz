@@ -21,39 +21,39 @@
 
 				&.bg-one {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $color-transparent 0%, $color-one 0%, $color-one 20%, $color-transparent 20%);
+					background-image: linear-gradient(0deg, $c-t 0%, $c-1 0%, $c-1 20%, $c-t 20%);
 				}
 				&.bg-two {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $color-transparent 0%, $color-two 0%, $color-two 20%, $color-transparent 20%);
+					background-image: linear-gradient(0deg, $c-t 0%, $c-2 0%, $c-2 20%, $c-t 20%);
 				}
 				&.bg-three {
 					width: 7.5em;
-					background-image: linear-gradient(0deg, $color-transparent 0%, $color-three 0%, $color-three 20%, $color-transparent 20%);
+					background-image: linear-gradient(0deg, $c-t 0%, $c-3 0%, $c-3 20%, $c-t 20%);
 				}
 				&.bg-four {
 					width: 5.5em;
-					background-image: linear-gradient(0deg, $color-transparent 0%, $color-four 0%, $color-four 20%, $color-transparent 20%);
+					background-image: linear-gradient(0deg, $c-t 0%, $c-4 0%, $c-4 20%, $c-t 20%);
 				}
 				.text {
-					position: relative;
 					z-index: 1;
 					display: block;
+					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 				}
 			}
 		}
 	}
 	#id-work *::selection {
-		background-color: $color-one;
+		background-color: $c-1;
 	}
 	#id-skills *::selection {
-		background-color: $color-two;
+		background-color: $c-2;
 	}
 	#id-photos *::selection {
-		background-color: $color-three;
+		background-color: $c-3;
 	}
 	#id-about *::selection {
-		background-color: $color-four;
+		background-color: $c-4;
 	}
 	@media screen and (max-width: 24em){
 		overflow-y: hidden;

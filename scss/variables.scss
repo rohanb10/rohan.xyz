@@ -1,21 +1,21 @@
 
 // Fixed colours
-$color-white: #fff;
-$color-black: #000;
-$color-transparent: rgba(0,0,0,0);
+$c-w: #fff;
+$c-b: #000;
+$c-t: rgba(0,0,0,0);
 
 // Dynamic colours
 :root {
-	--color-0:  $color-white;
-	--color-1:  $color-white;
-	--color-2:  $color-white;
-	--color-3:  $color-white;
+	--c-0:  $c-w;
+	--c-1:  $c-w;
+	--c-2:  $c-w;
+	--c-3:  $c-w;
 }
 
 // These variables are set using JS
-$color-one:    var(--color-0);
-$color-two:    var(--color-1);
-$color-three:  var(--color-2);
-$color-four:   var(--color-3);
+$c-1: var(--c-0);
+$c-2: var(--c-1);
+$c-3: var(--c-2);
+$c-4: var(--c-3);
 
 $ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1);

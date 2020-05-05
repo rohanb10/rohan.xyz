@@ -29,7 +29,7 @@ html, body {
 	padding: 0;
 	width: 100%;
 	font-family: 'Muli', sans-serif;
-	background-color: $color-white;
+	background-color: $c-w;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
@@ -65,15 +65,15 @@ html, body {
 	display: none;
 }
 a {
-	color: $color-black;
+	color: $c-b;
 	text-decoration: none;
 	padding: 0 2px;
-	border-bottom: 1px solid $color-black;
+	border-bottom: 1px solid $c-b;
 	position: relative;
 	z-index: 1;
 	&:hover {
-		transition: all .2s $ease-in-out-cubic;
-		color: $color-black;
+		transition: all .3s linear;
+		color: $c-b;
 	}
 	&:hover:before {
 		transform: scaleY(1);
@@ -86,7 +86,7 @@ a {
 		left: 0;
 		right: 0;
 		z-index: -1;
-		transition: all .2s $ease-in-out-cubic;
+		transition: all .2s linear;
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
 	}
@@ -104,16 +104,16 @@ a {
 		&>span {
 			display: block;
 			.ro {
-				background-image: linear-gradient(0deg, $color-one, $color-one 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-1, $c-1 50%, #000 50%);
 			}
 			.han {
-				background-image: linear-gradient(0deg, $color-two, $color-two 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-2, $c-2 50%, #000 50%);
 			}
 			.bhan {
-				background-image: linear-gradient(0deg, $color-three, $color-three 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-3, $c-3 50%, #000 50%);
 			}
 			.sali {
-				background-image: linear-gradient(0deg, $color-four, $color-four 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-4, $c-4 50%, #000 50%);
 			}
 			.ro, .han, .bhan, .sali {
 				-webkit-background-clip: text;

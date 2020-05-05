@@ -2,7 +2,7 @@
 	z-index: 3;
 	background-position: 0 100%;
 	background-repeat: no-repeat;
-	background-image: linear-gradient($color-white, $color-white);
+	background-image: linear-gradient($c-w, $c-w);
 	transition: background-size .4s $ease-in-out-cubic;
 	-webkit-user-select: none;
 	user-select: none;
@@ -12,19 +12,19 @@
 	top: 0;
 
 	&[data-bg-color="one"] {
-		background-image: linear-gradient($color-one, $color-one);
+		background-image: linear-gradient($c-1, $c-1);
 	}
 
 	&[data-bg-color="two"] {
-		background-image: linear-gradient($color-two, $color-two);
+		background-image: linear-gradient($c-2, $c-2);
 	}
 
 	&[data-bg-color="three"] {
-		background-image: linear-gradient($color-three, $color-three);
+		background-image: linear-gradient($c-3, $c-3);
 	}
 
 	&[data-bg-color="four"] {
-		background-image: linear-gradient($color-four, $color-four);
+		background-image: linear-gradient($c-4, $c-4);
 	}
 	&[data-open="false"] {
 		background-size: 100% 0%;
@@ -43,19 +43,19 @@
 			position: relative;
 			transition-duration: .4s;
 			&[data-bg-color="one"] {
-				@include navbar-bg($color-one);
+				@include navbar-bg($c-1);
 			}
 
 			&[data-bg-color="two"] {
-				@include navbar-bg($color-two);
+				@include navbar-bg($c-2);
 			}
 
 			&[data-bg-color="three"] {
-				@include navbar-bg($color-three);
+				@include navbar-bg($c-3);
 			}
 
 			&[data-bg-color="four"] {
-				@include navbar-bg($color-four);
+				@include navbar-bg($c-4);
 			}
 			span{
 				position: relative;
@@ -85,14 +85,14 @@
 				}
 			}
 			&.wave {
-				color: $color-white;
+				color: $c-w;
 				&:before {
 					transform: scaleY(1);
 				}
 			}
 			@media (hover:hover) {
 				&:hover {
-					color: $color-white;
+					color: $c-w;
 					&:before {
 						transform: scaleY(1);
 					}

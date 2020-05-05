@@ -149,11 +149,17 @@
 			@media screen and (max-width: 40em) {
 				padding: 1em 0;
 				height: 10vh;
+				width: 80%;
 			}
 		}
-		.caption-container .modal-close-btn {
-			text-decoration: underline;
-			cursor: pointer;
+		.caption-container {
+			.caption {
+				width: 100%;
+			}
+			.modal-close-btn {
+				text-decoration: underline;
+				cursor: pointer;
+			}
 		}
 		.button-container {
 			padding: 1em 0 2em;

@@ -115,12 +115,13 @@ a {
 			.sali {
 				background-image: linear-gradient(0deg, $c-4, $c-4 50%, #000 50%);
 			}
-			.ro, .han, .bhan, .sali {
+			span {
+				display: inline;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-size: 100% 200%;
 				background-position: 0% 0%;
-				transition: background-position .3s linear;
+				transition: background-position .4s linear;
 				&.wave {
 					background-position: 100% 100%;
 				}

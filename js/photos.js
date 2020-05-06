@@ -31,52 +31,63 @@ const PHOTOS = [
 	{index: 29, bg: "#E9906E", caption: "Shilshole Bay, Ballard, Seattle, Washington"}
 ];
 
+const thumbs = document.querySelector('.thumbnails');
+const modal = document.querySelector('.photo-modal');
 function genThumbnails() {
-	const thumbContainer = document.getElementById('thumbnail-container');
-	const delay = 2000;
-	var thumbs = [];
+	const delay = 2500;
 
 	// Reset container
-	thumbContainer.innerHTML = '';
+	thumbs.innerHTML = '';
 
 	// Shuffle array
 	PHOTOS.sort(() => {return 0.5 - Math.random()});
 	
 	// Build each thumbnail DOMobject, loading placeholder and zoom
 	PHOTOS.forEach((t, i) => {
-		var thumb = Object.assign(document.createElement('div'), {
-			className: 'thumb fade-in-up',
-			// className: 'thumb',
-			style: `animation-delay: ${((i < 15) ? delay + parseInt(i * 100) : 0)}ms`,
+		var thumbContainer = Object.assign(document.createElement('div'), {
+			className: `thumb-container fade-in delay-${((i < 15) ? delay + parseInt(i * 100) : 0)}`,
 			onclick: () => openPhotoModal(i),
 		});
 
-		var placeholder = Object.assign(document.createElement('div'), {
+		var placeholder = Object.assign(document.createElement('img'), {
 			className: 'placeholder',
-			style: `background-color: ${t.bg}`,
+			src: `assets/photos/thumb/placeholder/${t.index}.svg`,
+			style: `background-color: ${t.bg}`
 		});
-		thumb.appendChild(placeholder);
+		thumbContainer.appendChild(placeholder);
 
 		var img = Object.assign(document.createElement('img'), {
+			className: 'thumb',
 			src: `assets/photos/thumb/${t.index}.jpg`,
-			onload: () => {
-				placeholder.style.opacity = 0;
-				setTimeout(() => {placeholder.style.display = 'none'}, 500);
-			},
-			onerror: () => {placeholder.style.display = 'none'},
 		});
-		img.onmouseover = () => {
+		thumbContainer.onmouseover = () => {
 			setTimeout(() => {
-				img.addEventListener('mousemove', panZoom, false, this);
+				thumbContainer.addEventListener('mousemove', panZoom, false, this);
 			}, 300);
 		}
-		img.onmouseout = () => {
-			img.removeEventListener('mousemove', panZoom);
+		thumbContainer.onmouseout = () => {
+			thumbContainer.removeEventListener('mousemove', panZoom);
 		}
-		thumb.appendChild(img);
+		thumbContainer.appendChild(img);
 
-		thumbContainer.appendChild(thumb);
-	})
+		thumbs.appendChild(thumbContainer);
+	});
+
+	setTimeout(() => {
+		thumbs.querySelectorAll('.thumb-container').forEach(tc => {
+			var p = tc.querySelector('.placeholder');
+			var img = tc.querySelector('.thumb');
+			var removeP = (() => {
+				setTimeout(() => {
+					p.style.opacity = 0
+					img.style.filter = 'blur(0px)'
+				}, 1000);
+				setTimeout(() => {p.style.display = 'none'}, 1500);
+			});
+			img.onload = removeP();
+			if (img.complete) removeP();
+		});
+	}, delay + 1000);
 }
 
 function panZoom(e){
@@ -100,8 +111,8 @@ function openPhotoModal(i) {
 
 function closePhotoModal() {
 	animateOut('.photo-modal', 'slide-out-bottom', () => {
-		document.querySelector('.photo-container').style.backgroundImage = '';
-		document.querySelector('.caption').innerHTML = '';
+		modal.querySelector('.photo-container').style.backgroundImage = '';
+		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
 	history.pushState('', '', '#photos');
@@ -109,14 +120,14 @@ function closePhotoModal() {
 
  
 function nextPhoto() {
-	if (active_photo + 1 >= PHOTOS.length || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
+	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	active_photo++;
 	startLoadingAnimation(true);
 	loadPhoto(active_photo, 500);
 }
 
 function prevPhoto() {
-	if (active_photo <= 0 || !document.querySelector('.bar:last-of-type').classList.contains('done')) return;
+	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	active_photo--;
 	startLoadingAnimation(true);
 	loadPhoto(active_photo, 500);
@@ -129,7 +140,7 @@ function loadPhoto(i, delay = 0) {
 		src: `assets/photos/${PHOTOS[i].index}.jpg`,
 		onload: () => {
 			setTimeout(() => {
-				document.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
+				modal.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
 				track(identifyPhoto(PHOTOS[i].caption));
 			}, delay);
@@ -137,11 +148,11 @@ function loadPhoto(i, delay = 0) {
 		onerror: () => {endLoadingAnimation()},
 	});
 	history.pushState('', '', `#photos?${i+1}`);
-	document.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
+	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
 	active_photo = i;
 
-	var next = document.querySelector('.modal-next-btn');
-	var prev = document.querySelector('.modal-prev-btn');
+	var next = modal.querySelector('.modal-next-btn');
+	var prev = modal.querySelector('.modal-prev-btn');
 	if (active_photo + 1 >= PHOTOS.length) {
 		next.classList.add('disabled');
 	} else if (active_photo <= 0) {
@@ -155,8 +166,7 @@ function loadPhoto(i, delay = 0) {
 
 // Animate the loading bars out and then fadeout the overlay
 function endLoadingAnimation() {
-	var modalDiv = document.querySelector('.modal-content')
-	var bars = modalDiv.querySelectorAll('.bars div');
+	var bars = modal.querySelectorAll('.bars div');
 	var animationCount = bars.length;
 	var completedAnimations = 0;
 
@@ -169,7 +179,7 @@ function endLoadingAnimation() {
 			}
 			if (completedAnimations >= animationCount) {
 				setTimeout(() => {
-					modalDiv.classList.add('loaded');
+					modal.classList.add('loaded');
 				}, 500);
 			}
 		});
@@ -177,15 +187,14 @@ function endLoadingAnimation() {
 }
 
 function startLoadingAnimation(alreadyOpen = false) {
-	var modalDiv = document.querySelector('.modal-content');
-	modalDiv.classList.remove('loaded');
+	modal.classList.remove('loaded');
 	if (alreadyOpen) {
-		modalDiv.classList.add('no-staggered-delays');	
+		modal.classList.add('no-staggered-delays');	
 	} else {
-		modalDiv.classList.remove('no-staggered-delays');
+		modal.classList.remove('no-staggered-delays');
 	}
 
-	modalDiv.querySelectorAll('.bars div').forEach((bar, i) => {
+	modal.querySelectorAll('.bars div').forEach((bar, i) => {
 		setTimeout(() => {bar.classList.remove('done')}, i * 100);
 	});
 }

@@ -34,7 +34,7 @@
 	}
 
 	.section-nav {
-		padding: .5em 1em .5em;
+		padding: .5em 0;
 		.section-title {
 			cursor: pointer;
 			padding: .5em 0 .3em; // padding-bottom effectively .5em => .2em border-bottom
@@ -42,6 +42,7 @@
 			box-sizing: border-box;
 			position: relative;
 			transition-duration: .4s;
+			transition: color .4s cubic-bezier(0.77, 0, 0.175, 1);
 			&[data-bg-color="one"] {
 				@include navbar-bg($c-1);
 			}

@@ -36,11 +36,13 @@ function startWave() {
 	wave = setInterval(ripple, 4000);
 }
 
-function killWave() {
+function killWave(except) {
 	clearInterval(wave);
 	navbarSections.forEach((s,i) => {
-		clearTimeout(crests[i]);
-		rippleDown(s, names[i]);
+		if (i !== except) {
+			clearTimeout(crests[i]);
+			rippleDown(s, names[i]);
+		}
 	});
 }
 
@@ -205,14 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	navbarSections = navbar.querySelectorAll('.section-title');
 	names = document.querySelectorAll('#hero span span');
 	navbarSections.forEach((span,i) => {
+		span.addEventListener('mouseover', () => {killWave(i);names[i].classList.add('wave')});
 		span.addEventListener('mousemove', () => {names[i].classList.add('wave')});
-		span.addEventListener('mouseout', () => {names[i].classList.remove('wave')});
+		span.addEventListener('mouseout', () => {names[i].classList.remove('wave'); if (active_section === null) startWave()});
 	});
-	
-	navbarSections.forEach(section => {
-		section.onmouseover = () => killWave();
-		section.onmouseout = () => { if (active_section === null) startWave() }
-	});
+
 	ripple(1000);
 	startWave();
 }, false);

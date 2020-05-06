@@ -58,18 +58,16 @@
 	}
 }
 
-.fade-in-up {
-	animation: fade-in-up 1s $ease-in-out-cubic both;
-	// @include delays(100, 1500, 12);
+.fade-in {
+	animation: fade-in 1s $ease-in-out-cubic both;
+	@include delays(100, 2500, 15);
 }
 
-@keyframes fade-in-up {
+@keyframes fade-in {
 	from {
-		transform: translateY(60vh);
 		opacity: 0;
 	}
 	to {
-		transform: translateY(0);
 		opacity: 1;
 	}
 }

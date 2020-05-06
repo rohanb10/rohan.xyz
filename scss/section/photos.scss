@@ -99,7 +99,7 @@
 		}
 
 		.photo-container {
-			height: 80vh;
+			height: 75vh;
 			width: 100vw;
 			background-size: contain;
 			background-repeat: no-repeat;
@@ -153,9 +153,8 @@
 			font-size: .8em;
 			margin: auto;
 			max-width: 1000px;
-			padding: 2em 0 1em;
+			padding: 1em 0;
 			@media screen and (max-width: 40em) {
-				padding: 1em 0;
 				height: 10vh;
 				width: 80%;
 			}
@@ -168,15 +167,20 @@
 				text-decoration: underline;
 				cursor: pointer;
 			}
+			@media screen and (min-width: 40em) {
+				padding-top: 2em;
+			}
 		}
 		.button-container {
-			padding: 1em 0 2em;
 			transition: all .5s ease-in-out;
 			.modal-next-btn, .modal-prev-btn, .modal-next-btn.disabled, .modal-prev-btn.disabled {
 				touch-action: none;
 				pointer-events: none;
 				text-decoration: none;
 				color: #AAA;
+			}
+			@media screen and (min-width: 40em) {
+				padding-bottom: 2em;
 			}
 		}
 	}

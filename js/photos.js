@@ -84,8 +84,11 @@ function genThumbnails() {
 				}, 1000);
 				setTimeout(() => {p.style.display = 'none'}, 1500);
 			});
-			img.onload = removeP();
-			if (img.complete) removeP();
+			if (img.complete) {
+				removeP();
+			} else {
+				img.onload = () => {removeP()};
+			}
 		});
 	}, delay + 1000);
 }

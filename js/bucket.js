@@ -78,11 +78,17 @@ function bucket(el) {
 	var nextScheme = nextColourSchemeID();
 
 	el.parentElement.classList.add('changing');
-	setTimeout(() => {el.parentElement.classList.remove('changing')}, 1500);
-
+	var resetBucket = (() => {
+		setTimeout(() => {
+			el.parentElement.classList.remove('changing');
+			changeBucketColours(nextColourSchemeID());
+		}, 1200);
+	})
+	// 1200 is time the last wave is completed
 	if (active_section !== null) {
 		transitionColourScheme(nextScheme, true, () => {
 			ripple();
+			resetBucket();
 		});
 	} else {
 		var isWavy = navbar.querySelector('.section-title.wave');
@@ -91,21 +97,21 @@ function bucket(el) {
 			changeColourScheme(nextScheme, true, () => {
 				ripple();
 				startWave();
+				resetBucket();
 			});
 		}, isWavy ? 400 : 0);
 	}
 
 	currentScheme = nextScheme;
-	changeBucketColours(nextColourSchemeID());
 
 	track(`Colour Changed: ${nextScheme}`, '#bucket');
 }
 
 function changeBucketColours(schemeID) {
-	var root = document.documentElement;
+	var bucket = document.querySelector('.bucket');
 	nextScheme = COLOUR_SCHEMES[schemeID].sort(() => {return 0.5 - Math.random()});
 	nextScheme.forEach((c,i) => {
-		root.style.setProperty(`--nc-${i}`, c);
+		bucket.style.setProperty(`--nc-${i}`, c);
 	});
 }
 

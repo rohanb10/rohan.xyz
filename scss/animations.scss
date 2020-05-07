@@ -60,7 +60,7 @@
 
 .fade-in {
 	animation: fade-in 1s $ease-in-out-cubic both;
-	@include delays(100, 2500, 15);
+	@include delays(100, 2500, 18);
 }
 
 @keyframes fade-in {

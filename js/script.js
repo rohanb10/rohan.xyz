@@ -12,23 +12,23 @@ window.addEventListener('popstate', () => {
 });
 
 // Wave
-var wave, crests = [];
+var wave, crests = [], troughs = [];
 function ripple(interval = 0) {
 	setTimeout(function () {
 		navbarSections.forEach((s, i, sections) => {
 			crests[i] = setTimeout(rippleUp, 150 * i, s, names[i]);
-			setTimeout(rippleDown, (sections.length * 150) + (200 * i), s, names[i]);
+			troughs[i] = setTimeout(rippleDown, (sections.length * 150) + (200 * i), s, names[i]);
 		});
 	}, interval);
 }
 
 function rippleUp(section, name) {
 	section.classList.add('wave');
-	name.classList.add('wave');
+	if (name) name.classList.add('wave');
 }
 function rippleDown(section, name) {
 	section.classList.remove('wave');
-	name.classList.remove('wave');
+	if (name) name.classList.remove('wave');
 }
 
 function startWave() {
@@ -39,8 +39,12 @@ function startWave() {
 function killWave(except) {
 	clearInterval(wave);
 	navbarSections.forEach((s,i) => {
-		if (i !== except) {
-			clearTimeout(crests[i]);
+		// kill all rippleUps
+		clearTimeout(crests[i]);
+		// kill all rippleDowns except i
+		if (i === except) {
+			clearTimeout(troughs[i]);
+		} else {	
 			rippleDown(s, names[i]);
 		}
 	});

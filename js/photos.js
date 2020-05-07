@@ -45,7 +45,7 @@ function genThumbnails() {
 	// Build each thumbnail DOMobject, loading placeholder and zoom
 	PHOTOS.forEach((t, i) => {
 		var thumbContainer = Object.assign(document.createElement('div'), {
-			className: `thumb-container fade-in delay-${((i < 15) ? delay + parseInt(i * 100) : 0)}`,
+			className: `thumb-container fade-in delay-${((i < 18) ? delay + parseInt(i * 100) : 0)}`,
 			onclick: () => openPhotoModal(i),
 		});
 

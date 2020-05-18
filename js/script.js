@@ -65,7 +65,6 @@ function navControl(navButton) {
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
 		hideAllSections();
-		track('Back to Home', '#Home');
 	} else{
 		// open section
 		showSection(sectionID);
@@ -141,6 +140,7 @@ function hideAllSections() {
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
+	track('Back to Home', '#home');
 }
 
 // Work
@@ -170,6 +170,7 @@ function workPicker(element, workName) {
 
 // analytics
 function track(name, el = false) {
+	if (window.location.protocol == 'file:') console.log(`Clicky | ${el ? el : window.location.hash} | ${name}`);return;
 	if (typeof clicky === 'undefined') return;
 	clicky.log(el ? el : window.location.hash, name)
 }
@@ -205,6 +206,12 @@ window.addEventListener('resize', () => {
 	debounced = setTimeout(mobileViewportHack, 100);
 });
 mobileViewportHack();
+
+document.querySelectorAll('.social a').forEach(s => {
+	s.addEventListener('click', () => {
+		track(`Social clicked - ${s.getAttribute('data-name') ? s.getAttribute('data-name') : s.hostname}`);
+	})
+})
 
 document.addEventListener('DOMContentLoaded', () => {
 	navbar = document.getElementById('navigation');

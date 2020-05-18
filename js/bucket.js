@@ -104,7 +104,7 @@ function bucket(el) {
 
 	currentScheme = nextScheme;
 
-	track(`Colour Changed: ${nextScheme}`, '#bucket');
+	track(`Colour Changed: ${currentScheme}`, '#bucket');
 }
 
 function changeBucketColours(schemeID) {

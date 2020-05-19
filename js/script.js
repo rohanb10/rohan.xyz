@@ -12,7 +12,7 @@ window.addEventListener('popstate', () => {
 });
 
 // Wave
-var wave, crests = [], troughs = [];
+var wave, tide, crests = [], troughs = [];
 function ripple(interval = 0) {
 	setTimeout(function () {
 		navbarSections.forEach((s, i, sections) => {
@@ -31,12 +31,15 @@ function rippleDown(section, name) {
 	if (name) name.classList.remove('wave');
 }
 
-function startWave() {
+function startWave(rippleDelay = 0) {
+	if (rippleDelay > 0) ripple(rippleDelay);
 	clearInterval(wave);
-	wave = setInterval(ripple, 4000);
+	clearTimeout(tide);
+	tide = setTimeout(() => {wave = setInterval(ripple, 4000)}, rippleDelay);
 }
 
 function killWave(except) {
+	clearTimeout(tide);
 	clearInterval(wave);
 	navbarSections.forEach((s,i) => {
 		// kill all rippleUps
@@ -133,8 +136,7 @@ function hideAllSections() {
 	
 	document.getElementById('hero').classList.remove('minimize');
 	killWave();
-	ripple(1000);
-	startWave();
+	startWave(1500);
 
 	history.pushState(null, null, window.location.pathname);
 
@@ -175,6 +177,9 @@ function track(name, el = false) {
 	clicky.log(el ? el : window.location.hash, name)
 }
 
+function stopTracking() {
+	track = () => {return};
+}
 
 // Animate functions
 function animateOut(elementName, animationName, callback, animationDuration = 500) {
@@ -220,9 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	navbarSections.forEach((span,i) => {
 		span.addEventListener('mouseover', () => {killWave(i);names[i].classList.add('wave')});
 		span.addEventListener('mousemove', () => {names[i].classList.add('wave')});
-		span.addEventListener('mouseout', () => {names[i].classList.remove('wave'); if (active_section === null) startWave()});
+		span.addEventListener('mouseout', () => {killWave(); if (active_section === null) startWave()});
 	});
-
-	ripple(1000);
-	startWave();
+	startWave(1000);
 }, false);

@@ -124,14 +124,11 @@
 }
 
 @keyframes fade-out-bottom { 
-	0% {
+	from {
 		transform: translateY(0);
 		opacity: 1;
 	}
-	50% {
-		opacity: 0;
-	}
-	100% {
+	to {
 		opacity: 0;
 		transform: translateY(100vh);
 	}

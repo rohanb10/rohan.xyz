@@ -95,11 +95,10 @@ function bucket(el) {
 		killWave();
 		setTimeout(() => {
 			changeColourScheme(nextScheme, true, () => {
-				ripple();
-				startWave();
+				startWave(1);
 				resetBucket();
 			});
-		}, isWavy ? 400 : 0);
+		}, isWavy ? 450 : 0);
 	}
 
 	currentScheme = nextScheme;

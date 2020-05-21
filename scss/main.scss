@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ%21%40%23%24%25%5E%26%2A%28%29~%60%27%22%2C.%3C%3E%7B%7D%5B%5D%3F%2F%3A%3B%7C%5C_-%3D%2B');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ%21%40%23%24%25%5E%26%2A%28%29~%60%27%22%2C.%3C%3E%7B%7D%5B%5D%3F%2F%3A%3B%7C%5C_-%3D%2B');
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html:after {
@@ -22,6 +22,7 @@
 @import 'section/work';
 @import 'section/skills';
 @import 'section/photos';
+@import 'section/maps';
 @import 'section/about';
 
 html, body {
@@ -54,11 +55,23 @@ html, body {
 		}
 	}
 }
+.info-grid {
+	max-width: 650px;
+	padding: 0 2em;
+	margin: 0 auto;
+	.info {
+		margin-bottom: 3em;
+		p {
+			line-height: 1.5em;
+		}
+	}
+}
 
 .container-width {
 	max-width: 1000px;
 	padding: 1em;
 	margin: 0 auto;
+	text-align: center;
 }
 
 .hidden {
@@ -93,7 +106,7 @@ a {
 }
 
 #hero {
-	height: 24em;
+	height: calc(var(--vh, 1vh) * 60);
 	overflow-y: hidden;
 	transition: all .6s $ease-in-out-cubic;
 	transition-delay: .4s;
@@ -112,8 +125,11 @@ a {
 			.bhan {
 				background-image: linear-gradient(0deg, $c-3, $c-3 50%, #000 50%);
 			}
-			.sali {
+			.sa {
 				background-image: linear-gradient(0deg, $c-4, $c-4 50%, #000 50%);
+			}
+			.li {
+				background-image: linear-gradient(0deg, $c-5, $c-5 50%, #000 50%);
 			}
 			span {
 				display: inline;
@@ -134,20 +150,17 @@ a {
 			}
 		}
 	}
-	&.minimize {
-		height: 0;
-	}
 	@media screen and (max-width: 24em) {
 		padding: 0 2.5em;
 	}
 	@media screen and (max-width: 21em) {
+		h1 {
+			font-size: 3.5em;
+		}
 		padding: 0 2em;
 	}
 	@media screen and (max-width: 19em) {
 		padding: 0 1.5em;
-		h1 {
-			font-size: 3.5em;
-		}
 	}
 }
 /*

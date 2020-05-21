@@ -11,20 +11,20 @@
 	position: sticky;
 	top: 0;
 
-	&[data-bg-color="one"] {
+	&[data-bg-color="1"] {
 		background-image: linear-gradient($c-1, $c-1);
 	}
-
-	&[data-bg-color="two"] {
+	&[data-bg-color="2"] {
 		background-image: linear-gradient($c-2, $c-2);
 	}
-
-	&[data-bg-color="three"] {
+	&[data-bg-color="3"] {
 		background-image: linear-gradient($c-3, $c-3);
 	}
-
-	&[data-bg-color="four"] {
+	&[data-bg-color="4"] {
 		background-image: linear-gradient($c-4, $c-4);
+	}
+	&[data-bg-color="5"] {
+		background-image: linear-gradient($c-5, $c-5);
 	}
 	&[data-open="false"] {
 		background-size: 100% 0%;
@@ -35,6 +35,7 @@
 
 	.section-nav {
 		padding: .5em 1em;
+		transition: all .1s linear;
 		.section-title {
 			cursor: pointer;
 			padding: .5em 0 .3em; // padding-bottom effectively .5em => .2em border-bottom
@@ -43,20 +44,23 @@
 			position: relative;
 			transition-duration: .4s;
 			transition: color .4s cubic-bezier(0.77, 0, 0.175, 1);
-			&[data-bg-color="one"] {
+			&[data-bg-color="1"] {
 				@include navbar-bg($c-1);
 			}
 
-			&[data-bg-color="two"] {
+			&[data-bg-color="2"] {
 				@include navbar-bg($c-2);
 			}
 
-			&[data-bg-color="three"] {
+			&[data-bg-color="3"] {
 				@include navbar-bg($c-3);
 			}
 
-			&[data-bg-color="four"] {
+			&[data-bg-color="4"] {
 				@include navbar-bg($c-4);
+			}
+			&[data-bg-color="5"] {
+				@include navbar-bg($c-5);
 			}
 			span{
 				position: relative;
@@ -64,6 +68,7 @@
 				display: inline-block;
 				width: 4em;
 				text-align: center;
+				transition: width .1s linear;
 				&:before {
 					content: attr(data-section-name)
 				}
@@ -101,17 +106,22 @@
 			}
 		}
 	}
-	@media screen and (max-width: 24em) {
+	@media screen and (max-width: 30em) {
 		font-size: 1.1em;
 		.section-nav {
-			text-align: center;
 			padding: .5em 0;
+			.section-title span {
+				width: 3.5em;
+			}
 		}
 	}
 	@media screen and (max-width: 21em) {
-		font-size: 1em;
+		font-size: .9em;
+		.section-nav {
+			padding: .5em 0;
+		}
 	}
 	@media screen and (max-width: 19em) {
-		font-size: .9em;
+		font-size: .8em;
 	}
 }

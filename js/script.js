@@ -1,4 +1,4 @@
-var navbar, navbarSections, names, active_section = null, active_work = '', active_photo = null;
+var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = null;
 
 // clear hash on page load
 history.pushState(null, null, window.location.pathname);
@@ -85,15 +85,12 @@ function navControl(navButton) {
 	}
 }
 
+var mapFilesLoadedCount = 0;
 function showSection(sectionID) {
-	// load smoothscroll polyfill if not loaded already
-	var head = document.querySelector('head');
-	if (head.querySelector('script').name === undefined) {
-		head.prepend(Object.assign(document.createElement('script'), {src: 'js/smoothscroll.js', name:'ss_polyfill'}));
-	}
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
+			loadFile('smoothscroll', 'js')
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
@@ -109,6 +106,24 @@ function showSection(sectionID) {
 			genThumbnails();
 			break;
 
+		case 'id-maps':
+			mapContainer.classList.remove('fade-in');
+			// mapContainer.style.opacity = 0;
+			mapFilesLoadedCount = 0;
+			loadFile('rides', 'js');
+			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js');
+			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css');
+			setTimeout(() => {
+				var allFilesLoaded = setInterval(() => {
+					if (mapFilesLoadedCount >= 3) {
+						if (map === undefined) initializeMap();
+						mapContainer.classList.add('fade-in');
+						// mc.style.opacity = 1;
+						clearTimeout(allFilesLoaded);
+					}
+				}, 250)
+			}, 1500);
+			break;
 		case 'id-about':
 			document.getElementById('me-jpg').src = 'assets/me.jpg';
 			document.getElementById('me-gif').src = 'assets/me.gif';
@@ -117,7 +132,8 @@ function showSection(sectionID) {
 
 	// if no section is open
 	if (active_section === null){
-		document.getElementById('hero').classList.add('minimize');
+		toggleHero();
+		// document.getElementById('hero').classList.add('minimise');
 		//wait for minimize to complete
 		setTimeout(() => {
 			document.getElementById(sectionID).classList.remove('hidden');
@@ -131,12 +147,37 @@ function showSection(sectionID) {
 	}
 	active_section = sectionID;
 }
+function toggleHero() {
+	var hero = document.querySelector('#hero');
+	if (hero.style.height === `0px`){ hero.style.height = `calc(var(--vh, 1vh) * 60)`;}
+	else {hero.style.height = '0px'}
+}
+
+function loadFile(name, type, url) {
+	// Check that script hasnt been loaded already
+	if(document.querySelectorAll(`.${type}-${name}`).length > 0){
+		mapFilesLoadedCount ++;
+		return;
+	};
+	var tag = Object.assign(document.createElement(type === 'js' ? 'script' : 'link'), {
+		... type === 'js' && url === undefined ? {src: `js/${name}.js`} : {},
+		... type === 'js' && url !== undefined ? {src: url} : {},
+		... type === 'css' ? {rel: 'stylesheet'} : {},
+		... type === 'css' && url === undefined ? {href: `css/${name}.css`} : {},
+		... type === 'css' && url !== undefined ? {href: url} : {},
+		className: `${type}-${name}`
+	});
+	tag.onload = () => {mapFilesLoadedCount ++}
+	if (type === 'js') document.body.appendChild(tag);
+	if (type === 'css') document.head.appendChild(tag);
+}
 
 function hideAllSections() {
 	navbar.setAttribute('data-open', 'false');
 	document.getElementById('section-container').classList.remove('active');
 	
-	document.getElementById('hero').classList.remove('minimize');
+	// document.getElementById('hero').classList.remove('minimize');
+	toggleHero();
 	killWave();
 	startWave(1500);
 
@@ -145,6 +186,13 @@ function hideAllSections() {
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
 	track('Back to Home', '#home');
+}
+
+function fillWave() {
+	killWave()
+	navbarSections.forEach((s, i, sections) => {
+			setTimeout(rippleUp, 150 * i, s, names[i]);
+		});
 }
 
 // Work
@@ -174,7 +222,7 @@ function workPicker(element, workName) {
 
 // analytics
 function track(name, el = false) {
-	if (window.location.protocol == 'file:') console.log(`Clicky | ${el ? el : window.location.hash} | ${name}`);return;
+	if (window.location.protocol == 'file:'){console.log(`Clicky | ${el ? el : window.location.hash} | ${name}`);return}
 	if (typeof clicky === 'undefined') return;
 	clicky.log(el ? el : window.location.hash, name)
 }
@@ -208,11 +256,15 @@ var debounced;
 function mobileViewportHack() {
 	document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
-window.addEventListener('resize', () => {
+var window_height = window.innerHeight
+window.addEventListener('resize', (e) => {
+	if (window.innerHeight === window_height) return;
 	clearTimeout(debounced);
 	debounced = setTimeout(mobileViewportHack, 100);
 });
 mobileViewportHack();
+
+window.addEventListener('orientationchange', mobileViewportHack);
 
 document.querySelectorAll('.social a').forEach(s => {
 	s.addEventListener('click', () => {
@@ -224,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
 	names = document.querySelectorAll('#hero span span');
+	mapContainer = document.querySelector('.map-container');
 	navbarSections.forEach((span,i) => {
 		span.addEventListener('mouseover', () => {killWave(i);if (active_section === null) names[i].classList.add('wave')});
 		span.addEventListener('mousemove', () => {if (active_section === null) names[i].classList.add('wave')});

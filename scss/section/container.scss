@@ -1,47 +1,46 @@
 #section-container {
 	scroll-behavior: smooth;
 	.title {
-		margin-bottom: 2em;
+		margin:1em auto 2em;
+		text-align: center;
 		.text-container {
 			font-size: 2em;
 			font-weight: 900;
-			padding: 0 .5em;
-			text-align: center;
-			position: relative;
 
 			.text-underline {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				z-index: 2;
 				overflow: hidden;
 				transform-origin: left bottom;
-
-				&.bg-one {
+				border-bottom: .25em solid $c-w;
+				margin: 0 auto;
+				&.bg-1 {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $c-t 0%, $c-1 0%, $c-1 20%, $c-t 20%);
+					border-color: $c-1;
 				}
-				&.bg-two {
+				&.bg-2 {
 					width: 3.5em;
-					background-image: linear-gradient(0deg, $c-t 0%, $c-2 0%, $c-2 20%, $c-t 20%);
+					border-color: $c-2;
 				}
-				&.bg-three {
-					width: 7.5em;
-					background-image: linear-gradient(0deg, $c-t 0%, $c-3 0%, $c-3 20%, $c-t 20%);
+				&.bg-3 {
+					width: 4.5em;
+					border-color: $c-3;
 				}
-				&.bg-four {
+				&.bg-4 {
+					width: 3.5em;
+					border-color: $c-4;
+				}
+				&.bg-5 {
 					width: 5.5em;
-					background-image: linear-gradient(0deg, $c-t 0%, $c-4 0%, $c-4 20%, $c-t 20%);
+					border-color: $c-5;
 				}
 				.text {
-					z-index: 1;
 					display: block;
 					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 				}
 			}
 		}
+	}
+	.container-width {
+		text-align: unset;
 	}
 	#id-work *::selection {
 		background-color: $c-1;
@@ -52,8 +51,11 @@
 	#id-photos *::selection {
 		background-color: $c-3;
 	}
-	#id-about *::selection {
+	#id-maps *::selection {
 		background-color: $c-4;
+	}
+	#id-about *::selection {
+		background-color: $c-5;
 	}
 	@media screen and (max-width: 24em){
 		overflow-y: hidden;

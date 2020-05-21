@@ -24,8 +24,8 @@
 	
 
 	.tooltip {
-		touch-actions: unset;
-		pointer-events: unset;
+		touch-actions: none;
+		pointer-events: none;
 		margin-right: .5em;
 		white-space: nowrap;
 		padding: .25em .5em;

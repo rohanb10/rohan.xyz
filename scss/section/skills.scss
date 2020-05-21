@@ -1,42 +1,32 @@
 #id-skills {
-	.left-col {
-		position: -webkit-sticky;
-		position: sticky;
-		top: 3.81em;
-		align-self: flex-start;
-		@media screen and (max-width: 40em) {
-			position: initial;
-		}
-	}
+	margin: 0 auto;
+
 	.skill-title {
 		text-transform: uppercase;
 		font-size: .75em;
 		letter-spacing: 2px;
 		color: #777;
 		font-weight: 700;
-		margin-bottom: .25em;
+		margin-bottom: 1em;
 	}
 
 	.skill-group {
-		margin-bottom: 1em;
-
+		margin-bottom: 1.5em;
+		text-align: center;
 		.icons {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: flex-start;
+			justify-content: center;
 			text-align: center;
 			.skill {
 				.img-skill {
-					margin: .5em .55em;
-					max-width: 3em;
+					margin: .5em .75em;
+					max-width: 2.5em;
 					transition: all .4s ease-in-out;
 					filter: contrast(55%);
 
 					&:hover {
 						filter: contrast(100%);
-					}
-					@media screen and (max-width: 56em) {
-						max-width: 2.4em;
 					}
 				}
 
@@ -52,9 +42,16 @@
 				}
 			}	
 		}
-		@media screen and (max-width: 40em) {
+	}
+	@media screen and (max-width: 40em) {
+		.skill-title {
+			margin: 0 1em;
+			text-align: left;
+		}
+		.skill-group {
 			margin-bottom: 0;
 			.icons {
+				justify-content: flex-start;
 				padding: .5em 0;
 				.skill {
 					.img-skill {

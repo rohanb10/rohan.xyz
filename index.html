@@ -11,7 +11,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
 	<link rel="stylesheet" type="text/css" href="./css/style.min.css">
 	<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101251702);</script>
-	<script async src="https://static.getclicky.com/js"></script>
+	<!-- <script async src="https://static.getclicky.com/js"></script> -->
 </head>
 <body>
 	<div id="hero" class="container-width">
@@ -20,36 +20,40 @@
 				<span class="ro">ro</span><span class="han">han</span>
 			</span>
 			<span class="slide-in-down delay-500">
-				<span class="bhan">bhan</span><span class="sali"><span>sa</span><span>li</span></span>
+				<span class="bhan">bhan</span><span class="sa">sa</span><span class="li">li</span>
 			</span>
 		</h1>	
 	</div>
 	<div id="navigation" data-open="false">
 		<div class="section-nav container-width">
-			<span class="section-title" data-bg-color="one" onclick="navControl(this)">
+			<span class="section-title" data-bg-color="1" onclick="navControl(this)">
 				<span data-section-name="work" data-section-id="id-work"></span>
 			</span>
-			<span class="section-title" data-bg-color="two" onclick="navControl(this)">
+			<span class="section-title" data-bg-color="2" onclick="navControl(this)">
 				<span data-section-name="skills" data-section-id="id-skills"></span>
 			</span>
-			<span class="section-title" data-bg-color="three" onclick="navControl(this)">
+			<span class="section-title" data-bg-color="3" onclick="navControl(this)">
 				<span data-section-name="photos" data-section-id="id-photos"></span>
 			</span>
-			<span class="section-title" data-bg-color="four" onclick="navControl(this)">
+			<span class="section-title" data-bg-color="4" onclick="navControl(this)">
+				<span data-section-name="maps" data-section-id="id-maps"></span>
+			</span>
+			<span class="section-title" data-bg-color="5" onclick="navControl(this)">
 				<span data-section-name="about" data-section-id="id-about"></span>
 			</span>
 		</div>
 	</div>
-	<div id="section-container" class="container-width">
+	<div id="section-container">
 		<div id="id-work" class="section hidden">
-			<div class="flexbox-grid">
+			
+			<div class="flexbox-grid container-width">
 				<div class="left-col">
 					<div class="title">
-						<span class="text-container">
-							<span class="text-underline bg-one wipe-in-right">
+						<div class="text-container">
+							<div class="text-underline bg-1 wipe-in-right">
 								<span class="text wipe-in-up">work</span>
-							</span>
-						</span>
+							</div>
+						</div>
 					</div>
 					<div class="work-title fade-in-right delay-1500">Jobs</div>
 					<div class="work fade-in-right delay-1700" onclick="workPicker(this, 'expensify')">
@@ -216,23 +220,22 @@
 			</div>
 		</div>
 		<div id="id-skills" class="section hidden">
-			<div class="flexbox-grid">
-				<div class="left-col">
-					<div class="title">
-						<span class="text-container">
-							<span class="text-underline bg-two wipe-in-right">
-								<span class="text wipe-in-up">skills</span>
-							</span>
-						</span>
-					</div>
-					<div>
-						<p class="fade-in-right delay-1500">Nothing screams "hire me" more than an entire webpage dedicated to programming languages, tools and libraries.</p>
-						<p class="fade-in-right delay-1600">This is that webpage.</p>
+			<div class="info-grid">
+				<div class="title">
+					<div class="text-container">
+						<div class="text-underline bg-2 wipe-in-right">
+							<span class="text wipe-in-up">skills</span>
+						</div>
 					</div>
 				</div>
-				<div class="right-col">
+				<div class="info">
+					<p class="fade-in-right delay-1500">I'm primarily a front end developer, but I've worked all across the web development stack. I specialise in building responsive and progressive web apps with an emphasis on practical UX.</p>
+					<p class="fade-in-right delay-1600">I am definitely more of an engineer than a designer, but I have an obsessive need to develop perfect UIs down to the pixel. I prefer to use intuitive animations and simple interactions to create lightweight and bloat-free webpages.</p>
+					<p class="fade-in-right delay-1700">This is an up to date list of the tools I've used in the past and comfortable using again in the future.</p>
+				</div>
+				<div>
 					<div class="skill-group fade-in-left delay-2100">
-						<div class="skill-title">Languages</div>
+						<div class="skill-title">Programming Languages</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/html.png"><span>HTML</span></div>
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/css.png"><span>CSS</span></div>
@@ -299,7 +302,7 @@
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2600">
-						<div class="skill-title">Databases</div>
+						<div class="skill-title">Database Management Systems</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/mysql.png"><span>MySQL</span></div>
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/postgresql.png"><span>PostgreSQL</span></div>
@@ -308,7 +311,7 @@
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2700">
-						<div class="skill-title">Misc</div>
+						<div class="skill-title">Miscellaneous</div>
 						<div class="icons">
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/pi.png"><span>Raspberry<br>Pi</span></div>
 							<div class="skill"><img class="img-skill" data-src="./assets/skills/arduino.png"><span>Arduinio</span></div>
@@ -333,6 +336,7 @@
 								<div class="bar"></div>
 								<div class="bar"></div>
 								<div class="bar"></div>
+								<div class="bar"></div>
 							</div>
 						</div>
 					</div>
@@ -342,34 +346,109 @@
 					</div>
 				</div>
 			</div>
-			<div class="flexbox-grid">
-				<div class="left-col">
-					<div class="title">
-						<span class="text-container">
-							<span class="text-underline bg-three wipe-in-right">
-								<span class="text wipe-in-up">photography</span>
-							</span>
-						</span>
+			<div class="info-grid">
+				<div class="title">
+					<div class="text-container">
+						<div class="text-underline bg-3 wipe-in-right">
+							<span class="text wipe-in-up">photos</span>
+						</div>
 					</div>
-					<p class="fade-in-right delay-1500">The best views can be found on an obscure blog written by a middle aged man with a middle aged van.</p>
+				</div>
+				<div class="info">
+					<p class="fade-in-right delay-1600">
+						I dedicate a huge amount of time to the outdoors - hiking, biking, backpacking, bikepacking, and <s>glamping</s> car camping.
+					</p>
+					<p class="fade-in-right delay-1700">
+						I use all the googling skills I have learned as a developer to find obscure travel blogs and uncongested trails.
+					</p>
+					<p class="fade-in-right delay-1800">
+						Almost all of these photos were captured on the same phone I have had since 2016.
+					</p>
 				</div>
 			</div>
-			<div class="thumbnails">
+			<div class="thumbnails container-width">
+			</div>
+		</div>
+		<div id="id-maps" class="section hidden">
+			<div class="map-layout">
+				<div class="map-control-panel">
+					<div class="title">
+						<div class="text-container">
+							<div class="text-underline bg-4 wipe-in-right">
+								<span class="text wipe-in-up">maps</span>
+							</div>
+						</div>
+					</div>
+					<div class="info-grid">
+						<div class="info">
+							<p class="fade-in-left delay-1600">I used a little GPS unit to record all my biking and hiking activity over 18 months when I lived in the Bay Area.</p>
+							<p class="fade-in-left delay-1700">This map is a culmination of all the dilligent tracking and made the whole ordeal of charging another device worth it.</p>
+							<div class="show-on-mobile fade-in-left delay-1800"><p>Please open this map on a larger screen for better a experience.</p></div>
+							<h3 class="fade-in-left delay-2300">Rides</h3>
+							<div class="map-controls">
+								<div class="control fade-in-left delay-2500">
+									<input type="radio" name="rides" id="ride-0" onchange="updateMap(this)" data-ride-id="all">
+									<label for="ride-0">All</label>
+								</div>
+								<div class="control fade-in-left delay-2500">
+									<input type="radio" name="rides" id="ride-1" onchange="updateMap(this)" data-ride-id="2677960579">
+									<label for="ride-1">SF coastal loop</label>
+								</div>
+								<div class="control fade-in-left delay-2600">
+									<input type="radio" name="rides" id="ride-2" onchange="updateMap(this)" data-ride-id="1997379409">
+									<label for="ride-2">Tiburon</label>
+								</div>
+								<div class="control fade-in-left delay-2600">
+									<input type="radio" name="rides" id="ride-3" onchange="updateMap(this)" data-ride-id="2625229591">
+									<label for="ride-3">Hawk hill</label>
+								</div>
+								<div class="control fade-in-left delay-2700">
+									<input type="radio" name="rides" id="ride-4" onchange="updateMap(this)" data-ride-id="3420135255">
+									<label for="ride-4">Bike party</label>
+								</div>
+								<div class="control fade-in-left delay-2700">
+									<input type="radio" name="rides" id="ride-5" onchange="updateMap(this)" data-ride-id="2502538550">
+									<label for="ride-5">Mountain View wetlands</label>
+								</div>
+								<div class="control fade-in-left delay-2800">
+									<input type="radio" name="rides" id="ride-6" onchange="updateMap(this)" data-ride-id="2321722402">
+									<label for="ride-6">Don Edwards wildlife refuge</label>
+								</div>
+								<div class="control fade-in-left delay-2800">
+									<input type="radio" name="rides" id="ride-7" onchange="updateMap(this)" data-ride-id="2218399017">
+									<label for="ride-7">Tunnel to Rodeo beach</label>
+								</div>
+								<div class="control fade-in-left delay-2900">
+									<input type="radio" name="rides" id="ride-8" onchange="updateMap(this)" data-ride-id="2207515618">
+									<label for="ride-8">Daly City and back</label>
+								</div>
+								<div class="control fade-in-left delay-2900">
+									<input type="radio" name="rides" id="ride-9" onchange="updateMap(this)" data-ride-id="2218403044">
+									<label for="ride-9">Golden Gate Park dirt trails</label>
+								</div>
+								<div class="control fade-in-left delay-3000">
+									<input type="radio" name="rides" id="ride-10" onchange="updateMap(this)" data-ride-id="random">
+									<label for="ride-10">Random</label><span onclick="drawSnake(getRandomPath())">&#x21bb;</span>
+								</div>
+							</div>
+							<p class="attribution fade-in-left delay-3000">Made with <a target="_blank" href="https://www.mapbox.com/about/maps/" rel="noreferrer">Mapbox</a> and <a target="_blank" href="http://www.openstreetmap.org/about/" rel="noreferrer">OpenStreetMap</a>.</p>
+						</div>
+					</div>
+				</div>
+				<div class="map-container">
+					<div id="map"></div>
+				</div>
 			</div>
 		</div>
 		<div id="id-about" class="section hidden">
-			<div class="flexbox-grid">
-				<div class="left-col">
-					<div class="title">
-						<span class="text-container">
-							<span class="text-underline bg-four wipe-in-right">
-								<span class="text wipe-in-up">about me</span>
-							</span>
-						</span>
+			<div class="title">
+				<div class="text-container">
+					<div class="text-underline bg-5 wipe-in-right">
+						<span class="text wipe-in-up">about me</span>
 					</div>
 				</div>
 			</div>
-			<div class="flexbox-grid">
+			<div class="flexbox-grid container-width">
 				<div class="left-col">
 					<div class="about-blurb">
 						<p class="fade-in-right delay-1500">I'm a web developer from Bombay and I spend most of my time offline.</p>

@@ -1,10 +1,10 @@
 const COLOUR_SCHEMES = [
-	['rgb(247,200, 59)', 'rgb( 48,176,106)', 'rgb(109,193,197)', 'rgb(234, 67, 71)'],
-	['rgb(240, 92,136)', 'rgb(111,125,246)', 'rgb(119,203,249)', 'rgb(255,168,  5)'],
-	['rgb(239,194,184)', 'rgb(149,187,217)', 'rgb(188,220,150)', 'rgb(238,222,151)'],
-	['rgb(218, 73,107)', 'rgb( 77, 99,209)', 'rgb( 98,147, 55)', 'rgb(245,126,  9)'],
-	['rgb(254,138,138)', 'rgb(127,102,152)', 'rgb(250,210,109)', 'rgb(127,182,161)'],
-	['rgb(145, 48, 48)', 'rgb( 39, 90,119)', 'rgb( 36,107, 80)', 'rgb(194,129, 71)'],
+	['rgb( 76,187,185)', 'rgb(255,190,105)', 'rgb(152,214,234)', 'rgb(255, 99, 99)', 'rgb(133,102,170)'],
+	['rgb(239,194,184)', 'rgb(149,187,217)', 'rgb(188,220,150)', 'rgb(238,222,151)', 'rgb(214,217,253)'],
+	['rgb(240, 92,136)', 'rgb(111,125,246)', 'rgb(119,203,249)', 'rgb(255,168,  5)', 'rgb( 66,199,153)'],
+	['rgb(  6,140,175)', 'rgb( 17,183,158)', 'rgb(233,178,188)', 'rgb(219,188,118)', 'rgb(146,129,161)'],
+	['rgb(254,138,138)', 'rgb(127,102,152)', 'rgb(250,210,109)', 'rgb(127,182,161)', 'rgb(139,197,217)'],
+	['rgb(145, 48, 48)', 'rgb( 39, 90,119)', 'rgb( 36,107, 80)', 'rgb(194,129, 71)', 'rgb(112, 72,111)'],
 ];
 
 // Manually set the colour scheme
@@ -71,6 +71,11 @@ function nextColourSchemeID() {
 	return currentScheme + 1 < COLOUR_SCHEMES.length ? currentScheme + 1 : 0;
 }
 
+function isDark(color) {
+	var rgb = rgbArray(color);
+	return (rgb[0] * 0.299) + (rgb[1] * 0.587) + (rgb[2] * 0.114) <= 186;
+}
+
 // clicking of the bucket
 function bucket(el) {
 	if (el.parentElement.classList.contains('changing')) return;
@@ -82,6 +87,7 @@ function bucket(el) {
 		setTimeout(() => {
 			el.parentElement.classList.remove('changing');
 			changeBucketColours(nextColourSchemeID());
+			checkMapLayerColor();
 		}, 1200);
 	})
 	// 1200 is time the last wave is completed
@@ -108,8 +114,7 @@ function bucket(el) {
 
 function changeBucketColours(schemeID) {
 	var bucket = document.querySelector('.bucket');
-	nextScheme = COLOUR_SCHEMES[schemeID].sort(() => {return 0.5 - Math.random()});
-	nextScheme.forEach((c,i) => {
+	COLOUR_SCHEMES[schemeID].forEach((c,i) => {
 		bucket.style.setProperty(`--nc-${i}`, c);
 	});
 }

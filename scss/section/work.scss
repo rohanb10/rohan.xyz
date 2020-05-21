@@ -93,7 +93,7 @@
 					padding-inline-start: 1.2em;
 				}
 				a {
-					@include hyperlink($c-1, $c-w);
+					@include hyperlink($c-1);
 				}
 			}
 		}

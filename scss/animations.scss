@@ -54,12 +54,15 @@
 		transform: translateY(100%);
 	}
 	to {
-		transform: translateY(0);
+		transform: translateY(10%);
 	}
 }
 
 .fade-in {
 	animation: fade-in 1s $ease-in-out-cubic both;
+	&.delay-1500 {
+		animation-delay: 1.5s;
+	}
 	@include delays(100, 2500, 18);
 }
 
@@ -158,5 +161,14 @@
 	50% {
 		height: 35px;
 		margin-top: 0px;
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }

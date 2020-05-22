@@ -90,7 +90,7 @@ function showSection(sectionID) {
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
-			loadFile('smoothscroll', 'js')
+			loadFile('smoothscroll-polyfill', 'js')
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
@@ -188,11 +188,11 @@ function hideAllSections() {
 	track('Back to Home', '#home');
 }
 
-function fillWave() {
-	killWave()
+function highTide() {
+	killWave();
 	navbarSections.forEach((s, i, sections) => {
-			setTimeout(rippleUp, 150 * i, s, names[i]);
-		});
+		setTimeout(rippleUp, 150 * i, s, names[i]);
+	});
 }
 
 // Work

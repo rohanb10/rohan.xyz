@@ -60,10 +60,17 @@ html, body {
 	padding: 0 2em;
 	margin: 0 auto;
 	.info {
-		margin-bottom: 3em;
+		margin: 0 auto 3em;
+		line-break: normal;
+		&.smaller {
+			max-width: 500px;
+		}
 		p {
 			line-height: 1.5em;
 		}
+	}
+	@media screen and (max-width: 40em) {
+		padding: 0 1em;
 	}
 }
 
@@ -72,6 +79,9 @@ html, body {
 	padding: 1em;
 	margin: 0 auto;
 	text-align: center;
+	@media screen and (max-width: 40em) {
+		padding: 0 1em;
+	}
 }
 
 .hidden {

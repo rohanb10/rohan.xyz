@@ -59,20 +59,23 @@ function genThumbnails() {
 		var img = Object.assign(document.createElement('img'), {
 			className: 'thumb',
 			src: `assets/photos/thumb/${t.index}.jpg`,
-		});
-		thumbContainer.onmouseover = () => {
-			setTimeout(() => {
-				thumbContainer.addEventListener('mousemove', panZoom, false, this);
-			}, 300);
+		});/*
+		thumbContainer.onmouseover = (e) => {
+			img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`;
+			setTimeout(()=> {img.style.transform = 'scale(1.1)'}, 100);
+		}
+		thumbContainer.onmousemove = e => {
+			img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`;
 		}
 		thumbContainer.onmouseout = () => {
-			thumbContainer.removeEventListener('mousemove', panZoom);
-		}
+			setTimeout(()=> {img.style.transform = 'scale(1)'}, 150);
+		}*/
 		thumbContainer.appendChild(img);
 
 		thumbs.appendChild(thumbContainer);
 	});
 
+	// remove placeholders
 	setTimeout(() => {
 		thumbs.querySelectorAll('.thumb-container').forEach(tc => {
 			var p = tc.querySelector('.placeholder');
@@ -93,15 +96,11 @@ function genThumbnails() {
 	}, delay + 1000);
 }
 
-function panZoom(e){
-	e.target.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`;
-}
-
 function openPhotoModal(i) {
 	loadPhoto(i);
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
 
-	// ESC key to close modal
+	// keyboard controls for modal
 	document.addEventListener('keydown', function _close(e) {
 		if (e.keyCode === 39) nextPhoto();
 		if (e.keyCode === 37) prevPhoto();
@@ -124,16 +123,14 @@ function closePhotoModal() {
  
 function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
-	active_photo++;
 	startLoadingAnimation();
-	loadPhoto(active_photo, 500);
+	loadPhoto(++active_photo, 500);
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
-	active_photo--;
 	startLoadingAnimation();
-	loadPhoto(active_photo, 500);
+	loadPhoto(--active_photo, 500);
 }
 
 

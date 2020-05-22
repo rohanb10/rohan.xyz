@@ -34,9 +34,9 @@
 			filter: blur(2px);
 			transition: filter .2s linear .5s, transform .3s ease-in-out;
 		}
-		@media (hover:hover) {
+		@media (hover:none) {
 			&:hover img {
-				transform: scale(1.1);
+				transform: scale(1) !important;
 			}
 		}
 		@media screen and (max-width: 40em) {
@@ -65,7 +65,7 @@
 	z-index: 4;
 	left: 0;
 	top: 0;
-	box-shadow: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 -3px 6px rgba(0,0,0,.16), 0 -3px 6px rgba(0,0,0,.23);
 
 	&.hidden {
 		display: none;

@@ -1,18 +1,37 @@
 
+
 # rohan.xyz
 
-150KB page size -> 5KB HTML, 3KB CSS + 25KB fonts, 5KB JS + 17KB google analytics, 100KB icons
+Vanilla javascript and CSS with no 3rd party libraries.
 
-Full size photos not included in page size total
+The site is designed to be as small as possible so it will load quickly and smoothly on even the shittiest internet connections. Initial page load is under 100kb including fonts.
 
-Written in native javascript (**without** jQuery)
+200kb of image files are lazyloaded as needed.
+Photos and their thumbnails are also only loaded on demand.
 
-**Why would I do something so dumb, yet so brave?**
-I was writing most of this code connected to some pretty poopy internet so I didnt really have the ~~patience~~ bandwidth to keep looking up the jquery docs. Vanilla is my favourite flavour of js and ice cream.
+After testing several different online mapping solutions, I settled on [Mapbox](https://www.mapbox.com/) and their vector tiles for the best performance on slow networks and mobile devices.
+
+Because Google Analytics [can't even track](https://support.google.com/analytics/answer/2731565?hl=en) the simple task of session duration, I use [Clicky](https://clicky.com/) to monitor and analyse traffic
+
+---
 
 
-The only 3rd party code I'm using is one [small polyfill](https://github.com/iamdustan/smoothscroll) because the boys over at Apple are [too uptight](https://caniuse.com/#search=scrollintoview) to allow parameter options for [`scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) in Safari. Oh and google analytics of course.
+**Resources**
 
---------
+ - [smoothscroll](https://github.com/iamdustan/smoothscroll) - polyfill for [`scrollIntoView`](https://caniuse.com/#search=scrollintoview) on Safari
+ - [svgo-cli](https://github.com/svg/svgo)
+ - [sqip](https://github.com/axe312ger/sqip#CLI) - svg based polygonal placeholders for photos
+ - [Clippy](https://bennettfeely.com/clippy/) - CSS `clip-path` playground
+ - Rides scraped from the [Strava API](https://developers.strava.com) using Python.
+ - Encoded polyline [algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) by Google - reduced file size of all rides by 95%
+ - [Sqoosh](https://squoosh.app/) - Incredible PNG compressor
+ - [Easings](https://easings.net/en)
+  - [Website obesity](https://idlewords.com/talks/website_obesity.htm)
 
-If you're using IE10, dont even bother. I have nothing to say to you
+
+SASS source files in the `scss` directory. All JS files in the `js` directory, then combined and minified for production.
+
+All colour related files are named  `bucket.*`
+
+Feel free to reach out for any questions or general feedback:
+rohanb10 [at] gmail 

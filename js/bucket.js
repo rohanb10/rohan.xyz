@@ -30,7 +30,7 @@ function transitionColourScheme(index, shuffle = true, callback) {
 	if (index < 0 || index >= COLOUR_SCHEMES.length) return 'Please enter a valid index';
 	var nextColours = [], currentColours = [], colourTimers = [], done=0;
 
-	var scheme = COLOUR_SCHEMES[index || currentScheme];
+	var scheme = COLOUR_SCHEMES[index];
 	if (shuffle) scheme.sort(() => {return 0.5 - Math.random()});
 
 	var root = document.documentElement.style;
@@ -43,11 +43,11 @@ function transitionColourScheme(index, shuffle = true, callback) {
 		colourTimers[i] = setInterval(()=> {
 			rgb.forEach((cc,j) => {
 				rgb[j] = cc > nextColours[i][j] ? cc - 1 : cc < nextColours[i][j] ? cc + 1 : cc;
-			})
+			});
 			root.setProperty(`--c-${i}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
 			if (rgb[0] === nextColours[i][0] && rgb[1] === nextColours[i][1] && rgb[2] === nextColours[i][2]) {
 				clearInterval(colourTimers[i]);
-				if (++done >= 4 && callback) callback();
+				if (++done >= nextColours.length && callback) callback();
 			}
 		}, 1);
 	});
@@ -84,10 +84,10 @@ function bucket(el) {
 
 	el.parentElement.classList.add('changing');
 	var resetBucket = (() => {
+		checkMapLayerColor();
 		setTimeout(() => {
 			el.parentElement.classList.remove('changing');
 			changeBucketColours(nextColourSchemeID());
-			checkMapLayerColor();
 		}, 1200);
 	})
 	// 1200 is time the last wave is completed

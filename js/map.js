@@ -1,12 +1,10 @@
 var map, currentMapLayer, currentMapLayerName, paths = [];
 function initializeMap() {
-	// return;
 	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg';
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
-		.setMaxZoom(14)
-		.setMinZoom(10)
-		.setMaxBounds([[[37.296, -121.809],[38.125, -122.986]]]);
+		.setMaxZoom(14).setMinZoom(10)
+		.setMaxBounds([[[37.196, -121.609],[38.225, -123.036]]]);
 	currentMapLayerName = 'light';
 	currentMapLayer = L.mapbox.styleLayer(mapLayers[currentMapLayerName]);
 	map.addLayer(currentMapLayer);
@@ -23,7 +21,7 @@ function updateMap(btn){
 	} else if (rideID === 'random') {
 		drawSnake(getRandomPath());
 		return;
-	} else if (allRides[rideID] === undefined) {
+	} else if (RIDES[rideID] === undefined) {
 		return;
 	}
 	drawSnake(rideID);
@@ -62,7 +60,7 @@ function clearPaths() {
 function drawSnake(pathID) {
 	if (!map) return;
 	clearPaths();
-	var p = L.polyline(decodePath(allRides[pathID]), {className: 'path-single'});
+	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', stroke: '--var(--c-3)'});
 	paths.push(p);
 
 	map.fitBounds(p.getBounds(), {
@@ -104,23 +102,27 @@ function drawAll() {
 	clearPaths();
 	map.flyTo([37.7906, -122.4482], 12);
 	map.once('moveend', () => {
-		for (var rideID of Object.keys(allRides)) {
-			var p = L.polyline(decodePath(allRides[rideID]), {
-				className: 'path-all'
-			});
+		for (var rideID of Object.keys(RIDES)) {
+			var p = L.polyline(decodePath(RIDES[rideID]), {className: 'path-all',stroke: '--var(--c-3)'});
 			p.addTo(map);
 			paths.push(p);
 		}
 	});
 }
 
+function drawRandom(el) {
+	el.classList.add('spin')
+	el.addEventListener('animationend', () => {el.classList.remove('spin')}, {once: true});
+	drawSnake(getRandomPath());
+}
+
 function getRandomPath() {
 	if (!map) return;
 	var pathID, minimumDistance = 10000, pathDistance = 0;
-	var keys = Object.keys(allRides);
+	var keys = Object.keys(RIDES);
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
-		pathDistance = calcDistance(L.polyline(decodePath(allRides[pathID])));
+		pathDistance = calcDistance(L.polyline(decodePath(RIDES[pathID])));
 	}
 	return pathID;
 }
@@ -137,8 +139,8 @@ function calcDistance(polyline) {
 }
 
 function getTransitionDuration(p) {
-	var t = calcDistance(p) / 2500;
-	return t <= 5 ? 5 : t; 
+	var t = calcDistance(p) / 2000;
+	return t <= 10 ? 10 : t; 
 }
 
 function disableMapInteractions() {

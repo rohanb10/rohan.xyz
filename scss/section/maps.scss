@@ -18,6 +18,9 @@
 			&.fade-in {
 				opacity: 1;
 			}
+			&.waiting {
+				cursor: not-allowed;
+			}
 			#map {
 				position: absolute;
 				top: 0;
@@ -132,7 +135,6 @@
 					display: inline-block;
 				}
 			}
-
 		}
 	}
 	p.attribution {
@@ -143,6 +145,10 @@
 			@include hyperlink($c-4);
 		}
 	}
+}
+// remove box shadow transition when the colours
+.bucket.changing ~ #id-maps .map-layout .map-controls .control label:before {
+	transition: none;
 }
 .leaflet-bottom, .leaflet-top {
 	display: none !important;

@@ -34,9 +34,9 @@
 			filter: blur(2px);
 			transition: filter .2s linear .5s, transform .3s ease-in-out;
 		}
-		@media (hover:none) {
+		@media (hover:hover) {
 			&:hover img {
-				transform: scale(1) !important;
+				transform: scale(1.1);
 			}
 		}
 		@media screen and (max-width: 40em) {

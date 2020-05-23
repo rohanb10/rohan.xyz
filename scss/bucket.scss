@@ -20,6 +20,7 @@
 		background-size: 100%;
 		background-repeat: no-repeat;
 		background-image: url('../assets/paint-bucket.png');
+		transform: rotate(45deg);
 	}
 	
 
@@ -31,7 +32,7 @@
 		padding: .25em .5em;
 		border-radius: .5em;
 		background-color: $c-w;
-		transition: opacity .3s ease-in-out;
+		transition: opacity .2s ease-in-out;
 		opacity: 0;
 		&:before {
 			content: attr(data-hover)
@@ -45,17 +46,21 @@
 			opacity: 1;
 		}
 		img:hover {
-			transform: rotate(-20deg);
+			transform: rotate(-10deg);
 			background-size: 90% 90%;
-			background-image: linear-gradient(45deg, var(--nc-0), var(--nc-0) 30%, var(--nc-1) 30%, var(--nc-1) 47%, var(--nc-2) 47%, var(--nc-2) 60%, var(--nc-3) 60%);
+			background-image: radial-gradient(circle at 0% 100%, var(--nc-0) 30%, $c-t 30%),
+				radial-gradient(circle at 8% 0%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 60%, var(--nc-4) 60%);
 		}
 	}
 	&.changing {
 		img {
 			transform: rotate(-45deg);
+			background-size: 90% 90%;
+			background-image: radial-gradient(circle at 0% 100%, var(--nc-0) 30%, $c-t 30%),
+				radial-gradient(circle at 8% 0%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 60%, var(--nc-4) 60%);
 			@media (hover:none) {
-				background-size: 95% 95%;
-				background-image: linear-gradient(45deg, $c-1, $c-1 30%, $c-2 30%, $c-2 47%, $c-3 47%, $c-3 60%, $c-4 60%);
+				background-image: radial-gradient(circle at 0% 100%, $c-1 30%, $c-t 30%),
+					radial-gradient(circle at 8% 0%, $c-2 37%, $c-3 40%, $c-3 50%, $c-4 50%, $c-4 60%, $c-5 60%);
 			}
 		}
 		.tooltip {
@@ -74,6 +79,12 @@
 	}
 }
 #section-container.active .bucket {
+	.tooltip:before {
+		content: attr(data-hover-section);
+	}
+	&.changing .tooltip:before {
+		content: attr(data-click-section);
+	}
 	@media screen and (min-width: 40em) {
 		bottom: 1em;
 		right: 1em;

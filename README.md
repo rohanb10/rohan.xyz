@@ -4,10 +4,10 @@
 
 Vanilla javascript and CSS with no 3rd party libraries.
 
-The site is designed to be as small as possible so it will load quickly and smoothly on even the shittiest internet connections. Initial page load is under 100kb including fonts.
+The site is designed to be as small as possible so it will load quickly and smoothly on even the shittiest internet connections. You only download **45kb** of data on page load (yes, including fonts).
 
-200kb of image files are lazyloaded as needed.
-Photos and their thumbnails are also only loaded on demand.
+A maximum of 200kb of image files are lazyloaded as you cycle through all the sections.
+Photos (and thumbnails) and maps are also loaded on demand only.
 
 After testing several different online mapping solutions, I settled on [Mapbox](https://www.mapbox.com/) and their vector tiles for the best performance on slow networks and mobile devices.
 

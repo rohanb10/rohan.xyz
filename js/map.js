@@ -1,9 +1,9 @@
 var map, currentMapLayer, currentMapLayerName, paths = [];
 function initializeMap() {
-	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg';
+	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
-		.setMaxZoom(14).setMinZoom(10)
+		.setMaxZoom(15).setMinZoom(10)
 		.setMaxBounds([[[37.196, -121.609],[38.225, -123.036]]]);
 	currentMapLayerName = 'light';
 	currentMapLayer = L.mapbox.styleLayer(mapLayers[currentMapLayerName]);
@@ -118,7 +118,8 @@ function drawRandom(el) {
 
 function getRandomPath() {
 	if (!map) return;
-	var pathID, minimumDistance = 10000, pathDistance = 0;
+	var pathID, pathDistance = 0;
+	var minimumDistance = Math.random() < .75 ? 10000 : Math.random() < .67 ? 7500 : 5000;
 	var keys = Object.keys(RIDES);
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
@@ -145,6 +146,7 @@ function getTransitionDuration(p) {
 
 function disableMapInteractions() {
 	if (!map) return;
+	mapContainer.classList.add('waiting');
 	map.dragging.disable();
 	map.touchZoom.disable();
 	map.doubleClickZoom.disable();
@@ -155,6 +157,7 @@ function disableMapInteractions() {
 
 function enableMapInteractions() {
 	if (!map) return;
+	mapContainer.classList.remove('waiting');
 	map.dragging.enable();
 	map.touchZoom.enable();
 	map.doubleClickZoom.enable();

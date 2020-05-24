@@ -31,7 +31,7 @@
 					stroke-width: 3px;
 				}
 				.path-all {
-					stroke-opacity: .3;
+					stroke-opacity: .35;
 					stroke-width: 2px;
 					transition: stroke 1s ease-in-out;
 				}
@@ -40,7 +40,7 @@
 				stroke: $c-w;
 			}
 			&.light .path-all {
-				stroke: $c-b;
+				stroke: $c-4;
 			}
 		}
 		@media screen and (max-width: 50em) {
@@ -104,6 +104,7 @@
 				touch-action: none;
 				pointer-events: none;
 				transition: opacity .25s ease-in-out;
+				font-size: 1.25em
 			}
 
 			& > input[type="radio"], & > label:before {

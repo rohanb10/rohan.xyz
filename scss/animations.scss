@@ -60,9 +60,10 @@
 
 .fade-in {
 	animation: fade-in 1s $ease-in-out-cubic both;
-	&.delay-1500 {
-		animation-delay: 1.5s;
-	}
+	// &.delay-1500 {
+	// 	animation-delay: 1.5s;
+	// }
+	@include delays(500, 1000, 1);
 	@include delays(100, 2500, 18);
 }
 

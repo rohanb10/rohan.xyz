@@ -8,89 +8,83 @@
 		text-transform: uppercase;
 	}
 	.work {
-		border-radius: 4px;
-		background-color: #eee;
 		cursor: pointer;
 		padding: .5em;
 		margin: .5em 0;
-		border: 2px solid transparent;
-		transition: all .3s ease-in-out;
+		border-left: 4px solid transparent;
+		transition: all .5s ease-in-out;
 
 		.work-name {
 			font-size: 1.1em;
 			font-weight: 700;
+			opacity: 1;
 		}
 		.subtitle {
 			font-size: .8em;
+			opacity: 1;
 		}
 		&:hover {
-			background-color: #ddd;
+			border-color: $c-1;
+			opacity: .3;
 		}
 		&:active, &.active {
-			border: 2px solid $c-1;
+			border-color: $c-1;
 		}
 	}
-
+	.divider {
+		border-right: 1px solid #eee;
+		@media screen and (max-width: 40em) {
+			border: none;
+		}
+	}
 	.work-card-container{
-		padding: 4em 2em 0;
+		padding: 2em 2em 0;
 
 		.card{
 			max-width: 30em;
-			margin: 1em auto;
-			border: 2px solid $c-b;
-			background-color: $c-w;
-			border-radius: 4px;
-			position: relative;
+			margin: 1em auto 0;
 			display: block;
+			padding: 1.5em;
 
 			&.hidden {
 				display: none;
 			}
-
-			.card-logo {
-				position:absolute;
-				left: 0;
-				right: 0;
-				margin: auto;
-				top: -4em;
-				width: 8em;
-				height: 8em;
-				border-radius: 100px;
-				border: 2px solid $c-b;
-				background-color: white;
-				background-size: cover;
-			}
-
-			.card-body {
-				padding: 4.5em 1.5em 1.5em;
-
-				.card-title, .card-subtitle, .card-dates, .card-stack {
-					text-align: center;
+			.heading {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.logo {
+					img {
+						width: 5em;
+						height: 5em;
+						border-radius: 5em;
+					}
+					padding-right: 1em;
+					@media screen and (max-width: 40em) {
+						padding-right: 0;
+					}
 				}
-				.card-title {
+				.company {
 					font-size: 1.2em;
 					font-weight: 700;
 				}
-				.card-subtitle {
+				.position {
 					color: #777;
 				}
-				.card-dates {
+				.dates {
 					padding-top: .25em;
 					font-size: .7em;
 					color: #AAA;
 				}
-				.card-blurb, .card-stack {
-					font-size: .9em;
-				}
-				.divider {
-					border-top: 1px solid #EEE;
-					margin: .5em 2em;
-				}
-				code {
-					font-size: 1.2em;
+			}
+			.blurb {
+				margin: 2em 0;
+				font-size: .9em;
+				.subheading {
+					font-weight: 700;
 				}
 				ul {
-					padding-inline-start: 1.2em;
+					padding-inline-start: 1.5em;
 				}
 				a {
 					@include hyperlink($c-1);
@@ -98,32 +92,14 @@
 			}
 		}
 		@media screen and (max-width: 40em) {
-			padding: 5em 0 0;
+			padding: 1em 0 0;
 			.card {
-				width: initial;
-				.card-body {
-					padding: 4.5em 1em 1em;
+				&.hidden {
+					border: none;
 				}
+				border-top: 1px solid #EEE;
+				width: initial;
 			}
 		}
-	}
-
-	#expensify .card-logo {
-		background-image: url('../assets/logos/expensify.png');
-	}
-	#zappos .card-logo {
-		background-image: url('../assets/logos/zappos.png');
-	}
-	#eazyfriday .card-logo {
-		background-image: url('../assets/logos/eazyfriday.png');
-	}
-	#wustl .card-logo {
-		background-image: url('../assets/logos/wustl.png');
-	}
-	#kraudesorce .card-logo {
-		background-image: url('../assets/logos/kraudesorce.png');
-	}
-	#turnstyle .card-logo {
-		background-image: url('../assets/logos/turnstyle.png');
 	}
 }

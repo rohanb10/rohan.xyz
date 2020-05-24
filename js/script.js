@@ -208,14 +208,14 @@ function workPicker(element, workName) {
 		document.querySelector('.work.active').classList.remove('active');
 		animateOut(`#${active_work}`, 'fade-out-right', () => {
 			card.classList.remove('hidden');
+			if (window.innerWidth <= 640) card.parentElement.scrollIntoView({behavior:'smooth'})
 		});
 	}
 	element.classList.add('active');
 	active_work = workName;
-	//  Scroll down to card if mobile device (40em)
-	if (window.innerWidth <= 640) {
-		card.parentElement.scrollIntoView({behavior:'smooth'});
-	}
+
+	if (window.innerWidth <= 640) card.parentElement.scrollIntoView({behavior:'smooth'})
+		
 	history.pushState('', '', `#work?${workName}`);
 	track(`Work - ${workName}`);
 }

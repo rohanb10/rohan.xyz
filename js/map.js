@@ -30,6 +30,8 @@ function updateMap(btn){
 var mapLayers = {
 	light: 'mapbox://styles/mapbox/light-v10',
 	dark: 'mapbox://styles/mapbox/dark-v10'
+	// light: 'mapbox://styles/rohanb10/ckajqcqca24th1ir1ft2nbipc/draft',
+	// dark: 'mapbox://styles/rohanb10/ckajpbf1v1cys1imwamc8isy6/draft'
 }
 
 function checkMapLayerColor() {
@@ -60,7 +62,7 @@ function clearPaths() {
 function drawSnake(pathID) {
 	if (!map) return;
 	clearPaths();
-	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', stroke: '--var(--c-3)'});
+	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', color: '--var(--c-3)'});
 	paths.push(p);
 
 	map.fitBounds(p.getBounds(), {
@@ -103,7 +105,10 @@ function drawAll() {
 	map.flyTo([37.7906, -122.4482], 12);
 	map.once('moveend', () => {
 		for (var rideID of Object.keys(RIDES)) {
-			var p = L.polyline(decodePath(RIDES[rideID]), {className: 'path-all',stroke: '--var(--c-3)'});
+			var p = L.polyline(decodePath(RIDES[rideID]), {
+				className: 'path-all',
+				color: currentMapLayerName === 'dark' ? '#FFF' : '#000'
+			});
 			p.addTo(map);
 			paths.push(p);
 		}

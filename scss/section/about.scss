@@ -23,10 +23,17 @@
 	}
 
 	.about-blurb {
+		.hover {
+			opacity: 0;
+			transition: opacity .3s $ease-in-out-cubic;
+		}
+		li:hover .hover {
+			opacity: 1;
+		}
 		.tilt {
 			display: inline-block;
 			transform-origin: 30% 50%;
-			transition: transform .2s $ease-in-out-cubic;
+			transition: transform .3s $ease-in-out-cubic;
 			&:hover {
 				transform: rotate(-20deg);
 				

@@ -17,89 +17,97 @@
 		.work-name {
 			font-size: 1.1em;
 			font-weight: 700;
-			opacity: 1;
 		}
 		.subtitle {
 			font-size: .8em;
-			opacity: 1;
 		}
 		&:hover {
-			border-color: $c-1;
-			opacity: .3;
+			border-color: #ddd;
 		}
 		&:active, &.active {
 			border-color: $c-1;
 		}
 	}
 	.divider {
-		border-right: 1px solid #eee;
+		position: relative;
+	}
+	.arrow {
+		display: none;
 		@media screen and (max-width: 40em) {
-			border: none;
+			display: block;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding: 0 .5em;
+			transition: all .5s ease-in-out;
+			opacity: 0;
+			span {
+				display: inline-block;
+				font-size: 2em;
+				transform: rotate(90deg);
+			}
 		}
 	}
-	.work-card-container{
-		padding: 2em 2em 0;
+	.card {
+		max-width: 30em;
+		margin: 1em auto 0;
+		display: block;
+		padding: 1.5em;
 
-		.card{
-			max-width: 30em;
-			margin: 1em auto 0;
-			display: block;
-			padding: 1.5em;
-
-			&.hidden {
-				display: none;
-			}
-			.heading {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				.logo {
-					img {
-						width: 5em;
-						height: 5em;
-						border-radius: 5em;
-					}
-					padding-right: 1em;
-					@media screen and (max-width: 40em) {
-						padding-right: 0;
-					}
+		&.hidden {
+			display: none;
+		}
+		.heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.logo {
+				img {
+					width: 5em;
+					height: 5em;
+					border-radius: 5em;
 				}
-				.company {
-					font-size: 1.2em;
-					font-weight: 700;
-				}
-				.position {
-					color: #777;
-				}
-				.dates {
-					padding-top: .25em;
-					font-size: .7em;
-					color: #AAA;
+				padding-right: 1em;
+				@media screen and (max-width: 40em) {
+					padding-right: 0;
 				}
 			}
-			.blurb {
-				margin: 2em 0;
-				font-size: .9em;
-				.subheading {
-					font-weight: 700;
-				}
-				ul {
-					padding-inline-start: 1.5em;
-				}
-				a {
-					@include hyperlink($c-1);
-				}
+			.company, .position, .dates {
+				line-break: normal;
+			}
+			.company {
+				font-size: 1.2em;
+				font-weight: 700;
+			}
+			.position {
+				color: #777;
+			}
+			.dates {
+				padding-top: .25em;
+				font-size: .7em;
+				color: #AAA;
+			}
+		}
+		.blurb {
+			margin: 2em 0;
+			font-size: .9em;
+			.subheading {
+				font-weight: 700;
+			}
+			ul {
+				padding-inline-start: 1.5em;
+			}
+			a {
+				@include hyperlink($c-1);
 			}
 		}
 		@media screen and (max-width: 40em) {
-			padding: 1em 0 0;
-			.card {
-				&.hidden {
-					border: none;
-				}
-				border-top: 1px solid #EEE;
-				width: initial;
+			padding: 1em .25em;
+			&.hidden {
+				border: none;
 			}
+			border-top: 1px solid #EEE;
+			width: initial;
 		}
 	}
 }

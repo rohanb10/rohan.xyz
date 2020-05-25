@@ -36,47 +36,80 @@ html, body {
 
 .flexbox-grid {
 	display: flex;
-	.left-col, .right-col {
+	.col {
 		box-sizing: border-box;
-	}
-	.left-col {
-		width: 40%;
-		padding-right: .5em;
-	}
-	.right-col {
-		width: 60%;
-		padding-left: .5em;
+		width: 50%;
+		padding: 0 .5em;
+		&.col-40 {
+			width: 40%;
+			overflow-x: hidden;
+		}
+		&.col-60 {
+			width: 60%;
+			overflow-x: hidden;
+		}
+		&.padding-top {
+			padding-top: 4em;
+		}
+		&.padding-left {
+			padding-left: 2em;
+		}
+		&.padding-right {
+			padding-right: 2em;
+		}
 	}
 	@media screen and (max-width: 40em) {
 		display: block;
-		.left-col, .right-col {
+		.col.col-40, .col.col-60 {
 			width: 100%;
 			padding: 0;
 		}
+		.col.padding-top {
+			padding-top: 1em;
+		}
+		.col.padding-right, .col.padding-left {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	@media screen and (min-width: 40em) {
+		.col.sticky {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 2.8125em;
+			align-self: flex-start;
+		}
 	}
 }
-.info-grid {
+.info-container {
 	max-width: 650px;
 	padding: 0 2em;
 	margin: 0 auto;
-	.info {
-		margin: 0 auto 3em;
-		line-break: normal;
-		&.smaller {
-			max-width: 500px;
-		}
-		p {
-			line-height: 1.5em;
-		}
-	}
+	overflow-x: hidden;
 	@media screen and (max-width: 40em) {
 		padding: 0 1em;
 	}
 }
+.info {
+	margin: 0 auto 3em;
+	line-break: normal;
+	&.smaller {
+		max-width: 500px;
+	}
+	p {
+		line-height: 1.5em;
+	}
+}
 
+.divider {
+	border-right: 1px solid #eee;
+	@media screen and (max-width: 40em) {
+		border: none;
+	}
+}
 .container-width {
 	max-width: 1000px;
-	padding: 1em;
+	padding: 0 1em;
 	margin: 0 auto;
 	text-align: center;
 	@media screen and (max-width: 40em) {

@@ -29,12 +29,11 @@
 					border-color: $c-4;
 				}
 				&.bg-5 {
-					width: 5.5em;
+					width: 5.25em;
 					border-color: $c-5;
 				}
 				.text {
 					display: block;
-					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 				}
 			}
 		}

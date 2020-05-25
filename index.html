@@ -44,10 +44,13 @@
 		</div>
 	</div>
 	<div id="section-container">
+		<div class="bucket">
+			<img onclick="bucket(this)" src="./assets/bucket-spill.png">
+			<div class="tooltip" data-hover="Swap colours" data-click="Swapping colours" data-hover-section="Shift colours" data-click-section="Shifting colours"></div>
+		</div>
 		<div id="id-work" class="section hidden">
-			
 			<div class="flexbox-grid container-width">
-				<div class="left-col">
+				<div class="col col-40 sticky">
 					<div class="title">
 						<div class="text-container">
 							<div class="text-underline bg-1 wipe-in-right">
@@ -56,7 +59,7 @@
 						</div>
 					</div>
 					<div class="divider fade-in delay-1500">
-						<div class="work-title fade-in-right delay-1500">Jobs</div>
+						<div class="work-title fade-in delay-1500">Jobs</div>
 						<div class="work fade-in-right delay-1700" onclick="workPicker(this, 'expensify')">
 							<div class="work-name">Expensify</div>
 							<div class="subtitle">San Francisco, CA</div>
@@ -66,164 +69,171 @@
 							<div class="subtitle">Las Vegas, NV</div>
 						</div>
 						<div class="work fade-in-right delay-1900" onclick="workPicker(this, 'wustl')">
-							<div class="work-name">Washington University in St. Louis</div>
+							<div class="work-name">Washington University in St.Louis</div>
 							<div class="subtitle">St Louis, MO</div>
 						</div>
 						<div class="work fade-in-right delay-2000" onclick="workPicker(this, 'eazyfriday')">
 							<div class="work-name">EazyFriday</div>
 							<div class="subtitle">Mumbai, India</div>
 						</div>
-						<div class="work-title fade-in-right delay-2500">Projects</div>
+						<div class="work-title fade-in delay-2500">Projects</div>
 						<div class="work fade-in-right delay-2600" onclick="workPicker(this, 'turnstyle')">
 							<div class="work-name">Turnstyle</div>
 							<div class="subtitle">iOS app</div>
 						</div>
 						<div class="work fade-in-right delay-2700" onclick="workPicker(this, 'kraudesorce')">
 							<div class="work-name">KraudeSorce</div>
-							<div class="subtitle">iOS & Android apps</div>
+							<div class="subtitle">Web service + iOS & Android apps</div>
+						</div>
+						<div class="arrow">
+							<span>&#10132;</span>
 						</div>
 					</div>
 				</div>
-				<div class="right-col">
-					<div class="work-card-container">
-						<div id="expensify" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">Expensify</div>
-								<div class="position">Full Stack Developer</div>
-								<div class="dates">2017 - 2019</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/expensify.png">
-								</div>
+				<div class="col col-60 work-card-container padding-top padding-left padding-right">
+					<div id="expensify" class="card hidden">
+						<div class="heading">
+							<div><div class="company fade-in-left">Expensify</div>
+							<div class="position fade-in-left delay-50">Full Stack Developer</div>
+							<div class="dates fade-in-left delay-100">2017 - 2019</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/expensify.png">
 							</div>
-							<div class="blurb fade-in-left delay-1500">
-								<a target="_blank" href="https://www.expensify.com" rel="noreferrer">Expensify</a> is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
+						</div>
+						<div class="blurb fade-in-left delay-1500">
+							<a target="_blank" href="https://www.expensify.com" rel="noreferrer">Expensify</a> is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
+							<ul>
+								<li class="fade-in-left delay-1600">Built processes to monitor and remove expired and/or unused PCI data for GDPR compliance.</li>
+								<li class="fade-in-left delay-1700">Collaborated to develop a tool to manually confirm automated OCR data from receipts for clients who required internal audits of receipt data.</li>
+								<li class="fade-in-left delay-1800">Participated in building a system to automate responses for customer support to decrease wait times and queue sizes for known recurring issues.</li>
+								<li class="fade-in-left delay-1900">Managed internal Chrome extension that optimised workflow of Sales staff to convert leads across various customer acquisition tools and services.</li>
+								<li class="fade-in-left delay-2000">Contributed to internal tooling to help diagnose and remediate client policy and billing issues.</li>
+							</ul>
+						</div>
+					</div>
+					<div id="zappos" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">Zappos</div>
+							<div class="position fade-in-left delay-50">Front End Engineering Intern</div>
+							<div class="dates fade-in-left delay-100">Summer 2016</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/zappos.png">
+							</div>
+						</div>
+						<div class="blurb fade-in-left delay-1500">
+							<a target="_blank" href="https://www.zappos.com" rel="noreferrer">Zappos</a> is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called <a target="_blank" href="https://www.6pm.com" rel="noreferrer">6pm</a>.
+							<ul>
+								<li class="fade-in-left delay-1600">Contributed to the development of a responsive CSS+JS framework to be used across all Zappos mobile and desktop sites.</li>
+								<li class="fade-in-left delay-1700">Developed the 'My Account' portal for an upcoming responsive redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li>
+								<li class="fade-in-left delay-1800">Designed and built a WebView to be used in the Zappos mobile apps as an interface for a new machine learning based recommendation engine.</li>
+							</ul>
+						</div>
+					</div>
+					<div id="wustl" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">Washington University in St Louis</div>
+							<div class="position fade-in-left delay-50">Teaching Assistant</div>
+							<div class="dates fade-in-left delay-100">8 semesters, 2014-2017</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/wustl.png">
+							</div>
+						</div>
+						<div class="blurb">
+							<p class="subheading fade-in-left delay-1500">CSE 131 - Introduction to Computer Science</p>
+							<p class="fade-in-left delay-1600">An introductory Computer Science course taught to over 500 students every semester. Using Java, it covered many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and data structures.</p>
+							<p class="subheading fade-in-left delay-1700">CSE 330S - Rapid Prototype Development and Creative Programming</p>
+							<p class="fade-in-left delay-1800">A web development course that teaches many different skills including setting up Apache servers, databases and web security. Additionally, students are taught PHP, JavaScript, Python, AJAX, MEAN Stack, Git, Socket.IO and the frustration that comes along with debugging projects in larger group settings.</p>
+							<div class="fade-in-left delay-2000">
+								As a TA for both these courses, my duties included:
 								<ul>
-									<li class="fade-in-left delay-1600">Built processes to monitor and remove expired and/or unused PCI data for GDPR compliance.</li>
-									<li class="fade-in-left delay-1700">Collaborated to develop a tool to manually confirm automated OCR data from receipts for clients who required internal audits of receipt data.</li>
-									<li class="fade-in-left delay-1800">Participated in building a system to automate responses for customer support to decrease wait times and queue sizes for known recurring issues.</li>
-									<li class="fade-in-left delay-1900">Managed internal Chrome extension that optimised workflow of Sales staff to convert leads across various customer acquisition tools and services.</li>
-									<li class="fade-in-left delay-2000">Contributed to internal tooling to help diagnose and remediate client policy and billing issues.</li>
+									<li class="fade-in-left delay-2100">Semi-weekly lab and studio sessions for around 30-50 students</li>
+									<li class="fade-in-left delay-2200">Conducted weekly office hours for more individualized help</li>
+									<li class="fade-in-left delay-2300">Grading of labs, studios, exams and extensions</li>
+									<li class="fade-in-left delay-2400">Planning, development and testing of new modules for future semesters as technology stacks evolved.</li>
 								</ul>
 							</div>
 						</div>
-						<div id="zappos" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">Zappos</div>
-								<div class="position">Front End Engineering Intern</div>
-								<div class="dates">Summer 2016</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/zappos.png">
-								</div>
-							</div>
-							<div class="blurb fade-in-left delay-1500">
-								<a target="_blank" href="https://www.zappos.com" rel="noreferrer">Zappos</a> is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called <a target="_blank" href="https://www.6pm.com" rel="noreferrer">6pm</a>.
-								<ul>
-									<li class="fade-in-left delay-1600">Contributed to the development of a responsive CSS+JS framework to be used across all Zappos mobile and desktop sites.</li>
-									<li class="fade-in-left delay-1700">Developed the 'My Account' portal for an upcoming responsive redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li>
-									<li class="fade-in-left delay-1800">Designed and built a WebView to be used in the Zappos mobile apps as an interface for a new machine learning based recommendation engine.</li>
-								</ul>
+					</div>
+					<div id="eazyfriday" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">EazyFriday</div>
+							<div class="position fade-in-left delay-50">Full Stack Engineering Intern</div>
+							<div class="dates fade-in-left delay-100">Summer 2015</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/eazyfriday.png">
 							</div>
 						</div>
-						<div id="wustl" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">Washington University in St Louis</div>
-								<div class="position">Teaching Assistant</div>
-								<div class="dates">8 semesters, 2014-2017</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/wustl.png">
-								</div>
-							</div>
-							<div class="blurb">
-								<p class="subheading fade-in-left delay-1500">CSE 131 - Introduction to Computer Science</p>
-								<p class="fade-in-left delay-1600">An introductory Computer Science course taught to over 500 students every semester. Using Java, it covered many fundamental programming concepts including algorithms, iteration and recursion, inheritance, object oriented programming and data structures.</p>
-								<p class="subheading fade-in-left delay-1700">CSE 330S - Rapid Prototype Development and Creative Programming</p>
-								<p class="fade-in-left delay-1800">A web development course that teaches many different skills including setting up Apache servers, databases and web security. Additionally, students are taught PHP, JavaScript, Python, AJAX, MEAN Stack, Git, Socket.IO and the frustration that comes along with debugging projects in larger group settings.</p>
-								<div class="fade-in-left delay-2000">
-									As a TA for both these courses, my duties included:
-									<ul>
-										<li class="fade-in-left delay-2100">Semi-weekly lab and studio sessions for around 30-50 students</li>
-										<li class="fade-in-left delay-2200">Conducted weekly office hours for more individualized help</li>
-										<li class="fade-in-left delay-2300">Grading of labs, studios, exams and extensions</li>
-										<li class="fade-in-left delay-2400">Planning, development and testing of new modules for future semesters as technology stacks evolved.</li>
-									</ul>
-								</div>
+						<div class="blurb fade-in-left delay-1500">
+							EazyFriday was a marketplace for home services (plumbing, electricians etc). The app was designed to help digitise schedules and marketing for service technicians in India who tend to organise business over the phone (calls, sms or whatsapp).
+							<ul>
+								<li class="fade-in-left delay-1600">Developed a dynamic user authorization system for retailers and administrators for larger operations.</li>
+								<li class="fade-in-left delay-1700">Contributed to the execution of a retail management dashboard to control outlet operations.</li>
+								<li class="fade-in-left delay-1800">Designed and built the interface for back-end administrative controls for technicians.</li>
+								<li class="fade-in-left delay-1900">Maintained a REST API to be used by the companion iOS and Android apps.</li>
+							</ul>
+						</div>
+					</div>
+					<div id="turnstyle" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">TurnStyle</div>
+							<div class="dates fade-in-left delay-50">2016</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/turnstyle.png">
 							</div>
 						</div>
-						<div id="eazyfriday" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">EazyFriday</div>
-								<div class="position">Full Stack Engineering Intern</div>
-								<div class="dates">Summer 2015</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/eazyfriday.png">
-								</div>
-							</div>
-							<div class="blurb fade-in-left delay-1500">
-								EazyFriday was a marketplace for home services (plumbing, electricians etc). The app was designed to help digitise schedules and marketing for service technicians in India who tend to organise business over the phone (calls, sms or whatsapp).
-								<ul>
-									<li class="fade-in-left delay-1600">Developed a dynamic user authorization system for retailers and administrators for larger operations.</li>
-									<li class="fade-in-left delay-1700">Contributed to the execution of a retail management dashboard to control outlet operations.</li>
-									<li class="fade-in-left delay-1800">Designed and built the interface for back-end administrative controls for technicians.</li>
-									<li class="fade-in-left delay-1900">Maintained a REST API to be used by the companion iOS and Android apps.</li>
-								</ul>
+						<div class="blurb fade-in-left delay-1500">
+							An all-in-one ticketing app for attendees and organisers for small-scale events. Sort of like ticketmaster but without all the fees, headaches and setup costs. Designed with a very low barrier for entry - download, signup and create a paid event in less than 5 minutes.
+							<ul>
+								<li class="fade-in-left delay-1700">Create events with custom limits for tickets and different tiers (early bird, VIP etc).</li>
+								<li class="fade-in-left delay-1800">Browse through events filtered by genre, date, area or price.</li>
+								<li class="fade-in-left delay-1900">Allow organisers to act as "bouncers" and scan encrypted QR code tickets with instant back-end verification.</li>
+								<li class="fade-in-left delay-2000">Accept payments from attendees using phone camera and OCR to extract card details. Payments processed through Stripe.</li>
+								<li class="fade-in-left delay-2100">Allow organisers to cash out payments when the event is complete using PayPal.</li>
+							</ul>
+						</div>
+					</div>
+					<div id="kraudesorce" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">KraudeSorce</div>
+							<div class="dates fade-in-left delay-50">2016</div></div>
+							<div class="logo fade-in delay-1000">
+								<img src="./assets/logos/kraudesorce.png">
 							</div>
 						</div>
-						<div id="turnstyle" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">TurnStyle</div>
-								<div class="dates">2016</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/turnstyle.png">
-								</div>
-							</div>
-							<div class="blurb fade-in-left delay-1500">
-								An all-in-one ticketing app for attendees and organisers for small-scale events. Sort of like ticketmaster but without all the fees, headaches and setup costs. Designed with a very low barrier for entry - download, signup and create a paid event in less than 5 minutes.
-								<ul>
-									<li class="fade-in-left delay-1700">Create events with custom limits for tickets and different tiers (early bird, VIP etc).</li>
-									<li class="fade-in-left delay-1800">Browse through events filtered by genre, date, area or price.</li>
-									<li class="fade-in-left delay-1900">Allow organisers to act as "bouncers" and scan encrypted QR code tickets with instant back-end verification.</li>
-									<li class="fade-in-left delay-2000">Accept payments from attendees using phone camera and OCR to extract card details. Payments processed through Stripe.</li>
-									<li class="fade-in-left delay-2100">Allow organisers to cash out payments when the event is complete using PayPal.</li>
-								</ul>
-							</div>
-						</div>
-						<div id="kraudesorce" class="card hidden">
-							<div class="heading fade-in-left">
-								<div><div class="company">KraudeSorce</div>
-								<div class="dates">2016</div></div>
-								<div class="logo fade-in delay-1000">
-									<img src="./assets/logos/kraudesorce.png">
-								</div>
-							</div>
-							<div class="blurb fade-in-left delay-1500">
-								A service to track crowd levels in dining areas in Universities, designed to scale outwards to eateries in the local community. Locations crowd-sourced from the app acted as a secondary method of data collection. We had accurate crowd data even before the app was installed on a single user's phone.
-								<ul>
-									<li class="fade-in-left delay-1700">Raspberry Pi sticks used to ping routers and pull number of connected devices to WiFi router(s) in each location.</li>
-									<li class="fade-in-left delay-1800">Both iOS and Android apps to self-report crowd data using GPS and get real-time information for a desired location.</li>
-									<li class="fade-in-left delay-1900">Subscribe to notifications at specific locations to get current crowd levels at custom time and date intervals.</li>
-									<li class="fade-in-left delay-2000">Used a formula of historical data, Raspberry Pi pings and live crowdsourced data to determine the "crowdedness" of a specific place.</li>
-								</ul>
-							</div>
+						<div class="blurb fade-in-left delay-1500">
+							A service to track crowd levels in dining areas in Universities, designed to scale outwards to eateries in the local community. Locations crowd-sourced from the app acted as a secondary method of data collection. We had accurate crowd data even before the app was installed on a single user's phone.
+							<ul>
+								<li class="fade-in-left delay-1700">Raspberry Pi sticks used to ping routers and pull number of connected devices to WiFi router(s) in each location.</li>
+								<li class="fade-in-left delay-1800">Both iOS and Android apps to self-report crowd data using GPS and get real-time information for a desired location.</li>
+								<li class="fade-in-left delay-1900">Subscribe to notifications at specific locations to get current crowd levels at custom time and date intervals.</li>
+								<li class="fade-in-left delay-2000">Used a formula of historical data, Raspberry Pi pings and live crowdsourced data to determine the "crowdedness" of a specific place.</li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="id-skills" class="section hidden">
-			<div class="info-grid">
-				<div class="title">
-					<div class="text-container">
-						<div class="text-underline bg-2 wipe-in-right">
-							<span class="text wipe-in-up">skills</span>
+			<div class="flexbox-grid container-width">
+				<div class="col col-40 sticky">
+					<div class="title">
+						<div class="text-container">
+							<div class="text-underline bg-2 wipe-in-right">
+								<span class="text wipe-in-up">skills</span>
+							</div>
+						</div>
+					</div>
+					<div class="divider fade-in delay-1500">
+						<div class="info-container">
+							<div class="info smaller">
+								<p class="fade-in-right delay-1500">I'm primarily a front end developer, but I've worked all across the web development stack. I specialise in building responsive and progressive web apps with an emphasis on practical UX.</p>
+								<p class="fade-in-right delay-1600">I am definitely more of an engineer than a designer, but I have an obsessive need to develop perfect UIs down to the pixel. I prefer to use intuitive animations and simple interactions to create lightweight and bloat-free webpages.</p>
+								<p class="fade-in-right delay-1700">This is an updated list of the tools I've used in the past and comfortable using again in the future.</p>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="info smaller">
-					<p class="fade-in-right delay-1500">I'm primarily a front end developer, but I've worked all across the web development stack. I specialise in building responsive and progressive web apps with an emphasis on practical UX.</p>
-					<p class="fade-in-right delay-1600">I am definitely more of an engineer than a designer, but I have an obsessive need to develop perfect UIs down to the pixel. I prefer to use intuitive animations and simple interactions to create lightweight and bloat-free webpages.</p>
-					<p class="fade-in-right delay-1700">This is an up to date list of the tools I've used in the past and comfortable using again in the future.</p>
-				</div>
-				<div>
+				<div class="col col-60 padding-top padding-left">
 					<div class="skill-group fade-in-left delay-2100">
 						<div class="skill-title">Programming Languages</div>
 						<div class="icons">
@@ -347,7 +357,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="info-grid">
+			<div class="info-container">
 				<div class="title">
 					<div class="text-container">
 						<div class="text-underline bg-3 wipe-in-right">
@@ -363,7 +373,7 @@
 						I use all the googling skills I have learned as a developer to find obscure travel blogs and uncongested trails.
 					</p>
 					<p class="fade-in-right delay-1800">
-						Almost all of these photos were captured on the same phone I have had since 2016.
+						Almost all of these photos were captured on the same phone I have been using since 2016.
 					</p>
 				</div>
 			</div>
@@ -380,19 +390,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="info-grid">
+					<div class="info-container">
 						<div class="info">
 							<p class="fade-in-left delay-1600">I used a little GPS unit to record my biking and hiking activity when I lived in the Bay Area.</p>
 							<p class="fade-in-left delay-1700">This map is a culmination of all the dilligent tracking and made the whole ordeal of charging another device worth it.</p>
 							<p class="fade-in-left delay-1800">Almost 5,000km of data was recorded over an 18 month period and every single adventure can be seen here.</p>
-							<div class="show-on-mobile fade-in-left delay-1900"><p>Please open this map on a larger screen for better a experience.</p></div>
-							<h3 class="fade-in-left delay-2300">Rides</h3>
+							<div class="show-on-mobile fade-in-left delay-1900"><p>Please open this map on a wider screen for a better experience.</p></div>
+							<h3 class="fade-in-left delay-2300">Pick a route:</h3>
 							<div class="map-controls">
 								<div class="control fade-in-left delay-2500">
 									<input type="radio" name="rides" id="ride-0" onchange="updateMap(this)" data-ride-id="all">
 									<label for="ride-0">All</label>
 								</div>
-								<div class="control fade-in-left delay-2500">
+								<div class="control fade-in-left delay-2600">
 									<input type="radio" name="rides" id="ride-1" onchange="updateMap(this)" data-ride-id="2677960579">
 									<label for="ride-1">SF Pier Party</label>
 								</div>
@@ -400,7 +410,7 @@
 									<input type="radio" name="rides" id="ride-2" onchange="updateMap(this)" data-ride-id="1997379409">
 									<label for="ride-2">Tiburon Tour</label>
 								</div>
-								<div class="control fade-in-left delay-2600">
+								<div class="control fade-in-left delay-2700">
 									<input type="radio" name="rides" id="ride-3" onchange="updateMap(this)" data-ride-id="2321722402">
 									<label for="ride-3">SF Bay Wildlife Refuge</label>
 								</div>
@@ -409,7 +419,7 @@
 									<input type="radio" name="rides" id="ride-4" onchange="updateMap(this)" data-ride-id="2426844362">
 									<label for="ride-4">Sam Taylor State Park</label>
 								</div>
-								<div class="control fade-in-left delay-2700">
+								<div class="control fade-in-left delay-2800">
 									<input type="radio" name="rides" id="ride-5" onchange="updateMap(this)" data-ride-id="2502538550">
 									<label for="ride-5">Mountain View Tidal Marsh</label>
 								</div>
@@ -417,7 +427,7 @@
 									<input type="radio" name="rides" id="ride-6" onchange="updateMap(this)" data-ride-id="2625229591">
 									<label for="ride-6">Hawk Hill Loop</label>
 								</div>
-								<div class="control fade-in-left delay-2800">
+								<div class="control fade-in-left delay-2900">
 									<input type="radio" name="rides" id="ride-7" onchange="updateMap(this)" data-ride-id="2218403044">
 									<label for="ride-7">Golden Gate Park Dirt Trails</label>
 								</div>
@@ -425,15 +435,15 @@
 									<input type="radio" name="rides" id="ride-8" onchange="updateMap(this)" data-ride-id="2207515618">
 									<label for="ride-8">Merced to Mission</label>
 								</div>
-								<div class="control fade-in-left delay-2900">
+								<div class="control fade-in-left delay-3000">
 									<input type="radio" name="rides" id="ride-9" onchange="updateMap(this)" data-ride-id="2284948547">
 									<label for="ride-9">Angel Island Bikepacking</label>
 								</div>
-								<div class="control fade-in-left delay-2900">
+								<div class="control fade-in-left delay-3000">
 									<input type="radio" name="rides" id="ride-10" onchange="updateMap(this)" data-ride-id="2666057846">
 									<label for="ride-10">Forest Hill Frolic</label>
 								</div>
-								<div class="control fade-in-left delay-3000">
+								<div class="control fade-in-left delay-3100">
 									<input type="radio" name="rides" id="ride-11" onchange="updateMap(this)" data-ride-id="random">
 									<label for="ride-11">Random</label><span onclick="drawRandom(this)">&#x21bb;</span>
 								</div>
@@ -448,71 +458,75 @@
 			</div>
 		</div>
 		<div id="id-about" class="section hidden">
-			<div class="title">
-				<div class="text-container">
-					<div class="text-underline bg-5 wipe-in-right">
-						<span class="text wipe-in-up">about me</span>
-					</div>
-				</div>
-			</div>
 			<div class="flexbox-grid container-width">
-				<div class="left-col">
-					<div class="about-blurb">
-						<p class="fade-in-right delay-1500">I'm a web developer from Bombay and I spend most of my time offline.</p>
-						<div class="fade-in-right delay-1600">
-							<p>Things that I like:</p>
+				<div class="col col-60">
+					<div class="title">
+						<div class="text-container">
+							<div class="text-underline bg-5 wipe-in-right">
+								<span class="text wipe-in-up">about me</span>
+							</div>
+						</div>
+					</div>
+					<div class="about-blurb info-container info">
+						<p class="fade-in-right delay-1500">I'm a front-end developer who spends most of my free time offline.</p>
+						<p class="fade-in-right delay-1600">I have a BSc in Computer Science (with a minor in Design) from Washington University in St. Louis. I worked across various engineering roles at eCommerce and SaaS platforms but my main interest has always been in interaction design.</p>
+						<p class="fade-in-right delay-1700">I used to live and work in California, but have now moved back home to Bombay</p>
+						<p class="fade-in-right delay-1800">My favourite day of the week is Thursday. It's basically Friday, but without all the pressure.</p>
+						
+						<div class="fade-in-right delay-1900">
+							<p>Things that I really like:</p>
 							<ul>
-								<li>KitKats <span class="hover">- name a better chocolate I dare you</span></li>
-								<li>Dogs that tilt their head <span class="tilt">sideways</span></li>
+								<li>KitKats</li>
 								<li>Venn diagrams</li>
+								<li>Dogs with <span class="wiggle">wiggly</span> butts</li>
 								<li>Airports</li>
 								<li>Public transit</li>
 							</ul>
 						</div>
-						<div class="fade-in-right delay-1700">
+						<div class="fade-in-right delay-2000">
 							<p>Things that I don't like:</p>
 							<ul>
 								<li>Raisins</li>
 								<li>People who like raisins</li>
 								<li>Chemtrails</li>
 								<li>Airplanes</li>
-								<li>Lukewarm water</li>
+								<li>Lukewarm water<span class="hover"> - if you think there is no difference between lukewarm and cold water I have some choice words for you</span></li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="right-col">
-					<div class="me fade-in-left delay-3000">
+				<div class="col col-40 sticky padding-top">
+					<div class="me fade-in-left delay-2500">
 						<img id="me-jpg" data-src="./assets/me.jpg">
 						<img id="me-gif" data-src="./assets/me.gif">
 					</div>
 					<div class="social">
-						<h2 class="fade-in-left delay-2000">@rohanb10</h2>
+						<h2 class="fade-in-left delay-2600">@rohanb10</h2>
 						<div>
-							<span class="fade-in-left delay-2900">
-								<a href="mailto:rohanb10@gmail.com?subject=Hello!" data-name="email" target="_blank">email</a> / 
+							<span class="fade-in-left delay-2700">
+								<a href="mailto:rohanb10@gmail.com?subject=Hello!" data-name="email" target="_blank">email</a>
+								&nbsp;/&nbsp;
 							</span>
 							<span class="fade-in-left delay-2800">
-								<a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a> / 
+								<a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a>
+								&nbsp;/&nbsp;
 							</span>
-							<span class="fade-in-left delay-2700">
-								<a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a> / 
+							<span class="fade-in-left delay-2900">
+								<a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a>
+								<span class="desktop-only">&nbsp;/&nbsp;</span>
 							</span>
 							<span class="mobile-only"><br></span>
-							<span class="fade-in-left delay-2600">
-								<a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a> / 
+							<span class="fade-in-left delay-3000">
+								<a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a>
+								&nbsp;/&nbsp;
 							</span>
-							<span class="fade-in-left delay-2500">
+							<span class="fade-in-left delay-3100">
 								<a href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a>
 							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="bucket">
-			<img onclick="bucket(this)" src="./assets/paint-bucket-spilling.png">
-			<div class="tooltip" data-hover="Swap colours" data-hover-section="Shift colours" data-click="Swapping colours" data-click-section="Shifting colours"></div>
 		</div>
 	</div>
 	<script src="./js/script.min.js"></script>

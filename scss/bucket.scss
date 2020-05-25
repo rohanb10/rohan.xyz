@@ -19,8 +19,7 @@
 		background-position: center center;
 		background-size: 100%;
 		background-repeat: no-repeat;
-		background-image: url('../assets/paint-bucket.png');
-		transform: rotate(45deg);
+		background-image: url('../assets/bucket.png');
 	}
 	
 
@@ -46,21 +45,21 @@
 			opacity: 1;
 		}
 		img:hover {
-			transform: rotate(-10deg);
-			background-size: 90% 90%;
-			background-image: radial-gradient(circle at 0% 100%, var(--nc-0) 30%, $c-t 30%),
-				radial-gradient(circle at 8% 0%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 60%, var(--nc-4) 60%);
+			transform: rotate(-35deg);
+			background-size: 97% 99%;
+			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
+				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 		}
 	}
 	&.changing {
 		img {
-			transform: rotate(-45deg);
-			background-size: 90% 90%;
-			background-image: radial-gradient(circle at 0% 100%, var(--nc-0) 30%, $c-t 30%),
-				radial-gradient(circle at 8% 0%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 60%, var(--nc-4) 60%);
+			transform: rotate(-100deg);
+			background-size: 97% 99%;
+			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
+				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 			@media (hover:none) {
-				background-image: radial-gradient(circle at 0% 100%, $c-1 30%, $c-t 30%),
-					radial-gradient(circle at 8% 0%, $c-2 37%, $c-3 40%, $c-3 50%, $c-4 50%, $c-4 60%, $c-5 60%);
+				background-image: radial-gradient(circle at 0% 50%, $c-1 30%, $c-t 30%),
+					radial-gradient(circle at 62% -12%, $c-2 37%, $c-3 40%, $c-3 50%, $c-4 50%, $c-4 62%, $c-5 62%);
 			}
 		}
 		.tooltip {

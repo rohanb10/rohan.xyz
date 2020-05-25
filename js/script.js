@@ -55,6 +55,13 @@ function killWave(except) {
 	});
 }
 
+function highTide() {
+	killWave();
+	navbarSections.forEach((s, i, sections) => {
+		setTimeout(rippleUp, 150 * i, s, names[i]);
+	});
+}
+
 // Navbar
 function navControl(navButton) {
 	var sectionID = navButton.querySelector('span').getAttribute('data-section-id');
@@ -90,7 +97,6 @@ function showSection(sectionID) {
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
-			loadFile('smoothscroll-polyfill', 'js')
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
@@ -98,7 +104,7 @@ function showSection(sectionID) {
 			break;
 
 		case 'id-skills':
-			document.querySelectorAll('.img-skill').forEach((img) => {img.src = img.getAttribute('data-src')});
+			loadSkills();
 			break;
 
 		case 'id-photos':
@@ -108,7 +114,6 @@ function showSection(sectionID) {
 
 		case 'id-maps':
 			mapContainer.classList.remove('fade-in');
-			// mapContainer.style.opacity = 0;
 			mapFilesLoadedCount = 0;
 			loadFile('rides', 'js');
 			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js');
@@ -118,7 +123,6 @@ function showSection(sectionID) {
 					if (mapFilesLoadedCount >= 3) {
 						if (map === undefined) initializeMap();
 						mapContainer.classList.add('fade-in');
-						// mc.style.opacity = 1;
 						clearTimeout(allFilesLoaded);
 					}
 				}, 250)
@@ -133,7 +137,6 @@ function showSection(sectionID) {
 	// if no section is open
 	if (active_section === null){
 		toggleHero();
-		// document.getElementById('hero').classList.add('minimise');
 		//wait for minimize to complete
 		setTimeout(() => {
 			document.getElementById(sectionID).classList.remove('hidden');
@@ -176,7 +179,6 @@ function hideAllSections() {
 	navbar.setAttribute('data-open', 'false');
 	document.getElementById('section-container').classList.remove('active');
 	
-	// document.getElementById('hero').classList.remove('minimize');
 	toggleHero();
 	killWave();
 	startWave(1500);
@@ -186,13 +188,6 @@ function hideAllSections() {
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
 	track('Back to Home', '#home');
-}
-
-function highTide() {
-	killWave();
-	navbarSections.forEach((s, i, sections) => {
-		setTimeout(rippleUp, 150 * i, s, names[i]);
-	});
 }
 
 // Work
@@ -208,16 +203,50 @@ function workPicker(element, workName) {
 		document.querySelector('.work.active').classList.remove('active');
 		animateOut(`#${active_work}`, 'fade-out-right', () => {
 			card.classList.remove('hidden');
-			if (window.innerWidth <= 640) card.parentElement.scrollIntoView({behavior:'smooth'})
 		});
 	}
 	element.classList.add('active');
 	active_work = workName;
 
-	if (window.innerWidth <= 640) card.parentElement.scrollIntoView({behavior:'smooth'})
-		
+	var arrow = document.querySelector('.arrow');
+	arrow.classList.add('fade-down-twice')
+	arrow.addEventListener('animationend', () => {arrow.classList.remove('fade-down-twice')}, {once: true});
+
 	history.pushState('', '', `#work?${workName}`);
 	track(`Work - ${workName}`);
+}
+
+// skills
+var skills, skillCycle, currentHover, pedal;
+function loadSkills() {
+	skills = document.querySelectorAll('.img-skill');
+	skills.forEach(img => {
+		img.src = img.getAttribute('data-src');
+		img.onmouseover = () => {killSkillCycle()}
+		img.onmouseout = () => {startSkillCycle(1500)}
+	});
+	currentHover = 0;
+	startSkillCycle(3500);
+}
+
+function killSkillCycle() {
+	clearInterval(skillCycle);
+	clearTimeout(pedal);
+	var prev = document.querySelector('.img-skill.hovered');
+	if (prev) prev.classList.remove('hovered');
+}
+
+function startSkillCycle(intialDelay = 0) {
+	killSkillCycle();
+	pedal = setTimeout(() => {
+		skillCycle = setInterval(() => {
+			var prev = document.querySelector('.img-skill.hovered');
+			if (prev) prev.classList.remove('hovered');
+			skills[currentHover].classList.add('hovered');
+			currentHover++;
+			if (currentHover >= skills.length) currentHover = 0;
+		}, 1500);
+	}, intialDelay);
 }
 
 // analytics

@@ -1,14 +1,12 @@
 #id-about {
-	.right-col {
-		padding-left: 4em;
-		@media screen and (max-width: 40em) {
-			padding-left: 0;
-		}
-	}
 	.social {
 		text-align: right;
+		padding-bottom: 2em;
 		h2 {
 			margin-bottom: 0;
+		}
+		span {
+			display: inline-block;
 		}
 
 		a {
@@ -16,8 +14,14 @@
 		}
 		.mobile-only {
 			display: none;
-			@media screen and (max-width: 45em) {
-				display: initial;
+		}
+		@media screen and (max-width: 40em) {
+			text-align: center;
+			.mobile-only {
+				display: unset;
+			}
+			.desktop-only {
+				display: none;
 			}
 		}
 	}
@@ -30,13 +34,12 @@
 		li:hover .hover {
 			opacity: 1;
 		}
-		.tilt {
+		.wiggle{
 			display: inline-block;
-			transform-origin: 30% 50%;
-			transition: transform .3s $ease-in-out-cubic;
-			&:hover {
-				transform: rotate(-20deg);
-				
+		}
+		@media screen and (max-width: 40em) {
+			.hover {
+				display: none;
 			}
 		}
 	}

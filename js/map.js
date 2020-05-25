@@ -1,6 +1,8 @@
 var map, currentMapLayer, currentMapLayerName, paths = [];
 function initializeMap() {
-	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
+	return;
+	// L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
+	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thNDA2NHl1MHBleDNlb2d1eTB5c3ozZSJ9.CmsaHqKj203E7JMbfRDLiw';   // dev
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
 		.setMaxZoom(15).setMinZoom(10)
@@ -16,6 +18,7 @@ function updateMap(btn){
 	var rideID = btn.getAttribute('data-ride-id')
 	if (rideID === 'all') {
 		drawAll();
+		enableMapInteractions();
 		track(`Maps - all selected`);
 		return;
 	} else if (rideID === 'random') {

@@ -1,8 +1,6 @@
 var map, currentMapLayer, currentMapLayerName, paths = [];
 function initializeMap() {
-	return;
-	// L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
-	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thNDA2NHl1MHBleDNlb2d1eTB5c3ozZSJ9.CmsaHqKj203E7JMbfRDLiw';   // dev
+	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
 		.setMaxZoom(15).setMinZoom(10)
@@ -19,15 +17,18 @@ function updateMap(btn){
 	if (rideID === 'all') {
 		drawAll();
 		enableMapInteractions();
-		track(`Maps - all selected`);
+		track('Map Changed', 'maps', 'All');
 		return;
 	} else if (rideID === 'random') {
-		drawSnake(getRandomPath());
+		var p = getRandomPath();
+		drawSnake(p);
+		track('Map Changed', 'maps', 'Random', p);
 		return;
 	} else if (RIDES[rideID] === undefined) {
 		return;
 	}
 	drawSnake(rideID);
+	track('Map Changed', 'maps', btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
 }
 
 var mapLayers = {
@@ -98,7 +99,7 @@ function drawSnake(pathID) {
 			p._path.addEventListener('transitionend', () => {
 				p._path.style.strokeDasharray = 'unset';
 				enableMapInteractions();
-			});
+			}, {once: true});
 		}, 150);
 	});
 }
@@ -121,7 +122,9 @@ function drawAll() {
 function drawRandom(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', () => {el.classList.remove('spin')}, {once: true});
-	drawSnake(getRandomPath());
+	var p = getRandomPath();
+	track('Map Changed', 'maps', 'Random', p);
+	drawSnake(p);
 }
 
 function getRandomPath() {

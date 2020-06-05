@@ -9,6 +9,7 @@ window.addEventListener('popstate', () => {
 		s.classList.remove('active');
 	});
 	hideAllSections();
+	track('Back button clicked', 'browser', 'Home')
 });
 
 // Wave
@@ -77,6 +78,7 @@ function navControl(navButton) {
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
 		hideAllSections();
+		track('Sections Closed', 'navbar', 'Home');
 	} else{
 		// open section
 		showSection(sectionID);
@@ -88,7 +90,7 @@ function navControl(navButton) {
 		document.getElementById('section-container').classList.add('active');
 		
 		history.pushState('', '', `#${sectionName}`);
-		track(sectionName);
+		track('Section Changed', 'navbar', sectionName)
 	}
 }
 
@@ -108,7 +110,10 @@ function showSection(sectionID) {
 			break;
 
 		case 'id-photos':
-			closePhotoModal();
+			if (active_photo !== -1) {
+				active_photo = -1;
+				closePhotoModal();
+			}
 			genThumbnails();
 			break;
 
@@ -187,7 +192,6 @@ function hideAllSections() {
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
-	track('Back to Home', '#home');
 }
 
 // Work
@@ -213,7 +217,7 @@ function workPicker(element, workName) {
 	arrow.addEventListener('animationend', () => {arrow.classList.remove('fade-down-twice')}, {once: true});
 
 	history.pushState('', '', `#work?${workName}`);
-	track(`Work - ${workName}`);
+	track('Work Clicked', 'work', workName)
 }
 
 // skills
@@ -250,13 +254,15 @@ function startSkillCycle(intialDelay = 0) {
 }
 
 // analytics
-function track(name, el = false) {
-	if (window.location.protocol == 'file:'){console.log(`Clicky | ${el ? el : window.location.hash} | ${name}`);return}
-	if (typeof clicky === 'undefined') return;
-	clicky.log(el ? el : window.location.hash, name)
+function track(eventName = 'click', eventCategory = 'Undefined', eventLabel = undefined, eventValue = undefined) {
+	var args = {category: eventCategory}
+	if (eventLabel !== undefined) args.label = eventLabel;
+	if (eventValue !== undefined) args.value = eventValue;
+	// console.log('Tracking', eventName, args);
+	analytics.track(eventName, args);
 }
 
-function stopTracking() {
+function doNotTrack() {
 	track = () => {return};
 }
 
@@ -295,9 +301,9 @@ mobileViewportHack();
 
 window.addEventListener('orientationchange', mobileViewportHack);
 
-document.querySelectorAll('.social a').forEach(s => {
-	s.addEventListener('click', () => {
-		track(`Social clicked - ${s.getAttribute('data-name') ? s.getAttribute('data-name') : s.hostname}`);
+document.querySelectorAll('a').forEach(link => {
+	link.addEventListener('click', () => {
+		track('URL Clicked', active_section.substr(active_section.indexOf('-')+1), link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname)
 	})
 })
 
@@ -312,4 +318,4 @@ document.addEventListener('DOMContentLoaded', () => {
 		span.addEventListener('mouseout', () => {killWave(); if (active_section === null) startWave(1500)});
 	});
 	startWave(1000);
-}, false);
+}, {once: true});

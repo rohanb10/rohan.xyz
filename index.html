@@ -10,8 +10,6 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
 	<link rel="stylesheet" type="text/css" href="./css/style.min.css">
-	<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101251702);</script>
-	<script async src="https://static.getclicky.com/js"></script>
 </head>
 <body>
 	<div id="hero" class="container-width">
@@ -530,5 +528,11 @@
 		</div>
 	</div>
 	<script src="./js/script.min.js"></script>
+	<script src="js/analytics.min.js"></script>
+	<script src="js/google-analytics.min.js"></script>
+	<script type="text/javascript">
+		var analytics = _analytics.init({app: 'rohan-test',plugins: [analyticsGa.init({trackingId: 'UA-78711252-1'})]});
+		analytics.page()
+	</script>
 </body>
 </html>

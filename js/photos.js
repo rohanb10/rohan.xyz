@@ -102,6 +102,7 @@ function openPhotoModal(i) {
 
 	// keyboard controls for modal
 	document.addEventListener('keydown', function _close(e) {
+		if (active_photo === -1) return;
 		if (e.keyCode === 39) nextPhoto();
 		if (e.keyCode === 37) prevPhoto();
 		if (e.keyCode === 27) {
@@ -109,6 +110,7 @@ function openPhotoModal(i) {
 			document.removeEventListener('keydown', _close);
 		}
 	});
+	track('Photo modal opened', 'photos', identifyPhoto(PHOTOS[i]), i);
 }
 
 function closePhotoModal() {
@@ -118,6 +120,8 @@ function closePhotoModal() {
 		startLoadingAnimation();
 	});
 	history.pushState('', '', '#photos');
+	track('Photo modal closed', 'photos');
+	active_photo = -1;
 }
 
  
@@ -125,12 +129,14 @@ function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(++active_photo, 500);
+	track('Next Photo', 'photos', identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(--active_photo, 500);
+	track('Prev Photo', 'photos', identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 
@@ -142,7 +148,6 @@ function loadPhoto(i, delay = 0) {
 			setTimeout(() => {
 				modal.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
-				track(identifyPhoto(PHOTOS[i]));
 			}, delay);
 		},
 		onerror: () => {endLoadingAnimation()},
@@ -182,6 +187,8 @@ function endLoadingAnimation() {
 			}
 		});
 	});
+	// fallback
+	setTimeout(()=> {modal.classList.add('loaded')}, 2000);
 }
 
 function startLoadingAnimation() {

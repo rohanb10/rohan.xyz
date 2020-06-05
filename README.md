@@ -11,7 +11,7 @@ Photos (and thumbnails) and maps are also loaded on demand only.
 
 After testing several different online mapping solutions, I settled on [Mapbox](https://www.mapbox.com/) and their vector tiles for the best performance on slow networks and mobile devices.
 
-Because Google Analytics [can't even track](https://support.google.com/analytics/answer/2731565?hl=en) the simple task of session duration, I use [Clicky](https://clicky.com/) to monitor and analyse traffic
+Using [Analytics.io](https://getanalytics.io/) with a Google Analytics plugin to monitor and analyse traffic. I think the entire GA script is overkill for what I need for my site.
 
 ---
 

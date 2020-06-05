@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		body {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-around;
+			width: 100vw;
+			height: 100vh;
+		}
+		.left-arrow, .right-arrow {
+			position: relative;
+			width: 2em;
+			height: 4em;
+		}
+		.left-arrow span, .right-arrow span {
+			position: absolute;
+			display: block;
+			height: 2em;
+			width: 2em;
+			box-sizing: border-box;
+			transition: all .25s ease-in-out;
+		}
+		span.top {
+			border-top: .2em solid black;
+			top: .5em;
+		}
+		span.bottom {
+			border-bottom: .2em solid black;
+			top: 1.4em;
+		}
+		.left-arrow .top {
+			transform-origin: top right;
+			transform: rotate(-45deg);
+		}
+		.left-arrow .bottom{
+			transform-origin: bottom right;
+			transform: rotate(45deg);
+		}
+		.right-arrow .top {
+			transform-origin: top left;
+			transform: rotate(45deg);
+		}
+		.right-arrow .bottom {
+			transform-origin: bottom left;
+			transform: rotate(-45deg);
+			
+		}
+		.left-arrow.changing .top, .right-arrow.changing .bottom {
+			transform: rotate(-90deg);
+			width: 1.45em;
+		}
+		.right-arrow.changing .top, .left-arrow.changing .bottom {
+			transform: rotate(90deg);
+			width: 1.45em;
+		}
+		.text-box {
+			width: 25em;
+			height: 4em;
+			padding: 0 2em;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.text-box div{
+			display: inline-block;
+		}
+		.text {
+			transition: transform .5s ease-in-out;
+		}
+		.bad-takes {
+			
+			display: flex;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="bad-takes">
+		<div class="left-arrow" onclick="arrows(-1)">
+			<span class="top"></span>
+			<span class="bottom"></span>
+		</div>
+		<div class="text-box">
+			<div class="text">
+				batman > robin
+			</div>
+		</div>
+		<div class="right-arrow" onclick="arrows(1)">
+			<span class="top"></span>
+			<span class="bottom"></span>
+		</div>
+	</div>
+	<script src="js/analytics.min.js"></script>
+	<script src="js/google-analytics.min.js"></script>
+	<script type="text/javascript">
+		var current = 0;
+		var texts = [
+			"Best day of the week is thursday ",
+			"Will Smith’s best movie is Shark Tale",
+			"runny eggs are bad and yolks should be fully cooked",
+			"Venn diagrams are the most effective way of visualising data",
+			"Lifts should not go to the first floor",
+			"Honking should be banned on Sundays. Maybe ban cars too.",
+			"Frodo is easily the worst member of the Fellowship in LOTR",
+			"The fourth season of Arrested Development is good",
+			"Arsene Wenger as British PM. ",
+			"The gamecube controller is the pinnacle of controller design",
+			"Cirrus clouds are actually chemtrails",
+		];
+		function arrows(direction){
+			var left = document.querySelector('.left-arrow')
+			var right = document.querySelector('.right-arrow');
+			if (left.classList.contains('changing') || right.classList.contains('changing')) {
+				return;
+			}
+			var textbox = document.querySelector('.text-box')
+			var text = textbox.querySelector('.text')
+			left.classList.add('changing');
+			right.classList.add('changing');
+			var nextText = getNextText(direction)
+			var next = Object.assign(document.createElement('div'), {
+				innerHTML: nextText,
+				classList: 'text',
+				style: `transform: translateX(${direction * -1 * 50}em)`
+			});
+			left.addEventListener('transitionend', () => {
+				text.style.transform = `translateX(${direction * 50}em)`;
+				text.addEventListener('transitionend', () => {
+					textbox.removeChild(text)
+					textbox.appendChild(next);
+					setTimeout(()=> {
+						next.style.transform = `translateX(0em)`;
+					},1)
+
+					next.addEventListener('transitionend', () => {
+						left.classList.remove('changing');
+						right.classList.remove('changing');
+					}, {once: true});
+					
+				}, {once: true})
+			}, {once: true});
+			console.log('hi');
+			analytics.track('click', {
+				category: 'Hot Takes - Arrow',
+				label: nextText,
+			})
+			console.log('bye');
+		}
+		function getNextText(direction) {
+			var next = current + direction;
+			current = next >= texts.length ? 0 : next = texts.length-1 ? texts.length-1 : next;
+			current = next;
+			return texts[current];
+		}
+
+		document.querySelector('.text').innerHTML = texts[current];
+		
+		var analytics = _analytics.init({
+			app: 'rohan-test',
+			plugins: [
+				analyticsGa.init({
+					trackingId: 'UA-78711252-1'
+				})
+			]
+		})
+		analytics.page()
+	</script>
+</body>
+</html>

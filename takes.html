@@ -155,7 +155,6 @@
 		function getNextText(direction) {
 			var next = current + direction;
 			current = next >= texts.length ? 0 : next = texts.length-1 ? texts.length-1 : next;
-			current = next;
 			return texts[current];
 		}
 

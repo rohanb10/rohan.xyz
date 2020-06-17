@@ -120,6 +120,19 @@ html, body {
 .hidden {
 	display: none;
 }
+@media screen and (max-width: 40em) {
+	.hide-on-mobile {
+		opacity: 0;
+		&.completely {
+			display: none;
+		}
+	}
+}
+@media screen and (min-width: 40em) {
+	.hide-on-desktop {
+		opacity: 0;
+	}
+}
 a {
 	color: $c-b;
 	text-decoration: none;

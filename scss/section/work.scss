@@ -9,8 +9,8 @@
 	}
 	.work {
 		cursor: pointer;
-		padding: .5em;
-		margin: .5em 0;
+		padding: .25em .5em;
+		margin: .75em 0;
 		border-left: 4px solid transparent;
 		transition: all .5s ease-in-out;
 
@@ -66,6 +66,9 @@
 					width: 5em;
 					height: 5em;
 					border-radius: 5em;
+				}
+				&.square img {
+					border-radius: 0;
 				}
 				padding-right: 1em;
 				@media screen and (max-width: 40em) {

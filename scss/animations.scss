@@ -76,7 +76,7 @@
 .fade-in-left {
 	animation: fade-in-left 1s $ease-in-out-cubic both;
 	@include delays(50, 50, 2);
-	@include delays(100, 1500, 16);
+	@include delays(100, 1500, 17);
 }
 
 @keyframes fade-in-left {
@@ -92,7 +92,7 @@
 
 .fade-in-right {
 	animation: fade-in-right 1s $ease-in-out-cubic both;
-	@include delays(100, 1500, 12);
+	@include delays(100, 1500, 15);
 }
 
 @keyframes fade-in-right {

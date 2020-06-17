@@ -80,12 +80,6 @@
 	}
 }
 #section-container.active .bucket {
-	.tooltip:before {
-		content: attr(data-hover-section);
-	}
-	&.changing .tooltip:before {
-		content: attr(data-click-section);
-	}
 	@media screen and (min-width: 40em) {
 		bottom: 1em;
 		right: 1em;

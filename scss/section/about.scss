@@ -5,12 +5,19 @@
 		h2 {
 			margin-bottom: 0;
 		}
+		div {
+			padding: .5em 0;
+		}
 		span {
 			display: inline-block;
+			&:nth-child(n+2):before {
+				content: ' | ';
+				color: #ddd;
+			}
 		}
-
 		a {
 			@include hyperlink($c-5);
+			padding: .25em;
 		}
 		.mobile-only {
 			display: none;
@@ -27,6 +34,9 @@
 	}
 
 	.about-blurb {
+		p:first-of-type {
+			margin-top: 0;
+		}
 		.hover {
 			opacity: 0;
 			transition: opacity .3s $ease-in-out-cubic;

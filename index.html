@@ -44,7 +44,7 @@
 	<div id="section-container">
 		<div class="bucket">
 			<img onclick="bucket(this)" src="./assets/bucket-spill.png">
-			<div class="tooltip" data-hover="Swap colours" data-click="Swapping colours" data-hover-section="Shift colours" data-click-section="Shifting colours"></div>
+			<div class="tooltip" data-hover="Swap colours" data-click="Swapping colours"></div>
 		</div>
 		<div id="id-work" class="section hidden">
 			<div class="flexbox-grid container-width">
@@ -75,13 +75,17 @@
 							<div class="subtitle">Mumbai, India</div>
 						</div>
 						<div class="work-title fade-in delay-2500">Projects</div>
-						<div class="work fade-in-right delay-2600" onclick="workPicker(this, 'turnstyle')">
-							<div class="work-name">Turnstyle</div>
-							<div class="subtitle">iOS app</div>
+						<div class="work fade-in-right delay-2600" onclick="workPicker(this, 'path-editor')">
+							<div class="work-name">Path Editor</div>
+							<div class="subtitle">Web App</div>
 						</div>
-						<div class="work fade-in-right delay-2700" onclick="workPicker(this, 'kraudesorce')">
+						<div class="work fade-in-right delay-2700" onclick="workPicker(this, 'turnstyle')">
+							<div class="work-name">Turnstyle</div>
+							<div class="subtitle">iOS App</div>
+						</div>
+						<div class="work fade-in-right delay-2800" onclick="workPicker(this, 'kraudesorce')">
 							<div class="work-name">KraudeSorce</div>
-							<div class="subtitle">Web service + iOS & Android apps</div>
+							<div class="subtitle">Web Service + iOS & Android Apps</div>
 						</div>
 						<div class="arrow">
 							<span>&#10132;</span>
@@ -92,7 +96,7 @@
 					<div id="expensify" class="card hidden">
 						<div class="heading">
 							<div><div class="company fade-in-left">Expensify</div>
-							<div class="position fade-in-left delay-50">Full Stack Developer</div>
+							<div class="position fade-in-left delay-100">Full Stack Developer</div>
 							<div class="dates fade-in-left delay-100">2017 - 2019</div></div>
 							<div class="logo fade-in delay-1000">
 								<img src="./assets/logos/expensify.png">
@@ -112,9 +116,9 @@
 					<div id="zappos" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">Zappos</div>
-							<div class="position fade-in-left delay-50">Front End Engineering Intern</div>
+							<div class="position fade-in-left delay-100">Front End Engineering Intern</div>
 							<div class="dates fade-in-left delay-100">Summer 2016</div></div>
-							<div class="logo fade-in delay-1000">
+							<div class="logo square fade-in delay-1000">
 								<img src="./assets/logos/zappos.png">
 							</div>
 						</div>
@@ -130,7 +134,7 @@
 					<div id="wustl" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">Washington University in St Louis</div>
-							<div class="position fade-in-left delay-50">Teaching Assistant</div>
+							<div class="position fade-in-left delay-100">Teaching Assistant</div>
 							<div class="dates fade-in-left delay-100">8 semesters, 2014-2017</div></div>
 							<div class="logo fade-in delay-1000">
 								<img src="./assets/logos/wustl.png">
@@ -155,7 +159,7 @@
 					<div id="eazyfriday" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">EazyFriday</div>
-							<div class="position fade-in-left delay-50">Full Stack Engineering Intern</div>
+							<div class="position fade-in-left delay-100">Full Stack Engineering Intern</div>
 							<div class="dates fade-in-left delay-100">Summer 2015</div></div>
 							<div class="logo fade-in delay-1000">
 								<img src="./assets/logos/eazyfriday.png">
@@ -174,7 +178,7 @@
 					<div id="turnstyle" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">TurnStyle</div>
-							<div class="dates fade-in-left delay-50">2016</div></div>
+							<div class="dates fade-in-left delay-100">2016</div></div>
 							<div class="logo fade-in delay-1000">
 								<img src="./assets/logos/turnstyle.png">
 							</div>
@@ -193,7 +197,7 @@
 					<div id="kraudesorce" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">KraudeSorce</div>
-							<div class="dates fade-in-left delay-50">2016</div></div>
+							<div class="dates fade-in-left delay-100">2016</div></div>
 							<div class="logo fade-in delay-1000">
 								<img src="./assets/logos/kraudesorce.png">
 							</div>
@@ -205,6 +209,28 @@
 								<li class="fade-in-left delay-1800">Both iOS and Android apps to self-report crowd data using GPS and get real-time information for a desired location.</li>
 								<li class="fade-in-left delay-1900">Subscribe to notifications at specific locations to get current crowd levels at custom time and date intervals.</li>
 								<li class="fade-in-left delay-2000">Used a formula of historical data, Raspberry Pi pings and live crowdsourced data to determine the "crowdedness" of a specific place.</li>
+							</ul>
+						</div>
+					</div>
+					<div id="path-editor" class="card hidden">
+						<div class="heading fade-in-left">
+							<div><div class="company fade-in-left">Path Editor</div>
+							<div class="dates fade-in-left delay-100">2020</div></div>
+							<div class="logo square fade-in delay-1000">
+								<img src="./assets/logos/path-editor.png">
+							</div>
+						</div>
+						<div class="blurb">
+							<p class="fade-in-left delay-1500">I was frustrated with the inability to edit rides on Strava and I couldn't find a free tool on the internet to help me out. So naturally, I made one myself.</p>
+
+							<p class="fade-in-left delay-1600">Check it out <a target="_blank" href="https://rohanb10.github.io/path-editor/" rel="noreferrer">here</a>.</p>
+							<ul>
+								<li class="fade-in-left delay-1700">Import rides and display them as overlays over Google Maps as a base layer</li>
+								<li class="fade-in-left delay-1800">Draw and drag new vertices to points that were not recorded .</li>
+								<li class="fade-in-left delay-1900">Edit and move vertices on paths that may have been incorrectly placed.</li>
+								<li class="fade-in-left delay-2000">Delete vertices that are superfluous to reduce size of path.</li>
+								<li class="fade-in-left delay-2100">Draw and edit shapes to select vertices in bulk for deletion.</li>
+								<li class="fade-in-left delay-2200">Export coordinates in several different formats inlcuding CSVs and polylines.</li>
 							</ul>
 						</div>
 					</div>
@@ -458,7 +484,7 @@
 		<div id="id-about" class="section hidden">
 			<div class="flexbox-grid container-width">
 				<div class="col col-60">
-					<div class="title">
+					<div class="title hide-on-desktop">
 						<div class="text-container">
 							<div class="text-underline bg-5 wipe-in-right">
 								<span class="text wipe-in-up">about me</span>
@@ -493,33 +519,40 @@
 						</div>
 					</div>
 				</div>
-				<div class="col col-40 sticky padding-top">
+				<div class="col col-40 sticky">
+					<div class="title hide-on-mobile completely">
+						<div class="text-container">
+							<div class="text-underline align-right bg-5 wipe-in-right">
+								<span class="text wipe-in-up">about me</span>
+							</div>
+						</div>
+					</div>
 					<div class="me fade-in-left delay-2500">
 						<img id="me-jpg" data-src="./assets/me.jpg">
 						<img id="me-gif" data-src="./assets/me.gif">
 					</div>
 					<div class="social">
-						<h2 class="fade-in-left delay-2600">@rohanb10</h2>
+						<h2 class="fade-in-left delay-2600"><span>@</span>rohanb10</h2>
 						<div>
 							<span class="fade-in-left delay-2700">
 								<a href="mailto:rohanb10@gmail.com?subject=Hello!" data-name="email" target="_blank">email</a>
-								&nbsp;/&nbsp;
 							</span>
 							<span class="fade-in-left delay-2800">
-								<a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a>
-								&nbsp;/&nbsp;
+								<a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a>
 							</span>
 							<span class="fade-in-left delay-2900">
 								<a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a>
-								<span class="desktop-only">&nbsp;/&nbsp;</span>
 							</span>
-							<span class="mobile-only"><br></span>
+						</div>
+						<div>
 							<span class="fade-in-left delay-3000">
-								<a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a>
-								&nbsp;/&nbsp;
+								<a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a>
 							</span>
 							<span class="fade-in-left delay-3100">
 								<a href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a>
+							</span>
+							<span class="fade-in-left delay-3200">
+								<a href="https://www.strava.com/athletes/rohanb10" target="_blank" rel="noreferrer">strava</a>
 							</span>
 						</div>
 					</div>

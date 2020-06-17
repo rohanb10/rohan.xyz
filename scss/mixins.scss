@@ -1,3 +1,4 @@
+@use "sass:color";
 /* 	Loop for delays
 	&.delay-X {
 		animation-delay: X ms;
@@ -19,7 +20,7 @@
 	}
 }
 
-@mixin hyperlink($background-color, $hover-color: $c-b) {
+@mixin hyperlink($background-color) {
 	color: $c-b;
 	border-color: $background-color;
 
@@ -28,6 +29,6 @@
 	}
 
 	&:hover {
-		color: $hover-color;
+		color: $c-b;
 	}
 }

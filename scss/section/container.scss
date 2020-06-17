@@ -12,6 +12,10 @@
 				transform-origin: left bottom;
 				border-bottom: .25em solid $c-w;
 				margin: 0 auto;
+				&.align-right {
+					margin: unset;
+					margin-left: auto;
+				}
 				&.bg-1 {
 					width: 3.5em;
 					border-color: $c-1;

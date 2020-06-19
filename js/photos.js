@@ -106,21 +106,21 @@ function openPhotoModal(i) {
 		if (e.keyCode === 39) nextPhoto();
 		if (e.keyCode === 37) prevPhoto();
 		if (e.keyCode === 27) {
-			closePhotoModal();
+			closePhotoModal(true);
 			document.removeEventListener('keydown', _close);
 		}
 	});
 	track('Photo modal opened', 'photos', identifyPhoto(PHOTOS[i]), i);
 }
 
-function closePhotoModal() {
+function closePhotoModal(track = false) {
 	animateOut('.photo-modal', 'slide-out-bottom', () => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
 	history.pushState('', '', '#photos');
-	track('Photo modal closed', 'photos');
+	if (track) track('Photo modal closed', 'photos');
 	active_photo = -1;
 }
 

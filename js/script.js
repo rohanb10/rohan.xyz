@@ -1,4 +1,4 @@
-var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = null;
+var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
 // clear hash on page load
 history.pushState(null, null, window.location.pathname);
@@ -112,7 +112,7 @@ function showSection(sectionID) {
 		case 'id-photos':
 			if (active_photo !== -1) {
 				active_photo = -1;
-				closePhotoModal();
+				closePhotoModal(false);
 			}
 			genThumbnails();
 			break;

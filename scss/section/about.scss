@@ -11,8 +11,9 @@
 		span {
 			display: inline-block;
 			&:nth-child(n+2):before {
-				content: ' | ';
+				content: '  |   ';
 				color: #ddd;
+				float: left;
 			}
 		}
 		a {

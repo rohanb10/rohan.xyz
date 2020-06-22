@@ -1,23 +1,4 @@
 // Transition IN animations
-
-.slide-in-down {
-	animation: slide-in-down .5s $ease-in-out-cubic both;
-	&.delay-500 {
-		animation-delay: .5s;
-	}
-}
-
-@keyframes slide-in-down {
-	from {
-		transform: translateY(-25vh);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
 .slide-in-up {
 	animation: slide-in-up .5s $ease-in-out-cubic both;
 }

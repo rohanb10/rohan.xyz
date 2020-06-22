@@ -1,4 +1,4 @@
-const PHOTOS = [
+var PHOTOS = [
 	{index: 0, bg: "#89979A", caption: "Kangchendzonga National Park, Sikkim, India"},
 	{index: 1, bg: "#6D86B8", caption: "Half Dome from Glacier Point, Yosemite National Park, California"},
 	{index: 2, bg: "#82B0D8", caption: "Blue Lake, John Muir Wilderness, Inyo National Forest, California"},
@@ -36,17 +36,25 @@ const modal = document.querySelector('.photo-modal');
 function genThumbnails() {
 	const delay = 2500;
 
-	// Reset container
-	thumbs.innerHTML = '';
+	// Only shuffle if thumbnails have been loaded before.
+	if (thumbs.innerHTML !== '') {
+		var t = shuffleArray(Array.from(thumbs.querySelectorAll('.thumb-container')));
+		thumbs.innerHTML = '';
+		t.forEach((thumbContainer, i) => {
+			thumbContainer.className = `thumb-container fade-in delay-${((i < 18) ? delay + parseInt(i * 100) : 0)}`;
+			thumbs.appendChild(thumbContainer);
+		});
+		return;
+	}
 
 	// Shuffle array
-	PHOTOS.sort(() => {return 0.5 - Math.random()});
-	
+	PHOTOS = shuffleArray(PHOTOS);
+
 	// Build each thumbnail DOMobject, loading placeholder and zoom
 	PHOTOS.forEach((t, i) => {
 		var thumbContainer = Object.assign(document.createElement('div'), {
 			className: `thumb-container fade-in delay-${((i < 18) ? delay + parseInt(i * 100) : 0)}`,
-			onclick: () => openPhotoModal(i),
+			onclick: _ => openPhotoModal(i),
 		});
 
 		var placeholder = Object.assign(document.createElement('img'), {
@@ -76,21 +84,18 @@ function genThumbnails() {
 	});
 
 	// remove placeholders
-	setTimeout(() => {
+	setTimeout(_ => {
 		thumbs.querySelectorAll('.thumb-container').forEach(tc => {
 			var p = tc.querySelector('.placeholder');
 			var img = tc.querySelector('.thumb');
-			var removeP = (() => {
-				setTimeout(() => {
-					p.style.opacity = 0;
-					img.style.filter = 'blur(0px)';
-				}, 1000);
-				setTimeout(() => {p.style.display = 'none'}, 1500);
+			var removeP = (_ => {
+				setTimeout(_ => {p.style.opacity = 0;img.style.filter = 'blur(0px)'}, 1000);
+				setTimeout(_ => p.style.display = 'none', 1500);
 			});
 			if (img.complete) {
 				removeP();
 			} else {
-				img.onload = () => {removeP()};
+				img.onload = _ => removeP();
 			}
 		});
 	}, delay + 1000);
@@ -113,14 +118,14 @@ function openPhotoModal(i) {
 	track('Photo modal opened', 'photos', identifyPhoto(PHOTOS[i]), i);
 }
 
-function closePhotoModal(track = false) {
-	animateOut('.photo-modal', 'slide-out-bottom', () => {
+function closePhotoModal(shouldTrack = false) {
+	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
 	history.pushState('', '', '#photos');
-	if (track) track('Photo modal closed', 'photos');
+	if (shouldTrack) track('Photo modal closed', 'photos');
 	active_photo = -1;
 }
 
@@ -144,13 +149,13 @@ function loadPhoto(i, delay = 0) {
 	// Load image in background before showing in div
 	Object.assign(document.createElement('img'), {
 		src: `assets/photos/${PHOTOS[i].index}.jpg`,
-		onload: () => {
-			setTimeout(() => {
+		onload: _ => {
+			setTimeout(_ => {
 				modal.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
 			}, delay);
 		},
-		onerror: () => {endLoadingAnimation()},
+		onerror: _ => endLoadingAnimation(),
 	});
 	history.pushState('', '', `#photos?${i+1}`);
 	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
@@ -188,14 +193,12 @@ function endLoadingAnimation() {
 		});
 	});
 	// fallback
-	setTimeout(()=> {modal.classList.add('loaded')}, 2000);
+	setTimeout(_ => modal.classList.add('loaded'), 2000);
 }
 
 function startLoadingAnimation() {
 	modal.classList.remove('loaded');
-	modal.querySelectorAll('.bars div').forEach((bar, i) => {
-		setTimeout(() => {bar.classList.remove('done')}, i * 100);
-	});
+	modal.querySelectorAll('.bars div').forEach((bar, i) => setTimeout(_ => bar.classList.remove('done'), i * 100));
 }
 
 function formatCaptions(c) {

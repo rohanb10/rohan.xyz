@@ -31,7 +31,7 @@ function transitionColourScheme(index, shuffle = true, callback) {
 	var nextColours = [], currentColours = [], colourTimers = [], done=0;
 
 	var scheme = COLOUR_SCHEMES[index];
-	if (shuffle) scheme.sort(() => {return 0.5 - Math.random()});
+	if (shuffle) scheme = shuffleArray(scheme);
 
 	var root = document.documentElement.style;
 	scheme.forEach((c,i) => {
@@ -40,10 +40,8 @@ function transitionColourScheme(index, shuffle = true, callback) {
 	});
 
 	currentColours.forEach((rgb, i) => {
-		colourTimers[i] = setInterval(()=> {
-			rgb.forEach((cc,j) => {
-				rgb[j] = cc > nextColours[i][j] ? cc - 1 : cc < nextColours[i][j] ? cc + 1 : cc;
-			});
+		colourTimers[i] = setInterval(_ => {
+			rgb.forEach((cc,j) => rgb[j] = cc > nextColours[i][j] ? cc - 1 : cc < nextColours[i][j] ? cc + 1 : cc);
 			root.setProperty(`--c-${i}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
 			if (rgb[0] === nextColours[i][0] && rgb[1] === nextColours[i][1] && rgb[2] === nextColours[i][2]) {
 				clearInterval(colourTimers[i]);
@@ -58,12 +56,10 @@ function changeColourScheme(index, shuffle = true, callback) {
 	if (index < 0 || index >= COLOUR_SCHEMES.length) return 'Please enter a valid index';
 
 	var scheme = COLOUR_SCHEMES[index || currentScheme];
-	if (shuffle) scheme.sort(() => {return 0.5 - Math.random()});
+	if (shuffle) scheme = shuffleArray(scheme);
 
 	var root = document.documentElement;
-	scheme.forEach((c,i) => {
-		root.style.setProperty(`--c-${i}`, c);
-	});
+	scheme.forEach((c,i) => root.style.setProperty(`--c-${i}`, c));
 	if (callback) callback();
 }
 
@@ -83,24 +79,24 @@ function bucket(el) {
 	var nextScheme = nextColourSchemeID();
 
 	el.parentElement.classList.add('changing');
-	var resetBucket = (() => {
+	var resetBucket = (_ => {
 		checkMapLayerColor();
-		setTimeout(() => {
+		setTimeout(_ => {
 			el.parentElement.classList.remove('changing');
 			changeBucketColours(nextColourSchemeID());
 		}, 1200);
 	})
 	// 1200 is time the last wave is completed
 	if (active_section !== null) {
-		transitionColourScheme(nextScheme, true, () => {
+		transitionColourScheme(nextScheme, true, _ => {
 			ripple();
 			resetBucket();
 		});
 	} else {
 		var isWavy = navbar.querySelector('.section-title.wave');
 		killWave();
-		setTimeout(() => {
-			changeColourScheme(nextScheme, true, () => {
+		setTimeout(_ => {
+			changeColourScheme(nextScheme, true, _ => {
 				startWave(1);
 				resetBucket();
 			});
@@ -114,9 +110,7 @@ function bucket(el) {
 
 function changeBucketColours(schemeID) {
 	var bucket = document.querySelector('.bucket');
-	COLOUR_SCHEMES[schemeID].forEach((c,i) => {
-		bucket.style.setProperty(`--nc-${i}`, c);
-	});
+	COLOUR_SCHEMES[schemeID].forEach((c,i) => bucket.style.setProperty(`--nc-${i}`, c));
 }
 
 var currentScheme = 0;

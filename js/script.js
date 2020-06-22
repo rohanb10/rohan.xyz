@@ -4,10 +4,8 @@ var navbar, navbarSections, names, mapContainer, active_section = null, active_w
 history.pushState(null, null, window.location.pathname);
 
 // back button fail safe
-window.addEventListener('popstate', () => {
-	navbarSections.forEach((s) => {
-		s.classList.remove('active');
-	});
+window.addEventListener('popstate', _ => {
+	navbarSections.forEach(s => s.classList.remove('active'));
 	hideAllSections();
 	track('Back button clicked', 'browser', 'Home')
 });
@@ -37,7 +35,7 @@ function startWave(rippleDelay = 0) {
 	if (rippleDelay > 0) ripple(rippleDelay);
 	clearInterval(wave);
 	clearTimeout(tide);
-	tide = setTimeout(() => {wave = setInterval(ripple, 4000)}, rippleDelay);
+	tide = setTimeout(_ => wave = setInterval(ripple, 4000), rippleDelay);
 }
 
 function killWave(except) {
@@ -58,9 +56,7 @@ function killWave(except) {
 
 function highTide() {
 	killWave();
-	navbarSections.forEach((s, i, sections) => {
-		setTimeout(rippleUp, 150 * i, s, names[i]);
-	});
+	navbarSections.forEach((s, i, sections) => setTimeout(rippleUp, 150 * i, s, names[i]));
 }
 
 // Navbar
@@ -71,9 +67,7 @@ function navControl(navButton) {
 
 	//reset navbar bg and buttons
 	navbar.classList.remove('active');
-	navbarSections.forEach((s) => {
-		s.classList.remove('active');
-	});
+	navbarSections.forEach(s => s.classList.remove('active'));
 
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
@@ -99,6 +93,7 @@ function showSection(sectionID) {
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
+			document.querySelectorAll('.card .logo img').forEach(l => l.src = l.getAttribute('data-src'));
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
@@ -123,8 +118,8 @@ function showSection(sectionID) {
 			loadFile('rides', 'js');
 			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js');
 			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css');
-			setTimeout(() => {
-				var allFilesLoaded = setInterval(() => {
+			setTimeout(_ => {
+				var allFilesLoaded = setInterval(_ => {
 					if (mapFilesLoadedCount >= 3) {
 						if (map === undefined) initializeMap();
 						mapContainer.classList.add('fade-in');
@@ -143,22 +138,17 @@ function showSection(sectionID) {
 	if (active_section === null){
 		toggleHero();
 		//wait for minimize to complete
-		setTimeout(() => {
-			document.getElementById(sectionID).classList.remove('hidden');
-		}, 1000);
+		setTimeout(_ => document.getElementById(sectionID).classList.remove('hidden'), 1000);
 	} else {
 		// changing sections
 		window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-		animateOut(`#${active_section}`, 'fade-out-bottom', () => {
-			document.getElementById(sectionID).classList.remove('hidden');
-		});
+		animateOut(`#${active_section}`, 'fade-out-bottom', _ => document.getElementById(sectionID).classList.remove('hidden'));
 	}
 	active_section = sectionID;
 }
 function toggleHero() {
-	var hero = document.querySelector('#hero');
-	if (hero.style.height === `0px`){ hero.style.height = `calc(var(--vh, 1vh) * 60)`;}
-	else {hero.style.height = '0px'}
+	var hero = document.getElementById('hero');
+	hero.style.height = hero.style.height === `0px` ? `calc(var(--vh, 1vh) * 60)` : `0px`;
 }
 
 function loadFile(name, type, url) {
@@ -175,7 +165,7 @@ function loadFile(name, type, url) {
 		... type === 'css' && url !== undefined ? {href: url} : {},
 		className: `${type}-${name}`
 	});
-	tag.onload = () => {mapFilesLoadedCount ++}
+	tag.onload = _ => mapFilesLoadedCount ++
 	if (type === 'js') document.body.appendChild(tag);
 	if (type === 'css') document.head.appendChild(tag);
 }
@@ -205,16 +195,14 @@ function workPicker(element, workName) {
 	} else {
 		// hide preivous card if one is open
 		document.querySelector('.work.active').classList.remove('active');
-		animateOut(`#${active_work}`, 'fade-out-right', () => {
-			card.classList.remove('hidden');
-		});
+		animateOut(`#${active_work}`, 'fade-out-right', _ => card.classList.remove('hidden'));
 	}
 	element.classList.add('active');
 	active_work = workName;
 
 	var arrow = document.querySelector('.arrow');
 	arrow.classList.add('fade-down-twice')
-	arrow.addEventListener('animationend', () => {arrow.classList.remove('fade-down-twice')}, {once: true});
+	arrow.addEventListener('animationend', _ => arrow.classList.remove('fade-down-twice'), {once: true});
 
 	history.pushState('', '', `#work?${workName}`);
 	track('Work Clicked', 'work', workName)
@@ -226,8 +214,8 @@ function loadSkills() {
 	skills = document.querySelectorAll('.img-skill');
 	skills.forEach(img => {
 		img.src = img.getAttribute('data-src');
-		img.onmouseover = () => {killSkillCycle()}
-		img.onmouseout = () => {startSkillCycle(1500)}
+		img.onmouseover = _ => killSkillCycle()
+		img.onmouseout = _ => startSkillCycle(1500)
 	});
 	currentHover = 0;
 	startSkillCycle(3500);
@@ -242,8 +230,8 @@ function killSkillCycle() {
 
 function startSkillCycle(intialDelay = 0) {
 	killSkillCycle();
-	pedal = setTimeout(() => {
-		skillCycle = setInterval(() => {
+	pedal = setTimeout(_ => {
+		skillCycle = setInterval(_ => {
 			var prev = document.querySelector('.img-skill.hovered');
 			if (prev) prev.classList.remove('hovered');
 			skills[currentHover].classList.add('hovered');
@@ -263,14 +251,14 @@ function track(eventName = 'click', eventCategory = 'Undefined', eventLabel = un
 }
 
 function doNotTrack() {
-	track = () => {return};
+	track = _ => {return};
 }
 
 // Animate functions
 function animateOut(elementName, animationName, callback, animationDuration = 500) {
 	var el = document.querySelector(elementName);
 	el.classList.add(animationName);
-	setTimeout(() => {
+	setTimeout(_ => {
 		el.classList.remove(animationName);
 		el.classList.add('hidden');
 		if (callback) callback();
@@ -281,10 +269,12 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	var el = document.querySelector(elementName);
 	el.classList.remove('hidden');
 	el.classList.add(animationName);
-	setTimeout(() => {
-		el.classList.remove(animationName);
-	}, animationDuration, el);
+	setTimeout(_ => el.classList.remove(animationName), animationDuration, el);
 	if (callback) callback();
+}
+
+function shuffleArray(array) {
+	return array.map(a => [Math.random(),a]).sort((a,b) => a[0]-b[0]).map((a) => a[1])
 }
 
 var debounced;
@@ -292,7 +282,7 @@ function mobileViewportHack() {
 	document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
 var window_height = window.innerHeight
-window.addEventListener('resize', (e) => {
+window.addEventListener('resize', e => {
 	if (window.innerHeight === window_height) return;
 	clearTimeout(debounced);
 	debounced = setTimeout(mobileViewportHack, 100);
@@ -302,20 +292,20 @@ mobileViewportHack();
 window.addEventListener('orientationchange', mobileViewportHack);
 
 document.querySelectorAll('a').forEach(link => {
-	link.addEventListener('click', () => {
+	link.addEventListener('click', _ => {
 		track('URL Clicked', active_section.substr(active_section.indexOf('-')+1), link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname)
 	})
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', _ => {
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
 	names = document.querySelectorAll('#hero span span');
 	mapContainer = document.querySelector('.map-container');
 	navbarSections.forEach((span,i) => {
-		span.addEventListener('mouseover', () => {killWave(i);if (active_section === null) names[i].classList.add('wave')});
-		span.addEventListener('mousemove', () => {if (active_section === null) names[i].classList.add('wave')});
-		span.addEventListener('mouseout', () => {killWave(); if (active_section === null) startWave(1500)});
+		span.addEventListener('mouseover', _ => {killWave(i);if (active_section === null) names[i].classList.add('wave')});
+		span.addEventListener('mousemove', _ => {if (active_section === null) names[i].classList.add('wave')});
+		span.addEventListener('mouseout', _ => {killWave(); if (active_section === null) startWave(1500)});
 	});
 	startWave(1000);
 }, {once: true});

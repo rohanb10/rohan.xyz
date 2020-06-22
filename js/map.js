@@ -20,7 +20,7 @@ function updateMap(btn){
 		track('Map Changed', 'maps', 'All');
 		return;
 	} else if (rideID === 'random') {
-		var p = getRandomPath();
+		var p = getRandomPathID();
 		drawSnake(p);
 		track('Map Changed', 'maps', 'Random', p);
 		return;
@@ -59,7 +59,7 @@ function checkMapLayerColor() {
 
 function clearPaths() {
 	if (!map) return;
-	paths.forEach(p => {p.remove(map)});
+	paths.forEach(p => p.remove(map));
 	paths = [];
 }
 
@@ -78,7 +78,7 @@ function drawSnake(pathID) {
 	});
 
 	// wait for pan to complete
-	map.once('moveend', () => {
+	map.once('moveend', _ => {
 		p.addTo(map);
 		var totalLength = p._path.getTotalLength();
 		Object.assign(p._path.style, {
@@ -89,14 +89,14 @@ function drawSnake(pathID) {
 			strokeDashoffset: totalLength,
 			strokeDasharray: totalLength,
 		});
-		setTimeout(() => {
+		setTimeout(_ => {
 			Object.assign(p._path.style, {
 				opacity: .7,
 				transitionDuration: `${getTransitionDuration(p)}s`,
 				strokeDashoffset: 0,
 			});
 			disableMapInteractions();
-			p._path.addEventListener('transitionend', () => {
+			p._path.addEventListener('transitionend', _ => {
 				p._path.style.strokeDasharray = 'unset';
 				enableMapInteractions();
 			}, {once: true});
@@ -107,7 +107,7 @@ function drawSnake(pathID) {
 function drawAll() {
 	clearPaths();
 	map.flyTo([37.7906, -122.4482], 12);
-	map.once('moveend', () => {
+	map.once('moveend', _ => {
 		for (var rideID of Object.keys(RIDES)) {
 			var p = L.polyline(decodePath(RIDES[rideID]), {
 				className: 'path-all',
@@ -121,17 +121,17 @@ function drawAll() {
 
 function drawRandom(el) {
 	el.classList.add('spin')
-	el.addEventListener('animationend', () => {el.classList.remove('spin')}, {once: true});
-	var p = getRandomPath();
+	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
+	var p = getRandomPathID();
 	track('Map Changed', 'maps', 'Random', p);
 	drawSnake(p);
 }
 
-function getRandomPath() {
+function getRandomPathID() {
 	if (!map) return;
 	var pathID, pathDistance = 0;
 	var minimumDistance = Math.random() < .75 ? 10000 : Math.random() < .67 ? 7500 : 5000;
-	var keys = Object.keys(RIDES);
+	var keys = shuffleArray(Object.keys(RIDES));
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
 		pathDistance = calcDistance(L.polyline(decodePath(RIDES[pathID])));

@@ -5,6 +5,7 @@
 	justify-content: flex-start;
 	align-content: stretch;
 	padding: 0;
+	transition: opacity .3s ease-in-out;
 
 	.thumb-container {
 		position: relative;
@@ -58,31 +59,35 @@
 	flex-direction: column;
 	position: fixed;
 	width: 100vw;
-	height: 100vh;
-	height: calc(var(--vh, 1vh) * 100);			// https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+	min-height: 100vh;
+	// height: calc(var(--vh, 1vh) * 100);			// https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 	transition: height .1s linear;
 	background-color: $c-w;
 	z-index: 4;
 	left: 0;
 	top: 0;
-	box-shadow: 0 -3px 6px rgba(0,0,0,.16), 0 -3px 6px rgba(0,0,0,.23);
 
 	&.hidden {
 		display: none;
 	}
 
-	&.loaded .modal-content{
-		.photo-container .loading {
+	&.loaded {
+		& ~ .thumbnails {
 			opacity: 0;
 		}
-		.button-container {
-			opacity: 1;
-			.modal-next-btn, .modal-prev-btn {
-				cursor: pointer;
-				touch-action: unset;
-				pointer-events: unset;
-				color: #000;
-				text-decoration: underline;
+		.modal-content{
+			.photo-container .loading {
+				opacity: 0;
+			}
+			.button-container {
+				opacity: 1;
+				.modal-next-btn, .modal-prev-btn {
+					cursor: pointer;
+					touch-action: unset;
+					pointer-events: unset;
+					color: #000;
+					text-decoration: underline;
+				}
 			}
 		}
 	}
@@ -160,6 +165,7 @@
 				height: 10vh;
 				height: calc(var(--vh, 1vh) * 10);
 				width: 80%;
+				padding: 0 0;
 			}
 		}
 		.caption-container {

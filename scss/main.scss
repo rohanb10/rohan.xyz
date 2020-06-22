@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ%21%40%23%24%25%5E%26%2A%28%29~%60%27%22%2C.%3C%3E%7B%7D%5B%5D%3F%2F%3A%3B%7C%5C_-%3D%2B');
+
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html:after {
 		content: 'Use a better browser to see this website. NASA uses Google Ultron. And yet here you are on IE';
@@ -30,6 +32,11 @@ html, body {
 	font-family: 'Muli', sans-serif;
 	background-color: $c-w;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+body.no-touching * {
+	touch-actions: none;
+	pointer-events: none;
 }
 
 .flexbox-grid {

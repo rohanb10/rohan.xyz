@@ -56,17 +56,18 @@ function genThumbnails() {
 			className: `thumb-container fade-in delay-${((i < 18) ? delay + parseInt(i * 100) : 0)}`,
 			onclick: _ => openPhotoModal(i),
 		});
+		thumbContainer.setAttribute('data-photo-id', t.index);
 
 		var placeholder = Object.assign(document.createElement('img'), {
 			className: 'placeholder',
-			src: `assets/photos/thumb/placeholder/${t.index}.svg`,
+			src: `/assets/photos/thumb/placeholder/${t.index}.svg`,
 			style: `background-color: ${t.bg}`
 		});
 		thumbContainer.appendChild(placeholder);
 
 		var img = Object.assign(document.createElement('img'), {
 			className: 'thumb',
-			src: `assets/photos/thumb/${t.index}.jpg`,
+			src: `/assets/photos/thumb/${t.index}.jpg`,
 		});/*
 		thumbContainer.onmouseover = (e) => {
 			img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`;
@@ -115,7 +116,7 @@ function openPhotoModal(i) {
 			document.removeEventListener('keydown', _close);
 		}
 	});
-	track('Photo modal opened', 'photos', identifyPhoto(PHOTOS[i]), i);
+	track('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
 }
 
 function closePhotoModal(shouldTrack = false) {
@@ -124,8 +125,8 @@ function closePhotoModal(shouldTrack = false) {
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
-	history.pushState('', '', '#photos');
-	if (shouldTrack) track('Photo modal closed', 'photos');
+	history.pushState('', '', '/photos');
+	if (shouldTrack) track('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
 
@@ -134,30 +135,30 @@ function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(++active_photo, 500);
-	track('Next Photo', 'photos', identifyPhoto(PHOTOS[active_photo]), active_photo);
+	track('Next Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(--active_photo, 500);
-	track('Prev Photo', 'photos', identifyPhoto(PHOTOS[active_photo]), active_photo);
+	track('Prev Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 
 function loadPhoto(i, delay = 0) {
 	// Load image in background before showing in div
 	Object.assign(document.createElement('img'), {
-		src: `assets/photos/${PHOTOS[i].index}.jpg`,
+		src: `/assets/photos/${PHOTOS[i].index}.jpg`,
 		onload: _ => {
 			setTimeout(_ => {
-				modal.querySelector('.photo-container').style.backgroundImage = `url('assets/photos/${PHOTOS[i].index}.jpg')`;
+				modal.querySelector('.photo-container').style.backgroundImage = `url('/assets/photos/${PHOTOS[i].index}.jpg')`;
 				endLoadingAnimation();
 			}, delay);
 		},
 		onerror: _ => endLoadingAnimation(),
 	});
-	history.pushState('', '', `#photos?${i+1}`);
+	history.pushState('', '', `/photos?${PHOTOS[i].index}`);
 	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
 	active_photo = i;
 

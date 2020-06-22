@@ -1,13 +1,32 @@
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
-// clear hash on page load
-history.pushState(null, null, window.location.pathname);
+// Check if specific page requested
+if (window.location.search.length > 1) {
+	document.body.classList.add('no-touching');
+	var param = '', sectionName = window.location.search.substr(1);
+	if (sectionName.indexOf(',') > -1) {
+		param = sectionName.split(',')[1];
+		sectionName = sectionName.split(',')[0];
+	}
+	document.querySelector(`#id-${sectionName} .text`).addEventListener('animationend', _ => {
+		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
+			document.querySelector(`.work[data-work-name="${param}"]`).click();
+		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
+			document.querySelector(`.thumb-container[data-photo-id="${param}"]`).click();
+		}
+		document.body.classList.remove('no-touching');
+	}, {once: true});
+
+	setTimeout(_ => track(`Entry from URL: ${window.location.href.substr(window.location.href.lastIndexOf('/'))}`, '/'), 999);
+	history.pushState(null, null, '/');
+	setTimeout(_ => document.querySelector(`span[data-section-id="id-${sectionName}"]`).parentElement.click(), 1000);
+}
 
 // back button fail safe
 window.addEventListener('popstate', _ => {
 	navbarSections.forEach(s => s.classList.remove('active'));
 	hideAllSections();
-	track('Back button clicked', 'browser', 'Home')
+	track('Back button clicked', window.location.pathname, 'Home')
 });
 
 // Wave
@@ -83,8 +102,8 @@ function navControl(navButton) {
 		navButton.classList.add('active');
 		document.getElementById('section-container').classList.add('active');
 		
-		history.pushState('', '', `#${sectionName}`);
-		track('Section Changed', 'navbar', sectionName)
+		history.pushState(null, null, `/${sectionName}`);
+		track('Section Changed', 'navbar', sectionName);
 	}
 }
 
@@ -178,15 +197,16 @@ function hideAllSections() {
 	killWave();
 	startWave(1500);
 
-	history.pushState(null, null, window.location.pathname);
+	history.pushState(null, null, '/');
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
 }
 
 // Work
-function workPicker(element, workName) {
+function workPicker(element) {
 	// cancel if already open
+	var workName = element.getAttribute('data-work-name');
 	if (active_work === workName) return;
 
 	var card = document.getElementById(workName);
@@ -204,7 +224,7 @@ function workPicker(element, workName) {
 	arrow.classList.add('fade-down-twice')
 	arrow.addEventListener('animationend', _ => arrow.classList.remove('fade-down-twice'), {once: true});
 
-	history.pushState('', '', `#work?${workName}`);
+	history.pushState('', '', `/work?${workName}`);
 	track('Work Clicked', 'work', workName)
 }
 
@@ -247,7 +267,8 @@ function track(eventName = 'click', eventCategory = 'Undefined', eventLabel = un
 	if (eventLabel !== undefined) args.label = eventLabel;
 	if (eventValue !== undefined) args.value = eventValue;
 	// console.log('Tracking', eventName, args);
-	analytics.track(eventName, args);
+	// return;
+	if (analytics) analytics.track(eventName, args);
 }
 
 function doNotTrack() {

@@ -233,7 +233,7 @@ var skills, skillCycle, currentHover, pedal;
 function loadSkills() {
 	skills = document.querySelectorAll('.img-skill');
 	skills.forEach(img => {
-		img.src = img.getAttribute('data-src');
+		img.src = `/assets/skills/${img.getAttribute('data-src')}.png`;
 		img.onmouseover = _ => killSkillCycle()
 		img.onmouseout = _ => startSkillCycle(1500)
 	});

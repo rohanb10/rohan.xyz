@@ -6,11 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="rohan, bhansali, rohanb10, rohanb10@gmail.com, rohan xyz, portfolio, personal, website, designer, developer, engineer, ux, ui, front end, github, photos, photography">
 	<meta name="description" content="I'm really good at coming up with creative content for meta tags. No seriously, I'm really really good.">
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-	<link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ%21%40%23%24%25%5E%26%2A%28%29~%60%27%22%2C.%3C%3E%7B%7D%5B%5D%3F%2F%3A%3B%7C%5C_-%3D%2B">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 	<link rel="stylesheet" type="text/css" href="./css/style.min.css">
 </head>
 <body>
@@ -59,38 +57,38 @@
 						</div>
 					</div>
 					<div class="divider fade-in delay-1500">
+						<div class="arrow">
+							<span>&#10132;</span>
+						</div>
 						<div class="work-title fade-in delay-1500">Jobs</div>
-						<div class="work fade-in-right delay-1700" onclick="workPicker(this, 'expensify')">
+						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this)">
 							<div class="work-name">Expensify</div>
 							<div class="subtitle">San Francisco, CA</div>
 						</div>
-						<div class="work fade-in-right delay-1800" onclick="workPicker(this, 'zappos')">
+						<div class="work fade-in-right delay-1800" data-work-name="zappos" onclick="workPicker(this)">
 							<div class="work-name">Zappos</div>
 							<div class="subtitle">Las Vegas, NV</div>
 						</div>
-						<div class="work fade-in-right delay-1900" onclick="workPicker(this, 'wustl')">
+						<div class="work fade-in-right delay-1900" data-work-name="wustl" onclick="workPicker(this)">
 							<div class="work-name">Washington University in St.Louis</div>
 							<div class="subtitle">St Louis, MO</div>
 						</div>
-						<div class="work fade-in-right delay-2000" onclick="workPicker(this, 'eazyfriday')">
+						<div class="work fade-in-right delay-2000" data-work-name="eazyfriday" onclick="workPicker(this)">
 							<div class="work-name">EazyFriday</div>
 							<div class="subtitle">Mumbai, India</div>
 						</div>
 						<div class="work-title fade-in delay-2500">Projects</div>
-						<div class="work fade-in-right delay-2600" onclick="workPicker(this, 'path-editor')">
+						<div class="work fade-in-right delay-2600" data-work-name="path" onclick="workPicker(this)">
 							<div class="work-name">Path Editor</div>
 							<div class="subtitle">Web App</div>
 						</div>
-						<div class="work fade-in-right delay-2700" onclick="workPicker(this, 'turnstyle')">
+						<div class="work fade-in-right delay-2700" data-work-name="turnstyle" onclick="workPicker(this)">
 							<div class="work-name">Turnstyle</div>
 							<div class="subtitle">iOS App</div>
 						</div>
-						<div class="work fade-in-right delay-2800" onclick="workPicker(this, 'kraudesorce')">
+						<div class="work fade-in-right delay-2800" data-work-name="kraudesorce" onclick="workPicker(this)">
 							<div class="work-name">KraudeSorce</div>
 							<div class="subtitle">Web Service + iOS & Android Apps</div>
-						</div>
-						<div class="arrow">
-							<span>&#10132;</span>
 						</div>
 					</div>
 				</div>
@@ -101,7 +99,7 @@
 							<div class="position fade-in-left delay-100">Full Stack Developer</div>
 							<div class="dates fade-in-left delay-150">2017 - 2019</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="./assets/logos/expensify.png">
+								<img data-src="/assets/logos/expensify.png">
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
@@ -121,7 +119,7 @@
 							<div class="position fade-in-left delay-100">Front End Engineering Intern</div>
 							<div class="dates fade-in-left delay-150">Summer 2016</div></div>
 							<div class="logo square fade-in delay-1000">
-								<img data-src="./assets/logos/zappos.png">
+								<img data-src="/assets/logos/zappos.png">
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
@@ -139,7 +137,7 @@
 							<div class="position fade-in-left delay-100">Teaching Assistant</div>
 							<div class="dates fade-in-left delay-150">8 semesters, 2014-2017</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="./assets/logos/wustl.png">
+								<img data-src="/assets/logos/wustl.png">
 							</div>
 						</div>
 						<div class="blurb">
@@ -164,7 +162,7 @@
 							<div class="position fade-in-left delay-100">Full Stack Engineering Intern</div>
 							<div class="dates fade-in-left delay-150">Summer 2015</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="./assets/logos/eazyfriday.png">
+								<img data-src="/assets/logos/eazyfriday.png">
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
@@ -182,7 +180,7 @@
 							<div><div class="company fade-in-left">TurnStyle</div>
 							<div class="dates fade-in-left delay-100">2016</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="./assets/logos/turnstyle.png">
+								<img data-src="/assets/logos/turnstyle.png">
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
@@ -201,7 +199,7 @@
 							<div><div class="company fade-in-left">KraudeSorce</div>
 							<div class="dates fade-in-left delay-100">2016</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="./assets/logos/kraudesorce.png">
+								<img data-src="/assets/logos/kraudesorce.png">
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
@@ -219,7 +217,7 @@
 							<div><div class="company fade-in-left">Path Editor</div>
 							<div class="dates fade-in-left delay-100">2020</div></div>
 							<div class="logo square fade-in delay-1000">
-								<img data-src="./assets/logos/path-editor.png">
+								<img data-src="/assets/logos/path-editor.png">
 							</div>
 						</div>
 						<div class="blurb">
@@ -263,97 +261,97 @@
 					<div class="skill-group fade-in-left delay-2100">
 						<div class="skill-title">Programming Languages</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/html.png"><span>HTML</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/css.png"><span>CSS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/js.png"><span>JS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/php.png"><span>PHP</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/cpp.png"><span>C++</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/swift.png"><span>Swift</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/java.png"><span>Java</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/sass.png"><span>Sass</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/python.png"><span>Python</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/html.png"><span>HTML</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/css.png"><span>CSS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/js.png"><span>JS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/php.png"><span>PHP</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/cpp.png"><span>C++</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/swift.png"><span>Swift</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/java.png"><span>Java</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/sass.png"><span>Sass</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/python.png"><span>Python</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2200">
 						<div class="skill-title">Web libraries</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/react.png"><span>ReactJS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/angular.png"><span>Angular</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/meteor.png"><span>Meteor</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/redux.png"><span>Redux</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/jquery.png"><span>jQuery</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/socketio.png"><span>Socket IO</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/bootstrap.png"><span>Bootstrap</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/qunit.png"><span>QUnit</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/react.png"><span>ReactJS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/angular.png"><span>Angular</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/meteor.png"><span>Meteor</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/redux.png"><span>Redux</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/jquery.png"><span>jQuery</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/socketio.png"><span>Socket IO</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/bootstrap.png"><span>Bootstrap</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/qunit.png"><span>QUnit</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2300">
 						<div class="skill-title">Design tools</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/adobe_photoshop.png"><span>Photoshop</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/adobe_indesign.png"><span>Indesign</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/adobe_xd.png"><span>Adobe XD</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/sketch.png"><span>Sketch</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/figma.png"><span>Figma</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/zeplin.png"><span>Zeplin</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/invision.png"><span>Invision</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/balsamiq.png"><span>Balsamiq</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/adobe_photoshop.png"><span>Photoshop</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/adobe_indesign.png"><span>Indesign</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/adobe_xd.png"><span>Adobe XD</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/sketch.png"><span>Sketch</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/figma.png"><span>Figma</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/zeplin.png"><span>Zeplin</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/invision.png"><span>Invision</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/balsamiq.png"><span>Balsamiq</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2400">
 						<div class="skill-title">Web platforms and services</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/firebase.png"><span>Google<br>Firebase</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/aws_ec2.png"><span>AWS EC2</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/aws_s3.png"><span>AWS S3</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/mapbox.png"><span>MapboxGL JS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/leaflet.png"><span>Leaflet JS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/google_maps.png"><span>Google Maps<br>JS API</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/mailchimp.png"><span>Mailchimp</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/wordpress.png"><span>WordPress</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/squarespace.png"><span>Squarespace</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/firebase.png"><span>Google<br>Firebase</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/aws_ec2.png"><span>AWS EC2</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/aws_s3.png"><span>AWS S3</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/mapbox.png"><span>MapboxGL JS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/leaflet.png"><span>Leaflet JS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/google_maps.png"><span>Google Maps<br>JS API</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/mailchimp.png"><span>Mailchimp</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/wordpress.png"><span>WordPress</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/squarespace.png"><span>Squarespace</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2400">
 						<div class="skill-title">Payment Processors</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/stripe.png"><span>Stripe</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/paypal.png"><span>PayPal</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/apple_pay.png"><span>Apple Pay</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/venmo.png"><span>Venmo</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/stripe.png"><span>Stripe</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/paypal.png"><span>PayPal</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/apple_pay.png"><span>Apple Pay</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/venmo.png"><span>Venmo</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2500">
 						<div class="skill-title">Dev-Ops and Build tools</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/nodejs.png"><span>NodeJS</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/grunt.png"><span>Grunt</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/gulp.png"><span>Gulp</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/travis.png"><span>TravisCI</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/webpack.png"><span>Webpack</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/browserify.png"><span>Browserify</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/selenium.png"><span>Selenium</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/modernizr.png"><span>Modernizr</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/bash.png"><span>Bash<br>Scripting</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/nodejs.png"><span>NodeJS</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/grunt.png"><span>Grunt</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/gulp.png"><span>Gulp</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/travis.png"><span>TravisCI</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/webpack.png"><span>Webpack</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/browserify.png"><span>Browserify</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/selenium.png"><span>Selenium</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/modernizr.png"><span>Modernizr</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/bash.png"><span>Bash<br>Scripting</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2600">
 						<div class="skill-title">Database Management Systems</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/mysql.png"><span>MySQL</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/postgresql.png"><span>PostgreSQL</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/sqlite.png"><span>SQLite</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/mongodb.png"><span>MongoDB</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/mysql.png"><span>MySQL</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/postgresql.png"><span>PostgreSQL</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/sqlite.png"><span>SQLite</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/mongodb.png"><span>MongoDB</span></div>
 						</div>
 					</div>
 					<div class="skill-group fade-in-left delay-2700">
 						<div class="skill-title">Miscellaneous</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/chrome.png"><span>Chrome<br>Extensions</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/pi.png"><span>Raspberry<br>Pi</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/arduino.png"><span>Arduinio</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/nalgene.png"><span>Staying<br>hydrated</span></div>
-							<div class="skill"><img class="img-skill" data-src="./assets/skills/pikachu.png"><span>Pikachu main<br>(smash)</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/chrome.png"><span>Chrome<br>Extensions</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/pi.png"><span>Raspberry<br>Pi</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/arduino.png"><span>Arduinio</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/nalgene.png"><span>Staying<br>hydrated</span></div>
+							<div class="skill"><img class="img-skill" data-src="/assets/skills/pikachu.png"><span>Pikachu main<br>(smash)</span></div>
 						</div>
 					</div>
 				</div>
@@ -529,8 +527,8 @@
 						</div>
 					</div>
 					<div class="me fade-in-left delay-2500">
-						<img id="me-jpg" data-src="./assets/me.jpg">
-						<img id="me-gif" data-src="./assets/me.gif">
+						<img id="me-jpg" data-src="/assets/me.jpg">
+						<img id="me-gif" data-src="/assets/me.gif">
 					</div>
 					<div class="social">
 						<h2 class="fade-in-left delay-2600"><span>@</span>rohanb10</h2>

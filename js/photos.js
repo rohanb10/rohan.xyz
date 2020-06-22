@@ -120,6 +120,7 @@ function openPhotoModal(i) {
 }
 
 function closePhotoModal(shouldTrack = false) {
+	modal.classList.remove('loaded');
 	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';

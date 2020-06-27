@@ -112,22 +112,22 @@ function openPhotoModal(i) {
 		if (e.keyCode === 39) nextPhoto();
 		if (e.keyCode === 37) prevPhoto();
 		if (e.keyCode === 27) {
-			closePhotoModal(true);
+			closePhotoModal();
 			document.removeEventListener('keydown', _close);
 		}
 	});
-	track('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
+	trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
 }
 
-function closePhotoModal(shouldTrack = false) {
+function closePhotoModal(shouldTrack = true) {
 	modal.classList.remove('loaded');
 	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
-	history.pushState('', '', '/photos');
-	if (shouldTrack) track('Photo modal closed', window.location.pathname);
+	history.pushState('', '', window.location.pathname);
+	if (shouldTrack) trackEvent('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
 
@@ -136,14 +136,14 @@ function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(++active_photo, 500);
-	track('Next Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
+	trackEvent('Next Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(--active_photo, 500);
-	track('Prev Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
+	trackEvent('Prev Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 
@@ -159,7 +159,7 @@ function loadPhoto(i, delay = 0) {
 		},
 		onerror: _ => endLoadingAnimation(),
 	});
-	history.pushState('', '', `/photos?${PHOTOS[i].index}`);
+	history.pushState('', '', `${window.location.pathname}?${PHOTOS[i].index}`);
 	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
 	active_photo = i;
 

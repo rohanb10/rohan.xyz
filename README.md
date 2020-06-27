@@ -11,7 +11,8 @@ Photos (and thumbnails) and maps are also loaded on demand only.
 
 After testing several different online mapping solutions, I settled on [Mapbox](https://www.mapbox.com/) and their vector tiles for the best performance on slow networks and mobile devices.
 
-Using [Analytics.io](https://getanalytics.io/) with a Google Analytics plugin to monitor and analyse traffic. I think the entire GA script is overkill for what I need for my site.
+I have a love hate relationship with Google Analytics (mostly hate), but I havent found (and believe me I've tried) another analytics provider for free ¯\\\_(ツ)\_/¯. I'm using a smaller 3rd party subset of the whole GA package called [ga-lite](https://github.com/jehna/ga-lite) because the GA JS file is larger than the rest of my entire site.
+
 
 ---
 

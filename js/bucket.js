@@ -105,7 +105,7 @@ function bucket(el) {
 
 	currentScheme = nextScheme;
 
-	track('Spill', 'bucket', 'Colours changed', currentScheme);
+	trackEvent('Spill', 'bucket', 'Colours changed', currentScheme);
 }
 
 function changeBucketColours(schemeID) {

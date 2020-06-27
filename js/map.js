@@ -17,18 +17,18 @@ function updateMap(btn){
 	if (rideID === 'all') {
 		drawAll();
 		enableMapInteractions();
-		track('Map Changed', 'maps', 'All');
+		trackEvent('Map Changed', window.location.pathname, 'All');
 		return;
 	} else if (rideID === 'random') {
 		var p = getRandomPathID();
 		drawSnake(p);
-		track('Map Changed', 'maps', 'Random', p);
+		trackEvent('Map Changed', window.location.pathname, 'Random', p);
 		return;
 	} else if (RIDES[rideID] === undefined) {
 		return;
 	}
 	drawSnake(rideID);
-	track('Map Changed', 'maps', btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
+	trackEvent('Map Changed', window.location.pathname, btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
 }
 
 var mapLayers = {
@@ -123,7 +123,7 @@ function drawRandom(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
-	track('Map Changed', 'maps', 'Random', p);
+	trackEvent('Map Changed', window.location.pathname, 'Random', p);
 	drawSnake(p);
 }
 

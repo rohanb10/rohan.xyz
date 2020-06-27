@@ -2,33 +2,45 @@
 <html>
 <head>
 	<title>Ants</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon/favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/assets/favicon/manifest.json">
 	<style type="text/css">
+		body {
+			margin: 0;
+		}
 		body > div {
-			width: 100vw;
 			height: 100vh;
 			display: flex;
-			align-items: center;
-			justify-content: space-around;
+			flex-direction: column;
+			justify-content: center;
+			font-family: 'Arial', sans-serif;
 		}
-		div div {
-			max-width: 300px;
-		}	
 		a {
+			width: 100vw;
 			display: block;
-			width: 20em;
-			padding: 1.5em;
+			text-align: center;
+			padding: .75em 0;
+		}
+		a:nth-of-type(2n - 1) {
+			background-color: #ddd;
+		}
+		a:after {
+			content: attr(href);
 		}
 	</style>
 </head>
 <body>
 	<div>
-		<div>
-		<a href="sf.gif">SF Proper</a>
-		<a href="sf-marin.gif">SF & Marin</a>
-		<a href="ggp.gif">Golden Gate Park</a>
-		<a href="sf-ants.gif">SF All</a>
-		<a href="map.png">OG</a>
-	</div>
+		<a href="sf.gif"></a>
+		<a href="sf-marin.gif"></a>
+		<a href="ggp.gif"></a>
+		<a href="sf-ants.gif"></a>
+		<a href="map.png"></a>
 	</div>
 </body>
 </html>

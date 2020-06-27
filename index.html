@@ -27,20 +27,20 @@
 	</div>
 	<div id="navigation" data-open="false">
 		<div class="section-nav container-width">
-			<span class="section-title" data-bg-color="1" onclick="navControl(this)">
-				<span data-section-name="work" data-section-id="id-work"></span>
+			<span class="section-title" data-bg-color="1" onclick="navControl('work')">
+				<span data-section-name="work"></span>
 			</span>
-			<span class="section-title" data-bg-color="2" onclick="navControl(this)">
-				<span data-section-name="skills" data-section-id="id-skills"></span>
+			<span class="section-title" data-bg-color="2" onclick="navControl('skills')">
+				<span data-section-name="skills"></span>
 			</span>
-			<span class="section-title" data-bg-color="3" onclick="navControl(this)">
-				<span data-section-name="photos" data-section-id="id-photos"></span>
+			<span class="section-title" data-bg-color="3" onclick="navControl('photos')">
+				<span data-section-name="photos"></span>
 			</span>
-			<span class="section-title" data-bg-color="4" onclick="navControl(this)">
-				<span data-section-name="maps" data-section-id="id-maps"></span>
+			<span class="section-title" data-bg-color="4" onclick="navControl('maps')">
+				<span data-section-name="maps"></span>
 			</span>
-			<span class="section-title" data-bg-color="5" onclick="navControl(this)">
-				<span data-section-name="about" data-section-id="id-about"></span>
+			<span class="section-title" data-bg-color="5" onclick="navControl('about')">
+				<span data-section-name="about"></span>
 			</span>
 		</div>
 	</div>
@@ -64,32 +64,32 @@
 							<span>&#10132;</span>
 						</div>
 						<div class="work-title fade-in delay-1500">Jobs</div>
-						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Expensify</div>
 							<div class="subtitle">San Francisco, CA</div>
 						</div>
-						<div class="work fade-in-right delay-1800" data-work-name="zappos" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-1800" data-work-name="zappos" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Zappos</div>
 							<div class="subtitle">Las Vegas, NV</div>
 						</div>
-						<div class="work fade-in-right delay-1900" data-work-name="wustl" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-1900" data-work-name="wustl" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Washington University in St.Louis</div>
 							<div class="subtitle">St Louis, MO</div>
 						</div>
-						<div class="work fade-in-right delay-2000" data-work-name="eazyfriday" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-2000" data-work-name="eazyfriday" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">EazyFriday</div>
 							<div class="subtitle">Mumbai, India</div>
 						</div>
 						<div class="work-title fade-in delay-2500">Projects</div>
-						<div class="work fade-in-right delay-2600" data-work-name="path-editor" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-2600" data-work-name="path-editor" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Path Editor</div>
 							<div class="subtitle">Web App</div>
 						</div>
-						<div class="work fade-in-right delay-2700" data-work-name="turnstyle" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-2700" data-work-name="turnstyle" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Turnstyle</div>
 							<div class="subtitle">iOS App</div>
 						</div>
-						<div class="work fade-in-right delay-2800" data-work-name="kraudesorce" onclick="workPicker(this)">
+						<div class="work fade-in-right delay-2800" data-work-name="kraudesorce" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">KraudeSorce</div>
 							<div class="subtitle">Web Service + iOS & Android Apps</div>
 						</div>
@@ -563,12 +563,20 @@
 			</div>
 		</div>
 	</div>
-	<script src="./js/script.min.js"></script>
-	<script src="js/analytics.min.js"></script>
-	<script src="js/google-analytics.min.js"></script>
-	<script type="text/javascript">
-		var analytics = _analytics.init({app: 'rohan-test',plugins: [analyticsGa.init({trackingId: 'UA-78711252-1'})]});
-		analytics.page()
+	<script src="/js/script.min.js"></script>
+	<script>
+	(function(r,o,h,a,n) {
+		r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};
+		a=document.createElement('script');a.async=true;a.src=h;
+		n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(a,n)
+	})(window,"galite","/js/script.min.js");
+
+	galite('create', 'UA-78711252-1', 'auto');
+	galite('send', 'pageview');
+	// track time when user leaves page
+	window.addEventListener('unload', function() {
+		galite('send', 'timing', 'Bye Bye', 'unload')
+	})
 	</script>
 </body>
 </html>

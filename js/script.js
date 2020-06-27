@@ -10,23 +10,22 @@ if (window.location.search.length > 1) {
 	}
 	document.querySelector(`#id-${sectionName} .text`).addEventListener('animationend', _ => {
 		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
-			document.querySelector(`.work[data-work-name="${param}"]`).click();
+			workPicker(param);
 		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
-			document.querySelector(`.thumb-container[data-photo-id="${param}"]`).click();
+			openPhotoModal(parseInt(param), false);
 		}
 		document.body.classList.remove('no-touching');
 	}, {once: true});
-
-	setTimeout(_ => track(`Entry from URL: ${window.location.href.substr(window.location.href.lastIndexOf('/'))}`, '/'), 999);
+	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}${param !== '' ? '?' + param : ''}`, window.location.pathname), 999);
 	history.pushState(null, null, '/');
-	setTimeout(_ => document.querySelector(`span[data-section-id="id-${sectionName}"]`).parentElement.click(), 1000);
+	setTimeout(_ => navControl(sectionName), 1000);
 }
 
 // back button fail safe
 window.addEventListener('popstate', _ => {
 	navbarSections.forEach(s => s.classList.remove('active'));
 	hideAllSections();
-	track('Back button clicked', window.location.pathname, 'Home')
+	trackEvent('Back button clicked', window.location.pathname, 'Home')
 });
 
 // Wave
@@ -79,9 +78,14 @@ function highTide() {
 }
 
 // Navbar
-function navControl(navButton) {
-	var sectionID = navButton.querySelector('span').getAttribute('data-section-id');
-	var sectionName = navButton.querySelector('span').getAttribute('data-section-name');
+function navControl(sectionName) {
+	if (!typeof sectionName === 'string' || sectionName.length === 0) return;
+
+	var navChild = navbar.querySelector(`span[data-section-name="${sectionName}"]`);
+	if (!navChild || !navChild.parentElement) return;
+	var navButton = navChild.parentElement;
+
+	var sectionID = `id-${sectionName}`;
 	killWave();
 
 	//reset navbar bg and buttons
@@ -91,7 +95,7 @@ function navControl(navButton) {
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
 		hideAllSections();
-		track('Sections Closed', 'navbar', 'Home');
+		trackEvent('Section Closed', 'navbar', 'Home');
 	} else{
 		// open section
 		showSection(sectionID);
@@ -103,7 +107,7 @@ function navControl(navButton) {
 		document.getElementById('section-container').classList.add('active');
 		
 		history.pushState(null, null, `/${sectionName}`);
-		track('Section Changed', 'navbar', sectionName);
+		trackEvent('Section Changed', 'navbar', sectionName);
 	}
 }
 
@@ -204,9 +208,12 @@ function hideAllSections() {
 }
 
 // Work
-function workPicker(element) {
+function workPicker(workName) {
+	if (typeof workName !== 'string' || workName.length === 0) return;
+	var element = document.querySelector(`.work[data-work-name="${workName}"]`);
+	if (!element) return;
+
 	// cancel if already open
-	var workName = element.getAttribute('data-work-name');
 	if (active_work === workName) return;
 
 	var card = document.getElementById(workName);
@@ -224,8 +231,8 @@ function workPicker(element) {
 	arrow.classList.add('fade-down-twice')
 	arrow.addEventListener('animationend', _ => arrow.classList.remove('fade-down-twice'), {once: true});
 
-	history.pushState('', '', `/work?${workName}`);
-	track('Work Clicked', 'work', workName)
+	history.pushState('', '', `${window.location.pathname}?${workName}`);
+	trackEvent('Work Clicked', window.location.pathname, workName)
 }
 
 // skills
@@ -262,17 +269,9 @@ function startSkillCycle(intialDelay = 0) {
 }
 
 // analytics
-function track(eventName = 'click', eventCategory = 'Undefined', eventLabel = undefined, eventValue = undefined) {
-	var args = {category: eventCategory}
-	if (eventLabel !== undefined) args.label = eventLabel;
-	if (eventValue !== undefined) args.value = eventValue;
-	// console.log('Tracking', eventName, args);
-	// return;
-	if (analytics) analytics.track(eventName, args);
-}
-
-function doNotTrack() {
-	track = _ => {return};
+function trackEvent(action = 'click', category = 'Not Specified', label, value) {
+	// console.log('TRACK:','send', '|', 'event', '|', category, '|', action, '|', label, '|', value)
+	galite('send', 'event', category, action, label, value)
 }
 
 // Animate functions
@@ -294,6 +293,7 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 	if (callback) callback();
 }
 
+// Better array shuffling
 function shuffleArray(array) {
 	return array.map(a => [Math.random(),a]).sort((a,b) => a[0]-b[0]).map((a) => a[1])
 }
@@ -314,7 +314,7 @@ window.addEventListener('orientationchange', mobileViewportHack);
 
 document.querySelectorAll('a').forEach(link => {
 	link.addEventListener('click', _ => {
-		track('URL Clicked', active_section.substr(active_section.indexOf('-')+1), link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname)
+		trackEvent('url clicked', window.location.pathname, link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname)
 	})
 })
 

@@ -104,6 +104,22 @@
 				@include hyperlink($c-1);
 			}
 		}
+		.cws {
+			padding-top: 2em;
+			text-align: center;
+			a {
+				border-bottom: none;
+			}
+			img {
+				max-height: 4em;
+				border: 2px solid #eee;
+				border-radius: .33em;
+				transition: border-color .3s ease-in-out;
+				&:hover {
+					border-color: $c-1;
+				}
+			}
+		}
 		@media screen and (max-width: 40em) {
 			padding: 1em .25em;
 			&.hidden {

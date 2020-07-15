@@ -1,5 +1,5 @@
 // scss --watch scss/main.scss:css/style.min.css --style compressed
-@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%21%22%25%26%27%28%29%2B%2C-.%2F%3A%3B%3C%3D%3E%3F%40%5B%5D_%7B%7D%E2%86%BB%E2%9E%94');
+@import url(https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%21%22%25%26%27%28%29%2B%2C-.%2F%3A%3B%3C%3D%3E%3F%40%5B%5D_%7B%7D%E2%86%BB%E2%9E%94);
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html:after {
@@ -26,7 +26,7 @@
 @import 'section/maps';
 @import 'section/about';
 
-html, body {
+body, html {
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -198,16 +198,16 @@ a {
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-size: 100% 200%;
-				background-position: 0% 0%;
+				background-position: 0 0;
 				transition: background-position .4s linear;
 				&.wave {
 					background-position: 100% 100%;
 				}
 				@supports (-ms-ime-align:auto) {
-					background: none;
+					background: 0 0;
 				}
 				@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-					background: none;
+					background: 0 0;
 				}
 			}
 		}

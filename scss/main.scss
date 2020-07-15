@@ -179,19 +179,19 @@ a {
 		&>span {
 			display: block;
 			.ro {
-				background-image: linear-gradient(0deg, $c-1, $c-1 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-1, $c-1 50%, $c-b 50%);
 			}
 			.han {
-				background-image: linear-gradient(0deg, $c-2, $c-2 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-2, $c-2 50%, $c-b 50%);
 			}
 			.bhan {
-				background-image: linear-gradient(0deg, $c-3, $c-3 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-3, $c-3 50%, $c-b 50%);
 			}
 			.sa {
-				background-image: linear-gradient(0deg, $c-4, $c-4 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-4, $c-4 50%, $c-b 50%);
 			}
 			.li {
-				background-image: linear-gradient(0deg, $c-5, $c-5 50%, #000 50%);
+				background-image: linear-gradient(0deg, $c-5, $c-5 50%, $c-b 50%);
 			}
 			span {
 				display: inline;

@@ -23,7 +23,8 @@
 		background-position: center center;
 		background-size: 100%;
 		background-repeat: no-repeat;
-		background-image: url('../assets/bucket.png');
+		background-image: linear-gradient(0deg, $c-w, $c-w 50%);
+		-webkit-background-clip: padding-box;
 	}
 	
 
@@ -48,7 +49,6 @@
 		}
 		img:hover {
 			transform: rotate(-35deg);
-			background-size: 97% 99%;
 			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
 				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 		}
@@ -56,7 +56,6 @@
 	&.changing {
 		img {
 			transform: rotate(-100deg);
-			background-size: 97% 99%;
 			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
 				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 			@media (hover:none) {
@@ -69,6 +68,11 @@
 			opacity: 1;
 			&:before {
 				content: attr(data-click);
+			}
+			@media screen and (max-width: 40em) {
+				&:before {
+					content: attr(data-tap);
+				}
 			}
 		}
 	}

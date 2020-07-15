@@ -26,10 +26,10 @@
 	&[data-bg-color="5"] {
 		background-image: linear-gradient($c-5, $c-5);
 	}
-	&[data-open="false"] {
+	&[data-open=false] {
 		background-size: 100% 0%;
 	}
-	&[data-open="true"] {
+	&[data-open=true] {
 		background-size: 100% 100%;
 	}
 

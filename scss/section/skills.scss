@@ -17,17 +17,24 @@
 			flex-wrap: wrap;
 			text-align: center;
 			.skill {
+				display: block;
+				flex-direction: column;
+				overflow: visible;
+				max-width: 4em;
 				.img-skill {
 					margin: .5em .75em;
 					max-width: 2.5em;
 					transition: all .4s ease-in-out;
 					filter: contrast(45%);
-
-					&:hover, &.hovered {
+				}
+				&:hover, &.hovered {
+					.img-skill {
 						filter: contrast(100%);
 					}
+					span {
+						opacity: 1;
+					}	
 				}
-
 				span {
 					display: block;
 					font-size: .8em;
@@ -35,24 +42,19 @@
 					opacity: 0;
 					line-break: normal;
 				}
-
-				.img-skill:hover + span, .img-skill.hovered + span {
-					opacity: 1;
-				}
 			}	
 		}
 	}
 	@media screen and (max-width: 40em) {
 		.skill-title {
 			margin: 0 1em;
-			text-align: center;
 		}
 		.skill-group {
 			margin-bottom: 0;
 			.icons {
-				justify-content: center;
 				padding: .5em 0;
 				.skill {
+					max-width: 3em;
 					.img-skill {
 						max-width: 2em;
 						margin: .25em .5em;

@@ -107,16 +107,18 @@
 				@include hyperlink($c-1);
 			}
 		}
-		.cws {
+		.badges {
 			padding-top: 2em;
-			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			a {
+				display: inline-block;
 				border-bottom: none;
 			}
 			img {
-				max-height: 4em;
+				max-height: 3.5em;
 				border: 2px solid #eee;
-				border-radius: .33em;
 				transition: border-color .3s ease-in-out;
 				&:hover {
 					border-color: $c-1;

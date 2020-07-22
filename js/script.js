@@ -242,7 +242,7 @@ function loadSkills() {
 	skills = document.querySelectorAll('.skill');
 	skills.forEach(s => {
 		var img = s.firstElementChild;
-		img.src = `/assets/skills/${img.getAttribute('data-src')}.png`;
+		img.src = `/assets/skills/${img.getAttribute('data-src').toLowerCase()}.png`;
 		img.onmouseover = _ => killSkillCycle()
 		img.onmouseout = _ => startSkillCycle(1500)
 	});

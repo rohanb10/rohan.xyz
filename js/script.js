@@ -1,3 +1,4 @@
+// watch -f 'js/*.js' -r 'uglifyjs js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.min.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
 // Check if specific page requested
@@ -116,7 +117,7 @@ function showSection(sectionID) {
 	// pre-loading
 	switch(sectionID) {
 		case 'id-work':
-			document.querySelectorAll('.card .logo img').forEach(l => l.src = l.getAttribute('data-src'));
+			document.querySelectorAll('.card .logo img, .badges img').forEach(l => l.src = l.getAttribute('data-src'));
 			if (active_work === '') break;
 			document.querySelector('.work.active').classList.remove('active');
 			document.getElementById(active_work).classList.add('hidden');
@@ -238,8 +239,9 @@ function workPicker(workName) {
 // skills
 var skills, skillCycle, currentHover, pedal;
 function loadSkills() {
-	skills = document.querySelectorAll('.img-skill');
-	skills.forEach(img => {
+	skills = document.querySelectorAll('.skill');
+	skills.forEach(s => {
+		var img = s.firstElementChild;
 		img.src = `/assets/skills/${img.getAttribute('data-src')}.png`;
 		img.onmouseover = _ => killSkillCycle()
 		img.onmouseout = _ => startSkillCycle(1500)
@@ -251,7 +253,7 @@ function loadSkills() {
 function killSkillCycle() {
 	clearInterval(skillCycle);
 	clearTimeout(pedal);
-	var prev = document.querySelector('.img-skill.hovered');
+	var prev = document.querySelector('.skill.hovered');
 	if (prev) prev.classList.remove('hovered');
 }
 
@@ -259,7 +261,7 @@ function startSkillCycle(intialDelay = 0) {
 	killSkillCycle();
 	pedal = setTimeout(_ => {
 		skillCycle = setInterval(_ => {
-			var prev = document.querySelector('.img-skill.hovered');
+			var prev = document.querySelector('.skill.hovered');
 			if (prev) prev.classList.remove('hovered');
 			skills[currentHover].classList.add('hovered');
 			currentHover++;

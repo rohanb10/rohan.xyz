@@ -13,6 +13,7 @@
 			overflow-y: auto;
 		}
 		.map-container {
+			position: relative;
 			background-color: #EEE;
 			opacity: 0;
 			&.fade-in {
@@ -36,8 +37,47 @@
 					transition: stroke 1s ease-in-out;
 				}
 			}
-			&.dark .path-all {
-				stroke: $c-w;
+			.distance-container {
+				position: absolute;
+				bottom: .5em;
+				left: .5em;
+				background-color: $c-w;
+				border: 1px solid $c-b;
+				width: 5em;
+				padding: 0 .25em .25em;
+				box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+				transition: all .3s ease-in-out;
+				opacity: 1;
+				span {
+					text-transform: uppercase;
+					font-size: .6em;
+				}
+				#distance {
+					font-size: 1.1em;
+					font-weight: 700;
+					text-align: right;
+					padding-right: .75em;
+					color: $c-4;
+					&:after {
+						content: 'km';
+						font-size: .65em;
+					}
+				}
+				&.hidden {
+					opacity: 0;
+				}
+			}
+			&.dark {
+				.path-all {
+					stroke: $c-w;
+				}
+				.distance-container {
+					background-color: #35363A;
+					border-color: #35363A;
+					span {
+						color: $c-w;
+					}
+				}
 			}
 			&.light .path-all {
 				stroke: $c-4;

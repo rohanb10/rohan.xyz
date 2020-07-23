@@ -1,5 +1,6 @@
-var map, currentMapLayer, currentMapLayerName, paths = [];
+var map, currentMapLayer, currentMapLayerName, paths = [], dist = document.getElementById('distance');
 function initializeMap() {
+	// return;
 	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
@@ -57,17 +58,19 @@ function checkMapLayerColor() {
 	return ;
 }
 
-function clearPaths() {
+function clearPaths(newPathIncoming = false) {
 	if (!map) return;
 	paths.forEach(p => p.remove(map));
 	paths = [];
+	resetDistanceContainer(newPathIncoming);
 }
 
 function drawSnake(pathID) {
 	if (!map) return;
-	clearPaths();
+	clearPaths(true);
 	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', color: '--var(--c-3)'});
 	paths.push(p);
+	document.querySelector('.distance-container').classList.remove('hidden');
 
 	map.fitBounds(p.getBounds(), {
 		padding: [10,10],
@@ -95,6 +98,7 @@ function drawSnake(pathID) {
 				transitionDuration: `${getTransitionDuration(p)}s`,
 				strokeDashoffset: 0,
 			});
+			startDistanceCountUp(p);
 			disableMapInteractions();
 			p._path.addEventListener('transitionend', _ => {
 				p._path.style.strokeDasharray = 'unset';
@@ -131,7 +135,8 @@ function getRandomPathID() {
 	if (!map) return;
 	var pathID, pathDistance = 0;
 	var minimumDistance = Math.random() < .75 ? 10000 : Math.random() < .67 ? 7500 : 5000;
-	var keys = shuffleArray(Object.keys(RIDES));
+	var blockedKeys = Array.from(document.querySelectorAll('.control input[type="radio"]')).map(el => el.getAttribute('data-ride-id'))
+	var keys = shuffleArray(Object.keys(RIDES)).filter(k => !blockedKeys.includes(k))
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
 		pathDistance = calcDistance(L.polyline(decodePath(RIDES[pathID])));
@@ -153,6 +158,25 @@ function calcDistance(polyline) {
 function getTransitionDuration(p) {
 	var t = calcDistance(p) / 2000;
 	return t <= 10 ? 10 : t; 
+}
+
+function resetDistanceContainer(newPathIncoming) {
+	document.querySelector('.distance-container').classList.add('hidden')
+	setTimeout(_ => dist.innerText = "0.0", newPathIncoming ? 0 : 305);
+}
+
+function startDistanceCountUp(p) {
+	var target = calcDistance(p);
+	// total distance / time x setTimeout duration in seconds
+	var increment = (target / getTransitionDuration(p)) * (50 / 1000);
+	updateDistance(0, increment/1000, target/1000);
+}
+
+function updateDistance(current, increment, target) {
+	// minimum interval between timers is 50ms (-1ms for browser delay)
+	current += increment;
+	dist.innerText = current.toFixed(1);
+	if (current < target) setTimeout(_ => updateDistance(current, increment, target), 49);
 }
 
 function disableMapInteractions() {

@@ -21,14 +21,8 @@
 }
 
 @mixin hyperlink($background-color) {
-	color: $c-b;
 	border-color: $background-color;
-
 	&:before {
 		background-image: linear-gradient(0deg, $background-color 0%, $background-color 100%, $c-w 100%);
-	}
-
-	&:hover {
-		color: $c-b;
 	}
 }

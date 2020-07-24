@@ -146,10 +146,7 @@ a {
 	border-bottom: 1px solid $c-b;
 	position: relative;
 	z-index: 1;
-	&:hover {
-		transition: all .3s linear;
-		color: $c-b;
-	}
+	transition: color .2s linear;
 	&:hover:before {
 		transform: scaleY(1);
 	}
@@ -165,6 +162,9 @@ a {
 		transform: scaleY(0);
 		transform-origin: 50% 100%;
 	}
+}
+.is-dark a:hover {
+	color: $c-w;
 }
 
 #hero {

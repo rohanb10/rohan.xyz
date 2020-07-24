@@ -60,6 +60,9 @@
 	#id-about *::selection {
 		background-color: $c-5;
 	}
+	.section.is-dark *::selection {
+		color: $c-w;
+	}
 	@media screen and (max-width: 24em){
 		overflow-y: hidden;
 	}

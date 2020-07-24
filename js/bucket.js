@@ -45,6 +45,7 @@ function transitionColourScheme(index, shuffle = true, callback) {
 			root.setProperty(`--c-${i}`, `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
 			if (rgb[0] === nextColours[i][0] && rgb[1] === nextColours[i][1] && rgb[2] === nextColours[i][2]) {
 				clearInterval(colourTimers[i]);
+				setDarkClassForSections(scheme);
 				if (++done >= nextColours.length && callback) callback();
 			}
 		}, 1);
@@ -60,7 +61,18 @@ function changeColourScheme(index, shuffle = true, callback) {
 
 	var root = document.documentElement;
 	scheme.forEach((c,i) => root.style.setProperty(`--c-${i}`, c));
+	setDarkClassForSections(scheme);
 	if (callback) callback();
+}
+
+function setDarkClassForSections(scheme) {
+	document.querySelectorAll('.section').forEach((s,i) => {
+		if (isDark(scheme[i])) {
+			s.classList.add('is-dark');
+		} else {
+			s.classList.remove('is-dark');
+		}
+	});
 }
 
 function nextColourSchemeID() {
@@ -69,7 +81,7 @@ function nextColourSchemeID() {
 
 function isDark(color) {
 	var rgb = rgbArray(color);
-	return (rgb[0] * 0.299) + (rgb[1] * 0.587) + (rgb[2] * 0.114) <= 186;
+	return (((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000) < 142;
 }
 
 // clicking of the bucket

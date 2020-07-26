@@ -32,20 +32,22 @@
 		position: relative;
 	}
 	.arrow {
-		display: none;
-		@media screen and (max-width: 40em) {
-			display: block;
+		display: block;
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		span {
 			position: absolute;
-			bottom: 0;
-			right: 0;
-			padding: 0 .5em;
-			transition: all .5s ease-in-out;
+			font-size: 2em;
+			bottom: .25em;
+			right: .5em;
 			opacity: 0;
-			span {
-				display: inline-block;
-				font-size: 2em;
-				transform: rotate(90deg);
+			&:last-of-type {
+				bottom: .5em;
 			}
+		}
+		@media screen and (min-width: 40em) {
+			display: none;
 		}
 	}
 	.card {

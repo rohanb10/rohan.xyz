@@ -161,11 +161,14 @@
 .fade-down-twice {
 	animation: fade-down-twice 1s $ease-in-out-cubic forwards;
 	animation-iteration-count: 3;
+	&.delay-35 {
+		animation-delay: 35ms;
+	}
 }
 
 @keyframes fade-down-twice {
 	0% {
-		padding-bottom: 2em;
+		transform: translateY(-1em) rotate(180deg);
 		opacity: 0;
 	}
 	20%, 80% {
@@ -173,7 +176,7 @@
 	}
 	100% {
 		opacity: 0;
-		padding-bottom: 0;
+		transform: translateY(0) rotate(180deg);
 	}
 }
 .wiggle:hover {

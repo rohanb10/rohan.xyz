@@ -228,9 +228,10 @@ function workPicker(workName) {
 	element.classList.add('active');
 	active_work = workName;
 
-	var arrow = document.querySelector('.arrow');
-	arrow.classList.add('fade-down-twice')
-	arrow.addEventListener('animationend', _ => arrow.classList.remove('fade-down-twice'), {once: true});
+	document.querySelectorAll('.arrow span').forEach(as => {
+		as.classList.add('fade-down-twice');
+		as.addEventListener('animationend', _ => as.classList.remove('fade-down-twice'), {once: true});
+	})
 
 	history.pushState('', '', `${window.location.pathname}?${workName}`);
 	trackEvent('Work Clicked', window.location.pathname, workName)

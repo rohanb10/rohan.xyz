@@ -13,6 +13,7 @@ if (window.location.search.length > 1) {
 		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
 			workPicker(param);
 		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
+			console.log(param);
 			openPhotoModal(parseInt(param), false);
 		}
 		document.body.classList.remove('no-touching');
@@ -196,6 +197,7 @@ function loadFile(name, type, url) {
 
 function hideAllSections() {
 	navbar.setAttribute('data-open', 'false');
+	navbar.classList.remove('active');
 	document.getElementById('section-container').classList.remove('active');
 	
 	toggleHero();
@@ -244,8 +246,9 @@ function loadSkills() {
 	skills.forEach(s => {
 		var img = s.firstElementChild;
 		img.src = `/assets/skills/${img.getAttribute('data-src').toLowerCase()}.png`;
-		img.onmouseover = _ => killSkillCycle()
-		img.onmouseout = _ => startSkillCycle(1500)
+		s.onmouseover = _ => killSkillCycle()
+		s.onmouseout = _ => startSkillCycle(1500)
+		s.prepend(document.createElement('div'));
 	});
 	currentHover = 0;
 	startSkillCycle(3500);
@@ -269,6 +272,12 @@ function startSkillCycle(intialDelay = 0) {
 			if (currentHover >= skills.length) currentHover = 0;
 		}, 1500);
 	}, intialDelay);
+}
+
+// dark mode
+
+function darkMode() {
+	document.documentElement.classList.toggle('dark-mode');
 }
 
 // analytics
@@ -322,6 +331,8 @@ document.querySelectorAll('a').forEach(link => {
 })
 
 document.addEventListener('DOMContentLoaded', _ => {
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
+	
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
 	names = document.querySelectorAll('#hero span span');

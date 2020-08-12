@@ -2,15 +2,16 @@
 // Fixed colours
 $c-w: #fff;
 $c-b: #000;
+$c-d: #2d2d2d;
 $c-t: rgba(0,0,0,0);
 
 // Dynamic colours
 :root {
-	--c-0: $c-w;
-	--c-1: $c-w;
-	--c-2: $c-w;
-	--c-3: $c-w;
-	--c-4: $c-w;
+	--c-0: #fff;
+	--c-1: #fff;
+	--c-2: #fff;
+	--c-3: #fff;
+	--c-4: #fff;
 }
 
 // These variables are set using JS

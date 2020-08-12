@@ -1,0 +1,141 @@
+html.dark-mode, html.dark-mode body {
+	color: $c-w;
+	background-color: $c-d;
+
+	#hero {
+		.ro {
+			background-image: linear-gradient(0deg, $c-1, $c-1 50%, $c-w 50%);
+		}
+		.han {
+			background-image: linear-gradient(0deg, $c-2, $c-2 50%, $c-w 50%);
+		}
+		.bhan {
+			background-image: linear-gradient(0deg, $c-3, $c-3 50%, $c-w 50%);
+		}
+		.sa {
+			background-image: linear-gradient(0deg, $c-4, $c-4 50%, $c-w 50%);
+		}
+		.li {
+			background-image: linear-gradient(0deg, $c-5, $c-5 50%, $c-w 50%);
+		}
+	}
+
+	#navigation {
+		color: $c-w;
+		&.active {
+			color: $c-b;
+		}
+	}
+	a, .is-dark a:hover {
+		color: $c-w;
+	}
+	a:hover {
+		color: $c-b;
+	}
+
+	.tooltip {
+		background-color: $c-d;
+		color: $c-w;
+	}
+	.sky {
+		.circle {
+			border-color: $c-w;
+			background-position: 50% 100%;
+			transform: rotate(-180deg);
+		}
+		.tooltip:before {
+			content: attr(data-hover-light);
+		}
+	}
+
+	.bucket {
+		img {
+			opacity: 1;
+			touch-actions: auto;
+			pointer-events: auto;
+			background-image: linear-gradient(0deg, $c-d, $c-d 50%);
+			&:not(.dark) {
+				opacity: 0;
+				touch-actions: none;
+				pointer-events: none;
+			}
+		}
+		.tooltip {
+			margin-right: .25em;
+		}
+	}
+	#id-work {
+		.badges img {
+			background-color: rgba(255,255,255,.8);
+		}
+	}
+	#id-photos {
+		.thumb-container {
+			border-color: $c-d;
+		}
+		.photo-modal, .loading {
+			background-color: #2D2D2D;
+		}
+	}
+	#id-maps .control {
+		& > input[type="radio"], & > label:before {
+			border-color: $c-w;
+		}
+		& > input:not(:checked) ~ label:hover:before {
+			box-shadow: inset 0 0 0 .15em $c-4, inset 0 0 0 .1em $c-d;
+		}
+		& > input:checked ~ label:before {
+			box-shadow: inset 0 0 0 .2em $c-d, inset 0 0 0 .6em $c-4;
+		}
+	}
+}
+
+// darkmode button
+.sky {
+	position: fixed;
+	bottom: 1.5em;
+	left: 1.5em;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	transition: all .3s ease-in-out;
+	transition-delay: .5s;
+	touch-actions: none;
+	pointer-events: none;
+	.circle-container {
+		height: 2em;
+		width: 2em;
+		touch-actions: auto;
+		pointer-events: auto;
+		cursor: pointer;
+		transition: all .3s ease-in-out;
+		.circle {
+			padding: 12.5%;
+			height: 100%;
+			width: 100%;
+			box-sizing: border-box;
+			border: 2px solid black;
+			border-radius: 50%;
+			background-color: red;
+			background-image: linear-gradient(90deg, $c-w, $c-w 50%, $c-b 50%);
+			background-size: 200% 100%;
+			background-position: 150% 100%;
+			transition: all .3s ease-in-out, transform .5s ease-in-out;
+			opacity: .75;
+			&:hover {
+				opacity: 1; 
+			}
+		}
+	}
+	.tooltip {
+		margin-left: .25em;
+		&:before {
+			content: attr(data-hover-dark);
+		}
+	}
+	@media (hover:hover) {
+		.circle-container:hover ~ .tooltip {
+			opacity: 1;
+		}
+	}
+}

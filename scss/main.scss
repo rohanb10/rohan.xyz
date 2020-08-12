@@ -13,6 +13,7 @@
 }
 
 @import 'variables';
+@import 'darkmode';
 @import 'mixins';
 @import 'animations';
 
@@ -30,9 +31,13 @@ body, html {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	min-height: 100vh;
 	font-family: 'Muli', sans-serif;
-	background-color: $c-w;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
+
+	color: $c-b;
+	background-color: $c-w;
+	transition: all .5s ease-in-out;
 }
 
 body.no-touching * {
@@ -89,7 +94,7 @@ body.no-touching * {
 }
 .info-container {
 	max-width: 650px;
-	padding: 0 2em;
+	padding: 0 1em;
 	margin: 0 auto;
 	overflow-x: hidden;
 	@media screen and (max-width: 40em) {
@@ -165,6 +170,21 @@ a {
 }
 .is-dark a:hover {
 	color: $c-w;
+}
+.tooltip {
+	white-space: nowrap;
+	padding: .25em .5em;
+	border-radius: .5em;
+	background-color: $c-w;
+	transition: all .2s ease-in-out;
+	opacity: 0;
+	color: $c-d;
+	&:before {
+		content: attr(data-hover)
+	}
+	@media (hover:none) {
+		display: none;
+	}
 }
 
 #hero {

@@ -68,9 +68,10 @@
 					width: 5em;
 					height: 5em;
 					border-radius: 5em;
+					background: $c-w;
 				}
 				&.square img {
-					border-radius: 0;
+					border-radius: .3em;
 				}
 				padding-right: 1em;
 				@media screen and (max-width: 40em) {
@@ -120,7 +121,7 @@
 			}
 			img {
 				max-height: 3.5em;
-				border: 2px solid #eee;
+				border: 3px solid #eee;
 				transition: border-color .3s ease-in-out;
 				&:hover {
 					border-color: $c-1;

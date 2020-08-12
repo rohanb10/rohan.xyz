@@ -160,8 +160,10 @@ function getTransitionDuration(p) {
 	return t <= 10 ? 10 : t; 
 }
 
+var distanceTimeout;
 function resetDistanceContainer(newPathIncoming) {
-	document.querySelector('.distance-container').classList.add('hidden')
+	document.querySelector('.distance-container').classList.add('hidden');
+	clearTimeout(distanceTimeout);
 	setTimeout(_ => dist.innerText = "0.0", newPathIncoming ? 0 : 305);
 }
 
@@ -176,7 +178,7 @@ function updateDistance(current, increment, target) {
 	// minimum interval between timers is 50ms (-1ms for browser delay)
 	current += increment;
 	dist.innerText = current.toFixed(1);
-	if (current < target) setTimeout(_ => updateDistance(current, increment, target), 49);
+	if (current < target) distanceTimeout = setTimeout(_ => updateDistance(current, increment, target), 49);
 }
 
 function disableMapInteractions() {

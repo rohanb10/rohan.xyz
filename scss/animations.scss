@@ -161,8 +161,8 @@
 .fade-down-twice {
 	animation: fade-down-twice 1s $ease-in-out-cubic forwards;
 	animation-iteration-count: 3;
-	&.delay-35 {
-		animation-delay: 35ms;
+	&.delay-50 {
+		animation-delay: 50ms;
 	}
 }
 

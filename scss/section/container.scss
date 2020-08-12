@@ -1,5 +1,6 @@
 #section-container {
 	scroll-behavior: smooth;
+	padding-bottom: 3em;
 	.title {
 		margin:1em auto 2em;
 		text-align: center;
@@ -65,5 +66,44 @@
 	}
 	@media screen and (max-width: 24em){
 		overflow-y: hidden;
+		padding-bottom: 1em;
+	}
+	#id-maps:not(.hidden) ~ .sky {
+		left: -3em;
+	}
+	&.active {
+		@media screen and (min-width: 40em) {
+			.bucket, .sky {
+				bottom: 1em;
+				.tooltip {
+					font-size: .8em;
+				}
+			}
+			.bucket {
+				right: 1em;
+				img {
+					width: 2.25em;
+					height: 2.25em;
+				}
+			}
+			.sky {
+				left: 1em;
+				.circle-container {
+					width: 2.25em;
+					height: 2.25em;
+				}
+			}
+		}
+		@media screen and (max-width: 40em) {
+			.bucket, .sky {
+				transition-delay: .5s;
+			}
+			.bucket {
+				right: -3em;	
+			}
+			.sky {
+				left: -3em;	
+			}
+		}
 	}
 }

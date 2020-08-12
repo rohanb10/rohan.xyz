@@ -54,7 +54,7 @@ function genThumbnails() {
 	PHOTOS.forEach((t, i) => {
 		var thumbContainer = Object.assign(document.createElement('div'), {
 			className: `thumb-container fade-in delay-${((i < 18) ? delay + parseInt(i * 100) : 0)}`,
-			onclick: _ => openPhotoModal(i),
+			onclick: _ => openPhotoModal(t.index),
 		});
 		thumbContainer.setAttribute('data-photo-id', t.index);
 
@@ -96,13 +96,13 @@ function genThumbnails() {
 			if (img.complete) {
 				removeP();
 			} else {
-				img.onload = _ => removeP();
+				img.onload = _ => removeP;
 			}
 		});
 	}, delay + 1000);
 }
 
-function openPhotoModal(i) {
+function openPhotoModal(i, shouldTrack = true) {
 	loadPhoto(i);
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
 
@@ -116,10 +116,10 @@ function openPhotoModal(i) {
 			document.removeEventListener('keydown', _close);
 		}
 	});
-	trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
+	if (shouldTrack) trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
 }
 
-function closePhotoModal(shouldTrack = true) {
+function closePhotoModal() {
 	modal.classList.remove('loaded');
 	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
@@ -127,7 +127,7 @@ function closePhotoModal(shouldTrack = true) {
 		startLoadingAnimation();
 	});
 	history.pushState('', '', window.location.pathname);
-	if (shouldTrack) trackEvent('Photo modal closed', window.location.pathname);
+	trackEvent('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
 
@@ -135,44 +135,36 @@ function closePhotoModal(shouldTrack = true) {
 function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
-	loadPhoto(++active_photo, 500);
+	loadPhoto(PHOTOS[++active_photo].index, 500);
 	trackEvent('Next Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
-	loadPhoto(--active_photo, 500);
+	loadPhoto(PHOTOS[--active_photo].index, 500);
 	trackEvent('Prev Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
 }
 
-
 function loadPhoto(i, delay = 0) {
 	// Load image in background before showing in div
+	// console.log('Photo: ' +i, PHOTOS.findIndex(p => p.index === i));
 	Object.assign(document.createElement('img'), {
-		src: `/assets/photos/${PHOTOS[i].index}.jpg`,
+		src: `/assets/photos/${i}.jpg`,
 		onload: _ => {
 			setTimeout(_ => {
-				modal.querySelector('.photo-container').style.backgroundImage = `url('/assets/photos/${PHOTOS[i].index}.jpg')`;
+				modal.querySelector('.photo-container').style.backgroundImage = `url('/assets/photos/${i}.jpg')`;
 				endLoadingAnimation();
 			}, delay);
 		},
-		onerror: _ => endLoadingAnimation(),
+		onerror: endLoadingAnimation,
 	});
-	history.pushState('', '', `${window.location.pathname}?${PHOTOS[i].index}`);
-	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS[i].caption);
-	active_photo = i;
+	history.pushState('', '', `${window.location.pathname}?${i}`);
+	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS.find(p => p.index === i).caption);
+	active_photo = PHOTOS.findIndex(el => el.index === i);
 
-	var next = modal.querySelector('.modal-next-btn');
-	var prev = modal.querySelector('.modal-prev-btn');
-	if (active_photo + 1 >= PHOTOS.length) {
-		next.classList.add('disabled');
-	} else if (active_photo <= 0) {
-		prev.classList.add('disabled');
-	} else {
-		next.classList.remove('disabled');
-		prev.classList.remove('disabled');
-	}
+	modal.querySelector('.modal-next-btn').classList.toggle('disabled', active_photo + 1 >= PHOTOS.length);
+	modal.querySelector('.modal-prev-btn').classList.toggle('disabled', active_photo <= 0);
 }
 
 
@@ -189,13 +181,13 @@ function endLoadingAnimation() {
 				completedAnimations++;
 				bar.removeEventListener('animationiteration', _listener);
 			}
-			if (completedAnimations >= animationCount) {
+			if (completedAnimations >= animationCount && !modal.classList.contains(...['hidden', 'slide-in-up', 'slide-out-bottom'])) {
 				modal.classList.add('loaded');
 			}
 		});
 	});
 	// fallback
-	setTimeout(_ => modal.classList.add('loaded'), 2000);
+	setTimeout(_ => {if (!modal.classList.contains(...['hidden', 'slide-in-up', 'slide-out-bottom'])) modal.classList.add('loaded')}, 2000);
 }
 
 function startLoadingAnimation() {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- <html lang="en" class="dark-mode"> -->
 <head>
 	<title>rohan bhansali</title>
 	<meta charset="utf-8"/>
@@ -7,7 +8,6 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="keywords" content="rohan, bhansali, rohanb10, rohanb10@gmail.com, rohan.xyz, portfolio, personal, website, designer, developer, engineer, software, javascript, html, css, js, scss, ux, ui, front end, frontend, front-end, github, photos, photography, cycling, biking, maps, mumbai, bombay, ">
 
-	<title>rohan bhansali</title>
 	<meta name="title" content="rohan bhansali">
 	<meta name="description" content="Developer of a blockchain based AI using billions of unique datapoints to create the perfect description for a meta tag. And I make websites too.">
 
@@ -67,6 +67,8 @@
 	<div id="section-container">
 		<div class="bucket">
 			<img onclick="bucket(this)" src="./assets/bucket-spill.png">
+			<img onclick="bucket(this)" class="dark" src="./assets/bucket-dark.png">
+			<div></div>
 			<div class="tooltip" data-hover="Spill bucket" data-click="I can't believe you've done this" data-tap="Changing colours"></div>
 		</div>
 		<div id="id-work" class="section hidden">
@@ -82,7 +84,7 @@
 					<div class="divider fade-in delay-1500">
 						<div class="arrow">
 							<span>⌃</span>
-							<span class="delay-35">⌃</span>
+							<span class="delay-50">⌃</span>
 						</div>
 						<div class="work-title fade-in delay-1500">Jobs</div>
 						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this.dataset.workName)">
@@ -146,7 +148,7 @@
 							<div><div class="company fade-in-left">Zappos</div>
 							<div class="position fade-in-left delay-100">Front End Engineering Intern</div>
 							<div class="dates fade-in-left delay-150">Summer 2016</div></div>
-							<div class="logo square fade-in delay-1000">
+							<div class="logo fade-in delay-1000">
 								<img data-src="/assets/logos/zappos.png">
 							</div>
 						</div>
@@ -266,7 +268,7 @@
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">Snoozz</div>
 							<div class="dates fade-in-left delay-100">2020</div></div>
-							<div class="logo square fade-in delay-1000">
+							<div class="logo fade-in delay-1000">
 								<img data-src="/assets/logos/snoozz.png">
 							</div>
 						</div>
@@ -279,7 +281,7 @@
 								<li class="fade-in-left delay-1800">Wake up tabs automatically at the pre-determined time.</li>
 								<li class="fade-in-left delay-1900">View a list of all your snoozed tabs, sorted by date and time and wake them up manually.</li>
 								<li class="fade-in-left delay-2000">View a history of your woken up tabs and purge the history automatically after a user configured period of time.</li>
-								<li class="fade-in-left delay-2100">Written in vanilla JS with no libraries - file size < 40kb.</li>
+								<li class="fade-in-left delay-2100">Written in vanilla JS with no libraries - file size &lt; 40kb.</li>
 							</ul>
 						</div>
 						<div class="badges">
@@ -315,6 +317,17 @@
 					</div>
 				</div>
 				<div class="col col-60 padding-top padding-left">
+					<div class="skill-group fade-in-left delay-2000">
+						<div class="skill-title">Things that I build</div>
+						<div class="icons">
+							<div class="skill"><img class="img-skill" data-src="spa"><span>Single-Page Apps</span></div>
+							<div class="skill"><img class="img-skill" data-src="pwa"><span>Progressive Web Apps</span></div>
+							<div class="skill"><img class="img-skill" data-src="webext"><span>Web Extensions</span></div>
+							<div class="skill"><img class="img-skill" data-src="electron"><span>Electron Apps</span></div>
+							<div class="skill"><img class="img-skill" data-src="uiwebview"><span>WebViews</span></div>
+							<div class="skill"><img class="img-skill" data-src="localsearch"><span>Local Search Engines</span></div>
+						</div>
+					</div>
 					<div class="skill-group fade-in-left delay-2100">
 						<div class="skill-title">Languages, Preprocessors and Template Engines</div>
 						<div class="icons">
@@ -350,6 +363,8 @@
 							<div class="skill"><img class="img-skill" data-src="underscore"><span>Underscore JS</span></div>
 							<div class="skill"><img class="img-skill" data-src="gsap"><span>GSAP</span></div>
 							<div class="skill"><img class="img-skill" data-src="moment"><span>Moment JS</span></div>
+							<div class="skill"><img class="img-skill" data-src="chartjs"><span>Chart JS</span></div>
+							<div class="skill"><img class="img-skill" data-src="chartist"><span>Chartist JS</span></div>
 							<div class="skill"><img class="img-skill" data-src="bootstrap"><span>Bootstrap 5</span></div>
 							<div class="skill"><img class="img-skill" data-src="foundation"><span>Foundation</span></div>
 						</div>
@@ -419,8 +434,6 @@
 					<div class="skill-group fade-in-left delay-2900">
 						<div class="skill-title">Miscellaneous</div>
 						<div class="icons">
-							<div class="skill"><img class="img-skill" data-src="webext"><span>Web Extensions</span></div>
-							<div class="skill"><img class="img-skill" data-src="electron"><span>Electron Apps</span></div>
 							<div class="skill"><img class="img-skill" data-src="pi"><span>Raspberry Pi</span></div>
 							<div class="skill"><img class="img-skill" data-src="arduino"><span>Arduinio</span></div>
 							<div class="skill"><img class="img-skill" data-src="nalgene"><span>Staying hydrated</span></div>
@@ -493,7 +506,7 @@
 							<p class="fade-in-left delay-1600">I used a little GPS unit to record my biking and hiking activity when I lived in the Bay Area.</p>
 							<p class="fade-in-left delay-1700">This map is a culmination of all the dilligent tracking and made the whole ordeal of charging another device worth it.</p>
 							<p class="fade-in-left delay-1800">Over 480 hours of movement was recorded over an 18 month period and every single adventure can be seen here.</p>
-							<div class="show-on-mobile fade-in-left delay-1900"><p>Please open this map on a wider screen for a better experience.</p></div>
+							<div class="show-on-mobile fade-in-left delay-1900"><p>Please open this map on a screen for a better experience.</p></div>
 							<h3 class="fade-in-left delay-2300">Pick a route:</h3>
 							<div class="map-controls">
 								<div class="control fade-in-left delay-2500">
@@ -636,6 +649,12 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="sky">
+			<div class="circle-container">
+				<div class="circle" onclick="darkMode()"></div>
+			</div>
+			<div class="tooltip" data-hover-dark="Goodnight" data-hover-light="Rise and shine"></div>
 		</div>
 	</div>
 	<script src="/js/script.min.js"></script>

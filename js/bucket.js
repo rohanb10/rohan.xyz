@@ -66,13 +66,7 @@ function changeColourScheme(index, shuffle = true, callback) {
 }
 
 function setDarkClassForSections(scheme) {
-	document.querySelectorAll('.section').forEach((s,i) => {
-		if (isDark(scheme[i])) {
-			s.classList.add('is-dark');
-		} else {
-			s.classList.remove('is-dark');
-		}
-	});
+	document.querySelectorAll('.section').forEach((s,i) => s.classList.toggle('is-dark', isDark(scheme[i])));
 }
 
 function nextColourSchemeID() {

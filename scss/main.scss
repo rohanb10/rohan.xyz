@@ -193,6 +193,9 @@ a {
 	transition: all .6s $ease-in-out-cubic;
 	transition-delay: .4s;
 	padding: 0 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	h1 {
 		font-size: 4em;
 		font-weight: 900;

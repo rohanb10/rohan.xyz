@@ -245,7 +245,7 @@ function loadSkills() {
 	skills = document.querySelectorAll('.skill');
 	skills.forEach(s => {
 		var img = s.firstElementChild;
-		img.src = `/assets/skills/${img.getAttribute('data-src').toLowerCase()}.png`;
+		img.src = `/assets/skills/${img.getAttribute('data-src')}.png`;
 		s.onmouseover = _ => killSkillCycle()
 		s.onmouseout = _ => startSkillCycle(1500)
 		s.prepend(document.createElement('div'));
@@ -274,10 +274,9 @@ function startSkillCycle(intialDelay = 0) {
 	}, intialDelay);
 }
 
-// dark mode
-
-function darkMode() {
-	document.documentElement.classList.toggle('dark-mode');
+// toggle dark mode
+function darkMode(force) {
+	document.documentElement.classList.toggle('dark-mode', force);
 }
 
 // analytics
@@ -332,6 +331,7 @@ document.querySelectorAll('a').forEach(link => {
 
 document.addEventListener('DOMContentLoaded', _ => {
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
+	if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => darkMode(e.matches))
 	
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');

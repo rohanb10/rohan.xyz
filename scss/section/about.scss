@@ -45,6 +45,9 @@
 		li:hover .hover {
 			opacity: 1;
 		}
+		a {
+			@include hyperlink($c-5);
+		}
 		.wiggle{
 			display: inline-block;
 		}

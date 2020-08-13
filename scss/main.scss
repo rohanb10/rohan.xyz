@@ -40,7 +40,7 @@ body, html {
 	transition: all .5s ease-in-out;
 }
 
-body.no-touching * {
+body.no-touching {
 	touch-actions: none;
 	pointer-events: none;
 }
@@ -98,7 +98,7 @@ body.no-touching * {
 	margin: 0 auto;
 	overflow-x: hidden;
 	@media screen and (max-width: 40em) {
-		padding: 0 1em;
+		padding: 0;
 	}
 }
 .info {

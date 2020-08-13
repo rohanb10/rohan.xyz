@@ -1,6 +1,5 @@
 #section-container {
 	scroll-behavior: smooth;
-	padding-bottom: 3em;
 	.title {
 		margin:1em auto 2em;
 		text-align: center;
@@ -89,12 +88,12 @@
 			.sky {
 				left: 1em;
 				.circle-container {
-					width: 2.25em;
-					height: 2.25em;
+					width: 1.67em;
+					height: 1.67em;
 				}
 			}
 		}
-		@media screen and (max-width: 40em) {
+		@media screen and (max-width: 48em) {
 			.bucket, .sky {
 				transition-delay: .5s;
 			}

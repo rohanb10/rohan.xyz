@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height">
+	<title>u got broken links yo</title>
 	<script type="text/javascript">
-		console.log(document.location);
-		// console.log(document.location.href.substring(document.location.origin.length));
-		console.log('hi');
-		console.log(document.location.origin + '/' + document.location.href.substring(document.location.origin.length).replace('/','?'));
+		var wl = window.location;
+		var o = wl.origin;
+
+		// parameter
+		var p = wl.href.substring(o.length).match(/\/[a-z]+/);
+		p = p.length > 0 ? p[0].substring(1) : '';
+
+		if (['work', 'skills', 'maps', 'photos', 'about'].includes(p)) window.location = o + wl.href.substring(o.length).replace('/','?');
+		if (p === 'yaniv') console.log('yes my g');
+		console.log('nope');
 	</script>
+	<meta name="author" content="Rohan Bhansali">
+
+	<link rel="canonical" href="http://rohan.xyz">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon/favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 </head>
 <body>
 	<h1>Uh oh2</h1>

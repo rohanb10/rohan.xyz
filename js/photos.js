@@ -159,7 +159,7 @@ function loadPhoto(i, delay = 0) {
 		},
 		onerror: endLoadingAnimation,
 	});
-	history.pushState('', '', `${window.location.pathname}?${i}`);
+	history.pushState('', '', `${window.location.pathname}/${i}`);
 	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS.find(p => p.index === i).caption);
 	active_photo = PHOTOS.findIndex(el => el.index === i);
 

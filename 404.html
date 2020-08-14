@@ -4,10 +4,12 @@
 	<title></title>
 	<script type="text/javascript">
 		console.log(document.location);
-		console.log(document.location.href.substring(document.location.origin.length));
+		// console.log(document.location.href.substring(document.location.origin.length));
+		console.log('hi');
+		console.log(document.location.origin + '/' + document.location.href.substring(document.location.origin.length).replace('/','?'));
 	</script>
 </head>
 <body>
-	<h1>Uh oh</h1>
+	<h1>Uh oh2</h1>
 </body>
 </html>

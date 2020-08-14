@@ -2,26 +2,46 @@
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
 // Check if specific page requested
-if (window.location.search.length > 1) {
-	document.body.classList.add('no-touching');
-	var param = '', sectionName = window.location.search.substr(1);
-	if (sectionName.indexOf(',') > -1) {
-		param = sectionName.split(',')[1];
-		sectionName = sectionName.split(',')[0];
-	}
+// if (window.location.search.length > 1) {
+// 	document.body.classList.add('no-touching');
+// 	var param = '', sectionName = window.location.search.substr(1);
+// 	if (sectionName.indexOf(',') > -1) {
+// 		param = sectionName.split(',')[1];
+// 		sectionName = sectionName.split(',')[0];
+// 	}
+// 	document.querySelector(`#id-${sectionName} .text`).addEventListener('animationend', _ => {
+// 		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
+// 			workPicker(param);
+// 		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
+// 			console.log(param);
+// 			openPhotoModal(parseInt(param), false);
+// 		}
+// 		document.body.classList.remove('no-touching');
+// 	}, {once: true});
+// 	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}${param !== '' ? '?' + param : ''}`, window.location.pathname), 999);
+// 	history.pushState(null, null, '/');
+// 	setTimeout(_ => navControl(sectionName), 1000);
+// }
+
+(function redirectToSection(query) {
+	history.pushState(null, null, '/');
+	if (query.length === 0) return;
+	// get section name from url query and return if doesnt exist
+	var sectionName = query.match(/\?[a-z]+/)[0].substring(1);
+	if (!Array.from(document.querySelectorAll('.section-nav span[data-section-name]')).map(s => s.getAttribute('data-section-name')).includes(sectionName)) return;
+
+	// get subsection from url query
+	var sub = query.split('/').length > 1 ? query.split('/')[1].replace(/[^a-z0-9]/, '') : '';
 	document.querySelector(`#id-${sectionName} .text`).addEventListener('animationend', _ => {
-		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
-			workPicker(param);
-		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
-			console.log(param);
-			openPhotoModal(parseInt(param), false);
-		}
+		if (sectionName === 'work' && Array.from(document.querySelectorAll('#id-work .card')).map(d => d.getAttribute('id')).includes(sub)) workPicker(sub);
+		if (sectionName === 'photos' && 0 <= parseInt(sub) && parseInt(sub) < PHOTOS.length) openPhotoModal(parseInt(sub), false)
 		document.body.classList.remove('no-touching');
 	}, {once: true});
-	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}${param !== '' ? '?' + param : ''}`, window.location.pathname), 999);
-	history.pushState(null, null, '/');
+
+	document.body.classList.add('no-touching');
+	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}/${sub}`, window.location.pathname), 900);
 	setTimeout(_ => navControl(sectionName), 1000);
-}
+})(window.location.search)
 
 // back button fail safe
 window.addEventListener('popstate', _ => {
@@ -235,7 +255,7 @@ function workPicker(workName) {
 		as.addEventListener('animationend', _ => as.classList.remove('fade-down-twice'), {once: true});
 	})
 
-	history.pushState('', '', `${window.location.pathname}?${workName}`);
+	history.pushState('', '', `${window.location.pathname}/${workName}`);
 	trackEvent('Work Clicked', window.location.pathname, workName)
 }
 

@@ -331,7 +331,7 @@ document.querySelectorAll('a').forEach(link => {
 
 document.addEventListener('DOMContentLoaded', _ => {
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
-	if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => darkMode(e.matches))
+	if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
 	
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');

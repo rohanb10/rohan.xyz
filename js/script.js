@@ -1,30 +1,8 @@
 // watch -f 'js/*.js' -r 'uglifyjs js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.min.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
-// Check if specific page requested
-// if (window.location.search.length > 1) {
-// 	document.body.classList.add('no-touching');
-// 	var param = '', sectionName = window.location.search.substr(1);
-// 	if (sectionName.indexOf(',') > -1) {
-// 		param = sectionName.split(',')[1];
-// 		sectionName = sectionName.split(',')[0];
-// 	}
-// 	document.querySelector(`#id-${sectionName} .text`).addEventListener('animationend', _ => {
-// 		if (param !== '' && sectionName === 'work' && document.getElementById(param)) {
-// 			workPicker(param);
-// 		} else if (param !== '' && sectionName === 'photos' && 0 <= parseInt(param) && parseInt(param) < PHOTOS.length) {
-// 			console.log(param);
-// 			openPhotoModal(parseInt(param), false);
-// 		}
-// 		document.body.classList.remove('no-touching');
-// 	}, {once: true});
-// 	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}${param !== '' ? '?' + param : ''}`, window.location.pathname), 999);
-// 	history.pushState(null, null, '/');
-// 	setTimeout(_ => navControl(sectionName), 1000);
-// }
-
 (function redirectToSection(query) {
-	history.pushState(null, null, '/');
+	history.replaceState(null, null, '/');
 	if (query.length === 0) return;
 	// get section name from url query and return if doesnt exist
 	var sectionName = query.match(/\?[a-z]+/)[0].substring(1);
@@ -127,8 +105,8 @@ function navControl(sectionName) {
 		navbar.classList.add('active');
 		navButton.classList.add('active');
 		document.getElementById('section-container').classList.add('active');
-		
-		history.pushState(null, null, `/${sectionName}`);
+		document.title = `${sectionName} | rohan bhansali`;
+		history.replaceState(null, null, `/${sectionName}`);
 		trackEvent('Section Changed', 'navbar', sectionName);
 	}
 }
@@ -224,7 +202,8 @@ function hideAllSections() {
 	killWave();
 	startWave(1500);
 
-	history.pushState(null, null, '/');
+	document.title = `rohan bhansali`;
+	history.replaceState(null, null, '/');
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
@@ -255,7 +234,8 @@ function workPicker(workName) {
 		as.addEventListener('animationend', _ => as.classList.remove('fade-down-twice'), {once: true});
 	})
 
-	history.pushState('', '', `${window.location.pathname}/${workName}`);
+	document.title = `${element.querySelector('.work-name').innerText.toLowerCase()} | work | rohan bhansali`;
+	history.replaceState('', '', `/work/${workName}`);
 	trackEvent('Work Clicked', window.location.pathname, workName)
 }
 

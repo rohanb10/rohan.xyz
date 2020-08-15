@@ -111,21 +111,51 @@
 			}
 		}
 		.badges {
-			padding-top: 2em;
 			display: flex;
-			align-items: center;
 			justify-content: space-between;
+			div {
+				height: 3.5em;
+				width: 12em;
+				margin: .4em 0;
+			}
 			a {
-				display: inline-block;
+				display: block;
 				border-bottom: none;
+				position: relative;
+				width: 100%;
+				height: 100%;
 			}
 			img {
-				max-height: 3.5em;
-				border: 3px solid #eee;
-				transition: border-color .3s ease-in-out;
-				&:hover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				border: 2px solid #ddd;
+				transition: all .3s ease-in-out;
+				&.dark {
+					touch-actions: none;
+					pointer-events: none;
+					border-color: #454545;
+					opacity: 0;
+				}
+				&:hover, &.dark:hover {
 					border-color: $c-1;
 				}
+			}
+			@media screen and (max-width: 56em) {
+				flex-wrap: wrap;
+				justify-content: space-around;
+				div {
+					width: 100%;
+					a {
+						width: 12em;
+					}
+					&:last-of-type a {
+						margin-left: auto;
+					}
+				}	
 			}
 		}
 		@media screen and (max-width: 40em) {

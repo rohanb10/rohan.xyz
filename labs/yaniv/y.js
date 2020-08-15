@@ -1,8 +1,8 @@
-var players = [];
+var players = [], scores = [], round = 0;
 const table = document.getElementById('score');
-var scores = [];
 
 function newGame() {
+	history.pushState(null, null, window.location.origin + '/yaniv/start');
 	var numberOfPlayers;
 	while (isNaN(numberOfPlayers)) {
 		numberOfPlayers = prompt("How many players?");
@@ -42,8 +42,14 @@ function newRound() {
 		} else {
 			cell.innerHTML = total;	
 		}
-
 		scores[i] = total;
-		s = "yo";
 	}
+	round++;
+	history.pushState(null, null, window.location.origin + '/yaniv/round/' + round);
 }
+window.addEventListener('popstate', function(e) {
+	if (window.location.href !== window.location.origin + '/labs/yaniv') {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+});

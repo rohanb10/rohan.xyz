@@ -1,3 +1,7 @@
+// delay utility classes
+@include delays(50, 50, 2);
+@include delays(100, 1000, 35);
+
 // Transition IN animations
 .slide-in-up {
 	animation: slide-in-up .5s $ease-in-out-cubic both;
@@ -40,9 +44,12 @@
 }
 
 .fade-in {
-	animation: fade-in 1s $ease-in-out-cubic both;
-	@include delays(500, 1000, 1);
-	@include delays(100, 2500, 18);
+	animation-name: fade-in;
+	animation-duration: 1s;
+	animation-timing-function: $ease-in-out-cubic;
+	animation-fill-mode: both;
+	// @include delays(500, 1000, 1);
+	// @include delays(100, 2500, 18);
 }
 
 @keyframes fade-in {
@@ -55,9 +62,12 @@
 }
 
 .fade-in-left {
-	animation: fade-in-left 1s $ease-in-out-cubic both;
-	@include delays(50, 50, 2);
-	@include delays(100, 1500, 17);
+	animation-name: fade-in-left;
+	animation-duration: 1s;
+	animation-timing-function: $ease-in-out-cubic;
+	animation-fill-mode: both;
+	// @include delays(50, 50, 2);
+	// @include delays(100, 1500, 17);
 }
 
 @keyframes fade-in-left {
@@ -72,8 +82,11 @@
 }
 
 .fade-in-right {
-	animation: fade-in-right 1s $ease-in-out-cubic both;
-	@include delays(100, 1500, 15);
+	animation-name: fade-in-right;
+	animation-duration: 1s;
+	animation-timing-function: $ease-in-out-cubic;
+	animation-fill-mode: both;
+	// @include delays(100, 1500, 15);
 }
 
 @keyframes fade-in-right {
@@ -159,11 +172,11 @@
 }
 
 .fade-down-twice {
-	animation: fade-down-twice 1s $ease-in-out-cubic forwards;
+	animation-name: fade-down-twice;
+	animation-duration: 1s;
+	animation-timing-function: $ease-in-out-cubic;
+	animation-fill-mode: forwards;
 	animation-iteration-count: 3;
-	&.delay-50 {
-		animation-delay: 50ms;
-	}
 }
 
 @keyframes fade-down-twice {

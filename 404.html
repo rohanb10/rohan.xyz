@@ -13,8 +13,7 @@
 		p = p.length > 0 ? p[0].substring(1) : '';
 
 		if (['work', 'skills', 'maps', 'photos', 'about'].includes(p)) window.location = o + wl.href.substring(o.length).replace('/','?');
-		if (p === 'yaniv') console.log('yes my g');
-		console.log('nope');
+		if (['yaniv', 'ants', 'takes'].includes(p)) window.location = o + '/labs/' + p;
 	</script>
 	<meta name="author" content="Rohan Bhansali">
 

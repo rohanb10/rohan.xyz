@@ -126,7 +126,7 @@ function closePhotoModal() {
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
-	history.pushState('', '', window.location.pathname);
+	history.replaceState('', '', `${window.location.origin}/photos`);
 	trackEvent('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
@@ -159,8 +159,10 @@ function loadPhoto(i, delay = 0) {
 		},
 		onerror: endLoadingAnimation,
 	});
-	history.pushState('', '', `${window.location.pathname}/${i}`);
-	modal.querySelector('.caption').innerHTML = formatCaptions(PHOTOS.find(p => p.index === i).caption);
+	var p = PHOTOS.find(p => p.index === i);
+	document.title = `${p.caption.substr(0, p.caption.lastIndexOf(',', p.caption.lastIndexOf(',') - 1)).toLowerCase()} | photos | rohan bhansali`
+	history.replaceState('', '', `/photos/${i}`);
+	modal.querySelector('.caption').innerHTML = formatCaptions(p.caption);
 	active_photo = PHOTOS.findIndex(el => el.index === i);
 
 	modal.querySelector('.modal-next-btn').classList.toggle('disabled', active_photo + 1 >= PHOTOS.length);

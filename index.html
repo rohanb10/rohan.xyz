@@ -275,22 +275,29 @@
 						<div class="blurb">
 							<p class="fade-in-left delay-1500">I had too many tabs open so I made a web extension to help reduce that clutter. This webapp lets you <i>snoozz</i> tabs now and have them reopen later when you actually need them.</p>
 
-							<p class="fade-in-left delay-1600">You can install the extension from the Chrome Extension Store or the Firefox Add-On Market and view the source code in this <a target="_blank" data-name="Snoozz (repo)" href="https://github.com/rohanb10/snooze/" rel="noreferrer">github repo</a>. Safari is going to support the WebExtension APIs later this year but I refuse to pay Apple $100 a year to release a free extension.</p>
+							<p class="fade-in-left delay-1600">You can install the extension from the Chrome Extension Store or the Firefox Add-On Market and view the source code in this <a target="_blank" data-name="Snoozz (repo)" href="https://github.com/rohanb10/snooze/" rel="noreferrer">github repo</a>.
 							<ul>
-								<li class="fade-in-left delay-1700">Snooze tabs for later using just two clicks.</li>
+								<li class="fade-in-left delay-1700">Snooze tabs for later using a button in the toolbar with just two clicks.</li>
 								<li class="fade-in-left delay-1800">Wake up tabs automatically at the pre-determined time.</li>
-								<li class="fade-in-left delay-1900">View a list of all your snoozed tabs, sorted by date and time and wake them up manually.</li>
-								<li class="fade-in-left delay-2000">View a history of your woken up tabs and purge the history automatically after a user configured period of time.</li>
-								<li class="fade-in-left delay-2100">Written in vanilla JS with no libraries - file size &lt; 40kb.</li>
+								<li class="fade-in-left delay-1900">Right click urls anywhere on the web to snooze a tab to open later when you have time to read it.</li>
+								<li class="fade-in-left delay-2000">View a list of all your snoozed tabs, sorted by date and time and wake them up manually.</li>
+								<li class="fade-in-left delay-2100">View a history of your woken up tabs and purge the history automatically after a user configured period of time.</li>
+								<li class="fade-in-left delay-2200">Written in vanilla JS with no libraries - file size &lt; 40kb.</li>
 							</ul>
 						</div>
 						<div class="badges">
-							<a class="fade-in-left delay-2300" target="_blank" data-name="Snoozz (CWS)" href="https://chrome.google.com/webstore/detail/snoozz/lklendgldejcnkkaldoggoapclkepgfb" rel="noreferrer" >
-								<img data-src="/assets/logos/cws-badge.png">
-							</a>
-							<a class="fade-in-left delay-2400" target="_blank" data-name="Snoozz (AMO)" href="https://addons.mozilla.org/en-US/firefox/addon/snoozz/" rel="noreferrer" >
-								<img data-src="/assets/logos/moz-badge.png">
-							</a>
+							<div class="fade-in-left delay-2300">
+								<a target="_blank" data-name="Snoozz (CWS)" href="https://chrome.google.com/webstore/detail/snoozz/lklendgldejcnkkaldoggoapclkepgfb" rel="noreferrer">
+									<img data-src="/assets/logos/cws-light.png">
+									<img class="dark" data-src="/assets/logos/cws-dark.png">
+								</a>
+							</div>
+							<div class="fade-in-left delay-2400" >
+								<a target="_blank" data-name="Snoozz (AMO)" href="https://addons.mozilla.org/en-US/firefox/addon/snoozz/" rel="noreferrer" >
+									<img data-src="/assets/logos/ff-light.png">
+									<img class="dark" data-src="/assets/logos/ff-dark.png">
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -659,7 +666,7 @@
 			<div class="tooltip" data-hover-dark="Goodnight" data-hover-light="Rise and shine"></div>
 		</div>
 	</div>
-	<script src="/js/script.min.js?v2"></script>
+	<script src="/js/script.terser.js"></script>
 	<script>
 	(function(r,o,h,a,n) {
 		r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};

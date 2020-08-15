@@ -7,7 +7,7 @@
 @mixin delays($interval : 500, $start: 0, $total: 10) {
 	@for $i from 0 through $total {
 		$ms : $start + ($i * $interval);
-		&.delay-#{$ms} {
+		.delay-#{$ms} {
 			animation-delay: #{$ms}ms;
 		}
 	}

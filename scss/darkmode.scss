@@ -67,13 +67,20 @@ html.dark-mode, html.dark-mode body{
 			margin-right: .25em;
 		}
 	}
-	.badges img {
-		background-color: rgba(255,255,255,.8);
+	#id-work .card .badges img {
+		touch-actions: none;
+		pointer-events: none;
+		opacity: 0;
+		&.dark {
+			opacity: 1;
+			touch-actions: auto;
+			pointer-events: auto;
+		}
 	}
 	.thumb-container {
 		border-color: $c-d;
 	}
-	.photo-modal, .loading {
+	.photo-modal, .photo-modal .modal-content .photo-container .loading {
 		background-color: #2D2D2D;
 	}
 	#id-maps .control {

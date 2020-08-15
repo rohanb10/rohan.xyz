@@ -5,11 +5,8 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height">
 	<title>u got broken links yo</title>
 	<script type="text/javascript">
-		var wl = window.location;
-		var o = wl.origin;
+		var wl = window.location, o = wl.origin, p = wl.href.substring(o.length).match(/\/[a-z]+/);
 
-		// parameter
-		var p = wl.href.substring(o.length).match(/\/[a-z]+/);
 		p = p.length > 0 ? p[0].substring(1) : '';
 
 		if (['work', 'skills', 'maps', 'photos', 'about'].includes(p)) window.location = o + wl.href.substring(o.length).replace('/','?');
@@ -17,14 +14,106 @@
 	</script>
 	<meta name="author" content="Rohan Bhansali">
 
-	<link rel="canonical" href="http://rohan.xyz">
-	<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon/favicon-48x48.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+	<style type="text/css">
+		body {
+			margin: 0;
+			height: 100vh;
+			background: linear-gradient(160deg, rgba(128, 187, 227, 0.9) 0%, rgba(128, 187, 227, 0.5) 100%);
+		}
+		.wavebox, .textbox, .floatbox, .cloudbox {
+			position: fixed;
+			width: 100vw;
+		}
+		body, svg, .float {width: 100%}
+		.wavebox {
+			bottom:0;
+			z-index: 1;
+		}
+		.wavebox:last-of-type{z-index: 3}
+		svg {overflow:visible}
+		.wave {
+			animation: wave 16s linear infinite;
+			fill: #115a96;
+		}
+		#ocean .wave:nth-of-type(even), #sea .wave:nth-of-type(odd) {
+			animation-direction: reverse;
+		}
+		@keyframes wave {
+			to {transform: translateX(-100%);}
+		}
+		.textbox {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 2;
+			font-family: 'Arial', sans-serif;
+		}
+		h1 {
+			font-family: 'Arial Black', sans-serif;
+			font-size: 15em;
+			margin: 0;
+			color: #fff;
+			text-shadow: .1rem .1rem 0 #bbb, .2rem .2rem 0 #bbb, .3rem .3rem 0 #bbb, .4rem .4rem 0 #bbb, .5rem .5rem 0 #bbb;
+		}
+		.floatbox {
+			width: 18em;
+			top: 70%;
+			left: 45%; 
+			z-index: 99;
+			animation: drift 60s linear infinite;
+		}
+		@keyframes drift {
+			0%,100% {transform: translate(0) scaleX(-1)}
+			25% {transform: translateX(-35vw) scaleX(-1)}
+			25.1% {transform: translateX(-35vw) scaleX(1)}
+			75% {transform: translateX(35vw) scaleX(1)}
+			75.1% {transform: translateX(35vw) scaleX(-1)}
+		}
+		.float {
+			animation: bob 12s ease-in-out infinite;
+		}
+		@keyframes bob {
+			0%, 100% {transform: translate(0) rotate(0)}
+			20% {transform: translate(.2rem, -1.2rem) rotate(-2deg)}
+			40% {transform: translate(.4rem, -.8rem) rotate(-5deg)}
+			60% {transform: translate(-.3rem, .4rem ) rotate(-1deg)}
+			80% {transform: translate(-.6rem,.6rem ) rotate(3deg)}
+		}
+		@media (max-width: 48em) {
+			h1{font-size: 10em}
+			.floatbox {
+				width: 12em;
+				top: 85%;
+				animation: none;
+				transform: translate(-50%, -20%);
+			}
+			svg {transform: scale(2.5) translateY(-40%)}
+		}
+	</style>
 </head>
 <body>
-	<h1>Uh oh2</h1>
+	<div class="textbox">
+		<p>You seem lost. Maybe you should go <a href="#" onclick="window.location = window.location.origin">home</a>.</p>
+		<h1>404</h1>
+	</div>
+	<div class="floatbox"><img class="float" src="/assets/float.png"></div>
+	<div class="wavebox">
+		<svg id="ocean" viewBox="0 0 100 37">
+			<defs><path id="waveform" d="M 0,10 C 30,10 30,15 60,15 C 90,15 90,10 120,10 C 150,10 150,15 180,15 C 210,15 210,10 240,10 v 90 h -240 z"/></defs>
+		</svg>
+	</div><div class="wavebox">
+		<svg id="sea" viewBox="0 0 100 30">
+			<defs><path id="waveform" d="M 0 10 C 30 10 47 18 55 24 C 89 51 97 26 123 19 C 150 10 155 28 185 29 C 230 31 210 10 240 10 v 90 h -240 z"/></defs>
+		</svg>
+	</div>
+	<script type="text/javascript">
+		for (var i = 0; i < 8; i++) {
+			var randStyles = `style="opacity:${.1+(i/12)};animation-duration: ${Math.floor(Math.random()*20) + 10}s"`
+			document.getElementById(i%2===0?'ocean':'sea').innerHTML+= `<use class="wave" xlink:href="#waveform" x="0" y="${2-i}" ${randStyles}></use>`
+		}
+	</script>
 </body>
 </html>

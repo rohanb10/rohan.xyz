@@ -16,23 +16,23 @@
 		width: 3em;
 		height: 3em;
 		cursor: pointer;
-		transition: all .3s ease-in-out, opacity .5s ease-in-out;
+		transition: all .3s ease-in-out, filter .5s ease-in-out;
 		border-radius: .5em;
-		transform: rotate(0deg);
 		flex-shrink: 0;
-		background-position: center center;
-		background-size: 100%;
-		background-repeat: no-repeat;
-		background-image: linear-gradient(0deg, $c-w, $c-w 50%);
-		-webkit-background-clip: padding-box;
-		&.dark {
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			opacity: 0;
-			touch-actions: none;
-			pointer-events: none;
-		}
+		position: relative;
+		z-index: 5;
+	}
+	.bucket-bg {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 3em;
+		height: 3em;
+		z-index: 4;
+		transition: all .3s ease-in-out;
+		background-color: rgba(255,255,255,.75);
+		clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%);
+		-webkit-clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%);
 	}
 	
 
@@ -41,7 +41,7 @@
 		white-space: nowrap;
 		padding: .25em .5em;
 		border-radius: .5em;
-		background-color: $c-w;
+		background-color: rgba(255,255,255,.75);
 		transition: all .3s ease-in-out;
 		opacity: 0;
 		&:before {
@@ -55,15 +55,23 @@
 		img:hover ~ .tooltip {
 			opacity: 1;
 		}
-		img:hover {
+		img:hover, img:hover ~ .bucket-bg {
 			transform: rotate(-35deg);
+		}
+		img:hover ~ .bucket-bg {
+			clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%, 24% 38%, 10% 42%, 6% 44%, 5% 47%, 4% 50%, 5% 54%, 7% 56%, 11% 58%, 15% 58%, 19% 56%, 21% 53%, 24% 38%, 34% 30%);
+			-webkit-clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%, 24% 38%, 10% 42%, 6% 44%, 5% 47%, 4% 50%, 5% 54%, 7% 56%, 11% 58%, 15% 58%, 19% 56%, 21% 53%, 24% 38%, 34% 30%);
 			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
-				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
+			radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 		}
 	}
 	&.changing {
-		img {
+		img, .bucket-bg, img:hover ~ .bucket-bg {
 			transform: rotate(-100deg);
+		}
+		.bucket-bg {
+			clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%, 24% 38%, 10% 42%, 6% 44%, 5% 47%, 4% 50%, 5% 54%, 7% 56%, 11% 58%, 15% 58%, 19% 56%, 21% 53%, 24% 38%, 34% 30%);
+			-webkit-clip-path: polygon(35% 34%, 39% 76%, 54% 81%, 68% 81%, 82% 78%, 88% 31%, 86% 26%, 76% 23%, 65% 22%, 56% 22%, 48% 22%, 38% 25%, 34% 30%, 24% 38%, 10% 42%, 6% 44%, 5% 47%, 4% 50%, 5% 54%, 7% 56%, 11% 58%, 15% 58%, 19% 56%, 21% 53%, 24% 38%, 34% 30%);
 			background-image: radial-gradient(circle at 0% 50%, var(--nc-0) 30%, $c-t 30%),
 				radial-gradient(circle at 62% -12%, var(--nc-1) 37%, var(--nc-2) 40%, var(--nc-2) 50%, var(--nc-3) 50%, var(--nc-3) 62%, var(--nc-4) 62%);
 			@media (hover:none) {
@@ -85,7 +93,7 @@
 		}
 	}
 	@media screen and (max-width: 56em) {
-		img {
+		img, .bucket-bg {
 			width: 2.5em;
 			height: 2.5em;
 		}

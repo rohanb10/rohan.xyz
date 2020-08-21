@@ -1,45 +1,17 @@
 html.dark-mode, html.dark-mode body{
-	color: $c-w;
-	background-color: $c-d;
+	--text-color: #fff;
+	--bg-color: #2d2d2d;
+	--is-dark: 0;
 
-	#hero {
-		.ro {
-			background-image: linear-gradient(0deg, $c-1, $c-1 50%, $c-w 50%);
-		}
-		.han {
-			background-image: linear-gradient(0deg, $c-2, $c-2 50%, $c-w 50%);
-		}
-		.bhan {
-			background-image: linear-gradient(0deg, $c-3, $c-3 50%, $c-w 50%);
-		}
-		.sa {
-			background-image: linear-gradient(0deg, $c-4, $c-4 50%, $c-w 50%);
-		}
-		.li {
-			background-image: linear-gradient(0deg, $c-5, $c-5 50%, $c-w 50%);
-		}
-	}
-
-	#navigation {
-		color: $c-w;
-		&.active {
-			color: $c-b;
-		}
-	}
-	a, .is-dark a:hover {
-		color: $c-w;
-	}
 	a:hover {
 		color: $c-b;
 	}
 
-	.tooltip {
+	.tooltip, .bucket-bg {
 		background-color: rgba(45,45,45,.75);
-		color: $c-w;
 	}
 	.sky {
 		.circle {
-			border-color: $c-w;
 			background-position: 25% 100%;
 			transform: rotate(-180deg);
 			&:hover {
@@ -51,44 +23,19 @@ html.dark-mode, html.dark-mode body{
 		}
 	}
 
-	.bucket {
-		img {
-			filter: invert(1);
-		}
-		.bucket-bg {
-			background-color: rgba(45,45,45,.75)
-		}
-		.tooltip {
-			margin-right: .25em;
-		}
+	.bucket img {
+		filter: invert(1);
 	}
 	#id-work .card .badges img {
 		touch-actions: none;
 		pointer-events: none;
-		opacity: 0;
 		&.dark {
-			opacity: 1;
 			touch-actions: auto;
 			pointer-events: auto;
 		}
 	}
-	.thumb-container {
-		border-color: $c-d;
-	}
-	.photo-modal, .photo-modal .modal-content .photo-container .loading {
-		background-color: $c-d;
-	}
-	#id-maps .control {
-		& > input[type="radio"], & > label:before {
-			border-color: $c-w;
-		}
-		& > input:not(:checked) ~ label:hover:before {
-			box-shadow: inset 0 0 0 .15em $c-4, inset 0 0 0 .1em $c-d;
-			border-color: $c-4;
-		}
-		& > input:checked ~ label:before {
-			box-shadow: inset 0 0 0 .2em $c-d, inset 0 0 0 .6em $c-4;
-		}
+	#id-maps .control > input:not(:checked) ~ label:hover:before {
+		border-color: $c-4;
 	}
 }
 
@@ -116,7 +63,7 @@ html.dark-mode, html.dark-mode body{
 			height: 100%;
 			width: 100%;
 			box-sizing: border-box;
-			border: 2px solid black;
+			border: 2px solid var(--text-color);
 			border-radius: 50%;
 			background-image: linear-gradient(90deg, $c-d, $c-d 50%, $c-w 50%);
 			background-size: 200% 100%;

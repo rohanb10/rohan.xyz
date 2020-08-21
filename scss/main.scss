@@ -37,6 +37,9 @@ body, html {
 
 	color: $c-b;
 	background-color: $c-w;
+
+	color: var(--text-color);
+	background-color: var(--bg-color);
 	transition: all .5s ease-in-out;
 }
 
@@ -145,13 +148,16 @@ body.no-touching {
 	}
 }
 a {
-	color: $c-b;
+	color: var(--text-color);
 	text-decoration: none;
 	padding: 0 2px;
 	border-bottom: 1px solid $c-b;
 	position: relative;
 	z-index: 1;
 	transition: color .2s linear;
+	&:hover {
+		color: var(--text-color)
+	}
 	&:hover:before {
 		transform: scaleY(1);
 	}
@@ -168,7 +174,7 @@ a {
 		transform-origin: 50% 100%;
 	}
 }
-.is-dark a:hover {
+.is-dark a:hover, {
 	color: $c-w;
 }
 .tooltip {
@@ -176,9 +182,9 @@ a {
 	padding: .25em .5em;
 	border-radius: .5em;
 	background-color: $c-w;
-	transition: all .2s ease-in-out;
+	transition: opacity .2s ease-in-out, background-color .5s ease-in-out;
 	opacity: 0;
-	color: $c-d;
+	color: var(--text-color);
 	&:before {
 		content: attr(data-hover)
 	}
@@ -202,19 +208,19 @@ a {
 		&>span {
 			display: block;
 			.ro {
-				background-image: linear-gradient(0deg, $c-1, $c-1 50%, $c-b 50%);
+				background-image: linear-gradient(0deg, $c-1, $c-1 50%, var(--text-color) 50%);
 			}
 			.han {
-				background-image: linear-gradient(0deg, $c-2, $c-2 50%, $c-b 50%);
+				background-image: linear-gradient(0deg, $c-2, $c-2 50%, var(--text-color) 50%);
 			}
 			.bhan {
-				background-image: linear-gradient(0deg, $c-3, $c-3 50%, $c-b 50%);
+				background-image: linear-gradient(0deg, $c-3, $c-3 50%, var(--text-color) 50%);
 			}
 			.sa {
-				background-image: linear-gradient(0deg, $c-4, $c-4 50%, $c-b 50%);
+				background-image: linear-gradient(0deg, $c-4, $c-4 50%, var(--text-color) 50%);
 			}
 			.li {
-				background-image: linear-gradient(0deg, $c-5, $c-5 50%, $c-b 50%);
+				background-image: linear-gradient(0deg, $c-5, $c-5 50%, var(--text-color) 50%);
 			}
 			span {
 				display: inline;

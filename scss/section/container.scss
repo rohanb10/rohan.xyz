@@ -63,7 +63,7 @@
 	.section.is-dark *::selection {
 		color: $c-w;
 	}
-	@media screen and (max-width: 24em){
+	@media screen and (min-width: 40em){
 		overflow-y: hidden;
 		padding-bottom: 1em;
 	}

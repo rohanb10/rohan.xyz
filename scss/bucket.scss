@@ -8,10 +8,10 @@
 	flex-direction: row-reverse;
 	transition: all .3s ease-in-out;
 	transition-delay: .5s;
-	touch-actions: none;
+	touch-action: none;
 	pointer-events: none;
 	img {
-		touch-actions: auto;
+		touch-action: auto;
 		pointer-events: auto;
 		width: 3em;
 		height: 3em;

@@ -136,7 +136,7 @@
 				transition: all .3s ease-in-out;
 				opacity: calc(1 - var(--is-dark, 0));
 				&.dark {
-					touch-actions: none;
+					touch-action: none;
 					pointer-events: none;
 					border-color: #454545;
 					opacity: var(--is-dark, 0);

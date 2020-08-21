@@ -1,4 +1,4 @@
-html.dark-mode, html.dark-mode body{
+html.dark-mode{
 	--text-color: #fff;
 	--bg-color: #2d2d2d;
 	--is-dark: 0;
@@ -27,10 +27,10 @@ html.dark-mode, html.dark-mode body{
 		filter: invert(1);
 	}
 	#id-work .card .badges img {
-		touch-actions: none;
+		touch-action: none;
 		pointer-events: none;
 		&.dark {
-			touch-actions: auto;
+			touch-action: auto;
 			pointer-events: auto;
 		}
 	}
@@ -49,12 +49,12 @@ html.dark-mode, html.dark-mode body{
 	align-items: center;
 	transition: all .3s ease-in-out;
 	transition-delay: .5s;
-	touch-actions: none;
+	touch-action: none;
 	pointer-events: none;
 	.circle-container {
 		height: 2em;
 		width: 2em;
-		touch-actions: auto;
+		touch-action: auto;
 		pointer-events: auto;
 		cursor: pointer;
 		transition: all .3s ease-in-out;

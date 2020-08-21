@@ -9,7 +9,7 @@
 
 	.thumb-container {
 		position: relative;
-		border: .1em solid $c-w;
+		border: .1em solid var(--bg-color);
 		box-sizing: border-box;
 
 		width: calc(100% / 3);
@@ -63,7 +63,7 @@
 	min-height: 100vh;
 	// height: calc(var(--vh, 1vh) * 100);			// https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 	transition: height .1s linear;
-	background-color: $c-w;
+	background-color: var(--bg-color);
 	z-index: 4;
 	left: 0;
 	top: 0;
@@ -115,7 +115,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: $c-w;
+				background-color: var(--bg-color);
 				transition: all .5s $ease-in-out-cubic;
 				.bars div {
 					display: inline-block;

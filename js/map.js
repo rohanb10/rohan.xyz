@@ -70,7 +70,7 @@ function drawSnake(pathID) {
 	clearPaths(true);
 	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', color: '--var(--c-3)'});
 	paths.push(p);
-	document.querySelector('.distance-container').classList.remove('hidden');
+	dist.parentElement.classList.remove('hidden');
 
 	map.fitBounds(p.getBounds(), {
 		padding: [10,10],
@@ -120,6 +120,8 @@ function drawAll() {
 			p.addTo(map);
 			paths.push(p);
 		}
+		dist.parentElement.classList.remove('hidden');
+		updateDistance(0, 181.19, 4267);
 	});
 }
 
@@ -162,7 +164,7 @@ function getTransitionDuration(p) {
 
 var distanceTimeout;
 function resetDistanceContainer(newPathIncoming) {
-	document.querySelector('.distance-container').classList.add('hidden');
+	dist.parentElement.classList.add('hidden');
 	clearTimeout(distanceTimeout);
 	setTimeout(_ => dist.innerText = "0.0", newPathIncoming ? 0 : 305);
 }

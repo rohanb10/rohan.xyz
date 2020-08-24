@@ -3,6 +3,7 @@
 	.title {
 		margin:1em auto 2em;
 		text-align: center;
+		color: var(--text-color);
 		.text-container {
 			font-size: 2em;
 			font-weight: 900;
@@ -62,10 +63,6 @@
 	}
 	.section.is-dark *::selection {
 		color: $c-w;
-	}
-	@media screen and (min-width: 40em){
-		overflow-y: hidden;
-		padding-bottom: 1em;
 	}
 	#id-maps:not(.hidden) ~ .sky {
 		left: -3em;

@@ -512,61 +512,80 @@
 							<p class="fade-in-left delay-1600">I used a little GPS unit to record my biking and hiking activity when I lived in the Bay Area.</p>
 							<p class="fade-in-left delay-1700">This map is a culmination of all the dilligent tracking and made the whole ordeal of charging another device worth it.</p>
 							<p class="fade-in-left delay-1800">Over 480 hours of movement was recorded over an 18 month period and every single adventure can be seen here.</p>
-							<div class="show-on-mobile fade-in-left delay-1900"><p>Please open this map on a screen for a better experience.</p></div>
-							<h3 class="fade-in-left delay-2300">Pick a route:</h3>
-							<div class="map-controls">
+							<div class="show-on-mobile fade-in-left delay-1900"><p>Open this page on a bigger screen. It will make my mother very happy.</p></div>
+							<h2 class="fade-in-left delay-2300 active" data-city="SF"><span onclick="changeCity('SF')">San Francisco</span></h2>
+							<div class="map-controls active" data-city="SF">
 								<div class="control fade-in-left delay-2500">
-									<input type="radio" name="rides" id="ride-0" onchange="updateMap(this)" data-ride-id="all">
+									<input type="radio" name="rides" id="ride-0" onchange="updateMap(this)" data-city="SF" data-ride-id="all">
 									<label for="ride-0">All</label>
 								</div>
 								<div class="control fade-in-left delay-2600">
-									<input type="radio" name="rides" id="ride-1" onchange="updateMap(this)" data-ride-id="2677960579">
+									<input type="radio" name="rides" id="ride-1" onchange="updateMap(this)" data-city="SF" data-ride-id="2677960579">
 									<label for="ride-1">SF Pier Party</label>
 								</div>
 								<div class="control fade-in-left delay-2600">
-									<input type="radio" name="rides" id="ride-2" onchange="updateMap(this)" data-ride-id="1997379409">
+									<input type="radio" name="rides" id="ride-2" onchange="updateMap(this)" data-city="SF" data-ride-id="1997379409">
 									<label for="ride-2">Tiburon Tour</label>
 								</div>
 								<div class="control fade-in-left delay-2700">
-									<input type="radio" name="rides" id="ride-3" onchange="updateMap(this)" data-ride-id="2321722402">
+									<input type="radio" name="rides" id="ride-3" onchange="updateMap(this)" data-city="SF" data-ride-id="2321722402">
 									<label for="ride-3">SF Bay Wildlife Refuge</label>
 								</div>
 								
 								<div class="control fade-in-left delay-2700">
-									<input type="radio" name="rides" id="ride-4" onchange="updateMap(this)" data-ride-id="2426844362">
+									<input type="radio" name="rides" id="ride-4" onchange="updateMap(this)" data-city="SF" data-ride-id="2426844362">
 									<label for="ride-4">Sam Taylor State Park</label>
 								</div>
 								<div class="control fade-in-left delay-2800">
-									<input type="radio" name="rides" id="ride-5" onchange="updateMap(this)" data-ride-id="2502538550">
+									<input type="radio" name="rides" id="ride-5" onchange="updateMap(this)" data-city="SF" data-ride-id="2502538550">
 									<label for="ride-5">Mountain View Tidal Marsh</label>
 								</div>
 								<div class="control fade-in-left delay-2800">
-									<input type="radio" name="rides" id="ride-6" onchange="updateMap(this)" data-ride-id="2625229591">
+									<input type="radio" name="rides" id="ride-6" onchange="updateMap(this)" data-city="SF" data-ride-id="2625229591">
 									<label for="ride-6">Hawk Hill Loop</label>
 								</div>
 								<div class="control fade-in-left delay-2900">
-									<input type="radio" name="rides" id="ride-7" onchange="updateMap(this)" data-ride-id="2218403044">
+									<input type="radio" name="rides" id="ride-7" onchange="updateMap(this)" data-city="SF" data-ride-id="2218403044">
 									<label for="ride-7">Golden Gate Park Dirt Trails</label>
 								</div>
 								<div class="control fade-in-left delay-2900">
-									<input type="radio" name="rides" id="ride-8" onchange="updateMap(this)" data-ride-id="2207515618">
+									<input type="radio" name="rides" id="ride-8" onchange="updateMap(this)" data-city="SF" data-ride-id="2207515618">
 									<label for="ride-8">Merced to Mission</label>
 								</div>
 								<div class="control fade-in-left delay-3000">
-									<input type="radio" name="rides" id="ride-9" onchange="updateMap(this)" data-ride-id="2284948547">
+									<input type="radio" name="rides" id="ride-9" onchange="updateMap(this)" data-city="SF" data-ride-id="2284948547">
 									<label for="ride-9">Angel Island Bikepacking</label>
 								</div>
 								<div class="control fade-in-left delay-3000">
-									<input type="radio" name="rides" id="ride-10" onchange="updateMap(this)" data-ride-id="2666057846">
+									<input type="radio" name="rides" id="ride-10" onchange="updateMap(this)" data-city="SF" data-ride-id="2666057846">
 									<label for="ride-10">Forest Hill Frolic</label>
 								</div>
 								<div class="control fade-in-left delay-3100">
-									<input type="radio" name="rides" id="ride-11" onchange="updateMap(this)" data-ride-id="random">
+									<input type="radio" name="rides" id="ride-11" onchange="updateMap(this)" data-city="SF" data-ride-id="random">
 									<label for="ride-11">Random</label><span onclick="drawRandom(this)">&#x21bb;</span>
 								</div>
 							</div>
-							<br>
-							<p class="attribution fade-in-left delay-3000">Made with <a target="_blank" href="https://www.mapbox.com/about/maps/" rel="noreferrer">Mapbox</a> and <a target="_blank" href="http://www.openstreetmap.org/about/" rel="noreferrer">OpenStreetMap</a>.</p>
+							
+							<h2 class="fade-in-left delay-2300" data-city="BOM"><span onclick="changeCity('BOM')">Mumbai</span></h2>
+							<div class="map-controls" data-city="BOM">
+								<div class="control fade-in-left delay-3100">
+									<input type="radio" name="rides" id="ride-12" onchange="updateMap(this)" data-city="BOM" data-ride-id="all">
+									<label for="ride-12">All</label>
+								</div>
+								<div class="control fade-in-left delay-3200">
+									<input type="radio" name="rides" id="ride-13" onchange="updateMap(this)" data-city="BOM" data-ride-id="3949588560">
+									<label for="ride-13">Mazgaon Monsoon Madness</label>
+								</div>
+								<div class="control fade-in-left delay-3200">
+									<input type="radio" name="rides" id="ride-14" onchange="updateMap(this)" data-city="BOM" data-ride-id="3880742223">
+									<label for="ride-14">Pali Hill "Summit"</label>
+								</div>
+								<div class="control fade-in-left delay-3300">
+									<input type="radio" name="rides" id="ride-15" onchange="updateMap(this)" data-city="BOM" data-ride-id="random">
+									<label for="ride-15">Random</label><span onclick="drawRandom(this)">&#x21bb;</span>
+								</div>
+							</div>
+							<!-- <p class="attribution fade-in-left delay-3000">Made with <a target="_blank" href="https://www.mapbox.com/about/maps/" rel="noreferrer">Mapbox</a> and <a target="_blank" href="http://www.openstreetmap.org/about/" rel="noreferrer">OpenStreetMap</a>.</p> --><br>
 						</div>
 					</div>
 				</div>

@@ -32,7 +32,8 @@
 					stroke-width: 3px;
 				}
 				.path-all {
-					stroke-opacity: .35;
+					stroke: $c-4;
+					stroke-opacity: .4;
 					stroke-width: 2px;
 					transition: stroke 1s ease-in-out;
 				}
@@ -67,20 +68,10 @@
 					opacity: 0;
 				}
 			}
-			&.dark {
-				.path-all {
-					stroke: $c-w;
-				}
-				.distance-container {
-					background-color: rgba(53, 54, 58, .9);
-					span {
-						color: $c-w;
-					}
-				}
-			}
-			&.light {
-				.path-all {
-					stroke: $c-4;
+			&.dark .distance-container {
+				background-color: rgba(53, 54, 58, .9);
+				span {
+					color: $c-w;
 				}
 			}
 		}
@@ -111,10 +102,29 @@
 				display: block
 			}
 		}
+		h2 {
+			span {
+				border-bottom: 3px solid var(--text-color);
+				cursor: pointer;
+				transition: all .3s ease-in-out;
+				opacity: .3;
+				&:hover {
+					opacity: .6;
+				}
+			}
+			&.active span, &.active span:hover {
+				opacity: 1;
+				border-color: $c-4;
+			}
+		}
 	}
 	.map-controls {
 		display: flex;
 		flex-wrap: wrap;
+		
+		&.active .control > label, &.active .control> label:hover {
+			opacity: 1;
+		}
 		& > div {
 			width: 50%;
 			@media screen and (max-width: 30em) {
@@ -124,6 +134,7 @@
 		* {
 			box-sizing: border-box;
 		}
+
 		.control {
 			position: relative;
 			& > input[type="radio"] {
@@ -134,11 +145,17 @@
 			& > label {
 				display: inline-block;
 				padding: .5em .5em .5em 2em;
+				transition: opacity .3s ease-in-out;
+				opacity: .3;
+				cursor: pointer;
+				&:hover {
+					opacity: .6;
+				}
 				&:before {
 					cursor: pointer;
 				}
 			}
-
+			// random refresh button
 			span {
 				cursor: none;
 				opacity: 0;
@@ -177,15 +194,6 @@
 					display: inline-block;
 				}
 			}
-		}
-	}
-	p.attribution {
-		display: none;
-		font-size: .8em;
-		text-align: center;
-		margin: 3em 0 1.5em;
-		a {
-			@include hyperlink($c-4);
 		}
 	}
 }

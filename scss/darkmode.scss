@@ -2,6 +2,8 @@ html.dark-mode{
 	--text-color: #fff;
 	--bg-color: #2d2d2d;
 	--is-dark: 0;
+	color: var(--text-color);
+	background-color: var(--bg-color);
 
 	a:hover {
 		color: $c-b;

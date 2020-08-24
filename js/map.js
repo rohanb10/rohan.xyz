@@ -1,11 +1,22 @@
 var map, currentMapLayer, currentMapLayerName, paths = [], dist = document.getElementById('distance');
+var active_city = 'SF';
+const CITIES = {
+	SF: {
+		allFocusPt: [37.791, -122.448],
+		rideCount: 552,
+		totalDistance: 4267
+	}, 
+	BOM: {
+		allFocusPt: [18.982, 72.833],
+		rideCount: 51,
+		totalDistance: 1004
+	}
+};
 function initializeMap() {
-	// return;
 	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
 	map = L.mapbox.map('map')
 		.setView([37.7906, -122.4482], 12)
 		.setMaxZoom(15).setMinZoom(10)
-		.setMaxBounds([[[37.196, -121.609],[38.225, -123.036]]]);
 	currentMapLayerName = 'light';
 	currentMapLayer = L.mapbox.styleLayer(mapLayers[currentMapLayerName]);
 	map.addLayer(currentMapLayer);
@@ -15,21 +26,23 @@ function initializeMap() {
 
 function updateMap(btn){
 	var rideID = btn.getAttribute('data-ride-id')
-	if (rideID === 'all') {
-		drawAll();
-		enableMapInteractions();
-		trackEvent('Map Changed', window.location.pathname, 'All');
-		return;
-	} else if (rideID === 'random') {
-		var p = getRandomPathID();
-		drawSnake(p);
-		trackEvent('Map Changed', window.location.pathname, 'Random', p);
-		return;
-	} else if (RIDES[rideID] === undefined) {
-		return;
-	}
-	drawSnake(rideID);
-	trackEvent('Map Changed', window.location.pathname, btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
+	changeCity(btn.getAttribute('data-city'), _ => {
+		if (rideID === 'all') {
+			drawAll();
+			enableMapInteractions();
+			trackEvent('Map Changed', window.location.pathname, 'All');
+			return;
+		} else if (rideID === 'random') {
+			var p = getRandomPathID();
+			drawSnake(p);
+			trackEvent('Map Changed', window.location.pathname, 'Random', p);
+			return;
+		} else if (RIDES[rideID] === undefined) {
+			return;
+		}
+		drawSnake(rideID);
+		trackEvent('Map Changed', window.location.pathname, btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
+	});
 }
 
 var mapLayers = {
@@ -110,18 +123,22 @@ function drawSnake(pathID) {
 
 function drawAll() {
 	clearPaths();
-	map.flyTo([37.7906, -122.4482], 12);
+	map.flyTo(CITIES[active_city].allFocusPt, 12);
+	// var drawInterval = CITIES[active_city].totalDistance / CITIES[active_city].rideCount * 12.5
 	map.once('moveend', _ => {
-		for (var rideID of Object.keys(RIDES)) {
+		Object.keys(RIDES).filter(r => isInActiveCity(r)).forEach((rideID, i) => {
 			var p = L.polyline(decodePath(RIDES[rideID]), {
 				className: 'path-all',
-				color: currentMapLayerName === 'dark' ? '#FFF' : '#000'
+				color: COLOUR_SCHEMES[currentScheme][3],
 			});
-			p.addTo(map);
-			paths.push(p);
-		}
+			p.on('click', _ => console.log(rideID))
+			setTimeout(_ => {
+				p.addTo(map);
+				paths.push(p);
+			}, 20 * i * (active_city === 'BOM' ? 2.5:1));
+		});
 		dist.parentElement.classList.remove('hidden');
-		updateDistance(0, 181.19, 4267);
+		updateDistance(0, CITIES[active_city].totalDistance / 51.97, CITIES[active_city].totalDistance);
 	});
 }
 
@@ -138,12 +155,35 @@ function getRandomPathID() {
 	var pathID, pathDistance = 0;
 	var minimumDistance = Math.random() < .75 ? 10000 : Math.random() < .67 ? 7500 : 5000;
 	var blockedKeys = Array.from(document.querySelectorAll('.control input[type="radio"]')).map(el => el.getAttribute('data-ride-id'))
-	var keys = shuffleArray(Object.keys(RIDES)).filter(k => !blockedKeys.includes(k))
+	var keys = shuffleArray(Object.keys(RIDES)).filter(k => isInActiveCity(k) && !blockedKeys.includes(k))
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
 		pathDistance = calcDistance(L.polyline(decodePath(RIDES[pathID])));
 	}
 	return pathID;
+}
+
+function isInActiveCity(key) {
+	if (active_city === 'SF') return key < 3500000000;
+	if (active_city === 'BOM') return key > 3500000000;
+	return false
+}
+
+function changeCity(name, callback) {
+	if (callback === undefined) {
+		callback = _ => {
+			document.querySelectorAll(`#id-maps input[type=radio]:checked`).forEach(r => r.checked = false);
+			clearPaths();
+		}
+	}
+	if (active_city === name) {callback();return}
+	active_city = name;
+	document.querySelectorAll(`#id-maps h2`).forEach(h => h.classList.toggle('active', h.getAttribute('data-city') === name))
+	document.querySelectorAll(`#id-maps .map-controls`).forEach(h => h.classList.toggle('active', h.getAttribute('data-city') === name))
+	if (!map) return;
+	resetDistanceContainer();
+	map.flyTo(CITIES[name].allFocusPt, 12)
+	map.once('moveend', callback);
 }
 
 function calcDistance(polyline) {

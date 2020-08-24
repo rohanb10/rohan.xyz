@@ -1,7 +1,7 @@
 // watch -f 'js/*.js' -r 'uglifyjs js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.min.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
-(function redirectToSection(query) {
+function redirectToSection(query) {
 	history.replaceState(null, null, '/');
 	if (query.length === 0) return;
 	// get section name from url query and return if doesnt exist
@@ -19,7 +19,7 @@ var navbar, navbarSections, names, mapContainer, active_section = null, active_w
 	document.body.classList.add('no-touching');
 	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}/${sub}`, window.location.pathname), 900);
 	setTimeout(_ => navControl(sectionName), 1000);
-})(window.location.search)
+}
 
 // back button fail safe
 window.addEventListener('popstate', _ => {
@@ -331,8 +331,8 @@ document.querySelectorAll('a').forEach(link => {
 
 document.addEventListener('DOMContentLoaded', _ => {
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
-	if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
-	
+	// if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
+	redirectToSection(window.location.search);
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');
 	names = document.querySelectorAll('#hero span span');

@@ -122,11 +122,9 @@ function showSection(sectionID) {
 			document.getElementById(active_work).classList.add('hidden');
 			active_work = '';
 			break;
-
 		case 'id-skills':
 			loadSkills();
 			break;
-
 		case 'id-photos':
 			if (active_photo !== -1) {
 				active_photo = -1;
@@ -134,22 +132,14 @@ function showSection(sectionID) {
 			}
 			genThumbnails();
 			break;
-
 		case 'id-maps':
-			mapContainer.classList.remove('fade-in');
-			mapFilesLoadedCount = 0;
-			loadFile('rides', 'js');
-			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js');
+			// document.querySelector('#id-maps .latest-container').classList.add('not-yet');
 			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css');
-			setTimeout(_ => {
-				var allFilesLoaded = setInterval(_ => {
-					if (mapFilesLoadedCount >= 3) {
-						if (map === undefined) initializeMap();
-						mapContainer.classList.add('fade-in');
-						clearTimeout(allFilesLoaded);
-					}
-				}, 250)
-			}, 1500);
+			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js', initializeMap);
+			loadFile('rides', 'js');
+			loadFile('firebase-app', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js', _ => {
+				loadFile('firebase-storage', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js', getLatestRideFromStrava);	
+			});
 			break;
 		case 'id-about':
 			document.getElementById('me-jpg').src = 'assets/me.jpg';
@@ -174,12 +164,9 @@ function toggleHero() {
 	hero.style.height = hero.style.height === `0px` ? `calc(var(--vh, 1vh) * 60)` : `0px`;
 }
 
-function loadFile(name, type, url) {
+function loadFile(name, type, url, callback = _ => {}) {
 	// Check that script hasnt been loaded already
-	if(document.querySelectorAll(`.${type}-${name}`).length > 0){
-		mapFilesLoadedCount ++;
-		return;
-	};
+	if(document.querySelectorAll(`.${type}-${name}`).length > 0) return;
 	var tag = Object.assign(document.createElement(type === 'js' ? 'script' : 'link'), {
 		... type === 'js' && url === undefined ? {src: `js/${name}.js`} : {},
 		... type === 'js' && url !== undefined ? {src: url} : {},
@@ -188,7 +175,7 @@ function loadFile(name, type, url) {
 		... type === 'css' && url !== undefined ? {href: url} : {},
 		className: `${type}-${name}`
 	});
-	tag.onload = _ => mapFilesLoadedCount ++
+	tag.onload = callback;
 	if (type === 'js') document.body.appendChild(tag);
 	if (type === 'css') document.head.appendChild(tag);
 }

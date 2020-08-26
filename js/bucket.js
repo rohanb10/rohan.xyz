@@ -83,6 +83,9 @@ function bucket(el) {
 	if (el.parentElement.classList.contains('changing')) return;
 
 	var nextScheme = nextColourSchemeID();
+	// force darkmode for certain colour schemes
+	if (nextScheme === 2) darkMode(true);
+	if (nextScheme === 4) darkMode(false);
 
 	el.parentElement.classList.add('changing');
 	var resetBucket = (_ => {

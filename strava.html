@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height">
+	<title></title>
+</head>
+<body>
+	<p>Hello, bird.</p>
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js"></script>
+
+<script type="text/javascript">
+	async function fetchAccessToken(paramJSON) {
+		if (!paramJSON || !paramJSON.refresh_token) throw ('No refresh token found in refresh.json file')
+		var url = `https://www.strava.com/oauth/token?${(new URLSearchParams(paramJSON)).toString()}`;
+		return await fetch(url, {method: 'POST'}).then(response => response.text().then(text => {
+			var tokenObject = JSON.parse(text);
+			console.log(tokenObject.refresh_token !== paramJSON.refresh_token);
+				paramJSON.refresh_token = tokenObject.refresh_token;
+				var refresh = new File([JSON.stringify(paramJSON)], 'refresh2.json', {type: 'application/json'});
+				firebase.storage().ref().child('refresh2.json').put(refresh).then(s=>console.log(s, 'upload success'));
+			// }
+			return tokenObject;
+		}));
+	}
+	async function fetchLastRideID(tokenJSON) {
+		var options = {headers: {'Authorization': `${tokenJSON.token_type} ${tokenJSON.access_token}`}}
+		var params = {per_page: 1}
+		var url = `https://www.strava.com/api/v3/athlete/activities?${(new URLSearchParams(params)).toString()}`;
+		return await fetch(url, options).then(r => r.text().then(t => {
+			var rides = JSON.parse(t);
+			if (rides.length !== 1) return null;
+			return {rideId: rides[0].id, options: options}
+		}));
+	}
+	async function fetchLastRideDetails(paramJSON) {
+		if (!paramJSON) throw 'broke';
+		var params = {include_all_efforts: false}
+		var url = `https://www.strava.com/api/v3/activities/${paramJSON.rideId}`;
+		return await fetch(url, paramJSON.options).then(r => r.text().then(t => JSON.parse(t)))
+	}
+	async function fetchRefreshToken(){
+		firebase.initializeApp({
+			apiKey: "AIzaSyCCUMGIJk8LwLC5_FMY0B2o8Sh0aegCsds",
+			authDomain: "strava-xyz.firebaseapp.com",
+			databaseURL: "https://strava-xyz.firebaseio.com",
+			projectId: "strava-xyz",
+			storageBucket: "strava-xyz.appspot.com",
+			messagingSenderId: "974189997715",
+			appId: "1:974189997715:web:44d445b481d57fc310a766"
+		});
+		return await firebase.storage().ref().child('refresh.json').getDownloadURL().then(url => {
+			return fetch(url).then(r => r.text().then(t => JSON.parse(t)))
+		})
+	}
+	function failure(err) {
+		console.log('uh oh something went wrong');
+	}
+	fetchRefreshToken().then(fetchAccessToken).then(fetchLastRideID).then(fetchLastRideDetails).then(s=>console.log(s)).catch(failure)
+	// fetchRefreshToken().then(rt => {
+	// 	console.log('refresh fetch');
+	// 	console.log(rt);
+	// 	return fetchAccessToken(rt)
+	// }).then(at => {
+	// 	console.log('access fetch');
+	// 	console.log(at);
+	// 	return fetchLastRideID(at)
+	// }).then(a => {
+	// 	console.log('ride id');
+	// 	console.log(a);
+	// 	return fetchLastRideDetails(a)
+	// }).then(showLatestContainer).catch(err => {
+	// 	console.log(err)
+	// });
+</script>
+</body>
+</html>

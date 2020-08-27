@@ -1,6 +1,4 @@
 // scss --watch scss/main.scss:css/style.min.css --style compressed
-@import url(https://fonts.googleapis.com/css?family=Muli:400,700,900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%21%22%25%26%27%28%29%2B%2C-.%2F%3A%3B%3C%3D%3E%3F%40%5B%5D_%7B%7D%E2%86%BB%E2%9E%94);
-
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	html:after {
 		content: 'Use a better browser to see this website. NASA uses Google Ultron. And yet here you are on IE';
@@ -31,7 +29,7 @@ html {
 	background-color: var(--bg-color);
 	width: 100%;
 	min-height: 100vh;
-	font-family: 'Muli', sans-serif;
+	font-family: 'Mulish', 'Verdana', sans-serif;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	transition: all .5s ease-in-out;
 }
@@ -197,6 +195,7 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: 'Mulish', 'Futura', 'Arial Black', sans-serif;
 	h1 {
 		font-size: 4em;
 		font-weight: 900;

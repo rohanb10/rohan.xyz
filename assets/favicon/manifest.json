@@ -1,14 +1,19 @@
 {
- "name": "App",
+ "name": "rohan.xyz",
+ "short_name": "rohan xyz",
  "icons": [
   {
    "src": "\/assets\/favicon\/android-chrome-192x192.png",
    "sizes": "192x192",
    "type": "image\/png",
-   "density": "4.0"
+  },
+  {
+   "src": "\/assets\/cap.png",
+   "sizes": "512x512",
+   "type": "image\/png",
   }
  ],
+ "start_url": "/",
  "theme_color": "#ffffff",
  "background_color": "#ffffff",
- "display": "standalone"
 }

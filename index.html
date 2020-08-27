@@ -4,12 +4,13 @@
 <head>
 	<title>rohan bhansali</title>
 	<meta charset="utf-8"/>
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height">
+	<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="keywords" content="rohan, bhansali, rohanb10, rohanb10@gmail.com, rohan.xyz, portfolio, personal, website, designer, developer, engineer, software, javascript, html, css, js, scss, ux, ui, front end, frontend, front-end, github, photos, photography, cycling, biking, maps, mumbai, bombay, ">
 
 	<meta name="title" content="rohan bhansali">
 	<meta name="description" content="Developer of a blockchain based AI using billions of unique datapoints to create the perfect description for a meta tag. And I make websites too.">
+	<meta name="theme-color" content="#42C799">	
 
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://rohan.xyz/">
@@ -32,7 +33,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/assets/favicon/manifest.json">
-	<link rel="stylesheet" type="text/css" href="./css/style.min.css?v2">
+	<link rel="preload" type="text/css" href="/css/style.min.css" onload="this.rel=stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="preload" as="style">
 </head>
 <body>
 	<div id="hero" class="container-width">
@@ -49,24 +52,24 @@
 		<div class="section-nav container-width">
 			<span class="section-title" data-bg-color="1" onclick="navControl('work')">
 				<span data-section-name="work"></span>
-			</span>
-			<span class="section-title" data-bg-color="2" onclick="navControl('skills')">
+			</span
+			><span class="section-title" data-bg-color="2" onclick="navControl('skills')">
 				<span data-section-name="skills"></span>
-			</span>
-			<span class="section-title" data-bg-color="3" onclick="navControl('photos')">
+			</span
+			><span class="section-title" data-bg-color="3" onclick="navControl('photos')">
 				<span data-section-name="photos"></span>
-			</span>
-			<span class="section-title" data-bg-color="4" onclick="navControl('maps')">
+			</span
+			><span class="section-title" data-bg-color="4" onclick="navControl('maps')">
 				<span data-section-name="maps"></span>
-			</span>
-			<span class="section-title" data-bg-color="5" onclick="navControl('about')">
+			</span
+			><span class="section-title" data-bg-color="5" onclick="navControl('about')">
 				<span data-section-name="about"></span>
 			</span>
 		</div>
 	</div>
 	<div id="section-container">
 		<div class="bucket">
-			<img onclick="bucket(this)" src="./assets/bucket.png">
+			<img onclick="bucket(this)" src="./assets/bucket.png" alt="Change colours">
 			<div class="bucket-bg"></div>
 			<div class="tooltip" data-hover="Spill bucket" data-click="I can't believe you've done this" data-tap="Changing colours"></div>
 		</div>
@@ -252,7 +255,7 @@
 						<div class="blurb">
 							<p class="fade-in-left delay-1500">I was frustrated with the inability to edit rides on Strava and I couldn't find a free tool on the internet to help me out. So naturally, I made one myself.</p>
 
-							<p class="fade-in-left delay-1600">You can see it in action<a target="_blank" data-name="Path Editor (app)" href="https://rohanb10.github.io/path-editor/" rel="noreferrer">here</a>. The webapp is open sourced and you can view all the code and sample files in this <a target="_blank" data-name="Path Editor (repo)" href="https://github.com/rohanb10/path-editor/" rel="noreferrer">github repo</a>.</p>
+							<p class="fade-in-left delay-1600">It's live and free to use on this <a target="_blank" data-name="Path Editor (app)" href="https://rohanb10.github.io/path-editor/" rel="noreferrer">github page</a>. The webapp is open sourced and you can view all the code and sample files in this <a target="_blank" data-name="Path Editor (repo)" href="https://github.com/rohanb10/path-editor/" rel="noreferrer">github repo</a>.</p>
 							<ul>
 								<li class="fade-in-left delay-1700">Import rides and display them as overlays over Google Maps as a base layer.</li>
 								<li class="fade-in-left delay-1800">Draw and drag new vertices to points that were not recorded.</li>
@@ -613,7 +616,7 @@
 					<div class="about-blurb info-container info">
 						<p class="fade-in-right delay-1500">I am a front-end developer who spends most of my free time offline.</p>
 						<p class="fade-in-right delay-1600">You can catch me zooming around the streets of Bombay on a fluorescent green cycle (and matching helmet). I think it's way too bright and I'm doing my very best to coat the frame with dirt and grime.</p>
-						<p class="fade-in-right delay-1700">I consider myself an expert at never being <a target="_blank" data-name="Late People" href="https://www.youtube.com/watch?v=KU7CeUliamg">late</a>, packing things in bags efficiently, and overestimating my excellent spice tolerance.</p>
+						<p class="fade-in-right delay-1700">I consider myself an expert at never being <a target="_blank" rel="noreferrer" data-name="Late People" href="https://www.youtube.com/watch?v=KU7CeUliamg">late</a>, packing things in bags efficiently, and overestimating my excellent spice tolerance.</p>
 						<p class="fade-in-right delay-1800">I have a BSc in Computer Science from Washington University in St. Louis. I have worked across various engineering roles at eCommerce and SaaS platforms, but my main interests have always been in design, interactions and user experiences.</p>
 						<!-- <p class="fade-in-right delay-1700">I used to live and work in California, but have now moved back home to Bombay</p> -->
 						<!-- <p class="fade-in-right delay-1800">My favourite day of the week is Thursday. It's basically Friday, but without all the pressure.</p> -->
@@ -689,18 +692,18 @@
 	</div>
 	<script src="/js/script.terser.js"></script>
 	<script>
-	(function(r,o,h,a,n) {
-		r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};
-		a=document.createElement('script');a.async=true;a.src=h;
-		n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(a,n)
-	})(window,"galite","/js/ga-lite.min.js");
+		(function(r,o,h,a,n) {
+			r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};
+			a=document.createElement('script');a.async=true;a.src=h;
+			n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(a,n)
+		})(window,"galite","/js/ga-lite.min.js");
 
-	galite('create', 'UA-78711252-1', 'auto');
-	galite('send', 'pageview');
-	// track time when user leaves page
-	window.addEventListener('unload', function() {
-		galite('send', 'timing', 'Bye Bye', 'unload')
-	})
+		galite('create', 'UA-78711252-1', 'auto');
+		galite('send', 'pageview');
+		// track time when user leaves page
+		window.addEventListener('unload', function() {
+			galite('send', 'timing', 'Bye Bye', 'unload')
+		});
 	</script>
 </body>
 </html>

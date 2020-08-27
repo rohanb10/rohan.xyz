@@ -35,7 +35,7 @@
 	}
 
 	.section-nav {
-		padding: .5em 1em;
+		// padding: 0 1em;
 		transition: all .1s linear;
 		.section-title {
 			cursor: pointer;
@@ -82,7 +82,7 @@
 				top: 0;
 				left: 0;
 				right: 0;
-				bottom: -2px;
+				bottom: -.2em;
 				transform: scaleY(0);
 				transform-origin: 50% 100%;
 				transition: transform .4s cubic-bezier(.77, 0, .175, 1);
@@ -111,15 +111,15 @@
 	@media screen and (max-width: 30em) {
 		font-size: 1.1em;
 		.section-nav {
-			padding: .5em 0;
+			padding: 0;
 		}
 	}
-	@media screen and (max-width: 21em) {
+	@media screen and (max-width: 22em) {
 		.section-nav .section-title span{
 			width: 3.5em;
 		}
 	}
 	@media screen and (max-width: 19em) {
-		font-size: .8em;
+		font-size: 1em;
 	}
 }

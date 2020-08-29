@@ -20,8 +20,6 @@ const MAP_LAYERS = {
 	// dark: 'mapbox://styles/rohanb10/ckajpbf1v1cys1imwamc8isy6/draft'
 }
 
-const MONTHS = ['Jan', 'Feb', 'March', 'April', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
 function initializeMap() {
 	document.querySelector('#id-maps .control.last-animation').addEventListener('animationend', _ => {
 		document.querySelector('#id-maps .latest-container').classList.remove('not-yet')

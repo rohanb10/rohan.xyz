@@ -131,11 +131,30 @@
 			padding-left: 2rem;
 			margin-top: 1em;
 			color: #AAA;
-			transition: color .5s ease-in-out
+			transition: color .5s ease-in-out;
+			a {
+				opacity: 0;
+				border-bottom: none;
+				touch-action: none;
+				pointer-events: none;
+				transition: opacity .2s ease-in-out;
+				img {
+					max-height: .9em;
+					padding-left: .5em;
+				}
+			}
 		}
 		&.active {
 			.latest-title {
 				color: $c-4;
+				a {
+					opacity: .5;
+					touch-action: auto;
+					pointer-events: auto;
+					&:hover {
+						opacity: 1;
+					}
+				}
 			}
 		}
 		&.not-yet.success, &.not-yet {

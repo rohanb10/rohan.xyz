@@ -25,7 +25,7 @@ html.dark-mode{
 		}
 	}
 
-	.bucket img {
+	.bucket img, #id-maps .latest-container img {
 		filter: invert(1);
 	}
 	#id-work .card .badges img {

@@ -21,9 +21,7 @@ const MAP_LAYERS = {
 }
 
 function initializeMap() {
-	document.querySelector('#id-maps .control.last-animation').addEventListener('animationend', _ => {
-		document.querySelector('#id-maps .latest-container').classList.remove('not-yet')
-	}, {once: true});
+	setTimeout(_ => document.querySelector('#id-maps .latest-container').classList.remove('not-yet'), 4500);
 	// return
 	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
 	map = L.mapbox.map('map')
@@ -38,7 +36,7 @@ function initializeMap() {
 
 function updateMap(btn){
 	document.querySelector('#id-maps .latest-container').classList.remove('active');
-	map.invalidateSize();
+	if (map) map.invalidateSize();
 	var rideID = btn.getAttribute('data-ride-id')
 	changeCity(btn.getAttribute('data-city'), _ => {
 		if (rideID === 'all') {
@@ -248,6 +246,7 @@ function checkMapLayerColor() {
 	mapContainer.classList.add(nextMapLayerName);
 	currentMapLayer = nextMapLayer;
 	currentMapLayerName = nextMapLayerName;
+	map.invalidateSize();
 }
 
 // Strava functions
@@ -312,6 +311,7 @@ function showLatestContainer(activity) {
 	var container = document.querySelector('#id-maps .latest-container');
 	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date_local));
 	container.querySelector('.latest-title span').innerText = `- ${rideDate}`;
+	container.querySelector('.latest-title a').href= `https://www.strava.com/activities/${activity.id}`;
 
 	var control = Object.assign(document.createElement('div'), {
 		className: 'control'

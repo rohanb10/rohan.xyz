@@ -1,6 +1,14 @@
 // watch -f 'js/*.js' -r 'uglifyjs js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.min.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
+// toggle dark mode
+function darkMode(force) {
+	document.documentElement.classList.toggle('dark-mode', force);
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
+if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
+
+// load section from url parameter
 function redirectToSection(query) {
 	history.replaceState(null, null, '/');
 	if (query.length === 0) return;
@@ -261,11 +269,6 @@ function startSkillCycle(intialDelay = 0) {
 	}, intialDelay);
 }
 
-// toggle dark mode
-function darkMode(force) {
-	document.documentElement.classList.toggle('dark-mode', force);
-}
-
 // analytics
 function trackEvent(action = 'click', category = 'Not Specified', label, value) {
 	// console.log('TRACK:','send', '|', 'event', '|', category, '|', action, '|', label, '|', value)
@@ -317,8 +320,6 @@ document.querySelectorAll('a').forEach(link => {
 })
 
 document.addEventListener('DOMContentLoaded', _ => {
-	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
-	// if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
 	redirectToSection(window.location.search);
 	navbar = document.getElementById('navigation');
 	navbarSections = navbar.querySelectorAll('.section-title');

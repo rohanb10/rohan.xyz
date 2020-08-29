@@ -312,8 +312,8 @@ function showLatestContainer(activity) {
 
 	RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
-	var rideDate = new Date(activity.start_date_local);
-	container.querySelector('.latest-title span').innerText = `- ${rideDate.getDate()} ${MONTHS[rideDate.getMonth()-1]} ${rideDate.getYear()}`
+	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date_local));
+	container.querySelector('.latest-title span').innerText = `- ${rideDate}`;
 
 	var control = Object.assign(document.createElement('div'), {
 		className: 'control'

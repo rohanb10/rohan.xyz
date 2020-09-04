@@ -256,7 +256,7 @@ function getLatestRideFromStrava() {
 }
 
 async function fetchRefreshToken(){
-	if (!firebase) throw ('Unable to load Firebase');
+	if (!firebase) throw ('Unable to connect to Firebase');
 	firebase.initializeApp({
 		apiKey: "AIzaSyCCUMGIJk8LwLC5_FMY0B2o8Sh0aegCsds",
 		authDomain: "strava-xyz.firebaseapp.com",
@@ -272,21 +272,22 @@ async function fetchRefreshToken(){
 }
 
 async function fetchAccessToken(paramJSON) {
-	if (!paramJSON || !paramJSON.refresh_token) throw ('No refresh token found in refresh.json file')
+	if (!paramJSON || !paramJSON.refresh_token) throw ('No refresh_token found in refresh.json')
 	var url = `https://www.strava.com/oauth/token?${(new URLSearchParams(paramJSON)).toString()}`;
 	return await fetch(url, {method: 'POST'}).then(response => response.text().then(text => {
 		var tokenObject = JSON.parse(text);
-		// if refresh tokens are different, write the newerone back to firebase
+		// if refresh tokens are different, write the newer one back to firebase
 		if (tokenObject.refresh_token !== paramJSON.refresh_token) {
 			paramJSON.refresh_token = tokenObject.refresh_token;
 			firebase.storage().ref().child('refresh.json').put(new File([JSON.stringify(paramJSON)], 'refresh.json', {type: 'application/json'}))
+			.then(p => console.log('refresh_token updated and saved to Firebase.'))
 		}
 		return tokenObject;
 	}))
 }
 
 async function fetchLastRideID(tokenJSON) {
-	if (!tokenJSON || !tokenJSON.access_token) throw ('Unable to get valid Strava access token')
+	if (!tokenJSON || !tokenJSON.access_token) throw ('Unable to get valid access_token')
 	var options = {headers: {'Authorization': `${tokenJSON.token_type} ${tokenJSON.access_token}`}}
 	var params = {per_page: 1}
 	var url = `https://www.strava.com/api/v3/athlete/activities?${(new URLSearchParams(params)).toString()}`;
@@ -305,7 +306,7 @@ async function fetchLastRideDetails(paramJSON) {
 }
 
 function showLatestContainer(activity) {
-	if (!activity || !activity.id || !activity.map.polyline) throw 'Inavlid Ride object';
+	if (!activity || !activity.id || !activity.map.polyline) throw 'Inavlid ride object';
 
 	RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
@@ -342,13 +343,11 @@ function showLatestContainer(activity) {
 	
 	RIDES[activity.id] = activity.map.polyline;
 	console.log('ride ' + activity.id + ' succesfully fetched from strava');
-	console.log('https://www.strava.com/activities/' + activity.id);
 }
 
 function failure(err) {
 	console.log('Error pulling from Strava - ', err);
 }
-
 
 // decode polylines
 function decodePath(str) {

@@ -141,7 +141,7 @@ function showSection(sectionID) {
 			genThumbnails();
 			break;
 		case 'id-maps':
-			// document.querySelector('#id-maps .latest-container').classList.add('not-yet');
+			var ext = document.querySelector('#id-maps .latest-container img'); ext.src = ext.getAttribute('data-src');
 			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css');
 			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js', initializeMap);
 			loadFile('rides', 'js');

@@ -12,7 +12,7 @@
 		padding: .25em .5em;
 		margin: .75em 0;
 		border-left: 4px solid transparent;
-		transition: all .5s ease-in-out;
+		transition: border-color .5s ease-in-out;
 
 		.work-name {
 			font-size: 1.1em;
@@ -27,9 +27,6 @@
 		&:active, &.active {
 			border-color: $c-1;
 		}
-	}
-	.divider {
-		position: relative;
 	}
 	.arrow {
 		display: block;
@@ -132,13 +129,13 @@
 				width: 100%;
 				height: 100%;
 				box-sizing: border-box;
-				border: 2px solid #ddd;
-				transition: all .3s ease-in-out;
+				border: 2px solid #eee;
+				transition: opacity .5s linear;
 				opacity: calc(1 - var(--is-dark, 0));
 				&.dark {
 					touch-action: none;
 					pointer-events: none;
-					border-color: #454545;
+					border-color: #3f3f3f;
 					opacity: var(--is-dark, 0);
 				}
 				&:hover, &.dark:hover {

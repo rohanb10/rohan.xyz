@@ -96,6 +96,7 @@ body.no-touching {
 	margin: 0 auto;
 	overflow-x: hidden;
 	color: var(--text-color);
+	transition: color .5s ease-in-out;
 }
 .info {
 	margin: 0 auto 3em;
@@ -109,7 +110,9 @@ body.no-touching {
 }
 
 .divider {
+	position: relative;
 	border-right: 1px solid #eee;
+	transition: border-color .5s ease-in-out;
 	@media screen and (max-width: 40em) {
 		border: none;
 	}

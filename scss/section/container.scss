@@ -4,6 +4,7 @@
 		margin:1em auto 2em;
 		text-align: center;
 		color: var(--text-color);
+		transition: color .5s ease-in-out;
 		.text-container {
 			font-size: 2em;
 			font-weight: 900;

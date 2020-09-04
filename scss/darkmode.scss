@@ -1,7 +1,7 @@
 html.dark-mode{
 	--text-color: #fff;
 	--bg-color: #2d2d2d;
-	--is-dark: 0;
+	--is-dark: 1;
 	color: var(--text-color);
 	background-color: var(--bg-color);
 
@@ -23,6 +23,9 @@ html.dark-mode{
 		.tooltip:before {
 			content: attr(data-hover-light);
 		}
+	}
+	.divider {
+		border-color: #3f3f3f;
 	}
 
 	.bucket img, #id-maps .latest-container img {

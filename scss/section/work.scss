@@ -130,7 +130,7 @@
 				height: 100%;
 				box-sizing: border-box;
 				border: 2px solid #eee;
-				transition: opacity .5s linear;
+				transition: opacity .5s linear, border-color .3s ease-in-out;
 				opacity: calc(1 - var(--is-dark, 0));
 				&.dark {
 					touch-action: none;

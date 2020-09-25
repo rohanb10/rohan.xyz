@@ -310,8 +310,9 @@ function showLatestContainer(activity) {
 
 	RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
-	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date_local));
-	container.querySelector('.latest-title span').innerText = `- ${rideDate}`;
+	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date));
+	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric',minute:'numeric'}).format(new Date(activity.start_date));
+	container.querySelector('.latest-title span').innerText = `- ${rideTime} on ${rideDate}`;
 	container.querySelector('.latest-title a').href= `https://www.strava.com/activities/${activity.id}`;
 
 	var control = Object.assign(document.createElement('div'), {

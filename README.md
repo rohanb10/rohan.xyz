@@ -14,11 +14,15 @@ Using [Mapbox](https://www.mapbox.com/) JS built on top of [Leaflet](https://lea
 Using a smaller 3rd party package called [ga-lite](https://github.com/jehna/ga-lite), a subset of Google Analytics without any of the bloat I dont use or need.
 
 ---
+**Color List**
+<div align="center">
+	<img src="https://raw.githubusercontent.com/rohanb10/rohan.xyz/gh-pages/assets/color-list.png" alt="color list">
+</div>
 
 
 **Resources**
 Things I used during the development process.
- - [svgo-cli](https://github.com/svg/svgo)
+ - [svgo-cli](https://github.com/svg/svgo) - svg optimisation
  - [sqip](https://github.com/axe312ger/sqip#CLI) - svg based polygonal placeholders for photos
  - [Clippy](https://bennettfeely.com/clippy/) - CSS `clip-path` playground
  - Rides scraped from the [Strava API](https://developers.strava.com) using Python.

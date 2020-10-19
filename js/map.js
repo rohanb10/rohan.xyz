@@ -341,6 +341,7 @@ function showLatestContainer(activity) {
 	container.appendChild(control);
 
 	container.classList.add('success');
+	container.style.height = container.scrollHeight + 'px';
 	
 	RIDES[activity.id] = activity.map.polyline;
 	console.log('ride ' + activity.id + ' succesfully fetched from strava');

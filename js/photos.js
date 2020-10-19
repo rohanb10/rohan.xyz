@@ -31,6 +31,7 @@ var PHOTOS = [
 	{index: 29, bg: "#E9906E", caption: "Shilshole Bay, Ballard, Seattle, Washington"}
 ];
 
+const photosSection = document.getElementById('id-photos');
 const thumbs = document.querySelector('.thumbnails');
 const modal = document.querySelector('.photo-modal');
 function genThumbnails() {
@@ -101,26 +102,34 @@ function genThumbnails() {
 		});
 	}, delay + 1000);
 }
+function modalKeyboardShortcuts(e) {
+	if (active_photo === -1) return;
+	if (e.keyCode === 39) nextPhoto();
+	if (e.keyCode === 37) prevPhoto();
+	if (e.keyCode === 27) closePhotoModal();
+}
 
 function openPhotoModal(i, shouldTrack = true) {
 	loadPhoto(i);
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
+	document.addEventListener('keydown', modalKeyboardShortcuts)
 
-	// keyboard controls for modal
-	document.addEventListener('keydown', function _close(e) {
-		if (active_photo === -1) return;
-		if (e.keyCode === 39) nextPhoto();
-		if (e.keyCode === 37) prevPhoto();
-		if (e.keyCode === 27) {
-			closePhotoModal();
-			document.removeEventListener('keydown', _close);
-		}
-	});
+	// prevent scroll in thumbnail view
+	photosSection.style.top = `-${window.scrollY - 40}px`;
+	photosSection.style.position = 'fixed';
+	
 	if (shouldTrack) trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
 }
 
-function closePhotoModal() {
+function closePhotoModal(swipeDistance = 0) {
 	modal.classList.remove('loaded');
+	document.removeEventListener('keydown', modalKeyboardShortcuts);
+
+	// allow scroll in thumbnail view
+	var thumbnailsYPos = photosSection.style.top;
+	photosSection.style.position = '';
+	window.scrollTo(0, (parseInt(thumbnailsYPos || 0) - 40 + swipeDistance) * -1);
+
 	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';
@@ -130,7 +139,6 @@ function closePhotoModal() {
 	trackEvent('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
-
  
 function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
@@ -169,7 +177,6 @@ function loadPhoto(i, delay = 0) {
 	modal.querySelector('.modal-prev-btn').classList.toggle('disabled', active_photo <= 0);
 }
 
-
 // Animate the loading bars out and then fadeout the overlay
 function endLoadingAnimation() {
 	var bars = modal.querySelectorAll('.bars div');
@@ -205,3 +212,24 @@ function formatCaptions(c) {
 function identifyPhoto(p) {
 	return `${p.index}.jpg - ${p.caption.substr(0, p.caption.lastIndexOf(',', p.caption.lastIndexOf(',') - 1))}`;
 }
+
+// swipe controls
+var xDown, yDown
+(function() {
+	var startSwipe = e => {
+		xDown = e.touches[0].clientX;
+		yDown = e.touches[0].clientY;
+	}
+	var moveSwipe = e => {
+		if (!xDown || !yDown) return;
+		var xDiff = xDown - e.touches[0].clientX;
+		var yDiff = yDown - e.touches[0].clientY;
+		if (Math.abs(yDiff) + Math.abs(xDiff) < 150) return;
+		if (Math.abs(yDiff) > Math.abs(xDiff) && yDiff < 0) closePhotoModal(yDiff);
+		if (Math.abs(xDiff) > Math.abs(yDiff)) xDiff < 0 ? prevPhoto() : nextPhoto();
+		xDown = null;
+		yDown = null;
+	}
+	modal.addEventListener('touchstart', startSwipe)
+	modal.addEventListener('touchmove', moveSwipe)
+})();

@@ -9,7 +9,7 @@ if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addList
 
 // load section from url parameter
 function redirectToSection(query) {
-	history.replaceState(null, null, '/');
+	history.pushState(null, null, '/');
 	if (query.length === 0) return;
 	// get section name from url query and return if doesnt exist
 	var sectionName = query.match(/\?[a-z]+/)[0].substring(1);
@@ -113,7 +113,7 @@ function navControl(sectionName) {
 		navButton.classList.add('active');
 		document.getElementById('section-container').classList.add('active');
 		document.title = `${sectionName} | rohan bhansali`;
-		history.replaceState(null, null, `/${sectionName}`);
+		history.pushState(null, null, `/${sectionName}`);
 		trackEvent('Section Changed', 'navbar', sectionName);
 	}
 }
@@ -197,7 +197,7 @@ function hideAllSections() {
 	startWave(1500);
 
 	document.title = `rohan bhansali`;
-	history.replaceState(null, null, '/');
+	history.pushState(null, null, '/');
 
 	animateOut('#' + active_section, 'fade-out-bottom');
 	active_section = null;
@@ -229,7 +229,7 @@ function workPicker(workName) {
 	})
 
 	document.title = `${element.querySelector('.work-name').innerText.toLowerCase()} | work | rohan bhansali`;
-	history.replaceState('', '', `/work/${workName}`);
+	history.pushState('', '', `/work/${workName}`);
 	trackEvent('Work Clicked', window.location.pathname, workName)
 }
 

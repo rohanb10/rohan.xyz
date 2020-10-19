@@ -1,11 +1,10 @@
-// watch -f 'js/*.js' -r 'uglifyjs js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.min.js'
+// watch -f 'js/*.js' -r 'terser js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.terser.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
 // toggle dark mode
 function darkMode(force) {
 	document.documentElement.classList.toggle('dark-mode', force);
 }
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) darkMode();
 if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addListener(e => darkMode(e.matches))
 
 // load section from url parameter
@@ -296,16 +295,17 @@ function animateIn(elementName, animationName, callback, animationDuration = 500
 
 // Better array shuffling
 function shuffleArray(array) {
-	return array.map(a => [Math.random(),a]).sort((a,b) => a[0]-b[0]).map((a) => a[1])
+	return array.map(a => [Math.random(),a]).sort((a,b) => a[0]-b[0]).map(a => a[1])
 }
 
-var debounced;
 function mobileViewportHack() {
 	document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
-var window_height = window.innerHeight
-window.addEventListener('resize', e => {
+
+var debounced, window_height = window.innerHeight
+window.addEventListener('resize', _ => {
 	if (window.innerHeight === window_height) return;
+	window_height = window.innerHeight;
 	clearTimeout(debounced);
 	debounced = setTimeout(mobileViewportHack, 100);
 });

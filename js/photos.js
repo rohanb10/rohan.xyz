@@ -68,8 +68,16 @@ function genThumbnails() {
 
 		var img = Object.assign(document.createElement('img'), {
 			className: 'thumb',
-			src: `/assets/photos/thumb/${t.index}.jpg`,
-		});/*
+			src: `/assets/photos/thumb/${t.index}.jpg`
+		});
+
+		var removePlaceholder = _ => {
+			setTimeout(_ => {placeholder.style.opacity = '0'; img.style.filter = 'blur(0)'}, 1000);
+			setTimeout(_ => placeholder.style.display = 'none', 1500)
+		}
+		if (img.complete) removePlaceholder();
+		img.onload = removePlaceholder;
+		/*
 		thumbContainer.onmouseover = (e) => {
 			img.style.transformOrigin = `${e.offsetX}px ${e.offsetY}px`;
 			setTimeout(()=> {img.style.transform = 'scale(1.1)'}, 100);
@@ -84,23 +92,6 @@ function genThumbnails() {
 
 		thumbs.appendChild(thumbContainer);
 	});
-
-	// remove placeholders
-	setTimeout(_ => {
-		thumbs.querySelectorAll('.thumb-container').forEach(tc => {
-			var p = tc.querySelector('.placeholder');
-			var img = tc.querySelector('.thumb');
-			var removeP = (_ => {
-				setTimeout(_ => {p.style.opacity = 0;img.style.filter = 'blur(0px)'}, 1000);
-				setTimeout(_ => p.style.display = 'none', 1500);
-			});
-			if (img.complete) {
-				removeP();
-			} else {
-				img.onload = _ => removeP;
-			}
-		});
-	}, delay + 1000);
 }
 function modalKeyboardShortcuts(e) {
 	if (active_photo === -1) return;
@@ -114,28 +105,19 @@ function openPhotoModal(i, shouldTrack = true) {
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
 	document.addEventListener('keydown', modalKeyboardShortcuts)
 
-	// prevent scroll in thumbnail view
-	photosSection.style.top = `-${window.scrollY - 40}px`;
-	photosSection.style.position = 'fixed';
-	
 	if (shouldTrack) trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
 }
 
 function closePhotoModal(swipeDistance = 0) {
 	modal.classList.remove('loaded');
-	document.removeEventListener('keydown', modalKeyboardShortcuts);
-
-	// allow scroll in thumbnail view
-	var thumbnailsYPos = photosSection.style.top;
-	photosSection.style.position = '';
-	window.scrollTo(0, (parseInt(thumbnailsYPos || 0) - 40 + swipeDistance) * -1);
-
 	animateOut('.photo-modal', 'slide-out-bottom', _ => {
 		modal.querySelector('.photo-container').style.backgroundImage = '';
 		modal.querySelector('.caption').innerHTML = '';
 		startLoadingAnimation();
 	});
-	history.replaceState('', '', `${window.location.origin}/photos`);
+	document.removeEventListener('keydown', modalKeyboardShortcuts);
+
+	history.pushState('', '', `${window.location.origin}/photos`);
 	trackEvent('Photo modal closed', window.location.pathname);
 	active_photo = -1;
 }
@@ -169,7 +151,7 @@ function loadPhoto(i, delay = 0) {
 	});
 	var p = PHOTOS.find(p => p.index === i);
 	document.title = `${p.caption.substr(0, p.caption.lastIndexOf(',', p.caption.lastIndexOf(',') - 1)).toLowerCase()} | photos | rohan bhansali`
-	history.replaceState('', '', `/photos/${i}`);
+	history.pushState('', '', `/photos/${i}`);
 	modal.querySelector('.caption').innerHTML = formatCaptions(p.caption);
 	active_photo = PHOTOS.findIndex(el => el.index === i);
 

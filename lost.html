@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height">
+	<title>lost souls forever</title>
+
+	<meta name="theme-color" content="#42C799">	
+
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon/favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+	<style type="text/css">
+		body {
+			margin: 0;
+			height: 100vh;
+			background: linear-gradient(160deg, rgba(128, 187, 227, 0.9) 0%, rgba(128, 187, 227, 0.5) 100%);
+			user-select: none;
+			-webkit-user-select: none;
+		}
+		.wavebox, .textbox, .floatbox, .cloudbox {position: fixed; width: 100vw}
+		body, svg, .float {width: 100%}
+		.wavebox {bottom:0; z-index: 1}
+		.wavebox:last-of-type{z-index: 3}
+		svg {overflow:visible}
+		.wave {animation: wave 16s linear infinite; fill: #115a96}
+		#ocean .wave:nth-of-type(even), #sea .wave:nth-of-type(odd) {animation-direction: reverse}
+		@keyframes wave {to {transform: translateX(-100%)}}
+		.textbox {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 2;
+			font-family: 'Arial', sans-serif;
+		}
+		#fof {font-family: 'Arial Black', sans-serif;font-size: 15em; color: #fff}
+		.floatbox {width: 18em; top: 70%; left: 45%; z-index: 99; animation: drift 80s linear infinite}
+		@keyframes drift {
+			0%,100% {transform: translate(0) scaleX(-1)}
+			25% {transform: translateX(-35vw) scaleX(-1)}
+			25.01% {transform: translateX(-35vw) scaleX(1)}
+			75% {transform: translateX(35vw) scaleX(1)}
+			75.01% {transform: translateX(35vw) scaleX(-1)}
+		}
+		.float {transform: rotate(-5deg); animation: bob 12s ease-in-out infinite}
+		@keyframes bob {
+			0%, 100% {transform: translate(0) rotate(0)}
+			20% {transform: translate(10%, 8%) rotate(6deg)}
+			40% {transform: translate(-5%, 3%) rotate(-3deg)}
+			60% {transform: translate(5%, -4%) rotate(-7deg)}
+			80% {transform: translate(-2%, 5%) rotate(2deg)}
+		}
+		@media (max-width: 48em) {
+			#fof{font-size: 10em}
+			.floatbox {width: 12em; top: 85%; animation: none; transform: translate(-50%, -20%)}
+			svg {transform: scale(2.5) translateY(-40%)}
+		}
+	</style>
+</head>
+<body>
+	<div class="textbox">
+		<p>You seem lost. Maybe you should go <a href="/">home</a>.</p>
+		<div id="fof">404</div>
+	</div>
+	<div class="floatbox"><img class="float" src="/assets/float.png"></div>
+	<div class="wavebox">
+		<svg id="ocean" viewBox="0 0 120 37">
+			<defs><path id="waveform" d="M 0,10 C 30,10 30,15 60,15 C 90,15 90,10 120,10 C 150,10 150,15 180,15 C 210,15 210,10 240,10 v 90 h -240 z"/></defs>
+		</svg>
+	</div><div class="wavebox">
+		<svg id="sea" viewBox="0 0 120 30">
+			<defs><path id="waveform" d="M 0 10 C 30 10 47 18 55 24 C 89 51 97 26 123 19 C 150 10 155 28 185 29 C 230 31 210 10 240 10 v 90 h -240 z"/></defs>
+		</svg>
+	</div>
+	<script type="text/javascript">
+		var ts = ''
+		for (var i = 0; i < 8; i++) {
+			var rand = `style="opacity:${.1+(i/12)};animation-duration: ${Math.floor(Math.random()*20) + 10}s"`
+			document.getElementById(i%2===0?'ocean':'sea').innerHTML+= `<use class="wave" xlink:href="#waveform" x="0" y="${2-i}" ${rand}></use>`
+			ts += `${.0625 * (i+1)}rem ${.0625 * (i+1)}rem #bbb,`;
+		}
+		document.getElementById('fof').style.textShadow = ts.substring(0,ts.length-1);
+	</script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 #section-container {
 	scroll-behavior: smooth;
+	height: calc(var(--vh, 1vh) * 100);
+	.section {
+		height: inherit;
+	}
 	.title {
 		margin:1em auto 2em;
 		text-align: center;

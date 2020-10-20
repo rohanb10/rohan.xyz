@@ -36,6 +36,7 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	height: calc(var(--vh, 1vh) * 100);
 }
 
 body.no-touching {
@@ -45,6 +46,7 @@ body.no-touching {
 
 .flexbox-grid {
 	display: flex;
+	height: inherit;
 	.col {
 		box-sizing: border-box;
 		width: 50%;
@@ -154,10 +156,10 @@ a {
 	&:hover {
 		color: var(--text-color)
 	}
-	&:hover:before {
+	&.link:hover:before {
 		transform: scaleY(1);
 	}
-	&:before {
+	&.link:before {
 		position: absolute;
 		content: "";
 		top: 0;

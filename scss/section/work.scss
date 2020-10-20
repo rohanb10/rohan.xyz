@@ -109,51 +109,52 @@
 		}
 		.badges {
 			display: flex;
-			justify-content: space-between;
-			div {
-				height: 3.5em;
-				width: 12em;
-				margin: .4em 0;
-			}
-			a {
-				display: block;
-				border-bottom: none;
+			justify-content: center;
+			.badge {
 				position: relative;
-				width: 100%;
-				height: 100%;
-			}
-			img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				box-sizing: border-box;
-				border: 2px solid #eee;
-				transition: opacity .5s linear, border-color .3s ease-in-out;
-				opacity: calc(1 - var(--is-dark, 0));
-				&.dark {
-					touch-action: none;
-					pointer-events: none;
-					border-color: #3f3f3f;
-					opacity: var(--is-dark, 0);
+				margin: 0 1em;
+				border: 2px solid transparent;
+				transition: all .3s ease-in-out;
+				padding: .5em;
+				border-radius: 3em;
+				height: 3em;
+				width: 3em;
+				cursor: pointer;
+				a {
+					border: none;
+					padding: 0;
+					&:before {
+						position: unset;
+					}
 				}
-				&:hover, &.dark:hover {
-					border-color: $c-1;
-				}
-			}
-			@media screen and (max-width: 56em) {
-				flex-wrap: wrap;
-				justify-content: space-around;
-				div {
+				&:after {
+					content: attr(data-store);
+					position: absolute;
+					top: 125%;
+					left: 0%;
 					width: 100%;
-					a {
-						width: 12em;
+					font-size: .7em;
+					text-align: center;
+					opacity: 0;
+					transition: opacity  .3s ease-in-out;
+				}
+				&.ff:after {
+					left: -5%;
+					width: 110%;
+				}
+				&.edge:after {
+					left: -10%;
+					width: 120%;
+				}
+				img {
+					width: 100%;
+				}
+				&:hover {
+					border-color: $c-1;
+					&:after {
+						opacity: 1;
 					}
-					&:last-of-type a {
-						margin-left: auto;
-					}
-				}	
+				}
 			}
 		}
 		@media screen and (max-width: 40em) {

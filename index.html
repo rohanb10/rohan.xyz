@@ -141,7 +141,7 @@
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
-							<a target="_blank" href="https://www.expensify.com" rel="noreferrer">Expensify</a> is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
+							<a class="link" target="_blank" href="https://www.expensify.com" rel="noreferrer">Expensify</a> is a leading fintech company automating receipt transcription, expense report submission and management for companies of all sizes worldwide.
 							<ul>
 								<li class="fade-in-left delay-1600">Built processes to monitor and remove expired and/or unused PCI data for GDPR compliance.</li>
 								<li class="fade-in-left delay-1700">Collaborated to develop a tool to manually confirm automated OCR data from receipts for clients who required internal audits of receipt data.</li>
@@ -161,7 +161,7 @@
 							</div>
 						</div>
 						<div class="blurb fade-in-left delay-1500">
-							<a target="_blank" href="https://www.zappos.com" rel="noreferrer">Zappos</a> is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called <a target="_blank" href="https://www.6pm.com" rel="noreferrer">6pm</a>.
+							<a class="link" target="_blank" href="https://www.zappos.com" rel="noreferrer">Zappos</a> is one of the largest online retailers selling shoes, clothes and other accessories. It is subsidiary of Amazon and also has a sister/budget site called <a class="link" target="_blank" href="https://www.6pm.com" rel="noreferrer">6pm</a>.
 							<ul>
 								<li class="fade-in-left delay-1600">Contributed to the development of a responsive CSS+JS framework to be used across all Zappos mobile and desktop sites.</li>
 								<li class="fade-in-left delay-1700">Developed the 'My Account' portal for an upcoming responsive redesign of the mobile websites of Zappos.com and its sister site, 6pm.com.</li>
@@ -261,7 +261,7 @@
 						<div class="blurb">
 							<p class="fade-in-left delay-1500">I was frustrated with the inability to edit rides on Strava and I couldn't find a free tool on the internet to help me out. So naturally, I made one myself.</p>
 
-							<p class="fade-in-left delay-1600">It's live and free to use on this <a target="_blank" data-name="Path Editor (app)" href="https://rohanb10.github.io/path-editor/" rel="noreferrer">github page</a>. The webapp is open sourced and you can view all the code and sample files in this <a target="_blank" data-name="Path Editor (repo)" href="https://github.com/rohanb10/path-editor/" rel="noreferrer">github repo</a>.</p>
+							<p class="fade-in-left delay-1600">It's live and free to use on this <a class="link" target="_blank" data-name="Path Editor (app)" href="https://rohanb10.github.io/path-editor/" rel="noreferrer">website</a>. The webapp is open sourced and you can view all the code and sample files in this <a class="link" target="_blank" data-name="Path Editor (repo)" href="https://github.com/rohanb10/path-editor/" rel="noreferrer">github repo</a>.</p>
 							<ul>
 								<li class="fade-in-left delay-1700">Import rides and display them as overlays over Google Maps as a base layer.</li>
 								<li class="fade-in-left delay-1800">Draw and drag new vertices to points that were not recorded.</li>
@@ -283,7 +283,7 @@
 						<div class="blurb">
 							<p class="fade-in-left delay-1500">I had a tab hoarding addiction and this is my cure.</p>
 
-							<p class="fade-in-left delay-1600">A WebExtension to snooze your tabs and windows now, and have them wake up automatically later. Fully open source, the code for this extension is available in this <a target="_blank" data-name="Snoozz (repo)" href="https://github.com/rohanb10/snooze/" rel="noreferrer">github repo</a>.</p>
+							<p class="fade-in-left delay-1600">A WebExtension to snooze your tabs and windows now, and have them wake up automatically later. Fully open source, the code for this extension is available in this <a class="link" target="_blank" data-name="Snoozz (repo)" href="https://github.com/rohanb10/snoozz-tab-snoozing/" rel="noreferrer">github repo</a>.</p>
 							<p class="fade-in-left delay-1700">The app is written in vanilla JS with only tiny time library. The whole package including all image assets is &tilde; 50 kB, and it can be used completely offline. Main features include:</p>
 							<ul>
 								<li class="fade-in-left delay-1800">Snooze individual tabs or full windows from the toolbar in just two clicks.</li>
@@ -294,16 +294,19 @@
 							</ul>
 						</div>
 						<div class="badges">
-							<div class="fade-in-left delay-2300">
-								<a target="_blank" data-name="Snoozz (CWS)" href="https://chrome.google.com/webstore/detail/snoozz/lklendgldejcnkkaldoggoapclkepgfb" rel="noreferrer">
-									<img data-src="/assets/logos/cws-light.png">
-									<img class="dark" data-src="/assets/logos/cws-dark.png">
+							<div class="fade-in badge delay-2800" data-store="Chrome Web Store">
+								<a target="_blank" href="https://chrome.google.com/webstore/detail/snoozz-snooze-tabs-window/lklendgldejcnkkaldoggoapclkepgfb">
+									<img data-src="/assets/logos/chrome.png">
 								</a>
 							</div>
-							<div class="fade-in-left delay-2400" >
-								<a target="_blank" data-name="Snoozz (AMO)" href="https://addons.mozilla.org/en-US/firefox/addon/snoozz/" rel="noreferrer" >
-									<img data-src="/assets/logos/ff-light.png">
-									<img class="dark" data-src="/assets/logos/ff-dark.png">
+							<div class="fade-in badge ff delay-2900" data-store="Firefox Add&#8209;on Store">
+								<a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/snoozz/">
+									<img data-src="/assets/logos/firefox.png">
+								</a>
+							</div>
+							<div class="fade-in badge edge delay-3000" data-store="Microsoft Edge Add-ons">
+								<a target="_blank" href="">
+									<img data-src="/assets/logos/edge.png">
 								</a>
 							</div>
 						</div>
@@ -597,7 +600,6 @@
 									<label for="ride-11">Random</label><span onclick="drawRandom(this)">&#x21bb;</span>
 								</div>
 							</div>
-							<!-- <p class="attribution fade-in-left delay-3000">Made with <a target="_blank" href="https://www.mapbox.com/about/maps/" rel="noreferrer">Mapbox</a> and <a target="_blank" href="http://www.openstreetmap.org/about/" rel="noreferrer">OpenStreetMap</a>.</p> --><br>
 						</div>
 					</div>
 				</div>
@@ -623,7 +625,7 @@
 					<div class="about-blurb info-container info">
 						<p class="fade-in-right delay-1500">I am a front-end developer who spends most of my free time offline.</p>
 						<p class="fade-in-right delay-1600">You can catch me zooming around the streets of Bombay on a fluorescent green cycle (and matching helmet). I think it's way too bright and I'm doing my very best to coat the frame with dirt and grime.</p>
-						<p class="fade-in-right delay-1700">I consider myself an expert at never being <a target="_blank" rel="noreferrer" data-name="Late People" href="https://www.youtube.com/watch?v=KU7CeUliamg">late</a>, packing things in bags efficiently, and overestimating my excellent spice tolerance.</p>
+						<p class="fade-in-right delay-1700">I consider myself an expert at never being <a class="link" target="_blank" rel="noreferrer" data-name="Late People" href="https://www.youtube.com/watch?v=KU7CeUliamg">late</a>, packing things in bags efficiently, and overestimating my excellent spice tolerance.</p>
 						<p class="fade-in-right delay-1800">I have a BSc in Computer Science from Washington University in St. Louis. I have worked across various engineering roles at eCommerce and SaaS platforms, but my main interests have always been in design, interactions and user experiences.</p>
 						<!-- <p class="fade-in-right delay-1700">I used to live and work in California, but have now moved back home to Bombay</p> -->
 						<!-- <p class="fade-in-right delay-1800">My favourite day of the week is Thursday. It's basically Friday, but without all the pressure.</p> -->
@@ -666,24 +668,24 @@
 						<h2 class="fade-in-left delay-2600"><span>@</span>rohanb10</h2>
 						<div>
 							<span class="fade-in-left delay-2700">
-								<a href="mailto:rohanb10@gmail.com?subject=Hello!" data-name="email" target="_blank">email</a>
+								<a class="link" href="mailto:rohanb10@gmail.com?subject=Hello!" data-name="email" target="_blank">email</a>
 							</span>
 							<span class="fade-in-left delay-2800">
-								<a href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a>
+								<a class="link" href="https://instagram.com/rohanb10" target="_blank" rel="noreferrer">instagram</a>
 							</span>
 							<span class="fade-in-left delay-2900">
-								<a href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a>
+								<a class="link" href="https://twitter.com/rohanb10" target="_blank" rel="noreferrer">twitter</a>
 							</span>
 						</div>
 						<div>
 							<span class="fade-in-left delay-3000">
-								<a href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a>
+								<a class="link" href="https://github.com/rohanb10" target="_blank" rel="noreferrer">github</a>
 							</span>
 							<span class="fade-in-left delay-3100">
-								<a href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a>
+								<a class="link" href="https://linkedin.com/in/rohanb10" target="_blank" rel="noreferrer">linkedin</a>
 							</span>
 							<span class="fade-in-left delay-3200">
-								<a href="https://www.strava.com/athletes/rohanb10" target="_blank" rel="noreferrer">strava</a>
+								<a class="link" href="https://www.strava.com/athletes/rohanb10" target="_blank" rel="noreferrer">strava</a>
 							</span>
 						</div>
 					</div>

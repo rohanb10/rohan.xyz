@@ -1,4 +1,7 @@
 #id-about {
+	a {
+		@include hyperlink($c-5);
+	}
 	.social {
 		text-align: right;
 		padding-bottom: 2em;
@@ -17,7 +20,6 @@
 			}
 		}
 		a {
-			@include hyperlink($c-5);
 			padding: .25em;
 		}
 		.mobile-only {
@@ -44,9 +46,6 @@
 		}
 		li:hover .hover {
 			opacity: 1;
-		}
-		a {
-			@include hyperlink($c-5);
 		}
 		.wiggle{
 			display: inline-block;

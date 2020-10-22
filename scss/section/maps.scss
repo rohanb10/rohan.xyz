@@ -2,7 +2,7 @@
 	.map-layout {
 		display: flex;
 		flex-direction: row-reverse;
-		height: calc(calc(var(--vh, 1vh) * 100) - 2.813em);
+		height: inherit;
 		width: 100vw;
 		& > div {
 			min-height: 100%;

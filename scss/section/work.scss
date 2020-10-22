@@ -120,6 +120,11 @@
 				height: 3em;
 				width: 3em;
 				cursor: pointer;
+				&.edge, &.edge img {
+					filter: grayscale(1);
+					opacity: .5;
+					cursor: not-allowed;
+				}
 				a {
 					border: none;
 					padding: 0;

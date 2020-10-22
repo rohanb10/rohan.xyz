@@ -18,8 +18,15 @@
 			&.fade-in {
 				opacity: 1;
 			}
-			&.waiting {
-				cursor: not-allowed;
+			canvas.mapboxgl-canvas {
+				height: 100% !important;
+				width: 100% !important;
+			}
+			*:focus, &:focus {
+				outline: none !important;
+			}
+			.mapboxgl-ctrl-logo {
+				border: none;
 			}
 			#map {
 				position: absolute;
@@ -27,22 +34,12 @@
 				bottom: 0;
 				width: 100%;
 				background-color: inherit;
-				.path-single {
-					stroke: $c-4;
-					stroke-width: 3px;
-				}
-				.path-all {
-					stroke: $c-4;
-					stroke-opacity: .4;
-					stroke-width: 2px;
-					transition: stroke 1s ease-in-out;
-				}
 			}
 			.distance-container {
 				position: absolute;
 				bottom: .5em;
 				right: .5em;
-				background-color: rgba(255, 255, 255, .9);
+				background-color: rgba(255, 255, 255, .8);
 				width: 5em;
 				padding: 0 .25em .25em;
 				box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
@@ -69,7 +66,7 @@
 				}
 			}
 			&.dark .distance-container {
-				background-color: rgba(53, 54, 58, .9);
+				background-color: rgba(53, 54, 58, .8);
 				span {
 					color: $c-w;
 				}
@@ -90,20 +87,14 @@
 			}
 		}
 	}
+	.info-container {
+		padding-bottom: 1em;
+	}
 	.info {
 		max-width: 540px;
 		margin: 0 auto;
-		.show-on-mobile {
-			display: none;
-			text-align: center;
-			font-size: .8em;
-			color: #AAA;
-			@media screen and (max-width: 50em) {
-				display: block
-			}
-		}
 		h2 {
-			margin: .25em;
+			margin: .5em .25em;
 			span {
 				border-bottom: 3px solid var(--text-color);
 				cursor: pointer;
@@ -160,10 +151,6 @@
 		&.not-yet.success, &.not-yet {
 			height: 0;
 		}
-		&.success {
-			height: 4em;
-		}
-
 	}
 	.map-controls {
 		display: flex;
@@ -256,7 +243,4 @@
 // remove box shadow transition when the colours
 .bucket.changing ~ #id-maps .map-layout .map-controls .control label:before {
 	transition: none;
-}
-.leaflet-top {
-	display: none !important;
 }

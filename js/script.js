@@ -1,4 +1,4 @@
-// watch -f 'js/*.js' -r 'terser js/photos.js js/map.js js/bucket.js js/script.js -m -o js/script.terser.js'
+// watch -f 'js/*.js' -r 'terser js/photos.js js/map.js js/bucket.js js/script.js --source-map -m -o js/script.terser.js'
 var navbar, navbarSections, names, mapContainer, active_section = null, active_work = '', active_photo = -1;
 
 // toggle dark mode
@@ -141,8 +141,8 @@ function showSection(sectionID) {
 			break;
 		case 'id-maps':
 			var ext = document.querySelector('#id-maps .latest-container img'); ext.src = ext.getAttribute('data-src');
-			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css');
-			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js', initializeMap);
+			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
+			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js', initializeMap);
 			loadFile('rides', 'js');
 			loadFile('firebase-app', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js', _ => {
 				loadFile('firebase-storage', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js', getLatestRideFromStrava);	
@@ -301,16 +301,18 @@ function shuffleArray(array) {
 function mobileViewportHack() {
 	document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 }
+mobileViewportHack()
 
 var debounced, window_height = window.innerHeight
 window.addEventListener('resize', _ => {
-	if (window.innerHeight === window_height) return;
-	window_height = window.innerHeight;
 	clearTimeout(debounced);
-	debounced = setTimeout(mobileViewportHack, 100);
+	debounced = setTimeout(_ => {
+		if (map && map.resize) map.resize();
+		if (window.innerHeight === window_height) return;
+		window_height = window.innerHeight;
+		mobileViewportHack()
+	}, 100);
 });
-mobileViewportHack();
-
 window.addEventListener('orientationchange', mobileViewportHack);
 
 document.querySelectorAll('a').forEach(link => {

@@ -86,15 +86,14 @@ function bucket(el) {
 	// force change in darkMode for certain colour schemes
 	if (nextScheme === 2) darkMode(true);
 	if (nextScheme === 4) darkMode(false);
+	document.body.setAttribute('data-bucket', `${nextScheme}`);
 
 	el.parentElement.classList.add('changing');
-	var resetBucket = (_ => {
+	var resetBucket = _ => setTimeout(_ => {
+		el.parentElement.classList.remove('changing');
+		changeBucketColours(nextColourSchemeID());
 		checkMapLayerColor();
-		setTimeout(_ => {
-			el.parentElement.classList.remove('changing');
-			changeBucketColours(nextColourSchemeID());
-		}, 1200);
-	})
+	}, 1200);
 	// 1200 is time the last wave is completed
 	if (active_section !== null) {
 		transitionColourScheme(nextScheme, true, _ => {

@@ -35,7 +35,11 @@ function updateMap(btn){
 	var city = btn.getAttribute('data-city'), rideID = btn.getAttribute('data-ride-id');
 	if (!city || !rideID) return;
 	changeCity(city, _ => {
-		rideID = rideID === 'random' ? getRandomPathID() : (rideID && parseInt(rideID) !== NaN ? rideID : undefined);
+		if (rideID === 'random') {
+			var randID = getRandomPathID();
+			btn.setAttribute('data-random-id', randID);
+			rideID = randID
+		}
 		drawSingle(rideID);
 		trackEvent('Map Changed', window.location.pathname, city + ' - ' +btn.nextElementSibling.innerText , rideID);
 	});
@@ -66,25 +70,25 @@ function addStyleLayer(name, opacity = .75) {
 	});
 }
 
-function drawSingle(pathID) {
-	if (pathID === 'all') return drawAll();
+function drawSingle(pathID, noAnimation) {
+	if (pathID === 'all') return drawAll(noAnimation);
 	if (!map || !RIDES[pathID]) return;
 
 	clearSources();
 	dist.parentElement.classList.remove('hidden');
 
-	var nextCord = 1, currentDistance = 0.0;
-	var cords = flip(decodePath(RIDES[pathID]));
-	var geo = buildGeoJSON(cords[0]);
+	var nextCord = 1, currentDistance = 0, cords = flip(decodePath(RIDES[pathID])), geo = buildGeoJSON(cords[0]);
+
+	for (var i = nextCord; noAnimation && i < cords.length; i++) geo.features[0].geometry.coordinates.push(cords[i])
 
 	map.fitBounds(cords.reduce((b, c) => b.extend(c), new mapboxgl.LngLatBounds(cords[0], cords[0])), {padding: 50});
+	
 	sources.push('active-snake')
-
-	map.addSource('active-snake', {
-		type: 'geojson',
-		data: geo
-	});
+	map.addSource('active-snake', {type: 'geojson', data: geo});
 	addStyleLayer('active-snake');
+
+	if (noAnimation) return dist.innerText = (getDistance(pathID)/1000).toFixed(1);
+
 	var snake = _ => {
 		geo.features[0].geometry.coordinates.push(cords[nextCord])
 		map.getSource('active-snake').setData(geo);
@@ -98,7 +102,7 @@ function drawSingle(pathID) {
 	map.once('moveend', _ => {animation = requestAnimationFrame(snake)});
 }
 
-function drawAll() {
+function drawAll(noAnimation) {
 	if (!map) return;
 
 	clearSources();
@@ -106,31 +110,27 @@ function drawAll() {
 
 	map.flyTo({center: flip(CITIES[active_city]), zoom: 11});
 
-	var keys = Object.keys(RIDES).filter(isInActiveCity);
-	var next = 0, currentDistance = 0.0;
-	var featuresPerGeo = Math.round(keys.length / 50);
-	console.log(keys);
+	var next = 0, currentDistance = 0, keys = Object.keys(RIDES).filter(isInActiveCity);
+	var featuresPerGeo = noAnimation ? keys.length : Math.round(keys.length / 50);
 	var draw = _ => {
 		var geo = buildGeoJSON();
-		console.log( keys[next], next);
 		for (var f = 0; f < featuresPerGeo && next < keys.length; f++) {
-			console.log('drawing', next);
 			geo.features.push(makeFeatureFromCords(flip(decodePath(RIDES[keys[next]]))))
 			currentDistance += getDistance(keys[next]);
 			next++;
 		}
-		sources.push(`geo-${next}`)
-		map.addSource(`geo-${next}`, {type: 'geojson', data: geo});
-		addStyleLayer(`geo-${next}`, .3)
+		sources.push(`all-${next}`)
+		map.addSource(`all-${next}`, {type: 'geojson', data: geo});
+		addStyleLayer(`all-${next}`, .3)
 
 		dist.innerText = (currentDistance / 1000).toFixed(1)
-		// console.log(next, keys[next]);
 		if (next < keys.length) animation = requestAnimationFrame(draw)
 	}
 	map.once('moveend', _ => {animation = requestAnimationFrame(draw)});
 }
 
 function drawRandomAgain(el) {
+	map.resize();
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
@@ -191,20 +191,23 @@ function resetDistanceContainer(newPathIncoming) {
 }
 
 function checkMapLayerColor() {
-	if (!map || currentLayer === 'custom') return;
+	if (!map) return;
 	// nextLayer must be opposite of --c-3
-	var nextLayer = isDark(document.documentElement.style.getPropertyValue('--c-3')) ? 'light' : 'dark';
-	if (nextLayer === currentLayer) return;
+	var sectionColor = document.documentElement.style.getPropertyValue('--c-3');
+	var nextLayer = isDark(sectionColor) ? 'light' : 'dark';
+
+	if (nextLayer === currentLayer) return sources.filter(s => map.getSource(s)).forEach(s => map.setPaintProperty(s, 'line-color', sectionColor));
+
+	var currentBtn = document.querySelector('input[name="rides"]:checked');
+	var currentID = currentBtn ? (currentBtn.getAttribute('data-random-id') || currentBtn.getAttribute('data-ride-id')) : undefined
 
 	mapContainer.classList.remove(currentLayer);
 	mapContainer.classList.add(nextLayer)
-
-	// check current selected and rerender
-	// add current rideID to random button
+	
+	clearSources();
 	map.setStyle(MAP_LAYERS[nextLayer])
-
+	map.once('styledataloading', _ => map.once('styledata', _ => drawSingle(currentID, true)))
 	currentLayer = nextLayer;
-	map.resize();
 }
 
 // Strava functions

@@ -1,6 +1,5 @@
 #section-container {
 	scroll-behavior: smooth;
-	height: calc(calc(var(--vh, 1vh) * 100) - 2.813em);
 	.section {
 		height: inherit;
 	}
@@ -74,6 +73,7 @@
 	}
 	&.active {
 		@media screen and (min-width: 40em) {
+			height: calc(calc(var(--vh, 1vh) * 100) - 2.813em);
 			.bucket, .sky {
 				bottom: 1em;
 				.tooltip {

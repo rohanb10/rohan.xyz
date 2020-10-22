@@ -123,3 +123,6 @@
 		font-size: 1em;
 	}
 }
+body[data-bucket="2"] #navigation[data-open=true], body[data-bucket="4"] #navigation[data-open=true] {
+	color: var(--bg-color);
+}

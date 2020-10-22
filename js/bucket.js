@@ -70,7 +70,7 @@ function setDarkClassForSections(scheme) {
 }
 
 function nextColourSchemeID() {
-	return currentScheme + 1 < COLOUR_SCHEMES.length ? currentScheme + 1 : 0;
+	return (currentScheme + 1) % COLOUR_SCHEMES.length;
 }
 
 function isDark(color) {

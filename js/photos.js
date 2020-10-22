@@ -212,6 +212,6 @@ var xDown, yDown
 		xDown = null;
 		yDown = null;
 	}
-	modal.addEventListener('touchstart', startSwipe)
-	modal.addEventListener('touchmove', moveSwipe)
+	modal.addEventListener('touchstart', startSwipe, {passive: true})
+	modal.addEventListener('touchmove', moveSwipe, {passive: true})
 })();

@@ -1,6 +1,6 @@
 #section-container {
 	scroll-behavior: smooth;
-	height: calc(var(--vh, 1vh) * 100);
+	height: calc(calc(var(--vh, 1vh) * 100) - 2.813em);
 	.section {
 		height: inherit;
 	}

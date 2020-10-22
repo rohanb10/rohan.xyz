@@ -1,16 +1,8 @@
-var map, currentMapLayer, currentMapLayerName = 'light', paths = [], dist = document.getElementById('distance');
+var map, currentLayer = 'light', animation, sources = [], dist = document.getElementById('distance');
 var active_city = document.querySelector('h2.active').getAttribute('data-city');
 const CITIES = {
-	SF: {
-		allFocusPt: [37.791, -122.448],
-		rideCount: 552,
-		totalDistance: 4267
-	}, 
-	BOM: {
-		allFocusPt: [18.982, 72.833],
-		rideCount: 51,
-		totalDistance: 1004
-	}
+	SF: [37.791, -122.448],
+	BOM: [18.982, 72.833],
 };
 
 const MAP_LAYERS = {
@@ -23,122 +15,138 @@ const MAP_LAYERS = {
 function initializeMap() {
 	setTimeout(_ => document.querySelector('#id-maps .latest-container').classList.remove('not-yet'), 4500);
 	// return
-	L.mapbox.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg'; // production
-	map = L.mapbox.map('map')
-		.setView(CITIES[active_city].allFocusPt, 13)
-		.setMaxZoom(15).setMinZoom(10)
-	currentMapLayer = L.mapbox.styleLayer(MAP_LAYERS[currentMapLayerName]);
-	map.addLayer(currentMapLayer);
+	mapboxgl.accessToken = 'pk.eyJ1Ijoicm9oYW5iMTAiLCJhIjoiY2thaDZxaHFvMGRoaDJzbzBtczM3YjNneiJ9.Wza5G0LIJQ8hZjAYsFobYg';
+	map = new mapboxgl.Map({
+		container: 'map',
+		style: MAP_LAYERS[currentLayer],
+		center: flip(CITIES[active_city]),
+		zoom: 12,
+		maxZoom: 16,
+		minZoom: 9,
+		attributionControl: false,
+	});
 	checkMapLayerColor();
-	map.attributionControl.remove();
-	setTimeout(_ => map.invalidateSize(), 3000);
+	setTimeout(_ => map.resize(), 2000);
 }
 
 function updateMap(btn){
 	document.querySelector('#id-maps .latest-container').classList.remove('active');
-	if (map) map.invalidateSize();
-	var rideID = btn.getAttribute('data-ride-id')
-	changeCity(btn.getAttribute('data-city'), _ => {
-		if (rideID === 'all') {
-			drawAll();
-			enableMapInteractions();
-			trackEvent('Map Changed', window.location.pathname, 'All');
-			return;
-		} else if (rideID === 'random') {
-			var p = getRandomPathID();
-			drawSnake(p);
-			trackEvent('Map Changed', window.location.pathname, 'Random', p);
-			return;
-		} else if (RIDES[rideID] === undefined) {
-			return;
-		}
-		drawSnake(rideID);
-		trackEvent('Map Changed', window.location.pathname, btn.nextElementSibling? btn.nextElementSibling.innerText : 'Single Ride', rideID);
+	if (map) map.resize();
+	var city = btn.getAttribute('data-city'), rideID = btn.getAttribute('data-ride-id');
+	if (!city || !rideID) return;
+	changeCity(city, _ => {
+		rideID = rideID === 'random' ? getRandomPathID() : (rideID && parseInt(rideID) !== NaN ? rideID : undefined);
+		drawSingle(rideID);
+		trackEvent('Map Changed', window.location.pathname, city + ' - ' +btn.nextElementSibling.innerText , rideID);
 	});
 }
 
-function clearPaths(newPathIncoming = false) {
+function clearSources() {
 	if (!map) return;
-	paths.forEach(p => p.remove(map));
-	paths = [];
-	clearTimeout(drawTimeout);
-	resetDistanceContainer(newPathIncoming);
+	sources.forEach(s => {
+		try {map.removeLayer(s)} catch {}
+		try {map.removeSource(s)} catch {}
+	});
+	cancelAnimationFrame(animation);
+	sources = [];
+	resetDistanceContainer();
 }
 
-function drawSnake(pathID) {
-	if (!map) return;
-	clearPaths(true);
-	var p = L.polyline(decodePath(RIDES[pathID]), {className: 'path-single', color: '--var(--c-3)'});
-	paths.push(p);
+function addStyleLayer(name, opacity = .75) {
+	if (!name || !map.getSource(name)) return;
+	map.addLayer({
+		id: name,
+		type: 'line',
+		source: name,
+		paint: {
+			'line-color': document.documentElement.style.getPropertyValue('--c-3'),
+			'line-width': 3,
+			'line-opacity': opacity,
+		}
+	});
+}
+
+function drawSingle(pathID) {
+	if (pathID === 'all') return drawAll();
+	if (!map || !RIDES[pathID]) return;
+
+	clearSources();
 	dist.parentElement.classList.remove('hidden');
 
-	map.fitBounds(p.getBounds(), {padding: [10,10],animate: true,pan: {duration: 1}});
+	var nextCord = 1, currentDistance = 0.0;
+	var cords = flip(decodePath(RIDES[pathID]));
+	var geo = buildGeoJSON(cords[0]);
 
-	// wait for pan to complete
-	map.once('moveend', _ => {
-		p.addTo(map);
-		var totalLength = p._path.getTotalLength();
-		Object.assign(p._path.style, {
-			opacity: 0,
-			transitionProperty: 'stroke-dashoffset',
-			transitionDuration: '1ms',
-			transitionTimingFunction: 'linear',
-			strokeDashoffset: totalLength,
-			strokeDasharray: totalLength,
-		});
-		drawTimeout = setTimeout(_ => {
-			Object.assign(p._path.style, {
-				opacity: .7,
-				transitionDuration: `${getTransitionDuration(p)}s`,
-				strokeDashoffset: 0,
-			});
-			startDistanceCountUp(p);
-			disableMapInteractions();
-			p._path.addEventListener('transitionend', _ => {
-				p._path.style.strokeDasharray = 'unset';
-				enableMapInteractions();
-			}, {once: true});
-		}, 150);
+	map.fitBounds(cords.reduce((b, c) => b.extend(c), new mapboxgl.LngLatBounds(cords[0], cords[0])), {padding: 50});
+	sources.push('active-snake')
+
+	map.addSource('active-snake', {
+		type: 'geojson',
+		data: geo
 	});
+	addStyleLayer('active-snake');
+	var snake = _ => {
+		geo.features[0].geometry.coordinates.push(cords[nextCord])
+		map.getSource('active-snake').setData(geo);
+
+		currentDistance += distance(cords[nextCord-1], cords[nextCord]);
+		dist.innerText = (currentDistance / 1000).toFixed(1)
+		
+		nextCord++;
+		if (nextCord < cords.length) animation = requestAnimationFrame(snake)
+	}
+	map.once('moveend', _ => {animation = requestAnimationFrame(snake)});
 }
 
 function drawAll() {
-	clearPaths();
-	map.flyTo(CITIES[active_city].allFocusPt, 12);
-	map.once('moveend', _ => {
-		Object.keys(RIDES).filter(r => isInActiveCity(r)).forEach((rideID, i) => {
-			var p = L.polyline(decodePath(RIDES[rideID]), {
-				className: 'path-all',
-				color: COLOUR_SCHEMES[currentScheme][3],
-			});
-			p.on('click', _ => console.log(rideID))
-			allTimeouts[i] = setTimeout(_ => {
-				p.addTo(map);
-				paths.push(p);
-			}, 20 * i * (active_city === 'BOM' ? 2.5:1));
-		});
-		dist.parentElement.classList.remove('hidden');
-		updateDistance(0, CITIES[active_city].totalDistance / 51.97, CITIES[active_city].totalDistance);
-	});
+	if (!map) return;
+
+	clearSources();
+	dist.parentElement.classList.remove('hidden');
+
+	map.flyTo({center: flip(CITIES[active_city]), zoom: 11});
+
+	var keys = Object.keys(RIDES).filter(isInActiveCity);
+	var next = 0, currentDistance = 0.0;
+	var featuresPerGeo = Math.round(keys.length / 50);
+	console.log(keys);
+	var draw = _ => {
+		var geo = buildGeoJSON();
+		console.log( keys[next], next);
+		for (var f = 0; f < featuresPerGeo && next < keys.length; f++) {
+			console.log('drawing', next);
+			geo.features.push(makeFeatureFromCords(flip(decodePath(RIDES[keys[next]]))))
+			currentDistance += getDistance(keys[next]);
+			next++;
+		}
+		sources.push(`geo-${next}`)
+		map.addSource(`geo-${next}`, {type: 'geojson', data: geo});
+		addStyleLayer(`geo-${next}`, .3)
+
+		dist.innerText = (currentDistance / 1000).toFixed(1)
+		// console.log(next, keys[next]);
+		if (next < keys.length) animation = requestAnimationFrame(draw)
+	}
+	map.once('moveend', _ => {animation = requestAnimationFrame(draw)});
 }
 
-function drawRandom(el) {
+function drawRandomAgain(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
 	trackEvent('Map Changed', window.location.pathname, 'Random', p);
-	drawSnake(p);
+	drawSingle(p);
 }
 
 function getRandomPathID() {
 	if (!map) return;
 	var pathID, pathDistance = 0;
-	var minimumDistance = Math.random() < .2 ? 5000 : Math.random < .4 ? 7000 : Math.random < .6 ? 9000 : 11000;
+	var minimumDistance = Math.random() < .2 ? 5000 : Math.random < .4 ? 7000 : Math.random < .6 ? 9000 : 12000;
 	var blockedKeys = Array.from(document.querySelectorAll('.control input[type="radio"]')).map(el => el.getAttribute('data-ride-id'))
 	var keys = shuffleArray(Object.keys(RIDES)).filter(k => isInActiveCity(k) && !blockedKeys.includes(k))
 	while (pathDistance < minimumDistance) {
 		pathID = keys[keys.length * Math.random() << 0];
-		pathDistance = calcDistance(L.polyline(decodePath(RIDES[pathID])));
+		pathDistance = getDistance(pathID);
 	}
 	return pathID;
 }
@@ -146,11 +154,11 @@ function getRandomPathID() {
 function isInActiveCity(key) {
 	if (active_city === 'SF') return key < 3500000000;
 	if (active_city === 'BOM') return key > 3500000000;
-	return false
+	return false;
 }
 
-function changeCity(name, callback = clearPaths) {
-	if (active_city === name) {callback();return}
+function changeCity(name, callback = clearSources) {
+	if (active_city === name) return callback();
 
 	active_city = name;
 	document.querySelectorAll(`#id-maps input[type=radio]:checked`).forEach(r => r.checked = false);
@@ -159,100 +167,52 @@ function changeCity(name, callback = clearPaths) {
 
 	if (!map) return;
 	resetDistanceContainer();
-	map.flyTo(CITIES[name].allFocusPt, 12)
+	map.flyTo({center: flip(CITIES[name]), zoom: 11})
 	map.once('moveend', callback);
 }
 
-function calcDistance(polyline) {
-	if (!map) return;
-	var point = polyline._latlngs[0];
-	var totalDistance = 0;
-	polyline._latlngs.forEach(ll => {
-		totalDistance += point.distanceTo(ll);
-		point = ll;
+function getDistance(pathID) {
+	var cords = flip(decodePath(RIDES[pathID]));
+	var total = 0, current = cords[0];
+	cords.forEach(c => {
+		total += distance(current, c);
+		current = c;
 	});
-	return parseInt(totalDistance);
+	return Math.round(total);
 }
 
-function getTransitionDuration(p) {
-	var t = calcDistance(p) / 2000;
-	return t <= 10 ? 10 : t; 
+function distance(a, b) {
+	return (new mapboxgl.LngLat(a[0], a[1])).distanceTo(new mapboxgl.LngLat(b[0], b[1]))
 }
 
-var drawTimeout, distanceTimeout, allTimeouts = [];
 function resetDistanceContainer(newPathIncoming) {
 	dist.parentElement.classList.add('hidden');
-	clearTimeout(distanceTimeout);
-	allTimeouts.forEach(clearTimeout)
-	allTimeouts = [];
-	setTimeout(_ => dist.innerText = "0.0", newPathIncoming ? 0 : 305);
-}
-
-function startDistanceCountUp(p) {
-	var target = calcDistance(p);
-	// total distance / time x setTimeout duration in seconds
-	var increment = (target / getTransitionDuration(p)) * (50 / 1000);
-	updateDistance(0, increment/1000, target/1000);
-}
-
-function updateDistance(current, increment, target) {
-	// minimum interval between timers is 50ms (-1ms for browser delay)
-	current += increment;
-	dist.innerText = current.toFixed(1);
-	if (current < target) distanceTimeout = setTimeout(_ => updateDistance(current, increment, target), 49);
-}
-
-function disableMapInteractions() {
-	if (!map) return;
-	mapContainer.classList.add('waiting');
-	map.dragging.disable();
-	map.touchZoom.disable();
-	map.doubleClickZoom.disable();
-	map.scrollWheelZoom.disable();
-	map.keyboard.disable();
-	if (map.tap) map.tap.disable();
-}
-
-function enableMapInteractions() {
-	if (!map) return;
-	mapContainer.classList.remove('waiting');
-	map.dragging.enable();
-	map.touchZoom.enable();
-	map.doubleClickZoom.enable();
-	map.scrollWheelZoom.enable();
-	map.keyboard.enable();
-	if (map.tap) map.tap.enable();
-}
-
-function changeMapLayer(styleURL) {
-	nextMapLayer = L.mapbox.styleLayer(styleURL);
-	currentMapLayerName = 'custom';
-	map.addLayer(nextMapLayer).removeLayer(currentMapLayer);
-	currentMapLayer = nextMapLayer;
+	dist.innerText = '0.0'
 }
 
 function checkMapLayerColor() {
-	if (!map) return;
-	if (currentMapLayerName === 'custom') return;
+	if (!map || currentLayer === 'custom') return;
 	// nextLayer must be opposite of --c-3
-	var nextMapLayerName = isDark(document.documentElement.style.getPropertyValue('--c-3')) ? 'light' : 'dark';
-	if (nextMapLayerName === currentMapLayerName) return;
+	var nextLayer = isDark(document.documentElement.style.getPropertyValue('--c-3')) ? 'light' : 'dark';
+	if (nextLayer === currentLayer) return;
 
-	if (currentMapLayerName.length > 1) mapContainer.classList.remove(currentMapLayerName);
+	mapContainer.classList.remove(currentLayer);
+	mapContainer.classList.add(nextLayer)
 
-	var nextMapLayer = L.mapbox.styleLayer(MAP_LAYERS[nextMapLayerName])
-	map.addLayer(nextMapLayer).removeLayer(currentMapLayer);
+	// check current selected and rerender
+	// add current rideID to random button
+	map.setStyle(MAP_LAYERS[nextLayer])
 
-	mapContainer.classList.add(nextMapLayerName);
-	currentMapLayer = nextMapLayer;
-	currentMapLayerName = nextMapLayerName;
-	map.invalidateSize();
+	currentLayer = nextLayer;
+	map.resize();
 }
 
 // Strava functions
 
 function getLatestRideFromStrava() {
-	fetchRefreshToken().then(fetchAccessToken).then(fetchLastRideID).then(fetchLastRideDetails).then(showLatestContainer).catch(failure)
+	fetchRefreshToken().then(fetchAccessToken).then(fetchLastRideID).then(fetchLastRideDetails).then(showLatestContainer).catch(e => {
+		console.log('Error pulling from Strava - ', e);
+	})
 }
 
 async function fetchRefreshToken(){
@@ -315,9 +275,7 @@ function showLatestContainer(activity) {
 	container.querySelector('.latest-title span').innerText = `- ${rideTime} on ${rideDate}`;
 	container.querySelector('.latest-title a').href= `https://www.strava.com/activities/${activity.id}`;
 
-	var control = Object.assign(document.createElement('div'), {
-		className: 'control'
-	});
+	var control = Object.assign(document.createElement('div'), {className: 'control'});
 
 	var input = Object.assign(document.createElement('input'), {
 		type: 'radio',
@@ -326,20 +284,16 @@ function showLatestContainer(activity) {
 	});
 	input.setAttribute('data-city', 'BOM');
 	input.setAttribute('data-ride-id', activity.id);
-	input.onchange = _ => {
+	input.onchange = e => {
 		updateMap(input);
 		container.classList.add('active');
 	}
 
-	var label = Object.assign(document.createElement('label'), {
-		innerText: activity.name
-	});
+	var label = Object.assign(document.createElement('label'), {innerText: activity.name});
 	label.setAttribute('for', 'ride-latest')
 
-	control.appendChild(input);
-	control.appendChild(label);
-	container.appendChild(control);
-
+	control.append(input, label);
+	container.append(control);
 	container.classList.add('success');
 	container.style.height = container.scrollHeight + 'px';
 	
@@ -347,8 +301,10 @@ function showLatestContainer(activity) {
 	console.log('ride ' + activity.id + ' succesfully fetched from strava');
 }
 
-function failure(err) {
-	console.log('Error pulling from Strava - ', err);
+function flip(a) {
+	var reverse = b => b.slice().reverse()
+	if (a[0].length) return a.map(reverse);
+	return reverse(a);
 }
 
 // decode polylines
@@ -373,4 +329,12 @@ function decodePath(str) {
 		coordinates.push([lat / factor, lng / factor]);
 	}
 	return coordinates;
-};
+}
+function buildGeoJSON(initialCords) {
+	var geojson = {type: 'FeatureCollection', features: []}
+	if (initialCords && initialCords.length && initialCords.length > 0) geojson.features.push(makeFeatureFromCords([initialCords]));
+	return geojson;
+}
+function makeFeatureFromCords(cords) {
+	return { type: 'Feature', geometry: {type: 'LineString', coordinates: cords} }
+}

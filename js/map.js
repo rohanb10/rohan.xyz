@@ -111,17 +111,20 @@ function drawAll(noAnimation) {
 	map.flyTo({center: flip(CITIES[active_city]), zoom: 11});
 
 	var next = 0, currentDistance = 0, keys = Object.keys(RIDES).filter(isInActiveCity);
-	var featuresPerGeo = noAnimation ? keys.length : Math.round(keys.length / 50);
+	var featuresPerFrame = noAnimation ? keys.length : Math.ceil(keys.length / 100);
+
+	var geo = buildGeoJSON();
+	sources.push('active-all')
+	map.addSource('active-all', {type: 'geojson', data: geo});
+	addStyleLayer('active-all', .3)
+
 	var draw = _ => {
-		var geo = buildGeoJSON();
-		for (var f = 0; f < featuresPerGeo && next < keys.length; f++) {
+		for (var f = 0; f < featuresPerFrame && next < keys.length; f++) {
 			geo.features.push(makeFeatureFromCords(flip(decodePath(RIDES[keys[next]]))))
 			currentDistance += getDistance(keys[next]);
 			next++;
 		}
-		sources.push(`all-${next}`)
-		map.addSource(`all-${next}`, {type: 'geojson', data: geo});
-		addStyleLayer(`all-${next}`, .3)
+		map.getSource('active-all').setData(geo);
 
 		dist.innerText = (currentDistance / 1000).toFixed(1)
 		if (next < keys.length) animation = requestAnimationFrame(draw)

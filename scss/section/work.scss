@@ -92,7 +92,7 @@
 			}
 		}
 		.blurb {
-			margin: 2em 0;
+			margin: 2em 0 0;
 			font-size: .9em;
 			.subheading {
 				font-weight: 700;
@@ -120,6 +120,9 @@
 				height: 3em;
 				width: 3em;
 				cursor: pointer;
+				@media screen and (max-width: 40em) {
+					margin: .5em .25em 2em;
+				}
 				&.edge, &.edge img {
 					filter: grayscale(1);
 					opacity: .5;

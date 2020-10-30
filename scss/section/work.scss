@@ -110,6 +110,7 @@
 		.badges {
 			display: flex;
 			justify-content: center;
+			margin-bottom: 2em;
 			.badge {
 				position: relative;
 				margin: 0 1em;
@@ -122,11 +123,6 @@
 				cursor: pointer;
 				@media screen and (max-width: 40em) {
 					margin: .5em .25em 2em;
-				}
-				&.edge, &.edge img {
-					filter: grayscale(1);
-					opacity: .5;
-					cursor: not-allowed;
 				}
 				a {
 					border: none;
@@ -172,6 +168,9 @@
 			}
 			border-top: 1px solid #EEE;
 			width: initial;
+			.badges {
+				margin-bottom: 1em;
+			}
 		}
 	}
 }

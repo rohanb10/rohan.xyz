@@ -143,9 +143,10 @@ function showSection(sectionID) {
 			var ext = document.querySelector('#id-maps .latest-container img'); ext.src = ext.getAttribute('data-src');
 			loadFile('mapbox', 'css', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css');
 			loadFile('mapbox', 'js', 'https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js', initializeMap);
-			loadFile('rides', 'js');
-			loadFile('firebase-app', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js', _ => {
-				loadFile('firebase-storage', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js', getLatestRideFromStrava);	
+			loadFile('rides', 'js', 'js/rides.js', _ => {
+				loadFile('firebase-app', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js', _ => {
+					loadFile('firebase-storage', 'js', 'https://www.gstatic.com/firebasejs/7.19.0/firebase-storage.js', getLatestRideFromStrava);	
+				});
 			});
 			break;
 		case 'id-about':
@@ -172,19 +173,14 @@ function toggleHero() {
 }
 
 function loadFile(name, type, url, callback = _ => {}) {
-	// Check that script hasnt been loaded already
-	if(document.querySelectorAll(`.${type}-${name}`).length > 0) return;
+	if (!name || name.length === 0 || !['css', 'js'].includes(type) || !url || url.length === 0 || document.querySelector(`.${type}-${name}`)) return;
 	var tag = Object.assign(document.createElement(type === 'js' ? 'script' : 'link'), {
-		... type === 'js' && url === undefined ? {src: `js/${name}.js`} : {},
-		... type === 'js' && url !== undefined ? {src: url} : {},
-		... type === 'css' ? {rel: 'stylesheet'} : {},
-		... type === 'css' && url === undefined ? {href: `css/${name}.css`} : {},
-		... type === 'css' && url !== undefined ? {href: url} : {},
-		className: `${type}-${name}`
+		... type === 'js' ? {src: url} : {},
+		... type === 'css' ? {rel: 'stylesheet', href: url} : {},
+		className: `${type}-${name}`,
+		onload: callback
 	});
-	tag.onload = callback;
-	if (type === 'js') document.body.appendChild(tag);
-	if (type === 'css') document.head.appendChild(tag);
+	document[type === 'js' ? 'body' : 'head'].appendChild(tag)
 }
 
 function hideAllSections() {

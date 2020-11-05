@@ -47,16 +47,16 @@ function updateMap(btn){
 
 function clearSources() {
 	if (!map) return;
+	cancelAnimationFrame(animation);
 	sources.forEach(s => {
 		try {map.removeLayer(s)} catch {}
 		try {map.removeSource(s)} catch {}
 	});
-	cancelAnimationFrame(animation);
 	sources = [];
 	resetDistanceContainer();
 }
 
-function addStyleLayer(name, opacity = .75) {
+function addStyleLayer(name, opacity) {
 	if (!name || !map.getSource(name)) return;
 	map.addLayer({
 		id: name,
@@ -64,8 +64,8 @@ function addStyleLayer(name, opacity = .75) {
 		source: name,
 		paint: {
 			'line-color': document.documentElement.style.getPropertyValue('--c-3'),
-			'line-width': 3,
-			'line-opacity': opacity,
+			'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 12, 3],
+			'line-opacity': opacity || ['interpolate', ['linear'], ['zoom'], 11, .3, 16, .8]
 		}
 	});
 }
@@ -116,7 +116,7 @@ function drawAll(noAnimation) {
 	var geo = buildGeoJSON();
 	sources.push('active-all')
 	map.addSource('active-all', {type: 'geojson', data: geo});
-	addStyleLayer('active-all', .3)
+	addStyleLayer('active-all')
 
 	var draw = _ => {
 		for (var f = 0; f < featuresPerFrame && next < keys.length; f++) {
@@ -274,7 +274,7 @@ async function fetchLastRideDetails(paramJSON) {
 function showLatestContainer(activity) {
 	if (!activity || !activity.id || !activity.map.polyline) throw 'Inavlid ride object';
 
-	RIDES[activity.id] = activity.map.polyline;
+	if (RIDES.length !== 0) RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
 	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date));
 	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric',minute:'numeric'}).format(new Date(activity.start_date));

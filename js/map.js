@@ -85,7 +85,7 @@ function drawSingle(pathID, noAnimation) {
 	
 	sources.push('active-snake')
 	map.addSource('active-snake', {type: 'geojson', data: geo});
-	addStyleLayer('active-snake');
+	addStyleLayer('active-snake', .9);
 
 	if (noAnimation) return dist.innerText = (getDistance(pathID)/1000).toFixed(1);
 
@@ -272,9 +272,9 @@ async function fetchLastRideDetails(paramJSON) {
 }
 
 function showLatestContainer(activity) {
-	if (!activity || !activity.id || !activity.map.polyline) throw 'Inavlid ride object';
+	if (!activity || !activity.id || !activity.map.polyline || !RIDES || RIDES.length === 0) throw 'Inavlid ride object';
 
-	if (RIDES.length !== 0) RIDES[activity.id] = activity.map.polyline;
+	RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
 	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date));
 	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric',minute:'numeric'}).format(new Date(activity.start_date));

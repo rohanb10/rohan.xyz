@@ -1,4 +1,4 @@
-var map, currentLayer = 'light', animation, sources = [], dist = document.getElementById('distance');
+var map, currentLayer = 'light', mapAnimation, sources = [], dist = document.getElementById('distance');
 var active_city = document.querySelector('h2.active').getAttribute('data-city');
 const CITIES = {
 	SF: [37.791, -122.448],
@@ -47,7 +47,7 @@ function updateMap(btn){
 
 function clearSources() {
 	if (!map) return;
-	cancelAnimationFrame(animation);
+	cancelAnimationFrame(mapAnimation);
 	sources.forEach(s => {
 		try {map.removeLayer(s)} catch {}
 		try {map.removeSource(s)} catch {}
@@ -97,9 +97,9 @@ function drawSingle(pathID, noAnimation) {
 		dist.innerText = (currentDistance / 1000).toFixed(1)
 		
 		nextCord++;
-		if (nextCord < cords.length) animation = requestAnimationFrame(snake)
+		if (nextCord < cords.length) mapAnimation = requestAnimationFrame(snake)
 	}
-	map.once('moveend', _ => {animation = requestAnimationFrame(snake)});
+	map.once('moveend', _ => {mapAnimation = requestAnimationFrame(snake)});
 }
 
 function drawAll(noAnimation) {
@@ -127,9 +127,9 @@ function drawAll(noAnimation) {
 		map.getSource('active-all').setData(geo);
 
 		dist.innerText = (currentDistance / 1000).toFixed(1)
-		if (next < keys.length) animation = requestAnimationFrame(draw)
+		if (next < keys.length) mapAnimation = requestAnimationFrame(draw)
 	}
-	map.once('moveend', _ => {animation = requestAnimationFrame(draw)});
+	map.once('moveend', _ => {mapAnimation = requestAnimationFrame(draw)});
 }
 
 function drawRandomAgain(el) {

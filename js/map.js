@@ -188,7 +188,7 @@ function distance(a, b) {
 	return (new mapboxgl.LngLat(a[0], a[1])).distanceTo(new mapboxgl.LngLat(b[0], b[1]))
 }
 
-function resetDistanceContainer(newPathIncoming) {
+function resetDistanceContainer() {
 	dist.parentElement.classList.add('hidden');
 	dist.innerText = '0.0'
 }
@@ -209,7 +209,7 @@ function checkMapLayerColor() {
 	
 	clearSources();
 	map.setStyle(MAP_LAYERS[nextLayer])
-	map.once('styledataloading', _ => map.once('styledata', _ => drawSingle(currentID, true)))
+	if (currentID) map.once('styledataloading', _ => map.once('styledata', _ => drawSingle(currentID, true)))
 	currentLayer = nextLayer;
 }
 
@@ -237,16 +237,15 @@ async function fetchRefreshToken(){
 	})
 }
 
-async function fetchAccessToken(paramJSON) {
-	if (!paramJSON || !paramJSON.refresh_token) throw ('No refresh_token found in refresh.json')
-	var url = `https://www.strava.com/oauth/token?${(new URLSearchParams(paramJSON)).toString()}`;
+async function fetchAccessToken(params) {
+	if (!params || !params.refresh_token) throw ('No refresh_token found in refresh.json')
+	var url = `https://www.strava.com/oauth/token?${(new URLSearchParams(params)).toString()}`;
 	return await fetch(url, {method: 'POST'}).then(response => response.text().then(text => {
 		var tokenObject = JSON.parse(text);
 		// if refresh tokens are different, write the newer one back to firebase
-		if (tokenObject.refresh_token !== paramJSON.refresh_token) {
-			paramJSON.refresh_token = tokenObject.refresh_token;
-			firebase.storage().ref().child('refresh.json').put(new File([JSON.stringify(paramJSON)], 'refresh.json', {type: 'application/json'}))
-			.then(p => console.log('refresh_token updated and saved to Firebase.'))
+		if (tokenObject.refresh_token !== params.refresh_token) {
+			params.refresh_token = tokenObject.refresh_token;
+			firebase.storage().ref().child('refresh.json').put(new File([JSON.stringify(params)], 'refresh.json', {type: 'application/json'})).then(_ => console.log('refresh_token updated and saved to Firebase.'))
 		}
 		return tokenObject;
 	}))
@@ -264,11 +263,10 @@ async function fetchLastRideID(tokenJSON) {
 	}));
 }
 
-async function fetchLastRideDetails(paramJSON) {
-	if (!paramJSON || !paramJSON.rideId || !paramJSON.options) throw 'Inavlid RideID';
-	var params = {include_all_efforts: false}
-	var url = `https://www.strava.com/api/v3/activities/${paramJSON.rideId}`;
-	return await fetch(url, paramJSON.options).then(r => r.text().then(t => JSON.parse(t)))
+async function fetchLastRideDetails(params) {
+	if (!params || !params.rideId || !params.options) throw 'Inavlid RideID';
+	var url = `https://www.strava.com/api/v3/activities/${params.rideId}?include_all_efforts=false`;
+	return await fetch(url, params.options).then(r => r.text().then(t => JSON.parse(t)))
 }
 
 function showLatestContainer(activity) {
@@ -276,8 +274,8 @@ function showLatestContainer(activity) {
 
 	RIDES[activity.id] = activity.map.polyline;
 	var container = document.querySelector('#id-maps .latest-container');
-	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'}).format(new Date(activity.start_date));
-	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric',minute:'numeric'}).format(new Date(activity.start_date));
+	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric', month:'short', year:'numeric'}).format(new Date(activity.start_date));
+	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric', minute:'numeric'}).format(new Date(activity.start_date));
 	container.querySelector('.latest-title span').innerText = `- ${rideTime} on ${rideDate}`;
 	container.querySelector('.latest-title a').href= `https://www.strava.com/activities/${activity.id}`;
 
@@ -290,7 +288,7 @@ function showLatestContainer(activity) {
 	});
 	input.setAttribute('data-city', 'BOM');
 	input.setAttribute('data-ride-id', activity.id);
-	input.onchange = e => {
+	input.onchange = _ => {
 		updateMap(input);
 		container.classList.add('active');
 	}
@@ -309,8 +307,7 @@ function showLatestContainer(activity) {
 
 function flip(a) {
 	var reverse = b => b.slice().reverse()
-	if (a[0].length) return a.map(reverse);
-	return reverse(a);
+	return a[0].length ? a.map(reverse) : reverse(a);
 }
 
 // decode polylines

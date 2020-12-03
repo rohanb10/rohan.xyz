@@ -26,7 +26,7 @@ function rgbArray(rgb) {
 
 // Transition to new colour scheme
 var schemeAnimation;
-function transitionColourScheme(index, shuffle = true, callback) {
+function transitionColourScheme(index, shuffle = true) {
 	var scheme = shuffle ? shuffleArray(COLOUR_SCHEMES[index]) : COLOUR_SCHEMES[index];
 	var root = document.documentElement.style
 	var next = scheme.map(s => rgbArray(s)), current = scheme.map((s, i) => rgbArray(root.getPropertyValue(`--c-${i}`)));
@@ -47,11 +47,10 @@ function transitionColourScheme(index, shuffle = true, callback) {
 }
 
 // Instantly change colour scheme
-function changeColourScheme(index, shuffle = true, callback) {
+function changeColourScheme(index, shuffle = true) {
 	if (index < 0 || index >= COLOUR_SCHEMES.length) return 'Please enter a valid index';
 
-	var scheme = COLOUR_SCHEMES[index || currentScheme];
-	if (shuffle) scheme = shuffleArray(scheme);
+	var scheme = shuffle ? shuffleArray(COLOUR_SCHEMES[index]) : COLOUR_SCHEMES[index];
 
 	var root = document.documentElement;
 	scheme.forEach((c,i) => root.style.setProperty(`--c-${i}`, c));
@@ -96,6 +95,8 @@ function bucket(el) {
 	currentScheme = nextScheme;
 	trackEvent('Spill', 'bucket', 'Colours changed', currentScheme);
 }
+document.querySelector('.bucket img').addEventListener('click', bucket)
+
 function resetBucket() {
 	setTimeout(_ => {
 		document.querySelector('.bucket').classList.remove('changing');

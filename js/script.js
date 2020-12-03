@@ -236,7 +236,7 @@ function loadSkills() {
 	skills.forEach(s => {
 		var img = s.firstElementChild;
 		img.src = `/assets/skills/${img.getAttribute('data-src')}.png`;
-		s.onmouseover = _ => killSkillCycle()
+		s.onmouseover = killSkillCycle
 		s.onmouseout = _ => startSkillCycle(1500)
 		s.prepend(document.createElement('div'));
 	});
@@ -255,11 +255,9 @@ function startSkillCycle(intialDelay = 0) {
 	killSkillCycle();
 	pedal = setTimeout(_ => {
 		skillCycle = setInterval(_ => {
-			var prev = document.querySelector('.skill.hovered');
-			if (prev) prev.classList.remove('hovered');
+			document.querySelectorAll('.skill.hovered').foreach(s => s.classList.remove('hovered'))
 			skills[currentHover].classList.add('hovered');
-			currentHover++;
-			if (currentHover >= skills.length) currentHover = 0;
+			currentHover = (currentHover + 1) % skills.length
 		}, 1500);
 	}, intialDelay);
 }
@@ -267,7 +265,7 @@ function startSkillCycle(intialDelay = 0) {
 // analytics
 function trackEvent(action = 'click', category = 'Not Specified', label, value) {
 	// console.log('TRACK:','send', '|', 'event', '|', category, '|', action, '|', label, '|', value)
-	galite('send', 'event', category, action, label, value)
+	if (galite) galite('send', 'event', category, action, label, value)
 }
 
 // Animate functions
@@ -275,8 +273,8 @@ function animateOut(elementName, animationName, callback, animationDuration = 50
 	var el = document.querySelector(elementName);
 	el.classList.add(animationName);
 	setTimeout(_ => {
-		el.classList.remove(animationName);
 		el.classList.add('hidden');
+		el.classList.remove(animationName);
 		if (callback) callback();
 	}, animationDuration, el, animationName, callback);
 }

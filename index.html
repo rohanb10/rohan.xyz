@@ -34,14 +34,12 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/assets/favicon/manifest.json">
 	<link rel="stylesheet" type="text/css" href="/css/style.min.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-	<!-- <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="preload" as=style crossorigin> -->
-	<script>
-		document.head.appendChild(Object.assign(document.createElement('link'),{
-			href: 'https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap',
-			rel: 'stylesheet'
-		}));
-	</script>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap">
+
+	<!-- hotjar test -->
+	<script src="https://static.hotjar.com/c/hotjar-2135764.js?sv=6" async></script>
+	
 </head>
 <body data-bucket="0">
 	<div id="hero" class="container-width">
@@ -75,7 +73,7 @@
 	</div>
 	<div id="section-container">
 		<div class="bucket">
-			<img onclick="bucket(this)" src="./assets/bucket.png" alt="Change colours">
+			<img src="./assets/bucket.png" alt="Change colours">
 			<div class="bucket-bg"></div>
 			<div class="tooltip" data-hover="Spill bucket" data-click="I can't believe you've done this" data-tap="Changing colours"></div>
 		</div>
@@ -706,15 +704,15 @@
 		</div>
 	</div>
 	<script src="/js/script.terser.js"></script>
-	<script>
+	<!-- <script>
 		(function(r,o,h,a,n) {
 			r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};
 			a=document.createElement('script');a.async=true;a.src=h;
 			n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(a,n)
-		})(window,"galite","/js/ga-lite.min.js");
+		})(window,'galite','/js/ga-lite.min.js');
 
 		galite('create', 'UA-78711252-1', 'auto');galite('send', 'pageview');
 		window.addEventListener('unload', _ => galite('send', 'timing', 'Bye Bye', 'unload'));
-	</script>
+	</script> -->
 </body>
 </html>

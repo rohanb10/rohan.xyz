@@ -255,7 +255,8 @@ function startSkillCycle(intialDelay = 0) {
 	killSkillCycle();
 	pedal = setTimeout(_ => {
 		skillCycle = setInterval(_ => {
-			document.querySelectorAll('.skill.hovered').foreach(s => s.classList.remove('hovered'))
+			var s = document.querySelectorAll('.skill.hovered');
+			if (s) s.foreach(s => s.classList.remove('hovered'));
 			skills[currentHover].classList.add('hovered');
 			currentHover = (currentHover + 1) % skills.length
 		}, 1500);
@@ -265,7 +266,7 @@ function startSkillCycle(intialDelay = 0) {
 // analytics
 function trackEvent(action = 'click', category = 'Not Specified', label, value) {
 	// console.log('TRACK:','send', '|', 'event', '|', category, '|', action, '|', label, '|', value)
-	if (galite) galite('send', 'event', category, action, label, value)
+	if (typeof galite !== 'undefined') galite('send', 'event', category, action, label, value)
 }
 
 // Animate functions

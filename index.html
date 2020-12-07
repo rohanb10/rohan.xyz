@@ -34,8 +34,14 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/assets/favicon/manifest.json">
 	<link rel="stylesheet" type="text/css" href="/css/style.min.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<script>
+		document.head.appendChild(Object.assign(document.createElement('link'),{
+			href: 'https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap',
+			rel: 'stylesheet'
+		}));
+	</script>
 
 	<!-- Hotjar Tracking Code for https://rohan.xyz -->
 	<script>
@@ -54,10 +60,14 @@
 	<div id="hero" class="container-width">
 		<h1>
 			<span>
-				<span class="ro">ro</span><span class="han">han</span>
+				<span class="ro">ro</span
+				><span class="han">han</span>
 			</span>
 			<span>
-				<span class="bhan">bhan</span><span class="sa">sa</span><span class="li">li</span>
+				<span class="bhan">bhan</span
+				><span class="sali">sali</span>	
+				<!-- ><span class="sa">sa</span
+				><span class="li">li</span> -->
 			</span>
 		</h1>	
 	</div>
@@ -66,10 +76,10 @@
 			<span class="section-title" data-bg-color="1" onclick="navControl('work')">
 				<span data-section-name="work"></span>
 			</span
-			><span class="section-title" data-bg-color="2" onclick="navControl('skills')">
+			><!-- <span class="section-title" data-bg-color="2" onclick="navControl('skills')">
 				<span data-section-name="skills"></span>
 			</span
-			><span class="section-title" data-bg-color="3" onclick="navControl('photos')">
+			> --><span class="section-title" data-bg-color="3" onclick="navControl('photos')">
 				<span data-section-name="photos"></span>
 			</span
 			><span class="section-title" data-bg-color="4" onclick="navControl('maps')">
@@ -111,7 +121,7 @@
 							<div class="subtitle">Las Vegas, NV</div>
 						</div>
 						<div class="work fade-in-right delay-1900" data-work-name="wustl" onclick="workPicker(this.dataset.workName)">
-							<div class="work-name">Washington University in St.Louis</div>
+							<div class="work-name">WUSTL Engineering</div>
 							<div class="subtitle">St Louis, MO</div>
 						</div>
 						<div class="work fade-in-right delay-2000" data-work-name="eazyfriday" onclick="workPicker(this.dataset.workName)">
@@ -178,8 +188,8 @@
 					</div>
 					<div id="wustl" class="card hidden">
 						<div class="heading fade-in-left">
-							<div><div class="company fade-in-left">Washington University in St Louis</div>
-							<div class="position fade-in-left delay-100">Teaching Assistant</div>
+							<div><div class="company fade-in-left">Washington University in St Louis Engineering</div>
+							<div class="position fade-in-left delay-100">Senior Teaching Assistant</div>
 							<div class="dates fade-in-left delay-150">8 semesters, 2014-2017</div></div>
 							<div class="logo fade-in delay-1000">
 								<img data-src="/assets/logos/wustl.png">
@@ -536,7 +546,7 @@
 					</div>
 					<div class="info-container">
 						<div class="info">
-							<p class="fade-in-left delay-1600">I use a little GPS thingy to record all my bike rides since mid 2018. I have recorded over 550 hours of movement and every single adventure can be seen here.</p>
+							<p class="fade-in-left delay-1600">I've used a little GPS thingy to record all my bike rides since mid 2018. I have recorded over 550 hours of movement and every single two-wheel adventure can be seen here.</p>
 
 							<h2 class="fade-in-left delay-2000 active" data-city="BOM"><span onclick="changeCity('BOM')">Mumbai</span></h2>
 							<div class="map-controls active" data-city="BOM">

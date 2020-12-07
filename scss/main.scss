@@ -36,9 +36,19 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	scrollbar-width: none !important; /* Firefox */
+  	-ms-overflow-style: none !important;  /* IE 10+ */
 	@media screen and (min-width: 40em) {
 		height: calc(var(--vh, 1vh) * 100);
 	}
+}
+* {
+	scrollbar-width: none !important; /* Firefox */
+  	-ms-overflow-style: none !important;  /* IE 10+ */
+}
+body::-webkit-scrollbar, *::-webkit-scrollbar {
+	width: 0px !important;
+	background: transparent !important; /* Chrome/Safari/Webkit */
 }
 
 body.no-touching {
@@ -213,13 +223,13 @@ a {
 				background-image: linear-gradient(0deg, $c-1, $c-1 50%, var(--text-color) 50%);
 			}
 			.han {
-				background-image: linear-gradient(0deg, $c-2, $c-2 50%, var(--text-color) 50%);
-			}
-			.bhan {
 				background-image: linear-gradient(0deg, $c-3, $c-3 50%, var(--text-color) 50%);
 			}
-			.sa {
+			.bhan {
 				background-image: linear-gradient(0deg, $c-4, $c-4 50%, var(--text-color) 50%);
+			}
+			.sa, .sali {
+				background-image: linear-gradient(0deg, $c-5, $c-5 50%, var(--text-color) 50%);
 			}
 			.li {
 				background-image: linear-gradient(0deg, $c-5, $c-5 50%, var(--text-color) 50%);

@@ -41,7 +41,7 @@ function updateMap(btn){
 			rideID = randID
 		}
 		drawSingle(rideID);
-		trackEvent('Map Changed', window.location.pathname, city + ' - ' +btn.nextElementSibling.innerText , rideID);
+		trackEvent(`${city} - ${btn.nextElementSibling.innerText} - ${rideID}`, 'Map Changed')
 	});
 }
 
@@ -137,7 +137,7 @@ function drawRandomAgain(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
-	trackEvent('Map Changed', window.location.pathname, 'Random', p);
+	trackEvent(`${city} - Random - ${p}`, 'Map Changed');
 	drawSingle(p);
 }
 

@@ -105,7 +105,7 @@ function openPhotoModal(i, shouldTrack = true) {
 	animateIn('.photo-modal', 'slide-in-up', null, 500);
 	document.addEventListener('keydown', modalKeyboardShortcuts)
 
-	if (shouldTrack) trackEvent('Photo modal opened', window.location.pathname, identifyPhoto(PHOTOS[i]), i);
+	trackEvent(identifyPhoto(PHOTOS[i]), 'Photo Modal Opened')
 }
 
 function closePhotoModal(swipeDistance = 0) {
@@ -118,7 +118,7 @@ function closePhotoModal(swipeDistance = 0) {
 	document.removeEventListener('keydown', modalKeyboardShortcuts);
 
 	history.pushState('', '', `${window.location.origin}/photos`);
-	trackEvent('Photo modal closed', window.location.pathname);
+	trackEvent('-', 'Photo Modal Closed')
 	active_photo = -1;
 }
  
@@ -126,14 +126,14 @@ function nextPhoto() {
 	if (active_photo + 1 >= PHOTOS.length || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(PHOTOS[++active_photo].index, 500);
-	trackEvent('Next Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
+	trackEvent(identifyPhoto(PHOTOS[active_photo]), 'Next Photo');
 }
 
 function prevPhoto() {
 	if (active_photo <= 0 || !modal.querySelector('.bar:last-of-type').classList.contains('done')) return;
 	startLoadingAnimation();
 	loadPhoto(PHOTOS[--active_photo].index, 500);
-	trackEvent('Prev Photo', window.location.pathname, identifyPhoto(PHOTOS[active_photo]), active_photo);
+	trackEvent(identifyPhoto(PHOTOS[active_photo]), 'Previous Photo');
 }
 
 function loadPhoto(i, delay = 0) {

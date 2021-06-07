@@ -58,7 +58,7 @@ body.no-touching {
 
 .flexbox-grid {
 	display: flex;
-	height: inherit;
+	height: auto;
 	.col {
 		box-sizing: border-box;
 		width: 50%;

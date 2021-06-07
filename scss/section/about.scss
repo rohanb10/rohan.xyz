@@ -37,6 +37,7 @@
 	}
 
 	.about-blurb {
+		padding: 0;
 		p:first-of-type {
 			margin-top: 0;
 		}
@@ -54,6 +55,9 @@
 			.hover {
 				display: none;
 			}
+		}
+		ul {
+			padding-inline-start: 1.25rem;
 		}
 	}
 

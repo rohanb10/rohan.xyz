@@ -78,8 +78,8 @@ function bucket(el) {
 
 	var nextScheme = nextColourSchemeID();
 	// force change in darkMode for certain colour schemes
-	if (nextScheme === 2) darkMode(true);
-	if (nextScheme === 4) darkMode(false);
+	// if (nextScheme === 2) darkMode(true);
+	// if (nextScheme === 4) darkMode(false);
 	document.body.setAttribute('data-bucket', nextScheme);
 
 	b.classList.add('changing');
@@ -93,7 +93,7 @@ function bucket(el) {
 	}
 
 	currentScheme = nextScheme;
-	trackEvent('Spill', 'bucket', 'Colours changed', currentScheme);
+	trackEvent(`Current Scheme: ${currentScheme}`, 'Changed Colours');
 }
 document.querySelector('.bucket img').addEventListener('click', bucket)
 

@@ -24,7 +24,7 @@ function redirectToSection(query) {
 	}, {once: true});
 
 	document.body.classList.add('no-touching');
-	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}/${sub}`, window.location.pathname), 900);
+	setTimeout(_ => trackEvent(`Navigating directly to section: /${sectionName}/${sub}`, 'Deep Linked'), 900);
 	setTimeout(_ => navControl(sectionName), 1000);
 }
 
@@ -32,7 +32,7 @@ function redirectToSection(query) {
 window.addEventListener('popstate', _ => {
 	navbarSections.forEach(s => s.classList.remove('active'));
 	hideAllSections();
-	trackEvent('Back button clicked', window.location.pathname, 'Home')
+	trackEvent('-', 'Back button clicked');
 });
 
 // Wave
@@ -102,7 +102,7 @@ function navControl(sectionName) {
 	//if selected section is already open, shut it down
 	if (sectionID === active_section) {
 		hideAllSections();
-		trackEvent('Section Closed', 'navbar', 'Home');
+		trackEvent('-', 'Sections Closed');
 	} else{
 		// open section
 		showSection(sectionID);
@@ -114,7 +114,7 @@ function navControl(sectionName) {
 		document.getElementById('section-container').classList.add('active');
 		document.title = `${sectionName} | rohan bhansali`;
 		history.pushState(null, null, `/${sectionName}`);
-		trackEvent('Section Changed', 'navbar', sectionName);
+		trackEvent(sectionName, 'Section Changed');
 	}
 }
 
@@ -226,7 +226,7 @@ function workPicker(workName) {
 
 	document.title = `${element.querySelector('.work-name').innerText.toLowerCase()} | work | rohan bhansali`;
 	history.pushState('', '', `/work/${workName}`);
-	trackEvent('Work Clicked', window.location.pathname, workName)
+	trackEvent(workName, 'Work Clicked');
 }
 
 // skills
@@ -264,9 +264,8 @@ function startSkillCycle(intialDelay = 0) {
 }
 
 // analytics
-function trackEvent(action = 'click', category = 'Not Specified', label, value) {
-	// console.log('TRACK:','send', '|', 'event', '|', category, '|', action, '|', label, '|', value)
-	if (typeof galite !== 'undefined') galite('send', 'event', category, action, label, value)
+function trackEvent(name, type) {
+	// try { umami.trackEvent(name, type) } catch {console.log('Unable to track Event', name, type)}
 }
 
 // Animate functions
@@ -312,7 +311,7 @@ window.addEventListener('orientationchange', mobileViewportHack);
 
 document.querySelectorAll('a').forEach(link => {
 	link.addEventListener('click', _ => {
-		trackEvent('url clicked', window.location.pathname, link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname)
+		trackEvent(`Opening ${link.getAttribute('data-name') ? link.getAttribute('data-name') : link.hostname}`, 'URL clicked');
 	})
 })
 

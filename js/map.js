@@ -137,7 +137,7 @@ function drawRandomAgain(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
-	trackEvent(`${city} - Random - ${p}`, 'Map Changed');
+	trackEvent(`${active_city} - Random - ${p}`, 'Map Changed');
 	drawSingle(p);
 }
 

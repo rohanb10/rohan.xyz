@@ -101,6 +101,10 @@
 							<span class="delay-50">⌃</span>
 						</div>
 						<div class="work-title fade-in delay-1500">Jobs</div>
+						<div class="work fade-in-right delay-1600" data-work-name="dentsu" onclick="workPicker(this.dataset.workName)">
+							<div class="work-name">Dentsu Data Sciences</div>
+							<div class="subtitle">Mumbai, India</div>
+						</div>
 						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Expensify</div>
 							<div class="subtitle">San Francisco, CA</div>
@@ -137,6 +141,26 @@
 					</div>
 				</div>
 				<div class="col col-60 work-card-container padding-top padding-left padding-right">
+					<div id="dentsu" class="card hidden">
+						<div class="heading">
+							<div><div class="company fade-in-left">Dentsu Data Sciences</div>
+							<div class="position fade-in-left delay-100">UI Developer</div>
+							<div class="dates fade-in-left delay-150">2020 - Present</div></div>
+							<div class="logo section-bg fade-in delay-1000">
+								<img data-src="/assets/logos/dentsu.png">
+							</div>
+						</div>
+						<div class="blurb fade-in-left delay-1500">
+							The Data Sciences team at Dentsu is a product team building Dentsu Marketing Cloud (DMC), an ecosystem of data-driven tools to create, analyse and optimise digital ad campaigns.
+							<ul>
+								<!-- <li class="fade-in-left delay-1600">Led an initiative to provide greater integration between all DMC products, allowing DMC to be sold to prospective clients as a whole suite (instead of subscriptions to individual tools).</li> -->
+								<!-- <li class="fade-in-left delay-1700">Redesigned several legacy tools from scratch to use modern APIs and best practices, with a major emphasis on reducing user actions (and subsequent confusion) as well as decreasing page load times by over 60%.</li> -->
+								<!-- <li class="fade-in-left delay-1800">Redesigned all input forms on the website using best UX practices to improve clarity and brevity. use ML based suggestions to predict user behaviour</li> -->
+								<!-- <li class="fade-in-left delay-1900">Worked closely with the back-end team to build a new performance monitoring tool powered by Google Analytics.</li> -->
+								<!-- <li class="fade-in-left delay-2000">Conducted a site-wide comprehensive CSS / JS Audit to reduce page load times and improve site performance by over 70%</li> -->
+							</ul>
+						</div>
+					</div>
 					<div id="expensify" class="card hidden">
 						<div class="heading">
 							<div><div class="company fade-in-left">Expensify</div>
@@ -283,7 +307,7 @@
 							<div><div class="company fade-in-left">Snoozz</div>
 							<div class="dates fade-in-left delay-100">2020</div></div>
 							<div class="logo fade-in delay-1000">
-								<img data-src="/assets/logos/snoozz.png">
+								<img data-src="/assets/logos/snoozz.svg">
 							</div>
 						</div>
 						<div class="blurb">
@@ -717,15 +741,5 @@
 		</div>
 	</div>
 	<script src="/js/script.terser.js"></script>
-	<!-- <script>
-		(function(r,o,h,a,n) {
-			r[o]=r[o]||function(){(r[o].q=r[o].q||[]).push(arguments)};
-			a=document.createElement('script');a.async=true;a.src=h;
-			n=document.getElementsByTagName('script')[0];n.parentNode.insertBefore(a,n)
-		})(window,'galite','/js/ga-lite.min.js');
-
-		galite('create', 'UA-78711252-1', 'auto');galite('send', 'pageview');
-		window.addEventListener('unload', _ => galite('send', 'timing', 'Bye Bye', 'unload'));
-	</script> -->
 </body>
 </html>

@@ -67,6 +67,9 @@
 					border-radius: 5em;
 					background: $c-w;
 				}
+				&.section-bg img {
+					background: $c-1;	
+				}
 				&.square img {
 					border-radius: .3em;
 				}

@@ -265,7 +265,8 @@ function startSkillCycle(intialDelay = 0) {
 
 // analytics
 function trackEvent(name, type) {
-	try { umami.trackEvent(name, type) } catch {console.log('Unable to track Event', name, type)}
+	return;
+	try { if (umami) umami.trackEvent(name, type) } catch {console.log('Unable to track Event', name, type)}
 }
 
 // Animate functions

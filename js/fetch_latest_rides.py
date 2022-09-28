@@ -2,9 +2,9 @@ import requests
 import json
 import re
 
-quit()
+# quit()
 # get latest url: await firebase.storage().ref().child('refresh.json').getDownloadURL().then(f => console.log(f))
-firebase = requests.get()
+firebase = requests.get('https://firebasestorage.googleapis.com/v0/b/strava-xyz.appspot.com/o/refresh.json?alt=media&token=5fab2173-e783-4903-8a64-1502bac08e1f')
 print('\nGetting data from Firebase Storage')
 
 print('\nAuthenticating Strava...')
@@ -18,7 +18,7 @@ activities = requests.get('https://www.strava.com/api/v3/activities' + '?access_
 def stringToJson(str): 
 	return json.loads('{' + re.sub(r'(\d{10}):', r'"\1":', str) + '}')
 
-print('\nGetting all rides previously saved.')
+print('\nComparing to all rides previously saved... ')
 with open('rides.js') as rj: 
 	ride_lists = re.findall('{¿(.+?)¿}', rj.read().replace(' ', '').replace('\t', '').replace('\n', '¿'))
 
@@ -41,7 +41,9 @@ for r in rideIDs[::-1]:
 
 print('\n\nSaving rides to _new_rides.txt\n\n')
 with open('_new_rides.txt', 'w') as f:
-	for r_id, poly in newRides.items():
-		f.write(r_id + ': "' + poly + '",\n')
+	for count, (r_id, poly) in enumerate(newRides.items()):
+		f.write(r_id + ': "' + poly + '"')
+		if count < len(newRides.items()) - 1: f.write(',')
+		f.write('\n')
 
 print('Done!\n')

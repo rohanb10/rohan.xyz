@@ -64,8 +64,8 @@ function addStyleLayer(name, opacity) {
 		source: name,
 		paint: {
 			'line-color': document.documentElement.style.getPropertyValue('--c-3'),
-			'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 12, 3],
-			'line-opacity': opacity || ['interpolate', ['linear'], ['zoom'], 11, .3, 16, .8]
+			'line-width': ['interpolate', ['linear'], ['zoom'], 11, 1, 12, 2],
+			'line-opacity': opacity || ['interpolate', ['linear'], ['zoom'], 11, .4, 15, .8]
 		}
 	});
 }
@@ -155,9 +155,10 @@ function getRandomPathID() {
 }
 
 function isInActiveCity(key) {
-	if (active_city === 'SF') return key < 3500000000;
-	if (active_city === 'BOM') return key > 3500000000;
-	return false;
+	// if (active_city === 'SF') return key < 3500000000;
+	// if (active_city === 'BOM') return key > 3500000000;
+	// return false;
+	return !!window[active_city][key]
 }
 
 function changeCity(name, callback = clearSources) {

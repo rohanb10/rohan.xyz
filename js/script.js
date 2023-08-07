@@ -40,7 +40,7 @@ var wave, swell, tide, crests = [], troughs = [];
 function ripple(delay = 0) {
 	clearTimeout(swell);
 	swell = setTimeout(function () {
-		navbarSections.forEach((s, i, sections) => {
+		if (navbarSections && navbarSections.length) navbarSections.forEach((s, i, sections) => {
 			crests[i] = setTimeout(rippleUp, 150 * i, s, names[i]);
 			troughs[i] = setTimeout(rippleDown, (sections.length * 150) + (200 * i), s, names[i]);
 		});

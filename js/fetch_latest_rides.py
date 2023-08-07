@@ -2,9 +2,9 @@ import requests
 import json
 import re
 
-# quit()
+quit()
 # get latest url: await firebase.storage().ref().child('refresh.json').getDownloadURL().then(f => console.log(f))
-firebase = requests.get('https://firebasestorage.googleapis.com/v0/b/strava-xyz.appspot.com/o/refresh.json?alt=media&token=5fab2173-e783-4903-8a64-1502bac08e1f')
+firebase = requests.get('')
 print('\nGetting data from Firebase Storage')
 
 print('\nAuthenticating Strava...')
@@ -27,7 +27,7 @@ bom = stringToJson(ride_lists[1].replace('¿', ''))
 
 rideIDs = []
 for a in activities.json():
-	if not(str(a['id']) in bom) and not(str(a['id']) in sf): rideIDs.append(str(a['id']))
+	if not(str(a['id']) in bom) and not(str(a['id']) in sf) and not(str(a['map']['summary_polyline']) == ''): rideIDs.append(str(a['id']))
 
 print('\nFound ' + str(len(rideIDs)) + ' new rides.\n')
 if len(rideIDs) == 0: quit()

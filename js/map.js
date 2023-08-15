@@ -38,7 +38,7 @@ function updateMap(btn){
 		if (rideID === 'random') {
 			var randID = getRandomPathID();
 			btn.setAttribute('data-random-id', randID);
-			rideID = randID
+			rideID = randID;
 		}
 		drawSingle(rideID);
 		trackEvent(`${city} - ${btn.nextElementSibling.innerText} - ${rideID}`, 'Map Changed')
@@ -77,7 +77,8 @@ function drawSingle(pathID, noAnimation) {
 	clearSources();
 	dist.parentElement.classList.remove('hidden');
 
-	var nextCord = 1, currentDistance = 0, cords = flip(decodePath(RIDES[pathID])), geo = buildGeoJSON(cords[0]);
+	var nextCord = 1, currentDistance = 0, cords = flip(decodePath(RIDES[pathID])), geo = {type: 'FeatureCollection', features: []};
+	geo.features.push(buildFeature([cords[0]], pathID))
 
 	for (var i = nextCord; noAnimation && i < cords.length; i++) geo.features[0].geometry.coordinates.push(cords[i])
 
@@ -113,14 +114,14 @@ function drawAll(noAnimation) {
 	var next = 0, currentDistance = 0, keys = Object.keys(RIDES).filter(isInActiveCity);
 	var featuresPerFrame = noAnimation ? keys.length : Math.ceil(keys.length / 100);
 
-	var geo = buildGeoJSON();
+	var geo = {type: 'FeatureCollection', features: []};
 	sources.push('active-all')
 	map.addSource('active-all', {type: 'geojson', data: geo});
 	addStyleLayer('active-all')
 
 	var draw = _ => {
 		for (var f = 0; f < featuresPerFrame && next < keys.length; f++) {
-			geo.features.push(makeFeatureFromCords(flip(decodePath(RIDES[keys[next]]))))
+			geo.features.push(buildFeature(flip(decodePath(RIDES[keys[next]])), keys[next]))
 			currentDistance += getDistance(keys[next]);
 			next++;
 		}
@@ -137,7 +138,6 @@ function drawRandomAgain(el) {
 	el.classList.add('spin')
 	el.addEventListener('animationend', _ => el.classList.remove('spin'), {once: true});
 	var p = getRandomPathID();
-	trackEvent(`${active_city} - Random - ${p}`, 'Map Changed');
 	drawSingle(p);
 }
 
@@ -151,6 +151,7 @@ function getRandomPathID() {
 		pathID = keys[keys.length * Math.random() << 0];
 		pathDistance = getDistance(pathID);
 	}
+	console.log('Random Ride - https://www.strava.com/activities/' + pathID, pathID);
 	return pathID;
 }
 
@@ -210,7 +211,7 @@ function checkMapLayerColor() {
 	
 	clearSources();
 	map.setStyle(MAP_LAYERS[nextLayer])
-	if (currentID) map.once('styledataloading', _ => map.once('styledata', _ => drawSingle(currentID, true)))
+	if (currentID) map.once('styledataloading', _ => map.once('styledata', _ => drawSingle(currentID, currentID === 'all')));
 	currentLayer = nextLayer;
 }
 
@@ -273,7 +274,10 @@ async function fetchLastRideDetails(params) {
 function showLatestContainer(activity) {
 	if (!activity || !activity.id || !activity.map.polyline || !RIDES || RIDES.length === 0) throw 'Inavlid ride object';
 
-	RIDES[activity.id] = activity.map.polyline;
+	if (!RIDES[activity.id]) {
+		RIDES[activity.id] = activity.map.polyline;
+		console.log(activity.id + ' fetched from strava and added to RIDES');
+	}
 	var container = document.querySelector('#id-maps .latest-container');
 	var rideDate = new Intl.DateTimeFormat('en-IN',{day:'numeric', month:'short', year:'numeric'}).format(new Date(activity.start_date));
 	var rideTime = new Intl.DateTimeFormat('en-IN',{hour:'numeric', minute:'numeric'}).format(new Date(activity.start_date));
@@ -301,9 +305,6 @@ function showLatestContainer(activity) {
 	container.append(control);
 	container.classList.add('success');
 	container.style.height = container.scrollHeight + 'px';
-	
-	RIDES[activity.id] = activity.map.polyline;
-	console.log('ride ' + activity.id + ' succesfully fetched from strava');
 }
 
 function flip(a) {
@@ -334,11 +335,18 @@ function decodePath(str) {
 	}
 	return coordinates;
 }
-function buildGeoJSON(initialCords) {
-	var geojson = {type: 'FeatureCollection', features: []}
-	if (initialCords && initialCords.length && initialCords.length > 0) geojson.features.push(makeFeatureFromCords([initialCords]));
-	return geojson;
+
+function buildFeature(coordinates, rideID) {
+	return {type: 'Feature', geometry: {type: 'LineString', coordinates}, properties: {rideID}}
 }
-function makeFeatureFromCords(cords) {
-	return { type: 'Feature', geometry: {type: 'LineString', coordinates: cords} }
+
+function debugRides() {
+	if (!map) return;
+	map.on('click', e => {
+		var bounds = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
+		map.queryRenderedFeatures(bounds).filter(feature => sources.includes(feature.source)).forEach(path => {
+			if (!(path && path.properties && path.properties.rideID)) return console.console.log('No RideID Found');
+			console.log('https://www.strava.com/activities/' + path.properties.rideID, path.properties.rideID);
+		})
+	});
 }

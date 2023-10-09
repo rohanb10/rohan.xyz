@@ -6,6 +6,7 @@
 	transition: background-size .4s $ease-in-out-cubic;
 	-webkit-user-select: none;
 	user-select: none;
+	font-family: var(--title-font);
 	font-size: 1.25em;
 	position: -webkit-sticky;
 	position: sticky;
@@ -70,7 +71,8 @@
 				display: inline-block;
 				width: 4em;
 				text-align: center;
-				transition: width .1s linear;
+				font-variation-settings: 'wght' 500;
+				transition: width .1s linear, font-variation-settings .4s cubic-bezier(.77, 0, .175, 1);
 				&:before {
 					content: attr(data-section-name)
 				}
@@ -94,6 +96,9 @@
 			}
 			&.wave {
 				color: $c-w;
+				span {
+					font-variation-settings: 'wght' 800;
+				}
 				&:before {
 					transform: scaleY(1);
 				}
@@ -101,6 +106,9 @@
 			@media (hover:hover) {
 				&:hover {
 					color: $c-w;
+					span {
+						font-variation-settings: 'wght' 800;
+					}
 					&:before {
 						transform: scaleY(1);
 					}

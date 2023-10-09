@@ -10,6 +10,7 @@
 	}
 }
 
+@import 'fonts';
 @import 'variables';
 @import 'darkmode';
 @import 'mixins';
@@ -30,7 +31,7 @@ html {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23222' fill-opacity='.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 	width: 100%;
 	min-height: 100vh;
-	font-family: 'Mulish', 'Verdana', sans-serif;
+	font-family: var(--body-font), sans-serif;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	transition: all .5s ease-in-out;
 }
@@ -40,7 +41,7 @@ body {
 	scrollbar-width: none !important; /* Firefox */
   	-ms-overflow-style: none !important;  /* IE 10+ */
 	@media screen and (min-width: 40em) {
-		height: calc(var(--vh, 1vh) * 100);
+		height: 100dvh;
 	}
 }
 * {
@@ -206,7 +207,7 @@ a {
 }
 
 #hero {
-	height: calc(var(--vh, 1vh) * 60);
+	height: 60dvh;
 	overflow-y: hidden;
 	transition: all .6s $ease-in-out-cubic;
 	transition-delay: .4s;
@@ -214,10 +215,10 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Mulish', 'Futura', 'Arial Black', sans-serif;
+	font-family: var(--title-font), 'Futura', 'Arial Black', sans-serif;
+	font-weight: 900;
 	h1 {
-		font-size: 4em;
-		font-weight: 900;
+		font-size: 5em;
 		&>span {
 			display: block;
 			.ro {

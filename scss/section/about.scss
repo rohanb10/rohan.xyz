@@ -6,6 +6,7 @@
 		text-align: right;
 		padding-bottom: 2em;
 		h2 {
+			font-family: var(--title-font);
 			margin-bottom: 0;
 		}
 		div {
@@ -58,6 +59,9 @@
 		}
 		ul {
 			padding-inline-start: 1.25rem;
+		}
+		li::marker {
+			color: $c-5;
 		}
 	}
 

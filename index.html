@@ -37,24 +37,16 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
 	<link rel="manifest" href="/assets/favicon/manifest.json">
 	<link rel="stylesheet" type="text/css" href="/css/style.min.css">
-
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-	<script>
-		document.head.appendChild(Object.assign(document.createElement('link'),{
-			href: 'https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap',
-			rel: 'stylesheet'
-		}));
-	</script>
 </head>
 <body data-bucket="0">
 	<div id="hero" class="container-width">
 		<h1>
 			<span>
-				<span class="ro">Ro</span
+				<span class="ro">ro</span
 				><span class="han">han</span>
 			</span>
 			<span>
-				<span class="bhan">Bhan</span
+				<span class="bhan">bhan</span
 				><span class="sali">sali</span>	
 				<!-- ><span class="sa">sa</span
 				><span class="li">li</span> -->
@@ -102,26 +94,30 @@
 							<span class="delay-50">⌃</span>
 						</div>
 						<div class="work-title fade-in delay-1500">Jobs</div>
-						<div class="work fade-in-right delay-1600" data-work-name="dentsu" onclick="workPicker(this.dataset.workName)">
+						<div class="work fade-in-right delay-1600" data-work-name="deloitte" onclick="workPicker(this.dataset.workName)">
+							<div class="work-name">Deloitte</div>
+							<div class="subtitle">Mumbai, India</div>
+						</div>
+						<div class="work fade-in-right delay-1700" data-work-name="dentsu" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Dentsu Data Sciences</div>
 							<div class="subtitle">Mumbai, India</div>
 						</div>
-						<div class="work fade-in-right delay-1700" data-work-name="expensify" onclick="workPicker(this.dataset.workName)">
+						<div class="work fade-in-right delay-1800" data-work-name="expensify" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Expensify</div>
 							<div class="subtitle">San Francisco, CA</div>
 						</div>
-						<div class="work fade-in-right delay-1800" data-work-name="zappos" onclick="workPicker(this.dataset.workName)">
+						<div class="work fade-in-right delay-1900" data-work-name="zappos" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Zappos</div>
 							<div class="subtitle">Las Vegas, NV</div>
 						</div>
-						<div class="work fade-in-right delay-1900" data-work-name="wustl" onclick="workPicker(this.dataset.workName)">
+						<div class="work fade-in-right delay-2000" data-work-name="wustl" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">WUSTL Engineering</div>
 							<div class="subtitle">St Louis, MO</div>
 						</div>
-						<div class="work fade-in-right delay-2000" data-work-name="eazyfriday" onclick="workPicker(this.dataset.workName)">
+						<!-- <div class="work fade-in-right delay-2100" data-work-name="eazyfriday" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">EazyFriday</div>
 							<div class="subtitle">Mumbai, India</div>
-						</div>
+						</div> -->
 						<div class="work-title fade-in delay-2500">Projects</div>
 						<div class="work fade-in-right delay-2600" data-work-name="snoozz" onclick="workPicker(this.dataset.workName)">
 							<div class="work-name">Snoozz</div>
@@ -142,11 +138,25 @@
 					</div>
 				</div>
 				<div class="col col-60 work-card-container padding-top padding-left padding-right">
+					<div id="deloitte" class="card hidden">
+						<div class="heading">
+							<div><div class="company fade-in-left">Deloitte</div>
+							<div class="position fade-in-left delay-100">Consultant (Tech)</div>
+							<div class="dates fade-in-left delay-150">2023 - Present</div></div>
+							<div class="logo fade-in delay-1000">
+								<img data-src="/assets/logos/deloitte.png">
+							</div>
+						</div>
+						<div class="blurb fade-in-left delay-1500">
+							<p>Yes. That Deloitte.</p>
+							<p>Exactly the one you are thinking of.</p>
+						</div>
+					</div>
 					<div id="dentsu" class="card hidden">
 						<div class="heading">
 							<div><div class="company fade-in-left">Dentsu Data Sciences</div>
 							<div class="position fade-in-left delay-100">UI Developer</div>
-							<div class="dates fade-in-left delay-150">2020 - Present</div></div>
+							<div class="dates fade-in-left delay-150">2020 - 2022</div></div>
 							<div class="logo section-bg fade-in delay-1000">
 								<img data-src="/assets/logos/dentsu.png">
 							</div>
@@ -154,11 +164,11 @@
 						<div class="blurb fade-in-left delay-1500">
 							The Data Sciences team at Dentsu is a product team building Dentsu Marketing Cloud (DMC), an ecosystem of data-driven tools to create, analyse and optimise digital ad campaigns.
 							<ul>
-								<!-- <li class="fade-in-left delay-1600">Led an initiative to provide greater integration between all DMC products, allowing DMC to be sold to prospective clients as a whole suite (instead of subscriptions to individual tools).</li> -->
-								<!-- <li class="fade-in-left delay-1700">Redesigned several legacy tools from scratch to use modern APIs and best practices, with a major emphasis on reducing user actions (and subsequent confusion) as well as decreasing page load times by over 60%.</li> -->
-								<!-- <li class="fade-in-left delay-1800">Redesigned all input forms on the website using best UX practices to improve clarity and brevity. use ML based suggestions to predict user behaviour</li> -->
-								<!-- <li class="fade-in-left delay-1900">Worked closely with the back-end team to build a new performance monitoring tool powered by Google Analytics.</li> -->
-								<!-- <li class="fade-in-left delay-2000">Conducted a site-wide comprehensive CSS / JS Audit to reduce page load times and improve site performance by over 70%</li> -->
+								<li class="fade-in-left delay-1600">Led an initiative to provide greater integration between all DMC products, allowing DMC to be sold to prospective clients as a whole suite (instead of subscriptions to individual tools).</li>
+								<li class="fade-in-left delay-1700">Redesigned several legacy tools from scratch to use modern APIs and best practices, with a major emphasis on reducing user actions (and subsequent confusion) as well as decreasing page load times by over 60%.</li>
+								<li class="fade-in-left delay-1800">Redesigned all input forms on the website using best UX practices to improve clarity and brevity. use ML based suggestions to predict user behaviour</li>
+								<li class="fade-in-left delay-1900">Worked closely with the back-end team to build a new performance monitoring tool powered by Google Analytics.</li>
+								<li class="fade-in-left delay-2000">Conducted a site-wide comprehensive CSS / JS Audit to reduce page load times and improve site performance by over 70%</li>
 							</ul>
 						</div>
 					</div>
@@ -225,7 +235,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="eazyfriday" class="card hidden">
+					<!-- <div id="eazyfriday" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">EazyFriday</div>
 							<div class="position fade-in-left delay-100">Full Stack Engineering Intern</div>
@@ -243,7 +253,7 @@
 								<li class="fade-in-left delay-1900">Maintained a REST API to be used by the companion iOS and Android apps.</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<div id="turnstyle" class="card hidden">
 						<div class="heading fade-in-left">
 							<div><div class="company fade-in-left">TurnStyle</div>
@@ -495,7 +505,7 @@
 							<div class="skill"><img class="img-skill" data-src="arduino"><span>Arduinio</span></div>
 							<div class="skill"><img class="img-skill" data-src="nalgene"><span>Staying hydrated</span></div>
 							<div class="skill"><img class="img-skill" data-src="pikachu"><span>Pikachu main (smash)</span></div>
-							<div class="skill"><img class="img-skill" data-src="cycle"><span>5,000km+<br>since 2018</span></div>
+							<div class="skill"><img class="img-skill" data-src="cycle"><span>12,000km+<br>since 2018</span></div>
 							<div class="skill"><img class="img-skill" data-src="arsenal"><span>Surviving heartache</span></div>
 						</div>
 					</div>
@@ -560,7 +570,8 @@
 					</div>
 					<div class="info-container">
 						<div class="info">
-							<p class="fade-in-left delay-1600">I've used a little GPS thingy to record all my bike rides since mid 2018. I have recorded over 700 hours of movement and every single two-wheel adventure can be seen here.</p>
+							<p class="fade-in-left delay-1600">Since 2018, I have been using a little GPS thingy to record over a 1000 rides across the two "metro areas" where I've lived. Every single one of those rides (and hike or two) is proudly displayed here.</p>
+							<!-- <p class="fade-in-left delay-1700">My wheels of choice are a trusty -->
 
 							<h2 class="fade-in-left delay-2000 active" data-city="BOM"><span onclick="changeCity('BOM')">Mumbai</span></h2>
 							<div class="map-controls active" data-city="BOM">
@@ -674,18 +685,18 @@
 					</div>
 					<div class="about-blurb info-container info">
 						<p class="fade-in-right delay-1500">I am a front-end developer who spends most of my free time offline.</p>
-						<p class="fade-in-right delay-1600">You can catch me zooming around the streets of Bombay on a fluorescent green cycle (and matching helmet) in chappals with no grip. When I become king, all the cars and buses will have to squeeze into the left lane and us cyclists will rule the roads.</p>
-						<p class="fade-in-right delay-1700">I consider myself an expert at never being <a class="link" target="_blank" rel="noreferrer" data-name="Late People" href="https://www.youtube.com/watch?v=KU7CeUliamg">late</a>, packing things in bags efficiently, and overestimating my excellent spice tolerance. I am an extremely wreckless yawner and frequently knock things over when stretching during a good mid-afternoon yawn.</p>
-						<p class="fade-in-right delay-1800">I have a BSc in Computer Science from Washington University in St. Louis. I have worked in various engineering roles at Data, eCommerce and SaaS platforms, but my main interests have always been in design, interactions and user experiences.</p>
+						<p class="fade-in-right delay-1600">I'm constantly zooming around the streets of Bombay on a fluorescent green cycle (and a red helmet) in sandals with no traction. Yes I know my bike is always dirty. No it doesn't bother me at all.</p>
+						<p class="fade-in-right delay-1700">What else? I like naps (who doesn't??), extra spicy food, accidentally rubbing my eyes after eating extra spicy food, and oxford commas too. I'm always down for any kind of outdoor activites (even the more dangerous ones - but dont tell my mom, will just send her safe looking pics later).</p>
+						<p class="fade-in-right delay-1800">I have a degree in Computer Science. I have worked in several different engineering roles at startups and mega corporations. My main interest has always been in design, interactions and user experiences.</p>
 						<!-- <p class="fade-in-right delay-1700">I used to live and work in California, but have now moved back home to Bombay</p> -->
 						<!-- <p class="fade-in-right delay-1800">My favourite day of the week is Thursday. It's basically Friday, but without all the pressure.</p> -->
 						
 						<div class="fade-in-right delay-2000">
 							<p>Things that I really like:</p>
 							<ul>
-								<li>KitKats and Milk Bikis</li>
 								<li>Venn diagrams</li>
 								<li>Dogs with <span class="wiggle">wiggly</span> butts</li>
+								<li>Cats that are <a class="link" target="_blank" href="https://www.instagram.com/p/CsZJ8WhpwVm/">obnoxiously</a> loud</li>
 								<li>Any thing that comes with a map</li>
 								<li>Two person cereal</li>
 							</ul>
@@ -694,10 +705,10 @@
 							<p>Things that I don't like:</p>
 							<ul>
 								<li>Raisins (and also people who like raisins)</li>
-								<li>Anyone that tells me that cotton ear-buds are bad for my ears.</li>
-								<li>Chemtrails</li>
-								<li>People who leave toothpaste tubes open. Not naming names. You know who you are.</li>
-								<li>Lukewarm water<span class="hover"> - if you think there is no difference between lukewarm and cold water I have some strong words for you</span></li>
+								<li>Anyone that tells me that cotton ear-buds are bad for my ears</li>
+								<li>Mosquitos and scientists who support the mosquito agenda</li>
+								<li>People who tell me get a haircut</li>
+								<li>Room temperature drinking water</li>
 							</ul>
 						</div>
 					</div>

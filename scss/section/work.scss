@@ -1,7 +1,6 @@
 #id-work {
 	.work-title {
-		font-size: .75em;
-		font-weight: 400;
+		font-size: .8em;
 		letter-spacing: 2px;
 		margin: 2.5em 0 .5em;
 		color: #777;
@@ -16,10 +15,11 @@
 
 		.work-name {
 			font-size: 1.1em;
-			font-weight: 700;
+			font-weight: 600;
+			font-family: var(--title-font);
 		}
 		.subtitle {
-			font-size: .8em;
+			font-size: .9em;
 		}
 		&:hover {
 			border-color: #ddd;
@@ -83,6 +83,7 @@
 			}
 			.company {
 				font-size: 1.2em;
+				font-family: var(--title-font);
 				font-weight: 700;
 			}
 			.position {
@@ -90,15 +91,17 @@
 			}
 			.dates {
 				padding-top: .25em;
-				font-size: .7em;
+				font-weight: 350;
 				color: #AAA;
 			}
 		}
 		.blurb {
 			margin: 2em 0 0;
-			font-size: .9em;
+			font-size: .95em;
 			.subheading {
-				font-weight: 700;
+				font-size: 1.1em;
+				font-weight: 550;
+				font-family: var(--title-font);
 			}
 			ul {
 				padding-inline-start: 1.5em;

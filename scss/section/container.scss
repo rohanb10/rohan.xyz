@@ -4,13 +4,15 @@
 		height: inherit;
 	}
 	.title {
+		font-family: var(--title-font);
 		margin:1em auto 2em;
 		text-align: center;
 		color: var(--text-color);
 		transition: color .5s ease-in-out;
+		font-weight: 600;
 		.text-container {
 			font-size: 2em;
-			font-weight: 900;
+			font-weight: 750;
 
 			.text-underline {
 				overflow: hidden;

@@ -28,7 +28,8 @@ var PHOTOS = [
 	{index: 26, bg: "#546420", caption: "Briones Regional Park, Lafayette, California"},
 	{index: 27, bg: "#D8DEE0", caption: "Mendocino Headlands State Park, Mendocino, California"},
 	{index: 28, bg: "#709BC3", caption: "Four Mile Trail, Yosemite National Park, California"},
-	{index: 29, bg: "#E9906E", caption: "Shilshole Bay, Ballard, Seattle, Washington"}
+	{index: 29, bg: "#E9906E", caption: "Shilshole Bay, Ballard, Seattle, Washington"},
+	{index: 30, bg: "#6C8396", caption: "Marine Drive on a clean day, Mumbai, India"}
 ];
 
 const photosSection = document.getElementById('id-photos');
